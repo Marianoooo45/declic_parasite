@@ -1,37 +1,56 @@
-import { site } from "@/config/site";
-import { slugify } from "@/lib/slug";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MapPin, Check, Phone, Shield, Leaf, Clock, ArrowRight } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { site } from "@/config/site";
+import { services } from "@/config/services";
+import {
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  Clock,
+  Phone,
+  ShieldCheck,
+  Star,
+} from "lucide-react";
 
-export const revalidate = 86400; // 24h
+const baseUrl = "https://www.declicparasites.fr";
+const euroFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0,
+});
 
-// --- data helpers ---
-const allCities = site.serviceArea.map((name) => ({
-  name,
-  slug: slugify(name),
-}));
+export const revalidate = 86400;
 
-function getCity(slug: string) {
-  return allCities.find((c) => c.slug === slug);
+// --- Next 15: params is a Promise in dynamic routes ---
+
+export function generateStaticParams() {
+  return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateStaticParams() {
-  return allCities.map((c) => ({ slug: c.slug }));
-}
-
-// ⚠️ Next 15: params peut être un Promise — on l'attend
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params;
-  const city = getCity(slug)?.name ?? site.city;
-  const title = `Dératisation & désinsectisation à ${city} | ${site.brand}`;
-  const description = `${site.brand} intervient à ${city} et dans le ${site.departement} : rats, souris, cafards, punaises de lit, frelons. Devis gratuit, intervention 24–48h.`;
-  const url = `https://www.declicparasites.fr/zones-intervention/${slug}`;
+  const service = services.find((item) => item.slug === slug);
+
+  if (!service) {
+    return { title: site.brand };
+  }
+
+  const title = `${service.title} | ${site.brand}`;
+  const description = service.description;
+  const url = `${baseUrl}/services/${service.slug}`;
 
   return {
     title,
@@ -41,28 +60,42 @@ export async function generateMetadata(
       title,
       description,
       type: "article",
-      locale: "fr_FR",
       url,
+      images: [{ url: service.heroImage }],
     },
   };
 }
 
-export default async function CityPage(
+export default async function ServicePage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const city = getCity(slug);
-  const cityName = city?.name ?? site.city;
+  const service = services.find((item) => item.slug === slug);
 
-  const jsonLd = {
+  if (!service) {
+    notFound();
+  }
+
+  const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
+  const pasIntro = [
+    `Problème — ${service.title} menacent votre confort ou votre activité à ${site.city}. Les signaux d'alerte se multiplient et il devient urgent d'agir avant la prolifération.`,
+    "Agiter — Sans plan d'action, les nuisibles se répandent, endommagent vos biens et transmettent des risques sanitaires pour votre famille ou vos clients.",
+    `Solution — ${site.brand} intervient en 24–48h avec une méthodologie professionnelle Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.`,
+  ];
+  const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 3);
+
+  const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: "Lutte antiparasitaire",
-    areaServed: cityName,
+    serviceType: service.title,
+    image: service.heroImage,
+    description: service.description,
+    areaServed: [site.city, site.departement],
     provider: {
       "@type": "LocalBusiness",
       name: site.brand,
       telephone: site.phone.replace(/\s+/g, ""),
+      areaServed: site.serviceArea,
       address: {
         "@type": "PostalAddress",
         streetAddress: site.address.split(",")[0],
@@ -71,158 +104,270 @@ export default async function CityPage(
         addressCountry: "FR",
       },
     },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Prestations nuisibles",
-      itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dératisation" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Punaises de lit" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cafards" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Guêpes / frelons" } },
-      ],
-    },
+    offers: service.priceFrom
+      ? {
+          "@type": "Offer",
+          priceCurrency: "EUR",
+          price: service.priceFrom,
+          url: `${baseUrl}/services/${service.slug}`,
+          availability: "https://schema.org/InStock",
+        }
+      : undefined,
+    keywords: service.schemaKeywords,
   };
 
-  const breadcrumbLd = {
+  const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.declicparasites.fr/" },
-      { "@type": "ListItem", position: 2, name: "Zones d'intervention", item: "https://www.declicparasites.fr/zones-intervention" },
-      { "@type": "ListItem", position: 3, name: cityName, item: `https://www.declicparasites.fr/zones-intervention/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${baseUrl}/services` },
+      { "@type": "ListItem", position: 3, name: service.title, item: `${baseUrl}/services/${service.slug}` },
     ],
   };
 
+  const faqJsonLd =
+    service.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: service.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        }
+      : null;
+
   return (
-    <main className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      ) : null}
 
-      {/* Hero ville */}
-      <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="https://ext.same-assets.com/3682338552/1387163323.jpeg"
-            alt={`Intervention antiparasitaire à ${cityName}`}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="container mx-auto px-4">
-          <nav className="text-white/80 mb-4 text-sm">
-            <Link href="/" className="hover:underline">Accueil</Link> <span className="mx-1">/</span>
-            <Link href="/zones-intervention" className="hover:underline">Zones d&apos;intervention</Link> <span className="mx-1">/</span>
-            <span className="text-white">{cityName}</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            {site.brand} – {cityName}
-          </h1>
-          <p className="text-white/90 max-w-3xl">
-            Dératisation, désinsectisation et prévention à {cityName}. Intervention rapide sous 24–48h, devis gratuit.
-          </p>
-          <div className="mt-6 flex gap-3">
-            <Link href="/#contact"><Button className="bg-primary hover:bg-primary/90">Demander un devis</Button></Link>
-            <a href={`tel:${site.phone.replace(/\s+/g, "")}`}>
-              <Button variant="outline" className="text-white border-white hover:bg-white/10">
-                <Phone className="h-4 w-4 mr-2" /> {site.phone}
-              </Button>
-            </a>
+      <div className="relative min-h-screen bg-white">
+        <section className="bg-gray-50 py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-wide text-primary">
+                  Service {site.brand}
+                </span>
+                <h1 className="heading-balance mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+                  {service.title}
+                </h1>
+                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+                  {service.description}
+                </p>
+                <div className="mt-6 space-y-3 text-muted-foreground">
+                  {pasIntro.map((paragraph, index) => (
+                    <p key={index} className="max-w-2xl text-sm">{paragraph}</p>
+                  ))}
+                </div>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-quote">
+                      Demander un devis
+                    </Button>
+                  </Link>
+                  <a href={phoneHref} data-cta="service-call" className="inline-flex">
+                    <Button size="lg" variant="outline" className="border-primary/40 text-primary hover:bg-primary/10">
+                      <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
+                    </Button>
+                  </a>
+                </div>
+                <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                  <span className="inline-flex items-center gap-2">
+                    <Star className="h-4 w-4 text-primary" /> +98% de clients satisfaits
+                  </span>
+                  <Link href="/#avis" className="inline-flex items-center gap-1 text-primary hover:underline">
+                    Voir les avis Google
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+              <div className="relative h-80 overflow-hidden rounded-3xl shadow-lg">
+                <Image
+                  src={service.heroImage}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  priority
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contenu SEO */}
-      <section className="py-14 bg-gray-50">
-        <div className="container mx-auto px-4 grid lg:grid-cols-3 gap-8">
-          {/* Texte principal */}
-          <article className="lg:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Nos prestations à {cityName}</h2>
-            <p className="text-gray-700 mb-4">
-              {site.brand} intervient à {cityName} et dans tout le {site.departement} pour éliminer
-              rats, souris, cafards, punaises de lit, guêpes et frelons. Nos techniciens certifiés
-              réalisent un diagnostic précis, appliquent un traitement adapté et vous donnent des
-              conseils de prévention pour éviter les réinfestations.
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+              Les bénéfices clés
+            </h2>
+            <p className="mt-3 max-w-2xl text-muted-foreground">
+              Ce que nous mettons en place pour vous offrir un environnement sain et durablement protégé.
             </p>
-            <ul className="space-y-2 text-gray-700 mb-6">
-              {[
-                "Diagnostic et devis gratuits",
-                "Produits homologués, méthodes raisonnées",
-                "Passage sous 24–48h selon urgence",
-                "Suivi et garantie de résultat",
-              ].map((t, i) => (
-                <li key={i} className="flex gap-2">
-                  <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span>{t}</span>
-                </li>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {service.benefits.map((benefit) => (
+                <span
+                  key={benefit}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
+                >
+                  <CheckCircle2 className="h-4 w-4" />
+                  {benefit}
+                </span>
               ))}
-            </ul>
+            </div>
+          </div>
+        </section>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                { title: "Dératisation", desc: "Rats, souris : appâts sécurisés, colmatage, prévention." },
-                { title: "Punaises de lit", desc: "Traitement complet + suivi jusqu’à éradication." },
-                { title: "Cafards / blattes", desc: "Gel, pulvérisation ciblée et conseils d’hygiène." },
-                { title: "Guêpes / frelons", desc: "Destruction de nids en façade, toiture, jardin." },
-              ].map((s, i) => (
-                <Card key={i} className="p-4">
-                  <div className="font-semibold">{s.title}</div>
-                  <div className="text-sm text-gray-600">{s.desc}</div>
+        <section className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+              Notre intervention détaillée
+            </h2>
+            <p className="mt-3 max-w-3xl text-muted-foreground">
+              Chaque étape est documentée et ajustée selon votre site : nous vous guidons avant, pendant et après la prestation pour sécuriser vos espaces.
+            </p>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {service.features.map((feature) => (
+                <Card key={feature} className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">{feature}</p>
                 </Card>
               ))}
             </div>
-          </article>
+          </div>
+        </section>
 
-          {/* Encadré contact / zone */}
-          <aside className="lg:col-span-1">
-            <Card className="p-6 sticky top-24">
-              <div className="flex items-center gap-2 mb-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <div className="font-semibold">Zone couverte</div>
-              </div>
-              <div className="text-sm text-gray-700 mb-4">
-                {site.serviceArea.join(", ")}.
-              </div>
+        {service.priceFrom ? (
+          <section className="py-16">
+            <div className="container mx-auto px-4">
+              <Card className="flex flex-col gap-8 border-primary/30 bg-primary/5 p-8 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+                    À partir de {euroFormatter.format(service.priceFrom)}
+                  </h2>
+                  <p className="mt-2 max-w-xl text-muted-foreground">
+                    Tarif indicatif incluant déplacement, diagnostic complet et plan d&apos;action personnalisé.
+                  </p>
+                  <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="h-4 w-4 text-primary" /> Garantie de résultat et suivi 30 jours
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-primary" /> Intervention sous 24–48h partout dans le {site.departement}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 md:items-end">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-price-contact">
+                      Obtenir mon devis précis
+                    </Button>
+                  </Link>
+                  <Link href="/services" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+                    Découvrir nos autres prestations
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </Card>
+            </div>
+          </section>
+        ) : null}
 
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Shield className="h-4 w-4 text-primary" />
-                  <span>Certibiocide & HACCP</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Leaf className="h-4 w-4 text-primary" />
-                  <span>Méthodes raisonnées</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <span>Intervention 24–48h</span>
-                </div>
+        <section className="bg-gray-900 py-16 text-white">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+              <div>
+                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+                  Questions fréquentes
+                </h2>
+                <p className="mt-3 text-white/80">
+                  Besoin de précisions avant de programmer l&apos;intervention ? Nos techniciens restent joignables et vous accompagnent jusqu&apos;à la résolution complète.
+                </p>
               </div>
+              <Accordion type="single" collapsible className="w-full rounded-xl border border-white/10 bg-white/5 p-4">
+                {service.faqs.map((faq, index) => (
+                  <AccordionItem key={faq.q} value={`faq-${index}`}>
+                    <AccordionTrigger className="text-left text-base font-semibold text-white">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-white/80">{faq.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
 
-              <div className="mt-5">
-                <Link href="/#contact">
-                  <Button className="w-full">Demander un devis</Button>
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="grid gap-8 rounded-3xl bg-slate-900 p-8 text-white md:grid-cols-2 md:p-12">
+              <div>
+                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+                  Parlons de votre situation
+                </h2>
+                <p className="mt-3 text-white/80">
+                  Un conseiller vous rappelle en moins d&apos;une heure ouvrée pour planifier l&apos;intervention idéale.
+                </p>
+              </div>
+              <div className="flex flex-col gap-4 md:items-end">
+                <Link href="/contact">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-final-cta">
+                    Demander un devis gratuit
+                  </Button>
                 </Link>
-              </div>
-              <div className="mt-3">
-                <a href={`tel:${site.phone.replace(/\s+/g, "")}`}>
-                  <Button variant="outline" className="w-full">
-                    <Phone className="h-4 w-4 mr-2" /> {site.phone}
+                <a href={phoneHref} className="inline-flex" data-cta="service-final-call">
+                  <Button size="lg" variant="outline" className="border-white/70 text-white hover:bg-white/10">
+                    <Phone className="mr-2 h-4 w-4" /> {site.phone}
                   </Button>
                 </a>
               </div>
+            </div>
 
-              <div className="mt-6 text-xs text-gray-600">
-                Besoin d’une autre commune ?{" "}
-                <Link href="/zones-intervention" className="text-primary underline inline-flex items-center">
-                  Voir toutes les zones <ArrowRight className="h-3 w-3 ml-1" />
-                </Link>
+            <div className="mt-12">
+              <h2 className="heading-balance text-2xl font-extrabold tracking-tight md:text-3xl">
+                Autres services qui pourraient vous intéresser
+              </h2>
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {relatedServices.map((related) => (
+                  <Card key={related.slug} className="group overflow-hidden border border-gray-200/70 p-6">
+                    <h3 className="heading-balance text-lg font-semibold">{related.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{related.short}</p>
+                    <Link
+                      href={`/services/${related.slug}`}
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:underline"
+                      data-cta="service-related"
+                    >
+                      Découvrir
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Card>
+                ))}
               </div>
-            </Card>
-          </aside>
+            </div>
+          </div>
+        </section>
+
+        <div className="fixed bottom-5 right-4 z-50 flex gap-3 md:hidden">
+          <Link href="/contact">
+            <Button size="sm" className="bg-primary px-5 py-2 hover:bg-primary/90" data-cta="service-sticky-quote">
+              Devis express
+            </Button>
+          </Link>
+          <a href={phoneHref} className="inline-flex" data-cta="service-sticky-call">
+            <Button size="sm" variant="outline" className="border-primary/40 text-primary">
+              <Phone className="mr-1 h-4 w-4" /> Appeler
+            </Button>
+          </a>
         </div>
-      </section>
-    </main>
+      </div>
+    </>
   );
 }
