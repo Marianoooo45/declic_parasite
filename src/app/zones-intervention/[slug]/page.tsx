@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MapPin, Check, Phone, Shield, Leaf, Clock, ArrowRight } from "lucide-react";
 
-type Props = { params: { slug: string } };
+export const revalidate = 86400; // 24h
 
+// --- data helpers ---
 const allCities = site.serviceArea.map((name) => ({
   name,
   slug: slugify(name),
@@ -22,11 +23,15 @@ export async function generateStaticParams() {
   return allCities.map((c) => ({ slug: c.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const city = getCity(params.slug)?.name ?? site.city;
+// ⚠️ Next 15: params peut être un Promise — on l'attend
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params;
+  const city = getCity(slug)?.name ?? site.city;
   const title = `Dératisation & désinsectisation à ${city} | ${site.brand}`;
   const description = `${site.brand} intervient à ${city} et dans le ${site.departement} : rats, souris, cafards, punaises de lit, frelons. Devis gratuit, intervention 24–48h.`;
-  const url = `https://www.declicparasites.fr/zones-intervention/${params.slug}`;
+  const url = `https://www.declicparasites.fr/zones-intervention/${slug}`;
 
   return {
     title,
@@ -42,8 +47,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CityPage({ params }: Props) {
-  const city = getCity(params.slug);
+export default async function CityPage(
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+  const city = getCity(slug);
   const cityName = city?.name ?? site.city;
 
   const jsonLd = {
@@ -81,7 +89,7 @@ export default function CityPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Accueil", item: "https://www.declicparasites.fr/" },
       { "@type": "ListItem", position: 2, name: "Zones d'intervention", item: "https://www.declicparasites.fr/zones-intervention" },
-      { "@type": "ListItem", position: 3, name: cityName, item: `https://www.declicparasites.fr/zones-intervention/${params.slug}` },
+      { "@type": "ListItem", position: 3, name: cityName, item: `https://www.declicparasites.fr/zones-intervention/${slug}` },
     ],
   };
 
