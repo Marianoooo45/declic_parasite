@@ -13,49 +13,50 @@ const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variabl
 
 export const metadata: Metadata = {
   title: `${site.brand} | Dératisation & désinsectisation à ${site.city}`,
-  description:
-    `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
-  alternates: { canonical: "https://www.declicparasites.fr/" }, // adapte au domaine
+  description: `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
+  alternates: { canonical: "https://www.declicparasites.fr/" },
   openGraph: {
     title: `${site.brand} – ${site.city}`,
-    description:
-      `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
+    description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
     type: "website",
     locale: "fr_FR",
   },
 };
 
-export default function RootLayout({ children }:{ children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "PestControl",
+    name: site.brand,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address.split(",")[0],
+      addressLocality: site.city,
+      postalCode: "45000",
+      addressCountry: "FR",
+    },
+    url: "https://www.declicparasites.fr",
+    email: site.email,
+    telephone: site.phone.replace(/\s+/g, ""),
+    areaServed: site.serviceArea,
+    priceRange: "€€",
+    sameAs: [],
+  };
+
   return (
-    <html lang="fr">
-      {/* JSON-LD LocalBusiness */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "PestControl",
-            name: site.brand,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: site.address.split(",")[0],
-              addressLocality: site.city,
-              postalCode: "45000",
-              addressCountry: "FR",
-            },
-            url: "https://www.declicparasites.fr",
-            email: site.email,
-            telephone: site.phone.replace(/\s+/g, ""),
-            areaServed: site.serviceArea,
-            priceRange: "€€",
-            sameAs: [], // réseaux si tu veux
-          }),
-        }}
-      />
-      <ClientBody className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col text-base leading-relaxed`}>
+    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          // @ts-expect-error: JSON string expected by dangerouslySetInnerHTML
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+      </head>
+      <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          <main className="flex-1 pt-20 md:pt-20 lg:pt-24">{children}</main>
+          {/* Compense le header fixe: 56px (h-14) sur mobile, ~64px sur md */}
+          <main className="flex-1 pt-16 md:pt-[4.5rem]">{children}</main>
           <SiteFooter />
         </div>
         <FloatingCta />
