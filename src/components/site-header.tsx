@@ -11,7 +11,6 @@ import { site } from "@/config/site";
 import { services } from "@/config/services";
 
 const navigation = [
-  { label: "Accueil", href: "/" },
   { label: "Nos engagements", href: "/#why" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
   { label: "Contact", href: "/contact" },
@@ -72,17 +71,22 @@ function ServicesDropdown() {
         id="nav-services-menu"
         role="menu"
         className={cn(
-          "invisible absolute right-0 top-full z-50 mt-2 min-w-[18rem] origin-top rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-xl opacity-0 transition-all",
+          "invisible absolute right-0 top-full z-50 mt-3 min-w-[19rem] origin-top rounded-2xl border border-primary/10 bg-white text-sm shadow-2xl opacity-0 transition-all",
           open ? "visible translate-y-0 opacity-100" : "-translate-y-2"
         )}
       >
-        <div className={cn("grid gap-2 p-1", serviceItems.length > 6 ? "lg:grid-cols-2" : "grid-cols-1")}>
+        <div
+          className={cn(
+            "grid max-h-[70vh] gap-2 overflow-y-auto p-3 pr-4",
+            serviceItems.length > 6 ? "lg:grid-cols-2" : "grid-cols-1"
+          )}
+        >
           {serviceItems.map((s) => (
             <Link
               key={s.slug}
               href={`/services/${s.slug}`}
               role="menuitem"
-              className="group flex flex-col rounded-md p-3 hover:bg-gray-50"
+              className="group flex flex-col rounded-xl border border-transparent bg-white p-3 hover:border-primary/10 hover:bg-primary/5"
               onClick={() => setOpen(false)}
             >
               <span className="font-semibold">{s.title}</span>
@@ -90,10 +94,10 @@ function ServicesDropdown() {
             </Link>
           ))}
         </div>
-        <div className="mt-2 border-t border-gray-100 pt-2">
+        <div className="border-t border-primary/10 p-3">
           <Link
             href="/services"
-            className="flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary hover:bg-primary/5"
+            className="flex items-center justify-between rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary hover:bg-primary/10"
             onClick={() => setOpen(false)}
           >
             Tous les services
@@ -209,17 +213,15 @@ export function SiteHeader() {
   const phoneHref = useMemo(() => `tel:${site.phone.replace(/\s+/g, "")}`, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
-      {/* shorter height */}
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 md:h-16">
-        {/* logo: put /public/logo-declic.png there */}
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-primary/10 bg-secondary/95 backdrop-blur-md">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:h-20">
         <Link href="/" aria-label={site.brand} className="flex items-center gap-2">
           <Image
-            src="/logo-declic.png"
+            src="/logo-declic.svg"
             alt={`${site.brand} logo`}
-            width={120}
-            height={32}
-            className="h-8 w-auto md:h-9"
+            width={180}
+            height={48}
+            className="h-10 w-auto md:h-12"
             priority
           />
         </Link>

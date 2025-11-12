@@ -56,8 +56,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          {/* Compense le header fixe (h-14 md:h-16) */}
-          <main className="flex-1 pt-16 md:pt-[4.5rem]">{children}</main>
+          {/* Compense le header fixe (h-16 md:h-20) */}
+          <main className="flex-1 pt-16 md:pt-20">{children}</main>
           <SiteFooter />
         </div>
         <FloatingCta />
