@@ -1,19 +1,25 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { site } from "@/config/site";
 import { slugify } from "@/lib/slug";
-import Link from "next/link";
-import Image from "next/image";
 
-export const metadata = {
-  title: `Zones d'intervention | ${site.brand} à ${site.city}`,
-  description: `Interventions antiparasitaires à ${site.city} et dans le ${site.departement} : ${site.serviceArea.join(", ")}.`,
+const title = `Zones d’intervention – ${site.brand}`;
+const description = `Interventions antiparasitaires à ${site.city} et dans le ${site.departement} : ${site.serviceArea.join(", ")}.`;
+
+export const metadata: Metadata = {
+  title,
+  description,
   alternates: { canonical: "https://www.declicparasites.fr/zones-intervention" },
   openGraph: {
-    title: `Zones d'intervention – ${site.brand}`,
-    description: `Couverture : ${site.serviceArea.join(", ")}.`,
+    title,
+    description,
     type: "website",
     locale: "fr_FR",
+    url: "https://www.declicparasites.fr/zones-intervention",
   },
 };
 
@@ -42,7 +48,7 @@ export default function ZonesPage() {
           </p>
           <div className="mt-6">
             <Link href="/#contact">
-              <Button className="bg-primary hover:bg-primary/90">Demander une intervention</Button>
+              <Button className="bg-primary hover:bg-primary/90">Demander un devis</Button>
             </Link>
           </div>
         </div>
@@ -53,7 +59,7 @@ export default function ZonesPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-6">Communes desservies</h2>
           <p className="text-gray-600 mb-8">
-            Nous couvrons les principales communes autour de {site.city}. Cliquez sur votre ville pour les informations détaillées.
+            Nous couvrons les principales communes autour de {site.city}. Cliquez sur votre ville pour des informations détaillées et obtenir un devis rapide.
           </p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
