@@ -43,19 +43,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     sameAs: [],
   };
 
+  const ldJson: string = JSON.stringify(localBusinessJsonLd);
+
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
-          // @ts-expect-error: JSON string expected by dangerouslySetInnerHTML
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: ldJson }}
         />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          {/* Compense le header fixe: 56px (h-14) sur mobile, ~64px sur md */}
+          {/* Compense le header fixe (h-14 md:h-16) */}
           <main className="flex-1 pt-16 md:pt-[4.5rem]">{children}</main>
           <SiteFooter />
         </div>
