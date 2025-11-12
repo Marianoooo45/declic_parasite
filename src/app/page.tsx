@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Image from "next/image";
 import {
   Phone,
   MapPin,
@@ -26,10 +27,22 @@ import {
   Check,
 } from "lucide-react";
 import { site } from "@/config/site";
+import { services } from "@/config/services";
+
+const euroFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0,
+});
+
+const formatCurrency = (value: number) => euroFormatter.format(value);
 
 export const revalidate = 86400;
 
 export default function Home() {
+  const featuredServices = services.slice(0, 6);
+  const footerServices = services.slice(0, 5);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -75,20 +88,25 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="#contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90"
+                  data-cta="hero-primary"
+                >
                   Demander une intervention
                 </Button>
-              </a>
-              <a href="#services">
+              </Link>
+              <Link href="/services">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-white border-white/70 bg-transparent hover:bg-white/10"
+                  className="border-white/70 bg-transparent text-white hover:bg-white/10"
+                  data-cta="hero-secondary"
                 >
                   Découvrir nos services
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Testimonials preview */}
@@ -137,105 +155,67 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="bg-gray-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-primary font-semibold mb-2 block uppercase tracking-wide text-sm">
-              Nos Services
+          <div className="mb-12 text-center">
+            <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-primary">
+              Nos services
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-6">
+            <h2 className="heading-balance mb-6 text-3xl font-extrabold tracking-tight md:text-4xl">
               Solutions professionnelles de lutte antiparasitaire
             </h2>
-            <p className="max-w-3xl mx-auto prose-muted">
-              Intervention rapide et efficace à {site.city} et dans le{" "}
-              {site.departement}. Devis gratuit, passage sous 24–48h.
+            <p className="mx-auto max-w-3xl text-muted-foreground">
+              Intervention rapide et efficace à {site.city} et dans le {site.departement}. Devis gratuit, passage sous 24–48h.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Rongeurs",
-                desc: "Dératisation contre rats et souris : diagnostic, traitement et prévention.",
-                img: "https://ext.same-assets.com/3682338552/1948484312.jpeg",
-                icon: "🐭",
-              },
-              {
-                title: "Punaises de lit",
-                desc: "Traitements complets et suivis pour éradiquer durablement.",
-                img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop",
-                icon: "🛏️",
-              },
-              {
-                title: "Cafards",
-                desc: "Élimination professionnelle des blattes avec garantie de résultat.",
-                img: "https://ext.same-assets.com/3682338552/1543100924.jpeg",
-                icon: "🪳",
-              },
-              {
-                title: "Fourmis",
-                desc: "Traitements ciblés des colonies et prévention des réinfestations.",
-                img: "https://ext.same-assets.com/3682338552/3460722811.jpeg",
-                icon: "🐜",
-              },
-              {
-                title: "Mouches",
-                desc: "Solutions efficaces contre mouches domestiques et moucherons.",
-                img: "https://ext.same-assets.com/3682338552/3369907977.jpeg",
-                icon: "🪰",
-              },
-              {
-                title: "Insectes volants",
-                desc: "Destruction de nids de guêpes et frelons. Intervention d’urgence.",
-                img: "https://ext.same-assets.com/3682338552/2493716904.jpeg",
-                icon: "🐝",
-              },
-              {
-                title: "Contrats pro",
-                desc: "Restaurants, hôtels, commerces : plans HACCP & visites régulières.",
-                img: "https://ext.same-assets.com/3682338552/3045999635.jpeg",
-                icon: "🏢",
-              },
-              {
-                title: "Parasites d’intérieur",
-                desc: "Puces, mites, acariens : identification et traitement adaptés.",
-                img: "https://ext.same-assets.com/3682338552/2913864722.jpeg",
-                icon: "🏠",
-              },
-            ].map((service, idx) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {featuredServices.map((service) => (
               <Card
-                key={idx}
+                key={service.slug}
                 className="group flex h-full flex-col overflow-hidden border border-gray-200/80 shadow-sm transition-shadow hover:shadow-lg"
               >
-                <div className="relative h-48 overflow-hidden bg-gray-100">
+                <div className="relative h-44 overflow-hidden bg-gray-100">
                   <Image
-                    src={service.img}
+                    src={service.heroImage}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-3 flex items-center gap-2">
-                    <span className="text-2xl">{service.icon}</span>
-                    <h3 className="text-lg font-semibold">{service.title}</h3>
+                  <div className="mb-3">
+                    <h3 className="heading-balance text-xl font-semibold">{service.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{service.short}</p>
                   </div>
-                  <p className="prose-muted text-sm mb-4 flex-1">{service.desc}</p>
-                  <a
-                    href="#contact"
-                    className="text-sm font-semibold text-primary hover:underline flex items-center gap-1"
-                  >
-                    En savoir plus <span>→</span>
-                  </a>
+                  {service.priceFrom ? (
+                    <p className="text-sm font-semibold text-primary">
+                      À partir de {formatCurrency(service.priceFrom)}
+                    </p>
+                  ) : null}
+                  <div className="mt-auto pt-6">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:underline"
+                      data-cta="home-service-card"
+                    >
+                      Découvrir le service <span aria-hidden>→</span>
+                    </Link>
+                  </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a href="#contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <div className="mt-10 text-center">
+            <Link href="/services">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+                data-cta="services-all"
+              >
                 Voir tous nos services
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -308,10 +288,10 @@ export default function Home() {
       {/* Why Choose Us */}
       <section id="why" className="bg-gray-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance text-center mb-6">
+          <h2 className="heading-balance mb-6 text-center text-3xl font-extrabold tracking-tight md:text-4xl">
             Pourquoi choisir {site.brand} ?
           </h2>
-          <p className="max-w-2xl mx-auto text-center prose-muted mb-12">
+          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
             Des experts certifiés, des méthodes raisonnées et des interventions rapides
             pour des résultats durables et sécurisés.
           </p>
@@ -358,18 +338,25 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <a href="#contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <div className="mt-10 text-center">
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+                data-cta="why-contact"
+              >
                 Demander un devis gratuit
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 py-20 md:py-24 text-white">
+      <section
+        id="avis"
+        className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 py-20 md:py-24 text-white"
+      >
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -381,10 +368,10 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-6">
+              <h2 className="heading-balance mb-6 text-3xl font-extrabold tracking-tight md:text-4xl">
                 Nos certifications et engagements
               </h2>
-              <p className="mb-8 text-lg text-white/80 heading-balance">
+              <p className="heading-balance mb-8 text-lg text-white/80">
                 {site.brand} applique des standards stricts en matière de santé,
                 de sécurité et de traçabilité.
               </p>
@@ -402,11 +389,14 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact">
-                <Button className="mt-8 bg-primary hover:bg-primary/90">
+              <Link href="/contact">
+                <Button
+                  className="mt-8 bg-primary hover:bg-primary/90"
+                  data-cta="certifications-contact"
+                >
                   Nous contacter
                 </Button>
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-2 gap-6">
               {[
@@ -433,11 +423,11 @@ export default function Home() {
       {/* Pricing Section */}
       <section className="bg-green-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
               Nos tarifs transparents
             </h2>
-            <p className="max-w-2xl mx-auto prose-muted">
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               Des forfaits clairs adaptés à vos besoins, intervention garantie.
             </p>
           </div>
@@ -491,11 +481,14 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a href="#contact">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
+                <Link href="/contact">
+                  <Button
+                    className="w-full bg-primary hover:bg-primary/90"
+                    data-cta="pricing-card-quote"
+                  >
                     Demander un devis
                   </Button>
-                </a>
+                </Link>
               </Card>
             ))}
           </div>
@@ -518,11 +511,11 @@ export default function Home() {
           }}
         />
         <div className="container relative z-10 mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
               Avis clients
             </h2>
-            <p className="mx-auto max-w-2xl text-white/80 heading-balance mb-6">
+            <p className="heading-balance mx-auto mb-6 max-w-2xl text-white/80">
               Ce que disent nos clients du Loiret
             </p>
             <div className="flex items-center justify-center gap-2">
@@ -592,18 +585,19 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a
-              href="#contact"
+          <div className="mt-10 text-center">
+            <Link
+              href="/contact"
               className="inline-flex items-center justify-center"
             >
               <Button
                 variant="outline"
                 className="border-white/70 text-white hover:bg-white/10"
+                data-cta="reviews-contact"
               >
                 Laisser un avis / Nous écrire
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -611,14 +605,14 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-primary font-semibold mb-2 block uppercase tracking-wide text-sm">
+          <div className="mb-12 text-center">
+            <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-primary">
               Contactez-nous
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-4">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
               Besoin d&apos;une intervention ?
             </h2>
-            <p className="prose-muted max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               Décrivez-nous votre situation, on vous rappelle rapidement.
             </p>
           </div>
@@ -716,13 +710,12 @@ export default function Home() {
                       <SelectValue placeholder="Sélectionnez un service" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="deratisation">
-                        Dératisation
-                      </SelectItem>
-                      <SelectItem value="punaises">Punaises de lit</SelectItem>
-                      <SelectItem value="cafards">Cafards</SelectItem>
-                      <SelectItem value="fourmis">Fourmis</SelectItem>
-                      <SelectItem value="autres">Autres</SelectItem>
+                      {services.map((service) => (
+                        <SelectItem key={service.slug} value={service.slug}>
+                          {service.title}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="autres">Autre demande</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -736,7 +729,11 @@ export default function Home() {
                     rows={4}
                   />
                 </div>
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90"
+                  data-cta="home-contact-submit"
+                >
                   Envoyer ma demande
                 </Button>
               </form>
@@ -804,24 +801,36 @@ export default function Home() {
               <h4 className="font-bold text-lg mb-4">Liens rapides</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Accueil
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/services"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#why" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/#why"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Pourquoi nous choisir
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/contact"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -830,31 +839,16 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4">Nos services</h4>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Dératisation {site.city}
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Traitement punaises de lit
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Traitement cafards
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Frelons et guêpes
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Contrats professionnels
-                  </a>
-                </li>
+                {footerServices.map((service) => (
+                  <li key={service.slug}>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="text-gray-300 transition-colors hover:text-primary"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
