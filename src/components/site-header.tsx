@@ -401,7 +401,7 @@ export function SiteHeader() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-8 lg:px-12">
         <Link
           href="/"
           className="flex items-center gap-2"
@@ -412,14 +412,14 @@ export function SiteHeader() {
             alt={`${site.brand} logo`}
             width={160}
             height={42}
-            className="h-10 w-auto"
+            className="h-9 w-auto"
             priority
           />
         </Link>
 
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-8 text-sm font-medium text-foreground/80 lg:flex"
+          className="hidden flex-1 items-center justify-center gap-6 text-sm font-medium text-foreground/80 lg:flex"
         >
           <Link
             href="/"
