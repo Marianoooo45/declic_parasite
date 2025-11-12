@@ -33,11 +33,7 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
 
 export const revalidate = 86400;
 
-// -----------------------------------------------------------------------------
-// Next 15: pas de types locaux exportés, on se cale sur la signature attendue.
-// Dans Next 15, `params` peut être un Promise dans les composants/metadata.
-// -----------------------------------------------------------------------------
-
+// Pas de types locaux => on n’ombre pas ceux de Next
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -50,9 +46,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
 
-  if (!service) {
-    return { title: site.brand };
-  }
+  if (!service) return { title: site.brand };
 
   const title = `${service.title} | ${site.brand}`;
   const description = service.description;
@@ -79,7 +73,6 @@ export default async function ServicePage({
 }) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
-
   if (!service) notFound();
 
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
@@ -149,33 +142,21 @@ export default async function ServicePage({
           mainEntity: service.faqs.map((faq) => ({
             "@type": "Question",
             name: faq.q,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.a,
-            },
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
           })),
         }
       : null;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       )}
 
       <div className="relative min-h-screen bg-white">
-        {/* --- HERO --- */}
+        {/* HERO */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -186,32 +167,20 @@ export default async function ServicePage({
                 <h1 className="heading-balance mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
                   {service.title}
                 </h1>
-                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-                  {service.description}
-                </p>
+                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{service.description}</p>
                 <div className="mt-6 space-y-3 text-muted-foreground">
-                  {pasIntro.map((paragraph, index) => (
-                    <p key={index} className="max-w-2xl text-sm">
-                      {paragraph}
-                    </p>
+                  {pasIntro.map((paragraph, i) => (
+                    <p key={i} className="max-w-2xl text-sm">{paragraph}</p>
                   ))}
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-primary hover:bg-primary/90"
-                      data-cta="service-quote"
-                    >
+                    <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-quote">
                       Demander un devis
                     </Button>
                   </Link>
                   <a href={phoneHref} data-cta="service-call" className="inline-flex">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-primary/40 text-primary hover:bg-primary/10"
-                    >
+                    <Button size="lg" variant="outline" className="border-primary/40 text-primary hover:bg-primary/10">
                       <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
                     </Button>
                   </a>
@@ -220,12 +189,8 @@ export default async function ServicePage({
                   <span className="inline-flex items-center gap-2">
                     <Star className="h-4 w-4 text-primary" /> +98% de clients satisfaits
                   </span>
-                  <Link
-                    href="/#avis"
-                    className="inline-flex items-center gap-1 text-primary hover:underline"
-                  >
-                    Voir les avis Google
-                    <ArrowRight className="h-4 w-4" />
+                  <Link href="/#avis" className="inline-flex items-center gap-1 text-primary hover:underline">
+                    Voir les avis Google <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>
@@ -250,22 +215,17 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* --- BENEFITS --- */}
+        {/* BENEFITS */}
         {Array.isArray(service.benefits) && service.benefits.length > 0 && (
           <section className="py-16">
             <div className="container mx-auto px-4">
-              <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
-                Les bénéfices clés
-              </h2>
+              <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">Les bénéfices clés</h2>
               <p className="mt-3 max-w-2xl text-muted-foreground">
                 Ce que nous mettons en place pour vous offrir un environnement sain et durablement protégé.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {service.benefits.map((benefit) => (
-                  <span
-                    key={benefit}
-                    className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
-                  >
+                  <span key={benefit} className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
                     <CheckCircle2 className="h-4 w-4" />
                     {benefit}
                   </span>
@@ -275,7 +235,7 @@ export default async function ServicePage({
           </section>
         )}
 
-        {/* --- FEATURES --- */}
+        {/* FEATURES */}
         {Array.isArray(service.features) && service.features.length > 0 && (
           <section className="bg-gray-50 py-16">
             <div className="container mx-auto px-4">
@@ -287,10 +247,7 @@ export default async function ServicePage({
               </p>
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {service.features.map((feature) => (
-                  <Card
-                    key={feature}
-                    className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm"
-                  >
+                  <Card key={feature} className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
                       <Check className="h-4 w-4" />
                     </div>
@@ -302,7 +259,7 @@ export default async function ServicePage({
           </section>
         )}
 
-        {/* --- PRICE --- */}
+        {/* PRICE */}
         {typeof service.priceFrom === "number" && (
           <section className="py-16">
             <div className="container mx-auto px-4">
@@ -325,20 +282,12 @@ export default async function ServicePage({
                 </div>
                 <div className="flex flex-col gap-4 md:items-end">
                   <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-primary hover:bg-primary/90"
-                      data-cta="service-price-contact"
-                    >
+                    <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-price-contact">
                       Obtenir mon devis précis
                     </Button>
                   </Link>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
-                  >
-                    Découvrir nos autres prestations
-                    <ArrowRight className="h-4 w-4" />
+                  <Link href="/services" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+                    Découvrir nos autres prestations <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               </Card>
@@ -346,24 +295,18 @@ export default async function ServicePage({
           </section>
         )}
 
-        {/* --- FAQ --- */}
+        {/* FAQ */}
         {Array.isArray(service.faqs) && service.faqs.length > 0 && (
           <section className="bg-gray-900 py-16 text-white">
             <div className="container mx-auto px-4">
               <div className="grid gap-8 md:grid-cols-2 md:items-center">
                 <div>
-                  <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
-                    Questions fréquentes
-                  </h2>
+                  <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">Questions fréquentes</h2>
                   <p className="mt-3 text-white/80">
                     Besoin de précisions avant de programmer l&apos;intervention ? Nos techniciens restent joignables et vous accompagnent jusqu&apos;à la résolution complète.
                   </p>
                 </div>
-                <Accordion
-                  type="single"
-                  collapsible
-                  className="w-full rounded-xl border border-white/10 bg-white/5 p-4"
-                >
+                <Accordion type="single" collapsible className="w-full rounded-xl border border-white/10 bg-white/5 p-4">
                   {service.faqs.map((faq, index) => (
                     <AccordionItem key={faq.q} value={`faq-${index}`}>
                       <AccordionTrigger className="text-left text-base font-semibold text-white">
@@ -380,34 +323,24 @@ export default async function ServicePage({
           </section>
         )}
 
-        {/* --- FINAL CTA --- */}
+        {/* FINAL CTA */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 rounded-3xl bg-slate-900 p-8 text-white md:grid-cols-2 md:p-12">
               <div>
-                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
-                  Parlons de votre situation
-                </h2>
+                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">Parlons de votre situation</h2>
                 <p className="mt-3 text-white/80">
                   Un conseiller vous rappelle en moins d&apos;une heure ouvrée pour planifier l&apos;intervention idéale.
                 </p>
               </div>
               <div className="flex flex-col gap-4 md:items-end">
                 <Link href="/contact">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90"
-                    data-cta="service-final-cta"
-                  >
+                  <Button size="lg" className="bg-primary hover:bg-primary/90" data-cta="service-final-cta">
                     Demander un devis gratuit
                   </Button>
                 </Link>
                 <a href={phoneHref} className="inline-flex" data-cta="service-final-call">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white/70 text-white hover:bg-white/10"
-                  >
+                  <Button size="lg" variant="outline" className="border-white/70 text-white hover:bg-white/10">
                     <Phone className="mr-2 h-4 w-4" /> {site.phone}
                   </Button>
                 </a>
@@ -428,8 +361,7 @@ export default async function ServicePage({
                       className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:underline"
                       data-cta="service-related"
                     >
-                      Découvrir
-                      <ArrowRight className="h-4 w-4" />
+                      Découvrir <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Card>
                 ))}
@@ -438,14 +370,10 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* --- STICKY CTA MOBILE --- */}
+        {/* STICKY CTA MOBILE */}
         <div className="fixed bottom-5 right-4 z-50 flex gap-3 md:hidden">
           <Link href="/contact">
-            <Button
-              size="sm"
-              className="bg-primary px-5 py-2 hover:bg-primary/90"
-              data-cta="service-sticky-quote"
-            >
+            <Button size="sm" className="bg-primary px-5 py-2 hover:bg-primary/90" data-cta="service-sticky-quote">
               Devis express
             </Button>
           </Link>
