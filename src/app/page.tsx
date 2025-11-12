@@ -29,7 +29,7 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d2616]/95 via-[#1d4e2b]/85 to-[#154225]/80" />
-        <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-4 py-28 text-white md:px-8 md:py-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:px-12">
+        <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 py-28 text-white md:px-8 md:py-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:px-12">
           <div className="max-w-2xl space-y-6 lg:justify-self-start">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
               {site.brand}
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      <AnimatedSection id="engagements" className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+      <AnimatedSection id="engagements" className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="space-y-12 rounded-3xl border border-primary/10 bg-white/80 p-10 shadow-xl backdrop-blur">
           <div className="space-y-4 text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80">Nos engagements</span>
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <section className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+      <section className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80">Nos services</span>
           <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">Solutions antiparasitaires sur-mesure</h2>

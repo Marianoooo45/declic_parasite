@@ -401,25 +401,25 @@ export function SiteHeader() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-8 lg:px-12">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-8 lg:px-12">
         <Link
           href="/"
           className="flex items-center gap-2"
           aria-label={site.brand}
         >
           <Image
-            src="https://ext.same-assets.com/3682338552/3131086727.png"
+            src="/logo-declic.png"
             alt={`${site.brand} logo`}
-            width={160}
-            height={42}
-            className="h-9 w-auto"
+            width={180}
+            height={52}
+            className="h-8 w-auto"
             priority
           />
         </Link>
 
         <nav
           aria-label="Navigation principale"
-          className="hidden flex-1 items-center justify-center gap-6 text-sm font-medium text-foreground/80 lg:flex"
+          className="hidden flex-1 items-center justify-center gap-5 text-sm font-medium text-foreground/80 lg:flex"
         >
           <Link
             href="/"
@@ -441,7 +441,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link href="/contact" data-cta="nav-quote" className="inline-flex">
-            <Button className="rounded-full bg-primary px-6 py-2 text-base font-semibold shadow-md hover:bg-primary/90">
+            <Button className="h-10 rounded-full bg-primary px-5 text-sm font-semibold shadow-md hover:bg-primary/90">
               Devis gratuit
             </Button>
           </Link>
@@ -452,7 +452,7 @@ export function SiteHeader() {
           >
             <Button
               variant="outline"
-              className="rounded-full border-primary/20 bg-white px-6 py-2 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
+              className="h-10 rounded-full border-primary/20 bg-white px-5 text-sm font-semibold text-primary shadow-md hover:bg-primary/10"
             >
               {site.phone}
             </Button>
@@ -467,7 +467,7 @@ export function SiteHeader() {
           >
             <Button
               size="sm"
-              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold shadow-md hover:bg-primary/90"
+              className="rounded-full bg-primary px-4 text-sm font-semibold shadow-md hover:bg-primary/90"
             >
               Appeler
             </Button>
