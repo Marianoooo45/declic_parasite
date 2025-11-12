@@ -16,7 +16,7 @@ const navigation = [
 
 export function SiteHeader() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" aria-label={site.brand}>
           <Image
