@@ -32,14 +32,15 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
 
 export const revalidate = 86400;
 
-// --- Next 15: params is a Promise in dynamic routes ---
-
-export function generateStaticParams() {
+export function generateStaticParams(): { slug: string }[] {
   return services.map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+  }
 ): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
@@ -67,7 +68,10 @@ export async function generateMetadata(
 }
 
 export default async function ServicePage(
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: {
+    params: Promise<{ slug: string }>;
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
+  }
 ) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
@@ -82,7 +86,9 @@ export default async function ServicePage(
     "Agiter — Sans plan d'action, les nuisibles se répandent, endommagent vos biens et transmettent des risques sanitaires pour votre famille ou vos clients.",
     `Solution — ${site.brand} intervient en 24–48h avec une méthodologie professionnelle Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.`,
   ];
-  const relatedServices = services.filter((item) => item.slug !== service.slug).slice(0, 3);
+  const relatedServices = services
+    .filter((item) => item.slug !== service.slug)
+    .slice(0, 3);
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -143,11 +149,12 @@ export default async function ServicePage(
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      {faqJsonLd ? (
+      {faqJsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      ) : null}
+      )}
 
       <div className="relative min-h-screen bg-white">
+        {/* --- HERO --- */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -162,8 +169,8 @@ export default async function ServicePage(
                   {service.description}
                 </p>
                 <div className="mt-6 space-y-3 text-muted-foreground">
-                  {pasIntro.map((paragraph, index) => (
-                    <p key={index} className="max-w-2xl text-sm">{paragraph}</p>
+                  {pasIntro.map((paragraph, i) => (
+                    <p key={i} className="max-w-2xl text-sm">{paragraph}</p>
                   ))}
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -202,6 +209,7 @@ export default async function ServicePage(
           </div>
         </section>
 
+        {/* --- BENEFITS --- */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -211,19 +219,16 @@ export default async function ServicePage(
               Ce que nous mettons en place pour vous offrir un environnement sain et durablement protégé.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              {service.benefits.map((benefit) => (
-                <span
-                  key={benefit}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
-                >
-                  <CheckCircle2 className="h-4 w-4" />
-                  {benefit}
+              {service.benefits.map((b) => (
+                <span key={b} className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+                  <CheckCircle2 className="h-4 w-4" /> {b}
                 </span>
               ))}
             </div>
           </div>
         </section>
 
+        {/* --- FEATURES --- */}
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4">
             <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -233,19 +238,20 @@ export default async function ServicePage(
               Chaque étape est documentée et ajustée selon votre site : nous vous guidons avant, pendant et après la prestation pour sécuriser vos espaces.
             </p>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {service.features.map((feature) => (
-                <Card key={feature} className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm">
+              {service.features.map((f) => (
+                <Card key={f} className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Check className="h-4 w-4" />
                   </div>
-                  <p className="text-sm text-muted-foreground">{feature}</p>
+                  <p className="text-sm text-muted-foreground">{f}</p>
                 </Card>
               ))}
             </div>
           </div>
         </section>
 
-        {service.priceFrom ? (
+        {/* --- PRICE BLOCK --- */}
+        {service.priceFrom && (
           <section className="py-16">
             <div className="container mx-auto px-4">
               <Card className="flex flex-col gap-8 border-primary/30 bg-primary/5 p-8 md:flex-row md:items-center md:justify-between">
@@ -279,8 +285,9 @@ export default async function ServicePage(
               </Card>
             </div>
           </section>
-        ) : null}
+        )}
 
+        {/* --- FAQ --- */}
         <section className="bg-gray-900 py-16 text-white">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -293,11 +300,9 @@ export default async function ServicePage(
                 </p>
               </div>
               <Accordion type="single" collapsible className="w-full rounded-xl border border-white/10 bg-white/5 p-4">
-                {service.faqs.map((faq, index) => (
-                  <AccordionItem key={faq.q} value={`faq-${index}`}>
-                    <AccordionTrigger className="text-left text-base font-semibold text-white">
-                      {faq.q}
-                    </AccordionTrigger>
+                {service.faqs.map((faq, i) => (
+                  <AccordionItem key={faq.q} value={`faq-${i}`}>
+                    <AccordionTrigger className="text-left text-base font-semibold text-white">{faq.q}</AccordionTrigger>
                     <AccordionContent className="text-sm text-white/80">{faq.a}</AccordionContent>
                   </AccordionItem>
                 ))}
@@ -306,6 +311,7 @@ export default async function ServicePage(
           </div>
         </section>
 
+        {/* --- FINAL CTA --- */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 rounded-3xl bg-slate-900 p-8 text-white md:grid-cols-2 md:p-12">
@@ -355,6 +361,7 @@ export default async function ServicePage(
           </div>
         </section>
 
+        {/* --- Sticky mobile buttons --- */}
         <div className="fixed bottom-5 right-4 z-50 flex gap-3 md:hidden">
           <Link href="/contact">
             <Button size="sm" className="bg-primary px-5 py-2 hover:bg-primary/90" data-cta="service-sticky-quote">
