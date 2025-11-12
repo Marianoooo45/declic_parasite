@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Image from "next/image";
 import {
   Phone,
   MapPin,
@@ -26,11 +27,26 @@ import {
   Check,
 } from "lucide-react";
 import { site } from "@/config/site";
+import { services } from "@/config/services";
+
+const euroFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0,
+});
+
+const formatCurrency = (value: number) => euroFormatter.format(value);
+
+export const revalidate = 86400;
+
 export default function Home() {
+  const featuredServices = services.slice(0, 6);
+  const footerServices = services.slice(0, 5);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      <section className="relative overflow-hidden pt-32 pb-24 md:pb-32">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://ext.same-assets.com/3682338552/2516073472.jpeg"
@@ -39,17 +55,17 @@ export default function Home() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/40" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 bg-primary/20 text-primary border border-primary rounded-full text-sm mb-6">
+            <span className="inline-block px-4 py-2 text-sm text-white bg-white/15 border border-white/25 rounded-full mb-6">
               Service professionnel & écologique
             </span>
-            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 text-shadow-md heading-balance">
               Protégez-vous des nuisibles
             </h1>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl text-white/90 mb-8 text-shadow-md">
               Solutions professionnelles et raisonnées pour éliminer{" "}
               <span className="text-primary font-semibold">
                 rats, souris, cafards, punaises de lit, frelons
@@ -63,7 +79,7 @@ export default function Home() {
               {site.serviceArea.map((location) => (
                 <span
                   key={location}
-                  className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white rounded-full text-sm border border-white/20"
+                  className="px-3 py-1 text-sm text-white rounded-full bg-white/15 border border-white/25"
                 >
                   {location}
                 </span>
@@ -72,20 +88,25 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="#contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90"
+                  data-cta="hero-primary"
+                >
                   Demander une intervention
                 </Button>
-              </a>
-              <a href="#services">
+              </Link>
+              <Link href="/services">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-white border-white hover:bg-white/10 bg-[#232b9f]"
+                  className="border-white/70 bg-transparent text-white hover:bg-white/10"
+                  data-cta="hero-secondary"
                 >
                   Découvrir nos services
                 </Button>
-              </a>
+              </Link>
             </div>
 
             {/* Testimonials preview */}
@@ -132,113 +153,75 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      <section id="services" className="bg-gray-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-primary font-semibold mb-2 block">
-              Nos Services
+          <div className="mb-12 text-center">
+            <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-primary">
+              Nos services
             </span>
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="heading-balance mb-6 text-3xl font-extrabold tracking-tight md:text-4xl">
               Solutions professionnelles de lutte antiparasitaire
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Intervention rapide et efficace à {site.city} et dans le{" "}
-              {site.departement}. Devis gratuit, passage sous 24–48h.
+            <p className="mx-auto max-w-3xl text-muted-foreground">
+              Intervention rapide et efficace à {site.city} et dans le {site.departement}. Devis gratuit, passage sous 24–48h.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Rongeurs",
-                desc: "Dératisation contre rats et souris : diagnostic, traitement et prévention.",
-                img: "https://ext.same-assets.com/3682338552/1948484312.jpeg",
-                icon: "🐭",
-              },
-              {
-                title: "Punaises de lit",
-                desc: "Traitements complets et suivis pour éradiquer durablement.",
-                img: "https://ext.same-assets.com/3682338552/3358422514.jpeg",
-                icon: "🛏️",
-              },
-              {
-                title: "Cafards",
-                desc: "Élimination professionnelle des blattes avec garantie de résultat.",
-                img: "https://ext.same-assets.com/3682338552/1543100924.jpeg",
-                icon: "🪳",
-              },
-              {
-                title: "Fourmis",
-                desc: "Traitements ciblés des colonies et prévention des réinfestations.",
-                img: "https://ext.same-assets.com/3682338552/3460722811.jpeg",
-                icon: "🐜",
-              },
-              {
-                title: "Mouches",
-                desc: "Solutions efficaces contre mouches domestiques et moucherons.",
-                img: "https://ext.same-assets.com/3682338552/3369907977.jpeg",
-                icon: "🪰",
-              },
-              {
-                title: "Insectes volants",
-                desc: "Destruction de nids de guêpes et frelons. Intervention d’urgence.",
-                img: "https://ext.same-assets.com/3682338552/2493716904.jpeg",
-                icon: "🐝",
-              },
-              {
-                title: "Contrats pro",
-                desc: "Restaurants, hôtels, commerces : plans HACCP & visites régulières.",
-                img: "https://ext.same-assets.com/3682338552/3045999635.jpeg",
-                icon: "🏢",
-              },
-              {
-                title: "Parasites d’intérieur",
-                desc: "Puces, mites, acariens : identification et traitement adaptés.",
-                img: "https://ext.same-assets.com/3682338552/2913864722.jpeg",
-                icon: "🏠",
-              },
-            ].map((service, idx) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {featuredServices.map((service) => (
               <Card
-                key={idx}
-                className="overflow-hidden hover:shadow-lg transition-shadow group"
+                key={service.slug}
+                className="group flex h-full flex-col overflow-hidden border border-gray-200/80 shadow-sm transition-shadow hover:shadow-lg"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-44 overflow-hidden bg-gray-100">
                   <Image
-                    src={service.img}
+                    src={service.heroImage}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">{service.icon}</span>
-                    <h3 className="text-xl font-bold">{service.title}</h3>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-3">
+                    <h3 className="heading-balance text-xl font-semibold">{service.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{service.short}</p>
                   </div>
-                  <p className="text-gray-600 mb-4">{service.desc}</p>
-                  <a
-                    href="#contact"
-                    className="text-primary font-semibold hover:underline flex items-center gap-1"
-                  >
-                    En savoir plus <span>→</span>
-                  </a>
+                  {service.priceFrom ? (
+                    <p className="text-sm font-semibold text-primary">
+                      À partir de {formatCurrency(service.priceFrom)}
+                    </p>
+                  ) : null}
+                  <div className="mt-auto pt-6">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:underline"
+                      data-cta="home-service-card"
+                    >
+                      Découvrir le service <span aria-hidden>→</span>
+                    </Link>
+                  </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a href="#contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <div className="mt-10 text-center">
+            <Link href="/services">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+                data-cta="services-all"
+              >
                 Voir tous nos services
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-20">
+      <section className="py-20 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
@@ -249,50 +232,50 @@ export default function Home() {
                 height={700}
                 className="rounded-lg"
               />
-              <div className="absolute bottom-6 left-6 bg-white p-4 rounded-lg shadow-lg">
+              <div className="absolute bottom-6 left-6 rounded-lg bg-white/95 p-4 text-foreground shadow-lg backdrop-blur">
                 <div className="text-primary font-bold text-lg mb-1">
                   Plus de 15 ans
                 </div>
-                <div className="text-gray-600 text-sm">
+                <div className="text-sm prose-muted">
                   d&apos;expérience professionnelle
                 </div>
               </div>
             </div>
             <div>
-              <span className="text-primary font-semibold mb-2 block">
+              <span className="text-primary font-semibold mb-2 block uppercase tracking-wide text-sm">
                 À propos de nous
               </span>
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight heading-balance mb-6">
                 Entreprise orléanaise spécialisée dans la lutte antiparasitaire
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="prose-muted mb-4">
                 {site.brand} protège foyers et entreprises du Loiret avec des
                 méthodes raisonnées : diagnostic précis, traitement adapté,
                 prévention durable.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="prose-muted mb-6">
                 Nos techniciens certifiés interviennent rapidement, avec des
                 produits homologués et des protocoles conformes aux normes.
               </p>
 
-              <div className="bg-cyan-50 border-l-4 border-primary p-6 rounded-lg mb-6" id="zones">
-                <h3 className="font-bold flex items-center gap-2 mb-3">
+              <div className="mb-6 rounded-lg border border-primary/20 bg-cyan-50/70 p-6" id="zones">
+                <h3 className="font-semibold flex items-center gap-2 mb-3 text-primary">
                   <MapPin className="h-5 w-5 text-primary" />
                   Notre zone d&apos;intervention
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="prose-muted mb-4">
                   {site.serviceArea.join(", ")}.
                 </p>
                 <div className="flex items-center gap-2 text-sm">
                   <Shield className="h-4 w-4 text-primary" />
-                  <span>
+                  <span className="prose-muted">
                     Techniciens certifiés Certibiocide & démarches compatibles
                     HACCP.
                   </span>
                 </div>
               </div>
 
-              <p className="text-gray-600">
+              <p className="prose-muted">
                 Nous éliminons rats, souris, cafards, punaises de lit, frelons,
                 guêpes, fourmis et autres nuisibles sans compromettre la santé
                 de votre foyer ni l&apos;environnement.
@@ -303,12 +286,16 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section id="why" className="py-20 bg-gray-50">
+      <section id="why" className="bg-gray-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">
+          <h2 className="heading-balance mb-6 text-center text-3xl font-extrabold tracking-tight md:text-4xl">
             Pourquoi choisir {site.brand} ?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <p className="mx-auto mb-12 max-w-2xl text-center text-muted-foreground">
+            Des experts certifiés, des méthodes raisonnées et des interventions rapides
+            pour des résultats durables et sécurisés.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Shield,
@@ -337,30 +324,39 @@ export default function Home() {
             ].map((item, idx) => (
               <Card
                 key={idx}
-                className="text-center p-8 hover:shadow-lg transition-shadow"
+                className="text-center p-8 shadow-sm transition-shadow hover:shadow-lg"
               >
                 <div
-                  className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center mx-auto mb-4`}
+                  className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ${item.color}`}
                 >
                   <item.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold mb-2 heading-balance">
+                  {item.title}
+                </h3>
+                <p className="prose-muted text-sm">{item.desc}</p>
               </Card>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <a href="#contact">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <div className="mt-10 text-center">
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+                data-cta="why-contact"
+              >
                 Demander un devis gratuit
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Certifications Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <section
+        id="avis"
+        className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 py-20 md:py-24 text-white"
+      >
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -372,10 +368,10 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="heading-balance mb-6 text-3xl font-extrabold tracking-tight md:text-4xl">
                 Nos certifications et engagements
               </h2>
-              <p className="text-gray-300 mb-8">
+              <p className="heading-balance mb-8 text-lg text-white/80">
                 {site.brand} applique des standards stricts en matière de santé,
                 de sécurité et de traçabilité.
               </p>
@@ -393,11 +389,14 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact">
-                <Button className="mt-8 bg-primary hover:bg-primary/90">
+              <Link href="/contact">
+                <Button
+                  className="mt-8 bg-primary hover:bg-primary/90"
+                  data-cta="certifications-contact"
+                >
                   Nous contacter
                 </Button>
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-2 gap-6">
               {[
@@ -408,12 +407,12 @@ export default function Home() {
               ].map((cert, idx) => (
                 <Card
                   key={idx}
-                  className="bg-white/10 backdrop-blur-sm border-white/20 p-6 text-center"
+                  className="border border-white/20 bg-white/10 p-6 text-center backdrop-blur-sm"
                 >
-                  <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
                     <cert.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h4 className="font-semibold">{cert.title}</h4>
+                  <h4 className="font-semibold heading-balance">{cert.title}</h4>
                 </Card>
               ))}
             </div>
@@ -422,11 +421,13 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-green-50">
+      <section className="bg-green-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Nos tarifs transparents</h2>
-            <p className="text-gray-600">
+          <div className="mb-12 text-center">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
+              Nos tarifs transparents
+            </h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               Des forfaits clairs adaptés à vos besoins, intervention garantie.
             </p>
           </div>
@@ -456,12 +457,12 @@ export default function Home() {
             ].map((pricing, idx) => (
               <Card
                 key={idx}
-                className="p-6 hover:shadow-lg transition-shadow border-t-4 border-primary"
+                className="flex h-full flex-col border-t-4 border-primary p-6 shadow-sm transition-shadow hover:shadow-lg"
               >
-                <h3 className="text-xl font-bold text-primary mb-2">
+                <h3 className="text-lg font-semibold text-primary mb-2 heading-balance">
                   {pricing.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">{pricing.subtitle}</p>
+                <p className="prose-muted text-sm mb-4">{pricing.subtitle}</p>
                 <div className="text-3xl font-bold mb-6">
                   À partir de {pricing.price} !
                 </div>
@@ -473,23 +474,26 @@ export default function Home() {
                   ].map((feature, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2 text-sm text-gray-600"
+                      className="flex items-start gap-2 text-sm prose-muted"
                     >
                       <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="#contact">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
+                <Link href="/contact">
+                  <Button
+                    className="w-full bg-primary hover:bg-primary/90"
+                    data-cta="pricing-card-quote"
+                  >
                     Demander un devis
                   </Button>
-                </a>
+                </Link>
               </Card>
             ))}
           </div>
 
-          <p className="text-center text-gray-600 mt-8">
+          <p className="mt-8 text-center prose-muted">
             Les tarifs varient selon la surface, le niveau d&apos;infestation et
             l&apos;accessibilité des zones. Devis personnalisé gratuit.
           </p>
@@ -497,7 +501,7 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 py-20 md:py-24 text-white">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -506,10 +510,12 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         />
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Avis clients</h2>
-            <p className="text-gray-300 mb-6">
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
+              Avis clients
+            </h2>
+            <p className="heading-balance mx-auto mb-6 max-w-2xl text-white/80">
               Ce que disent nos clients du Loiret
             </p>
             <div className="flex items-center justify-center gap-2">
@@ -523,7 +529,7 @@ export default function Home() {
                     />
                   ))}
                 </div>
-                <p className="text-sm text-gray-300">(nouveaux avis)</p>
+                <p className="text-sm text-white/70">(nouveaux avis)</p>
               </div>
             </div>
           </div>
@@ -551,7 +557,7 @@ export default function Home() {
             ].map((review, idx) => (
               <Card
                 key={idx}
-                className="p-6 bg-white/10 backdrop-blur-sm border-white/20"
+                className="border border-white/20 bg-white/10 p-6 backdrop-blur-sm"
               >
                 <div className="flex gap-1 mb-3">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -561,7 +567,7 @@ export default function Home() {
                     />
                   ))}
                 </div>
-                <p className="text-gray-200 mb-4 italic">"{review.text}"</p>
+                <p className="mb-4 italic text-white/80">"{review.text}"</p>
                 <div className="flex items-center gap-3">
                   <Image
                     src={review.img}
@@ -571,38 +577,42 @@ export default function Home() {
                     className="rounded-full"
                   />
                   <div>
-                    <div className="font-semibold">{review.name}</div>
-                    <div className="text-sm text-gray-400">{review.date}</div>
+                    <div className="font-semibold heading-balance">{review.name}</div>
+                    <div className="text-sm text-white/70">{review.date}</div>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <a
-              href="#contact"
+          <div className="mt-10 text-center">
+            <Link
+              href="/contact"
               className="inline-flex items-center justify-center"
             >
-              <Button variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button
+                variant="outline"
+                className="border-white/70 text-white hover:bg-white/10"
+                data-cta="reviews-contact"
+              >
                 Laisser un avis / Nous écrire
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-primary font-semibold mb-2 block">
+          <div className="mb-12 text-center">
+            <span className="mb-2 block text-sm font-semibold uppercase tracking-wide text-primary">
               Contactez-nous
             </span>
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="heading-balance mb-4 text-3xl font-extrabold tracking-tight md:text-4xl">
               Besoin d&apos;une intervention ?
             </h2>
-            <p className="text-gray-600">
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               Décrivez-nous votre situation, on vous rappelle rapidement.
             </p>
           </div>
@@ -610,52 +620,52 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold mb-6">Nos coordonnées</h3>
+              <h3 className="text-2xl font-semibold heading-balance">Nos coordonnées</h3>
 
-              <Card className="p-6 flex items-start gap-4">
-                <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Card className="flex items-start gap-4 border border-gray-200/80 p-6 shadow-sm">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-1">Adresse</h4>
-                  <p className="text-gray-600">{site.address}</p>
+                  <h4 className="font-semibold mb-1 heading-balance">Adresse</h4>
+                  <p className="prose-muted text-sm">{site.address}</p>
                 </div>
               </Card>
 
-              <Card className="p-6 flex items-start gap-4">
-                <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Card className="flex items-start gap-4 border border-gray-200/80 p-6 shadow-sm">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100">
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-1">Téléphone</h4>
-                  <p className="text-gray-600">{site.phone}</p>
+                  <h4 className="font-semibold mb-1 heading-balance">Téléphone</h4>
+                  <p className="prose-muted text-sm">{site.phone}</p>
                 </div>
               </Card>
 
-              <Card className="p-6 flex items-start gap-4">
-                <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <Card className="flex items-start gap-4 border border-gray-200/80 p-6 shadow-sm">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-cyan-100">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold mb-1">Email</h4>
-                  <p className="text-gray-600">{site.email}</p>
+                  <h4 className="font-semibold mb-1 heading-balance">Email</h4>
+                  <p className="prose-muted text-sm">{site.email}</p>
                 </div>
               </Card>
 
-              <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg">
+              <div className="rounded-lg border border-green-500/40 bg-green-50 p-4">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                  <span className="font-bold">Disponible maintenant</span>
+                  <span className="font-semibold text-green-800">Disponible maintenant</span>
                 </div>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="mt-1 text-sm prose-muted">
                   Intervention rapide à {site.city} et alentours — appelez-nous !
                 </p>
               </div>
             </div>
 
             {/* Contact Form */}
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-6">
+            <Card className="border border-gray-200/80 p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold heading-balance mb-6">
                 Demander un devis gratuit
               </h3>
               <form
@@ -700,13 +710,12 @@ export default function Home() {
                       <SelectValue placeholder="Sélectionnez un service" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="deratisation">
-                        Dératisation
-                      </SelectItem>
-                      <SelectItem value="punaises">Punaises de lit</SelectItem>
-                      <SelectItem value="cafards">Cafards</SelectItem>
-                      <SelectItem value="fourmis">Fourmis</SelectItem>
-                      <SelectItem value="autres">Autres</SelectItem>
+                      {services.map((service) => (
+                        <SelectItem key={service.slug} value={service.slug}>
+                          {service.title}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="autres">Autre demande</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -720,7 +729,11 @@ export default function Home() {
                     rows={4}
                   />
                 </div>
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90"
+                  data-cta="home-contact-submit"
+                >
                   Envoyer ma demande
                 </Button>
               </form>
@@ -788,24 +801,36 @@ export default function Home() {
               <h4 className="font-bold text-lg mb-4">Liens rapides</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Accueil
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/services"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#why" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/#why"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Pourquoi nous choisir
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#contact" className="text-gray-300 hover:text-primary transition-colors">
+                  <Link
+                    href="/contact"
+                    className="text-gray-300 transition-colors hover:text-primary"
+                  >
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -814,31 +839,16 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4">Nos services</h4>
               <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Dératisation {site.city}
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Traitement punaises de lit
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Traitement cafards
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Frelons et guêpes
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" className="text-gray-300 hover:text-primary transition-colors">
-                    Contrats professionnels
-                  </a>
-                </li>
+                {footerServices.map((service) => (
+                  <li key={service.slug}>
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="text-gray-300 transition-colors hover:text-primary"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
