@@ -55,7 +55,7 @@ export default function RootLayout({ children }:{ children: React.ReactNode }) {
       <ClientBody className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col text-base leading-relaxed`}>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          <main className="flex-1 pt-24 md:pt-24 lg:pt-28">{children}</main>
+          <main className="flex-1 pt-20 md:pt-20 lg:pt-24">{children}</main>
           <SiteFooter />
         </div>
         <FloatingCta />

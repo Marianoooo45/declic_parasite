@@ -62,7 +62,7 @@ export default function ZonesPage() {
       </section>
 
       <section className="bg-secondary/60 py-20">
-        <div className="mx-auto w-full max-w-6xl px-6">
+        <div className="mx-auto w-full max-w-7xl px-6">
           <AnimatedSection className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-semibold text-primary">Communes desservies</h2>
             <p className="mt-3 text-pretty text-base text-muted-foreground">

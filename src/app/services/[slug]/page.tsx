@@ -192,7 +192,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <section className="relative overflow-hidden py-16 md:py-24">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary via-white to-secondary" aria-hidden />
           <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-tr from-primary/10 via-transparent to-transparent lg:block" aria-hidden />
-          <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-4 md:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16 lg:px-12">
+          <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16 lg:px-12">
             <div className="space-y-6">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
                 Service {site.brand}
@@ -258,7 +258,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         <section className="py-16">
-          <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
             <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
               Les bénéfices clés
             </h2>
@@ -280,7 +280,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         <section className="bg-secondary/60 py-16">
-          <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
             <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
               Notre intervention détaillée
             </h2>
@@ -305,7 +305,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         {service.priceFrom ? (
           <section className="py-16">
-            <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+            <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
               <Card className="flex flex-col gap-8 rounded-3xl border border-primary/20 bg-primary/5 p-8 shadow-xl md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
@@ -347,7 +347,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         ) : null}
 
         <section className="bg-primary py-16 text-white">
-          <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
                 <h2 className="text-balance text-3xl font-semibold md:text-4xl">
@@ -374,7 +374,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         <section className="py-16">
-          <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
             <div className="grid gap-10 rounded-3xl border border-primary/15 bg-secondary/80 p-8 shadow-xl md:grid-cols-[1.15fr_0.85fr] md:p-12">
               <div className="space-y-6">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">

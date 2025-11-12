@@ -155,7 +155,7 @@ export default function ContactPageContent() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="mx-auto w-full max-w-6xl px-6">
+        <div className="mx-auto w-full max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <Card className="rounded-3xl border border-primary/10 bg-white/95 p-8 shadow-xl md:p-10">
               <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">

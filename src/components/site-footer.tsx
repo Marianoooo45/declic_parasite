@@ -21,7 +21,7 @@ export function SiteFooter({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:px-8">
+      <div className="mx-auto w-full max-w-7xl px-6 py-16 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">

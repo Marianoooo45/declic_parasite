@@ -65,7 +65,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-16 md:py-20">
-        <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <AnimatedSection
@@ -108,7 +108,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
+      <AnimatedSection className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
         <div className="rounded-3xl border border-primary/10 bg-white/90 p-10 shadow-xl md:p-14">
           <div className="grid gap-10 md:grid-cols-2">
             <div className="space-y-4">
