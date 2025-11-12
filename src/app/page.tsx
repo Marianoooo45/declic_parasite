@@ -26,63 +26,9 @@ import {
   Check,
 } from "lucide-react";
 import { site } from "@/config/site";
-import Link from "next/link";
-
-
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
-        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Image
-              src="https://ext.same-assets.com/3682338552/3131086727.png"
-              alt={`${site.brand} Logo`}
-              width={160}
-              height={42}
-              className="h-10 w-auto"
-              priority
-            />
-          </div>
-          <ul className="hidden lg:flex items-center gap-8 text-sm">
-            <li>
-              <a href="#" className="hover:text-primary">
-                Accueil
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-primary">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#why" className="hover:text-primary">
-                Pourquoi nous choisir
-              </a>
-            </li>
-            <li>
-                <Link href="/zones-intervention" className="hover:text-primary">
-                    Zones d&apos;intervention
-                </Link>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-primary">
-                Contact
-              </a>
-            </li>
-          </ul>
-          <div className="flex items-center gap-4">
-            <a href={`tel:${site.phone.replace(/\s+/g, "")}`}>
-              <Button className="bg-primary hover:bg-primary/90">
-                <Phone className="h-4 w-4 mr-2" />
-                {site.phone}
-              </Button>
-            </a>
-          </div>
-        </nav>
-      </header>
-
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
