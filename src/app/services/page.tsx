@@ -32,7 +32,7 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-background">
       <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0f2919]/95 via-[#1d4e2b]/85 to-[#154225]/80" aria-hidden />
-        <div className="relative mx-auto max-w-4xl px-6 text-center text-white">
+        <div className="relative mx-auto max-w-4xl px-4 text-center text-white md:px-8 lg:px-12">
           <span className="inline-flex items-center justify-center rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-accent">
             Prestations professionnelles
           </span>
@@ -42,7 +42,7 @@ export default function ServicesPage() {
           <p className="mt-6 text-pretty text-lg text-white/85">
             Diagnostics précis, interventions rapides et protocoles sur mesure pour protéger vos logements, commerces et collectivités dans tout le {site.departement}.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-center sm:gap-6">
             <Link href="/contact" className="inline-flex" data-cta="services-quote">
               <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/30 hover:bg-accent/90">
                 Demander un devis gratuit
@@ -64,16 +64,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-24">
-        <div className="mx-auto w-full max-w-6xl px-6">
+      <section className="py-16 md:py-20">
+        <div className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <AnimatedSection
                 key={service.slug}
                 delay={0.05 * index}
-                className="group h-full rounded-3xl border border-primary/10 bg-white/95 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
+                className="group flex h-full min-h-[25rem] flex-col rounded-3xl border border-primary/10 bg-white/95 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
               >
-                <div className="relative h-52 overflow-hidden rounded-t-3xl">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-3xl">
                   <Image
                     src={service.heroImage}
                     alt={service.title}
@@ -82,7 +82,7 @@ export default function ServicesPage() {
                     sizes="(min-width: 1280px) 360px, (min-width: 768px) 45vw, 100vw"
                   />
                 </div>
-                <div className="flex h-full flex-col gap-4 p-6">
+                <div className="flex h-full flex-1 flex-col gap-4 p-6">
                   <div className="space-y-2">
                     <h2 className="text-xl font-semibold text-primary">{service.title}</h2>
                     <p className="text-sm text-muted-foreground">{service.short}</p>
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                       À partir de {euroFormatter.format(service.priceFrom)}
                     </p>
                   ) : null}
-                  <div className="mt-auto">
+                  <div className="mt-auto pt-2">
                     <Link
                       href={`/services/${service.slug}`}
                       className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
@@ -108,7 +108,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <AnimatedSection className="mx-auto w-full max-w-6xl px-6">
+      <AnimatedSection className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
         <div className="rounded-3xl border border-primary/10 bg-white/90 p-10 shadow-xl md:p-14">
           <div className="grid gap-10 md:grid-cols-2">
             <div className="space-y-4">
@@ -157,7 +157,7 @@ export default function ServicesPage() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="mx-auto mt-20 w-full max-w-5xl px-6">
+      <AnimatedSection className="mx-auto mt-20 w-full max-w-5xl px-4 md:px-8 lg:px-12">
         <div className="overflow-hidden rounded-3xl bg-primary text-white shadow-2xl">
           <div className="grid gap-8 p-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
             <div className="space-y-4">

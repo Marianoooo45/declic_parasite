@@ -29,8 +29,8 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0d2616]/95 via-[#1d4e2b]/85 to-[#154225]/80" />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-28 text-white md:flex-row md:items-center md:py-36">
-          <div className="max-w-2xl space-y-6">
+        <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-4 py-28 text-white md:px-8 md:py-32 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:px-12">
+          <div className="max-w-2xl space-y-6 lg:justify-self-start">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
               {site.brand}
             </span>
@@ -55,7 +55,7 @@ export default function Home() {
                 </Link>
               ) : null}
             </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
               <Link href="/contact" className="inline-flex">
                 <Button size="lg" className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 hover:bg-accent/90">
                   Devis gratuit
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      <AnimatedSection id="engagements" className="mx-auto w-full max-w-6xl px-6">
+      <AnimatedSection id="engagements" className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
         <div className="space-y-12 rounded-3xl border border-primary/10 bg-white/80 p-10 shadow-xl backdrop-blur">
           <div className="space-y-4 text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80">Nos engagements</span>
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <section className="mx-auto w-full max-w-6xl px-6">
+      <section className="mx-auto w-full max-w-6xl px-4 md:px-8 lg:px-12">
         <div className="space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.4em] text-primary/80">Nos services</span>
           <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">Solutions antiparasitaires sur-mesure</h2>
@@ -157,9 +157,9 @@ export default function Home() {
             <AnimatedSection
               key={service.slug}
               delay={0.05 * index}
-              className="group h-full rounded-3xl border border-primary/10 bg-white/90 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
+              className="group flex h-full min-h-[25rem] flex-col rounded-3xl border border-primary/10 bg-white/90 shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="relative h-56 overflow-hidden rounded-t-3xl">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-t-3xl">
                 <Image
                   src={service.heroImage}
                   alt={service.title}
@@ -168,7 +168,7 @@ export default function Home() {
                   sizes="(min-width: 1280px) 360px, (min-width: 768px) 50vw, 100vw"
                 />
               </div>
-              <div className="flex h-full flex-col gap-4 p-6">
+              <div className="flex h-full flex-1 flex-col gap-4 p-6">
                 <div className="space-y-2">
                   <h3 className="text-xl font-semibold text-primary">{service.title}</h3>
                   <p className="text-sm text-muted-foreground">{service.short}</p>
@@ -178,7 +178,7 @@ export default function Home() {
                     À partir de {euroFormatter.format(service.priceFrom)}
                   </p>
                 ) : null}
-                <div className="mt-auto">
+                <div className="mt-auto pt-2">
                   <Link
                     href={`/services/${service.slug}`}
                     className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary hover:text-white"
@@ -208,7 +208,7 @@ export default function Home() {
         </div>
       </section>
 
-      <AnimatedSection className="mx-auto w-full max-w-5xl px-6">
+      <AnimatedSection className="mx-auto w-full max-w-5xl px-4 md:px-8 lg:px-12">
         <div className="overflow-hidden rounded-3xl bg-primary text-white shadow-2xl">
           <div className="grid gap-8 p-10 md:grid-cols-[1.2fr_0.8fr] md:items-center">
             <div className="space-y-4">
