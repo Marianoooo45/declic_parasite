@@ -1,0 +1,9 @@
+<svg width="220" height="64" viewBox="0 0 220 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Déclic Parasites</title>
+  <rect x="4" y="10" width="44" height="44" rx="14" fill="#1D4E2B" />
+  <path d="M24.252 24.4c4.528 0 7.868 3.284 7.868 7.6 0 4.316-3.34 7.6-7.868 7.6h-6.9V24.4h6.9zm-.308 11.9c2.632 0 4.396-1.848 4.396-4.3 0-2.452-1.764-4.3-4.396-4.3h-2.352v8.6h2.352z" fill="#F4F0E6" />
+  <path d="M43.356 24.4h-3.432l-7.084 15.2h3.796l1.224-2.848h6.448l1.232 2.848h3.896l-7.08-15.2zm-3.012 9.212 1.892-4.4 1.916 4.4h-3.808z" fill="#DBB341" />
+  <text x="60" y="34" font-family="'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1D4E2B">Déclic</text>
+  <text x="60" y="52" font-family="'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="500" fill="#1D4E2B">Parasites</text>
+  <circle cx="118" cy="22" r="5" fill="#DBB341" />
+</svg>
