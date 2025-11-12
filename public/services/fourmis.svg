@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustration de traitement fourmis</title>
+  <desc id="desc">Un chemin de fourmis stylisé se dirigeant vers une protection.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1d4e2b" />
+      <stop offset="100%" stop-color="#173d22" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <path d="M200 600c140-120 340-120 480-40s280 80 320-40" fill="none" stroke="#dbb341" stroke-width="20" stroke-linecap="round" stroke-dasharray="40 34" opacity="0.35" />
+  <g fill="#f4f0e6" opacity="0.9">
+    <circle cx="320" cy="520" r="22" />
+    <circle cx="380" cy="470" r="18" />
+    <circle cx="440" cy="420" r="16" />
+    <circle cx="500" cy="380" r="14" />
+    <circle cx="560" cy="350" r="13" />
+    <circle cx="620" cy="330" r="12" />
+  </g>
+  <g stroke="#f4f0e6" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+    <path d="M680 360l64-58" />
+    <path d="M744 302l120 120" />
+    <path d="M864 422l54-48" />
+    <path d="M918 374l36 36" />
+  </g>
+  <g fill="none" stroke="#f4f0e6" stroke-width="14" stroke-linecap="round">
+    <path d="M720 250l120-110" opacity="0.35" />
+    <path d="M860 220l90-80" opacity="0.25" />
+  </g>
+  <g transform="translate(860 460)">
+    <circle cx="90" cy="90" r="90" fill="#f4f0e6" opacity="0.9" />
+    <path d="M90 30c40 0 72 32 72 72s-32 72-72 72-72-32-72-72 32-72 72-72z" fill="#dbb341" opacity="0.8" />
+    <path d="M70 60l40 40-40 40" fill="none" stroke="#1d4e2b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

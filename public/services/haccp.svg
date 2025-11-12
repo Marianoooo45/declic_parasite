@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustration contrat HACCP</title>
+  <desc id="desc">Une tablette avec checklist dorée et ambiance professionnelle.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#12311d" />
+      <stop offset="100%" stop-color="#1d4e2b" />
+    </linearGradient>
+    <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fdfbf6" />
+      <stop offset="100%" stop-color="#f4f0e6" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g opacity="0.2" stroke="#dbb341" stroke-width="18" fill="none" stroke-linecap="round">
+    <path d="M180 620l160-160 140 120 160-200 160 140 160-200" />
+  </g>
+  <g transform="translate(360 160)">
+    <rect x="40" y="40" width="440" height="520" rx="48" fill="#0f2617" opacity="0.35" />
+    <rect x="80" y="80" width="360" height="460" rx="36" fill="url(#paper)" />
+    <rect x="140" y="120" width="240" height="32" rx="16" fill="#e1d9c6" />
+    <g fill="#1d4e2b" opacity="0.75">
+      <rect x="140" y="190" width="200" height="14" rx="7" />
+      <rect x="140" y="240" width="220" height="14" rx="7" />
+      <rect x="140" y="290" width="210" height="14" rx="7" />
+      <rect x="140" y="340" width="220" height="14" rx="7" />
+      <rect x="140" y="390" width="200" height="14" rx="7" />
+    </g>
+    <g stroke="#dbb341" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+      <path d="M100 200l28 28 56-56" />
+      <path d="M100 250l28 28 56-56" />
+      <path d="M100 300l28 28 56-56" />
+      <path d="M100 350l28 28 56-56" />
+      <path d="M100 400l28 28 56-56" />
+    </g>
+    <circle cx="260" cy="470" r="52" fill="#dbb341" opacity="0.9" />
+    <path d="M240 470l16 18 32-36" fill="none" stroke="#1d4e2b" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

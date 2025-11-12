@@ -19,8 +19,7 @@ const baseServices: Service[] = [
     short: "Élimination durable des rats et souris",
     description:
       "Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs avec un plan d'action complet et durable.",
-    heroImage:
-      "https://images.unsplash.com/photo-1524146128017-d594c7481179?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/deratisation.svg",
     priceFrom: 99,
     benefits: [
       "Diagnostic précis des points d'entrée",
@@ -67,8 +66,7 @@ const baseServices: Service[] = [
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
-    heroImage:
-      "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/punaises.svg",
     priceFrom: 149,
     benefits: [
       "Méthode combinée vapeur + chimique",
@@ -115,8 +113,7 @@ const baseServices: Service[] = [
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
-    heroImage:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/cafards.svg",
     priceFrom: 119,
     benefits: [
       "Plan HACCP compatible",
@@ -163,8 +160,7 @@ const baseServices: Service[] = [
     short: "Suppression ciblée des colonies de fourmis",
     description:
       "Des fourmis envahissent vos pièces ou terrasses ? Nous neutralisons la colonie à la source pour empêcher tout retour durablement.",
-    heroImage:
-      "https://images.unsplash.com/photo-1502759683299-cdcd6974244f?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/fourmis.svg",
     priceFrom: 89,
     benefits: [
       "Gel appétent longue durée",
@@ -209,8 +205,7 @@ const baseServices: Service[] = [
     short: "Destruction sécurisée des nids aériens et terrestres",
     description:
       "Un nid de guêpes ou de frelons met en danger votre famille ? Nous intervenons en hauteur ou en cave avec équipement complet et garantie de résultat.",
-    heroImage:
-      "https://images.unsplash.com/photo-1517092179471-4c19aa2bb8dc?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/guepes.svg",
     priceFrom: 139,
     benefits: [
       "Intervention en urgence",
@@ -256,8 +251,7 @@ const baseServices: Service[] = [
     short: "Plan de prévention nuisibles pour pros & collectivités",
     description:
       "Restaurants, hôtels, industries : nous mettons en place un plan HACCP complet avec visites régulières, traçabilité et reporting digital.",
-    heroImage:
-      "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/haccp.svg",
     benefits: [
       "Plan de maîtrise personnalisé",
       "Traçabilité digitale complète",
@@ -304,8 +298,7 @@ const baseServices: Service[] = [
     short: "Assainissement des logements contre puces et acariens",
     description:
       "Morsures au niveau des chevilles ou animaux infestés ? Nous assainissons sols, textiles et recoins pour éliminer puces et parasites intérieurs.",
-    heroImage:
-      "https://images.unsplash.com/photo-1523419409543-0c1df022bdd9?q=80&w=1600&auto=format&fit=crop",
+    heroImage: "/services/puces.svg",
     priceFrom: 109,
     benefits: [
       "Traitement ciblé des zones de repos",
