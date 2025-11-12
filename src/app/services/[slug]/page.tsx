@@ -32,20 +32,23 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
 
 export const revalidate = 86400;
 
-type Params = {
+type ServiceRouteParams = {
   slug: string;
 };
 
-type PageProps = {
-  params: Params;
+type ServicePageProps = {
+  params: Promise<ServiceRouteParams>;
 };
 
-export function generateStaticParams(): Params[] {
+export function generateStaticParams(): ServiceRouteParams[] {
   return services.map((service) => ({ slug: service.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const service = services.find((item) => item.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services.find((item) => item.slug === slug);
 
   if (!service) {
     return {
@@ -77,8 +80,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function ServicePage({ params }: PageProps) {
-  const service = services.find((item) => item.slug === params.slug);
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params;
+  const service = services.find((item) => item.slug === slug);
 
   if (!service) {
     notFound();
