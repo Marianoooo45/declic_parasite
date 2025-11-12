@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustration de désinsectisation cafards</title>
+  <desc id="desc">Un flacon pulvérisateur doré et un motif géométrique propre.</desc>
+  <defs>
+    <radialGradient id="bg" cx="0.6" cy="0.3" r="1">
+      <stop offset="0%" stop-color="#f4f0e6" />
+      <stop offset="60%" stop-color="#e0d8c3" />
+      <stop offset="100%" stop-color="#cfc5ac" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g opacity="0.25" stroke="#1d4e2b" stroke-width="8" fill="none">
+    <circle cx="300" cy="220" r="70" />
+    <circle cx="880" cy="180" r="90" />
+    <circle cx="980" cy="600" r="70" />
+  </g>
+  <g fill="#1d4e2b" opacity="0.08">
+    <rect x="140" y="480" width="160" height="160" rx="32" />
+    <rect x="960" y="320" width="120" height="120" rx="24" />
+  </g>
+  <g transform="translate(480 240)">
+    <rect x="80" y="80" width="220" height="320" rx="36" fill="#1d4e2b" opacity="0.9" />
+    <rect x="120" y="40" width="140" height="80" rx="24" fill="#1d4e2b" opacity="0.7" />
+    <rect x="146" y="120" width="88" height="200" rx="16" fill="#dbb341" />
+    <path d="M146 210h88" stroke="#f4f0e6" stroke-width="8" opacity="0.7" />
+    <path d="M210 120l36-48" stroke="#1d4e2b" stroke-width="12" stroke-linecap="round" />
+    <circle cx="190" cy="306" r="54" fill="#f4f0e6" opacity="0.75" />
+    <path d="M180 306l20-20 20 20-20 20z" fill="#dbb341" opacity="0.9" />
+  </g>
+  <g stroke="#dbb341" stroke-width="10" stroke-linecap="round" opacity="0.6">
+    <line x1="760" y1="280" x2="960" y2="220" />
+    <line x1="760" y1="320" x2="990" y2="280" />
+    <line x1="760" y1="360" x2="930" y2="330" />
+  </g>
+</svg>

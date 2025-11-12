@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustration de traitement punaises de lit</title>
+  <desc id="desc">Un lit stylisé avec des lignes dorées sur fond vert profond.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#14331d" />
+      <stop offset="100%" stop-color="#1d4e2b" />
+    </linearGradient>
+    <linearGradient id="linen" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f4f0e6" />
+      <stop offset="100%" stop-color="#e6dcc5" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g opacity="0.25" fill="#dbb341">
+    <circle cx="280" cy="220" r="12" />
+    <circle cx="920" cy="180" r="18" />
+    <circle cx="1010" cy="620" r="9" />
+    <circle cx="210" cy="580" r="11" />
+  </g>
+  <g fill="none" stroke="#dbb341" stroke-width="10" opacity="0.5">
+    <path d="M260 640h680" stroke-linecap="round" />
+    <path d="M300 520h600" stroke-linecap="round" />
+  </g>
+  <g>
+    <rect x="300" y="360" width="600" height="200" rx="26" ry="26" fill="url(#linen)" />
+    <rect x="300" y="330" width="600" height="40" rx="16" fill="#dbb341" opacity="0.65" />
+    <path d="M340 360v180" stroke="#1d4e2b" stroke-width="16" stroke-linecap="round" />
+    <path d="M860 360v180" stroke="#1d4e2b" stroke-width="16" stroke-linecap="round" />
+    <rect x="360" y="410" width="200" height="120" rx="20" fill="#1d4e2b" opacity="0.75" />
+    <rect x="640" y="410" width="200" height="120" rx="20" fill="#1d4e2b" opacity="0.75" />
+    <path d="M360 410h480" stroke="#f4f0e6" stroke-width="6" opacity="0.6" />
+    <path d="M360 530h480" stroke="#f4f0e6" stroke-width="6" opacity="0.45" />
+  </g>
+</svg>

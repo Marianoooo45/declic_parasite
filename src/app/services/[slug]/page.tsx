@@ -189,76 +189,77 @@ export default async function ServicePage({ params }: ServicePageProps) {
       ) : null}
 
       <div className="relative min-h-screen bg-white">
-        <section className="bg-gray-50 py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <div>
-                <span className="text-sm font-semibold uppercase tracking-wide text-primary">
-                  Service {site.brand}
-                </span>
-                <h1 className="heading-balance mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-                  {service.title}
-                </h1>
-                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-                  {service.description}
-                </p>
-                <div className="mt-6 space-y-3 text-muted-foreground">
-                  {pasIntro.map((paragraph, index) => (
-                    <p key={index} className="max-w-2xl text-sm">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-primary hover:bg-primary/90"
-                      data-cta="service-quote"
-                    >
-                      Demander un devis
-                    </Button>
-                  </Link>
-                  <a href={phoneHref} data-cta="service-call" className="inline-flex">
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-primary/40 text-primary hover:bg-primary/10"
-                    >
-                      <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
-                    </Button>
-                  </a>
-                </div>
-                <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                  <span className="inline-flex items-center gap-2">
-                    <Star className="h-4 w-4 text-primary" /> +98% de clients satisfaits
-                  </span>
-                  <Link
-                    href="/#avis"
-                    className="inline-flex items-center gap-1 text-primary hover:underline"
+        <section className="relative overflow-hidden py-16 md:py-24">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-white to-secondary" aria-hidden />
+          <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-tr from-primary/10 via-transparent to-transparent lg:block" aria-hidden />
+          <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="space-y-6">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+                Service {site.brand}
+              </span>
+              <h1 className="text-balance text-4xl font-semibold text-primary md:text-5xl">
+                {service.title}
+              </h1>
+              <p className="text-pretty text-lg text-muted-foreground">
+                {service.description}
+              </p>
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <Link href="/contact" data-cta="service-quote" className="inline-flex">
+                  <Button className="rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90">
+                    Devis gratuit
+                  </Button>
+                </Link>
+                <a href={phoneHref} data-cta="service-call" className="inline-flex">
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-primary/30 bg-white px-8 py-3 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
                   >
-                    Voir les avis Google
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
+                    <Phone className="mr-2 h-4 w-4" /> Appeler
+                  </Button>
+                </a>
               </div>
-              <div className="relative h-80 overflow-hidden rounded-3xl shadow-lg">
-                <Image
-                  src={service.heroImage}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 45vw, 100vw"
-                  priority
-                />
+              <div className="grid gap-4 text-sm text-muted-foreground lg:grid-cols-2">
+                {pasIntro.map((paragraph, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/80 p-4 shadow-sm"
+                  >
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <CheckCircle2 className="h-4 w-4" />
+                    </div>
+                    <p>{paragraph}</p>
+                  </div>
+                ))}
               </div>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                <span className="inline-flex items-center gap-2">
+                  <Star className="h-4 w-4 text-primary" /> +98% de clients satisfaits
+                </span>
+                <Link
+                  href="/#avis"
+                  className="inline-flex items-center gap-1 text-primary hover:underline"
+                >
+                  Voir les avis Google
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+            <div className="relative h-80 overflow-hidden rounded-3xl border border-primary/10 bg-white shadow-2xl">
+              <Image
+                src={service.heroImage}
+                alt={service.title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                priority
+              />
             </div>
           </div>
         </section>
 
         <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
               Les bénéfices clés
             </h2>
             <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -278,9 +279,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
-        <section className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+        <section className="bg-secondary/60 py-16">
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
               Notre intervention détaillée
             </h2>
             <p className="mt-3 max-w-3xl text-muted-foreground">
@@ -290,7 +291,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               {service.features.map((feature) => (
                 <Card
                   key={feature}
-                  className="flex items-start gap-3 border border-gray-200/70 bg-white p-5 shadow-sm"
+                  className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/95 p-5 shadow-md"
                 >
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Check className="h-4 w-4" />
@@ -304,10 +305,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         {service.priceFrom ? (
           <section className="py-16">
-            <div className="container mx-auto px-4">
-              <Card className="flex flex-col gap-8 border-primary/30 bg-primary/5 p-8 md:flex-row md:items-center md:justify-between">
+            <div className="mx-auto w-full max-w-6xl px-6">
+              <Card className="flex flex-col gap-8 rounded-3xl border border-primary/20 bg-primary/5 p-8 shadow-xl md:flex-row md:items-center md:justify-between">
                 <div>
-                  <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+                  <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
                     À partir de {euroFormatter.format(service.priceFrom)}
                   </h2>
                   <p className="mt-2 max-w-xl text-muted-foreground">
@@ -326,7 +327,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   <Link href="/contact">
                     <Button
                       size="lg"
-                      className="bg-primary hover:bg-primary/90"
+                      className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90"
                       data-cta="service-price-contact"
                     >
                       Obtenir mon devis précis
@@ -345,11 +346,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </section>
         ) : null}
 
-        <section className="bg-gray-900 py-16 text-white">
-          <div className="container mx-auto px-4">
+        <section className="bg-primary py-16 text-white">
+          <div className="mx-auto w-full max-w-6xl px-6">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
-                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+                <h2 className="text-balance text-3xl font-semibold md:text-4xl">
                   Questions fréquentes
                 </h2>
                 <p className="mt-3 text-white/80">
@@ -373,54 +374,86 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </section>
 
         <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-8 rounded-3xl bg-slate-900 p-8 text-white md:grid-cols-2 md:p-12">
-              <div>
-                <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <div className="grid gap-10 rounded-3xl border border-primary/15 bg-secondary/80 p-8 shadow-xl md:grid-cols-[1.15fr_0.85fr] md:p-12">
+              <div className="space-y-6">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+                  Conseil personnalisé
+                </span>
+                <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
                   Parlons de votre situation
                 </h2>
-                <p className="mt-3 text-white/80">
-                  Un conseiller vous rappelle en moins d&apos;une heure ouvrée pour planifier l&apos;intervention idéale.
+                <p className="max-w-xl text-base text-primary/80">
+                  Un conseiller vous rappelle en moins d&apos;une heure ouvrée pour préparer une intervention discrète, efficace et adaptée à votre lieu.
                 </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {["Diagnostic précis sur site", "Plan d&apos;action certifié Certibiocide", "Suivi après intervention", "Déplacement dans tout le département"].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/80 p-4 text-sm text-primary/80 shadow-sm"
+                    >
+                      <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <CheckCircle2 className="h-4 w-4" />
+                      </div>
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-4 md:items-end">
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary/90"
-                    data-cta="service-final-cta"
-                  >
-                    Demander un devis gratuit
-                  </Button>
-                </Link>
-                <a href={phoneHref} className="inline-flex" data-cta="service-final-call">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white/70 text-white hover:bg-white/10"
-                  >
-                    <Phone className="mr-2 h-4 w-4" /> {site.phone}
-                  </Button>
-                </a>
+              <div className="flex flex-col gap-6 rounded-3xl border border-primary/10 bg-white/90 p-6 shadow-lg md:p-8">
+                <div className="space-y-3 text-primary">
+                  <h3 className="text-lg font-semibold">Contact rapide</h3>
+                  <p className="text-sm text-primary/70">
+                    Laissez-nous vos coordonnées ou appelez directement nos experts pour une prise en charge immédiate.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <Link href="/contact" className="inline-flex" data-cta="service-final-cta">
+                    <Button className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90">
+                      Demander un devis gratuit
+                    </Button>
+                  </Link>
+                  <a href={phoneHref} className="inline-flex" data-cta="service-final-call">
+                    <Button
+                      variant="outline"
+                      className="rounded-full border-primary/30 bg-white px-6 py-3 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
+                    >
+                      <Phone className="mr-2 h-4 w-4" /> {site.phone}
+                    </Button>
+                  </a>
+                </div>
+                <div className="flex flex-col gap-4 rounded-2xl bg-primary/5 p-5 text-sm text-primary md:flex-row md:items-center md:justify-between">
+                  <div className="flex items-center gap-3">
+                    <Star className="h-5 w-5 text-accent" />
+                    <span>Intervention sous 24–48h et suivi client dédié</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <ShieldCheck className="h-5 w-5 text-accent" />
+                    <span>Garanties claires et traçabilité des traitements</span>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="mt-12">
-              <h2 className="heading-balance text-2xl font-extrabold tracking-tight md:text-3xl">
+              <h2 className="text-balance text-2xl font-semibold text-primary md:text-3xl">
                 Autres services qui pourraient vous intéresser
               </h2>
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="mt-6 grid gap-6 md:grid-cols-3">
                 {relatedServices.map((related) => (
-                  <Card key={related.slug} className="group overflow-hidden border border-gray-200/70 p-6">
-                    <h3 className="heading-balance text-lg font-semibold">{related.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{related.short}</p>
-                    <Link
-                      href={`/services/${related.slug}`}
-                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary transition hover:underline"
-                      data-cta="service-related"
-                    >
-                      Découvrir
-                      <ArrowRight className="h-4 w-4" />
+                  <Card
+                    key={related.slug}
+                    className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="space-y-3">
+                      <h3 className="text-lg font-semibold text-primary">{related.title}</h3>
+                      <p className="text-sm text-muted-foreground">{related.short}</p>
+                    </div>
+                    <Link href={`/services/${related.slug}`} className="inline-flex" data-cta="service-related">
+                      <Button className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-primary/90">
+                        Découvrir
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
                     </Link>
                   </Card>
                 ))}
@@ -428,23 +461,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </div>
           </div>
         </section>
-
-        <div className="fixed bottom-5 right-4 z-50 flex gap-3 md:hidden">
-          <Link href="/contact">
-            <Button
-              size="sm"
-              className="bg-primary px-5 py-2 hover:bg-primary/90"
-              data-cta="service-sticky-quote"
-            >
-              Devis express
-            </Button>
-          </Link>
-          <a href={phoneHref} className="inline-flex" data-cta="service-sticky-call">
-            <Button size="sm" variant="outline" className="border-primary/40 text-primary">
-              <Phone className="mr-1 h-4 w-4" /> Appeler
-            </Button>
-          </a>
-        </div>
       </div>
     </>
   );

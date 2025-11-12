@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Illustration traitement puces</title>
+  <desc id="desc">Une maison stylisée avec halo protecteur et particules de propreté.</desc>
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.4" r="0.8">
+      <stop offset="0%" stop-color="#f8f5ed" />
+      <stop offset="80%" stop-color="#e6ddc7" />
+      <stop offset="100%" stop-color="#d6ccb4" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <circle cx="600" cy="420" r="280" fill="#1d4e2b" opacity="0.15" />
+  <g fill="#dbb341" opacity="0.35">
+    <circle cx="340" cy="220" r="10" />
+    <circle cx="860" cy="240" r="16" />
+    <circle cx="960" cy="520" r="12" />
+    <circle cx="260" cy="520" r="9" />
+  </g>
+  <g transform="translate(420 260)">
+    <path d="M180 0l180 140v220c0 28-20 48-48 48H48c-28 0-48-20-48-48V140z" fill="#1d4e2b" opacity="0.85" />
+    <path d="M180 28l148 116v212c0 20-14 34-34 34H66c-20 0-34-14-34-34V144z" fill="#1d4e2b" opacity="0.45" />
+    <rect x="120" y="200" width="120" height="160" rx="18" fill="#f4f0e6" />
+    <rect x="150" y="230" width="60" height="60" rx="12" fill="#dbb341" opacity="0.85" />
+    <path d="M120 200h120" stroke="#dbb341" stroke-width="12" stroke-linecap="round" opacity="0.5" />
+    <path d="M120 280h120" stroke="#dbb341" stroke-width="12" stroke-linecap="round" opacity="0.4" />
+    <path d="M180 360v-80" stroke="#dbb341" stroke-width="12" stroke-linecap="round" opacity="0.4" />
+  </g>
+  <g stroke="#dbb341" stroke-width="10" stroke-linecap="round" opacity="0.6">
+    <path d="M520 520c40 60 120 60 160 0" />
+    <path d="M500 560c52 80 148 80 200 0" opacity="0.5" />
+  </g>
+  <g fill="#dbb341" opacity="0.6">
+    <circle cx="520" cy="360" r="12" />
+    <circle cx="680" cy="360" r="12" />
+    <circle cx="600" cy="300" r="18" />
+  </g>
+</svg>

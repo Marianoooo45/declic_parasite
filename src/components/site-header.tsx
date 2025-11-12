@@ -18,7 +18,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 
 const navigation = [
   { label: "Accueil", href: "/" },
-  { label: "Pourquoi nous choisir", href: "#why" },
+  { label: "Nos engagements", href: "/#engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
   { label: "Contact", href: "/contact" },
 ];
@@ -132,7 +132,7 @@ function ServicesDropdown() {
         aria-haspopup="true"
         aria-expanded={open}
         aria-controls="nav-services-menu"
-        className="rounded-md border border-transparent p-1 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        className="rounded-full border border-transparent p-1 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         onClick={() => setOpen((prev) => !prev)}
         onKeyDown={(event) => {
           if (event.key === "ArrowDown") {
@@ -151,7 +151,7 @@ function ServicesDropdown() {
         id="nav-services-menu"
         aria-label="Services"
         className={cn(
-          "invisible absolute right-0 top-full z-50 mt-3 min-w-[18rem] origin-top rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-xl opacity-0 transition-all duration-150 lg:mt-2",
+          "invisible absolute right-0 top-full z-50 mt-3 min-w-[18rem] origin-top rounded-2xl border border-primary/10 bg-white/95 p-3 text-sm shadow-2xl backdrop-blur opacity-0 transition-all duration-150 lg:mt-2",
           open && "visible translate-y-0 opacity-100",
           !open && "-translate-y-2",
         )}
@@ -167,7 +167,7 @@ function ServicesDropdown() {
               key={service.slug}
               href={`/services/${service.slug}`}
               role="menuitem"
-              className="group flex flex-col rounded-md p-3 transition-colors hover:bg-gray-50"
+              className="group flex flex-col rounded-xl border border-transparent p-3 transition-all hover:border-primary/20 hover:bg-primary/5"
               onClick={() => setOpen(false)}
               data-cta="nav-service"
             >
@@ -176,10 +176,10 @@ function ServicesDropdown() {
             </Link>
           ))}
         </div>
-        <div className="mt-2 border-t border-gray-100 pt-2">
+        <div className="mt-2 border-t border-primary/10 pt-3">
           <Link
             href="/services"
-            className="flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/5"
+            className="flex items-center justify-between rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary transition hover:bg-primary/5"
             onClick={() => setOpen(false)}
             data-cta="nav-services-all"
           >
@@ -258,7 +258,7 @@ function MobileMenu() {
     <>
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white p-2 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
+        className="inline-flex items-center justify-center rounded-full border border-primary/20 bg-white/90 p-2 text-sm font-semibold text-primary shadow-md transition-colors hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-haspopup="true"
@@ -270,22 +270,22 @@ function MobileMenu() {
 
       {open ? (
         <div className="fixed inset-0 z-50 flex lg:hidden">
-          <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+          <div className="absolute inset-0 bg-primary/30" aria-hidden="true" />
           <div
             ref={dialogRef}
             id="mobile-nav"
             role="dialog"
             aria-modal="true"
-            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-xl"
+            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white/95 backdrop-blur shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
-              <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            <div className="flex items-center justify-between border-b border-primary/10 px-5 py-4">
+              <span className="text-sm font-semibold uppercase tracking-wide text-primary">
                 Menu
               </span>
               <button
                 ref={closeButtonRef}
                 type="button"
-                className="rounded-md p-2 text-gray-600 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="rounded-full p-2 text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le menu"
               >
@@ -311,7 +311,7 @@ function MobileMenu() {
                       <Link
                         key={service.slug}
                         href={`/services/${service.slug}`}
-                        className="block rounded-md border border-gray-100 p-3 text-sm transition hover:border-primary hover:text-primary"
+                        className="block rounded-xl border border-primary/10 bg-white/80 p-3 text-sm shadow-sm transition hover:border-primary hover:bg-primary/5 hover:text-primary"
                         onClick={() => setOpen(false)}
                         data-cta="nav-service-mobile"
                       >
@@ -344,14 +344,26 @@ function MobileMenu() {
               </nav>
             </div>
 
-            <div className="border-t border-gray-200 p-5">
-              <a
-                href={`tel:${site.phone.replace(/\s+/g, "")}`}
-                className="block"
-                data-cta="nav-phone-mobile"
-              >
-                <Button className="w-full">Appeler {site.phone}</Button>
-              </a>
+            <div className="border-t border-primary/10 bg-white/80 p-5">
+              <div className="space-y-3">
+                <Link href="/contact" data-cta="nav-mobile-quote" className="block">
+                  <Button className="w-full rounded-full bg-primary py-3 text-base font-semibold shadow-md hover:bg-primary/90">
+                    Devis gratuit
+                  </Button>
+                </Link>
+                <a
+                  href={`tel:${site.phone.replace(/\s+/g, "")}`}
+                  className="block"
+                  data-cta="nav-phone-mobile"
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full rounded-full border-primary/20 bg-white py-3 text-base font-semibold text-primary shadow-md hover:bg-primary/5"
+                  >
+                    Appeler {site.phone}
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -365,10 +377,31 @@ export function SiteHeader() {
     () => `tel:${site.phone.replace(/\s+/g, "")}`,
     [],
   );
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/95 shadow-md backdrop-blur"
+          : "bg-transparent",
+      )}
+    >
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
         <Link
           href="/"
           className="flex items-center gap-2"
@@ -386,9 +419,12 @@ export function SiteHeader() {
 
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-8 text-sm font-medium lg:flex"
+          className="hidden items-center gap-8 text-sm font-medium text-foreground/80 lg:flex"
         >
-          <Link href="/" className="transition-colors hover:text-primary">
+          <Link
+            href="/"
+            className="transition-colors hover:text-primary"
+          >
             Accueil
           </Link>
           <ServicesDropdown />
@@ -404,12 +440,20 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <Link href="/contact" data-cta="nav-quote" className="inline-flex">
+            <Button className="rounded-full bg-primary px-6 py-2 text-base font-semibold shadow-md hover:bg-primary/90">
+              Devis gratuit
+            </Button>
+          </Link>
           <a
             href={phoneHref}
             data-cta="nav-phone"
             className="inline-flex"
           >
-            <Button className="bg-primary hover:bg-primary/90">
+            <Button
+              variant="outline"
+              className="rounded-full border-primary/20 bg-white px-6 py-2 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
+            >
               {site.phone}
             </Button>
           </a>
@@ -421,7 +465,10 @@ export function SiteHeader() {
             data-cta="nav-phone-mobile-short"
             className="inline-flex"
           >
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
+            <Button
+              size="sm"
+              className="rounded-full bg-primary px-4 py-2 text-sm font-semibold shadow-md hover:bg-primary/90"
+            >
               Appeler
             </Button>
           </a>

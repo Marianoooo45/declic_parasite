@@ -115,57 +115,54 @@ export default function ContactPageContent() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white">
-      <section className="bg-slate-900 py-20 text-white md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="heading-balance text-4xl font-extrabold tracking-tight md:text-5xl">
-              Contact & Devis
-            </h1>
-            <p className="mt-4 text-lg text-white/80">
-              Réponse rapide sous 1h ouvrée, intervention 24–48h sur {site.departement}.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/70">
-              <span className="inline-flex items-center gap-2">
-                <Shield className="h-4 w-4 text-primary" /> Certibiocide & HACCP
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Leaf className="h-4 w-4 text-primary" /> Méthodes raisonnées
-              </span>
-            </div>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a href={phoneHref} data-cta="contact-call" className="inline-flex">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/70 text-white hover:bg-white/10"
-                >
-                  <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
-                </Button>
-              </a>
-              <Link href="/services" className="inline-flex">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/50 text-white hover:bg-white/10"
-                >
-                  Voir nos services
-                </Button>
-              </Link>
-            </div>
+    <div className="relative min-h-screen bg-background">
+      <section className="relative overflow-hidden py-20 text-white md:py-28">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f2919]/95 via-[#1d4e2b]/85 to-[#154225]/80" aria-hidden />
+        <div className="relative mx-auto max-w-3xl px-6 text-center">
+          <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
+            Contact & devis express
+          </h1>
+          <p className="mt-4 text-lg text-white/85">
+            Réponse sous 1h ouvrée, diagnostic et intervention 24–48h sur {site.departement}. Un artisan certifié vous rappelle personnellement.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/75">
+            <span className="inline-flex items-center gap-2">
+              <Shield className="h-4 w-4 text-accent" /> Certibiocide & HACCP
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Leaf className="h-4 w-4 text-accent" /> Méthodes raisonnées
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Clock className="h-4 w-4 text-accent" /> Astreinte urgente
+            </span>
+          </div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href={phoneHref} data-cta="contact-call" className="inline-flex">
+              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/30 hover:bg-accent/90">
+                <Phone className="mr-2 h-5 w-5" /> Appeler {site.phone}
+              </Button>
+            </a>
+            <Link href="/services" className="inline-flex">
+              <Button
+                variant="outline"
+                className="rounded-full border-white/60 bg-white/10 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/20"
+              >
+                Voir nos services
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-            <Card className="border border-gray-200/80 p-8 shadow-sm">
-              <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
+            <Card className="rounded-3xl border border-primary/10 bg-white/95 p-8 shadow-xl md:p-10">
+              <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
-              <p className="mt-2 text-muted-foreground">
-                Détaillez votre situation, nous revenons vers vous en moins d'une heure ouvrée.
+              <p className="mt-2 text-pretty text-base text-muted-foreground">
+                Détaillez votre situation, nous revenons vers vous en moins d&apos;une heure ouvrée avec un plan d&apos;action personnalisé.
               </p>
 
               {feedback ? (
@@ -185,7 +182,7 @@ export default function ContactPageContent() {
               <form className="mt-8 space-y-6" onSubmit={handleSubmit} data-cta="contact-form">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold">Nom</label>
+                    <label className="mb-2 block text-sm font-semibold text-primary">Nom</label>
                     <Input
                       name="name"
                       placeholder="Votre nom complet"
@@ -195,7 +192,7 @@ export default function ContactPageContent() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold">Email</label>
+                    <label className="mb-2 block text-sm font-semibold text-primary">Email</label>
                     <Input
                       name="email"
                       type="email"
@@ -206,7 +203,7 @@ export default function ContactPageContent() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold">Téléphone</label>
+                    <label className="mb-2 block text-sm font-semibold text-primary">Téléphone</label>
                     <Input
                       name="phone"
                       type="tel"
@@ -217,7 +214,7 @@ export default function ContactPageContent() {
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-semibold">Service souhaité</label>
+                    <label className="mb-2 block text-sm font-semibold text-primary">Service souhaité</label>
                     <Select
                       name="service"
                       value={formState.service}
@@ -239,7 +236,7 @@ export default function ContactPageContent() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold">Message</label>
+                  <label className="mb-2 block text-sm font-semibold text-primary">Message</label>
                   <Textarea
                     name="message"
                     placeholder="Décrivez votre problématique (lieu, type de nuisible, urgence...)"
@@ -250,11 +247,11 @@ export default function ContactPageContent() {
                   />
                 </div>
 
-                <div className="flex items-start gap-3 text-sm text-muted-foreground">
+                <div className="flex items-start gap-3 rounded-2xl bg-secondary/70 p-4 text-sm text-muted-foreground">
                   <input
                     type="checkbox"
                     id="consent"
-                    className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                    className="mt-1 h-4 w-4 rounded border-primary/30 text-primary focus:ring-primary"
                     checked={formState.consent}
                     onChange={(event) => setFormState((prev) => ({ ...prev, consent: event.target.checked }))}
                     required
@@ -266,7 +263,7 @@ export default function ContactPageContent() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90"
+                  className="w-full rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90"
                   disabled={status === "loading"}
                   data-cta="contact-submit"
                 >
@@ -276,11 +273,11 @@ export default function ContactPageContent() {
             </Card>
 
             <div className="space-y-6">
-              <Card className="border border-gray-200/80 p-6 shadow-sm">
-                <h3 className="heading-balance text-xl font-semibold">Contact direct</h3>
+              <Card className="rounded-3xl border border-primary/10 bg-white/90 p-6 shadow-lg">
+                <h3 className="text-xl font-semibold text-primary">Contact direct</h3>
                 <div className="mt-4 space-y-4 text-sm text-muted-foreground">
                   <div className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 text-primary" />
+                    <Phone className="mt-0.5 h-5 w-5 text-accent" />
                     <div>
                       <div className="font-semibold text-foreground">Téléphone</div>
                       <a href={phoneHref} className="hover:text-primary">
@@ -289,7 +286,7 @@ export default function ContactPageContent() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 text-primary" />
+                    <Mail className="mt-0.5 h-5 w-5 text-accent" />
                     <div>
                       <div className="font-semibold text-foreground">Email</div>
                       <a href={`mailto:${site.email}`} className="hover:text-primary">
@@ -298,14 +295,14 @@ export default function ContactPageContent() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 text-primary" />
+                    <MapPin className="mt-0.5 h-5 w-5 text-accent" />
                     <div>
                       <div className="font-semibold text-foreground">Zone d’intervention</div>
                       <p>{site.serviceArea.join(", ")}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-5 w-5 text-primary" />
+                    <Clock className="mt-0.5 h-5 w-5 text-accent" />
                     <div>
                       <div className="font-semibold text-foreground">Horaires</div>
                       <p>Lun–Ven : 7h30–19h • Sam : 8h–17h • Urgences 24/7</p>
@@ -314,8 +311,8 @@ export default function ContactPageContent() {
                 </div>
               </Card>
 
-              <Card className="border border-gray-200/80 p-6 shadow-sm">
-                <h3 className="heading-balance text-xl font-semibold">Pourquoi nous choisir ?</h3>
+              <Card className="rounded-3xl border border-primary/10 bg-secondary/60 p-6 shadow-lg">
+                <h3 className="text-xl font-semibold text-primary">Pourquoi nous choisir ?</h3>
                 <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                   {["Techniciens certifiés Certibiocide", "Protocoles compatibles HACCP", "Intervention 24–48h", "98% de clients satisfaits"].map((item) => (
                     <li key={item} className="flex items-start gap-2">
@@ -328,14 +325,6 @@ export default function ContactPageContent() {
           </div>
         </div>
       </section>
-
-      <div className="fixed bottom-6 left-4 right-4 z-50 md:hidden">
-        <a href={phoneHref} className="block" data-cta="contact-sticky-call">
-          <Button className="w-full bg-primary text-white hover:bg-primary/90">
-            <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
-          </Button>
-        </a>
-      </div>
     </div>
   );
 }
