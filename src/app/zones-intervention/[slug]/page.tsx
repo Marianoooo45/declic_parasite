@@ -32,7 +32,7 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
 
 export const revalidate = 86400;
 
-export function generateStaticParams(): { slug: string }[] {
+export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
@@ -45,9 +45,7 @@ export async function generateMetadata(
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
 
-  if (!service) {
-    return { title: site.brand };
-  }
+  if (!service) return { title: site.brand };
 
   const title = `${service.title} | ${site.brand}`;
   const description = service.description;
@@ -75,10 +73,7 @@ export default async function ServicePage(
 ) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
-
-  if (!service) {
-    notFound();
-  }
+  if (!service) notFound();
 
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
   const pasIntro = [
@@ -86,9 +81,7 @@ export default async function ServicePage(
     "Agiter — Sans plan d'action, les nuisibles se répandent, endommagent vos biens et transmettent des risques sanitaires pour votre famille ou vos clients.",
     `Solution — ${site.brand} intervient en 24–48h avec une méthodologie professionnelle Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.`,
   ];
-  const relatedServices = services
-    .filter((item) => item.slug !== service.slug)
-    .slice(0, 3);
+  const relatedServices = services.filter((i) => i.slug !== service.slug).slice(0, 3);
 
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -132,18 +125,17 @@ export default async function ServicePage(
     ],
   };
 
-  const faqJsonLd =
-    service.faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: service.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.q,
-            acceptedAnswer: { "@type": "Answer", text: faq.a },
-          })),
-        }
-      : null;
+  const faqJsonLd = service.faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
+      }
+    : null;
 
   return (
     <>
@@ -154,7 +146,7 @@ export default async function ServicePage(
       )}
 
       <div className="relative min-h-screen bg-white">
-        {/* --- HERO --- */}
+        {/* HERO */}
         <section className="bg-gray-50 py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -165,12 +157,10 @@ export default async function ServicePage(
                 <h1 className="heading-balance mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
                   {service.title}
                 </h1>
-                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-                  {service.description}
-                </p>
+                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{service.description}</p>
                 <div className="mt-6 space-y-3 text-muted-foreground">
-                  {pasIntro.map((paragraph, i) => (
-                    <p key={i} className="max-w-2xl text-sm">{paragraph}</p>
+                  {pasIntro.map((p, i) => (
+                    <p key={i} className="max-w-2xl text-sm">{p}</p>
                   ))}
                 </div>
                 <div className="mt-8 flex flex-wrap gap-4">
@@ -209,7 +199,7 @@ export default async function ServicePage(
           </div>
         </section>
 
-        {/* --- BENEFITS --- */}
+        {/* BENEFITS */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -228,7 +218,7 @@ export default async function ServicePage(
           </div>
         </section>
 
-        {/* --- FEATURES --- */}
+        {/* FEATURES */}
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4">
             <h2 className="heading-balance text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -250,7 +240,7 @@ export default async function ServicePage(
           </div>
         </section>
 
-        {/* --- PRICE BLOCK --- */}
+        {/* PRICE */}
         {service.priceFrom && (
           <section className="py-16">
             <div className="container mx-auto px-4">
@@ -287,7 +277,7 @@ export default async function ServicePage(
           </section>
         )}
 
-        {/* --- FAQ --- */}
+        {/* FAQ */}
         <section className="bg-gray-900 py-16 text-white">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -311,7 +301,7 @@ export default async function ServicePage(
           </div>
         </section>
 
-        {/* --- FINAL CTA --- */}
+        {/* FINAL CTA */}
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid gap-8 rounded-3xl bg-slate-900 p-8 text-white md:grid-cols-2 md:p-12">
@@ -361,7 +351,7 @@ export default async function ServicePage(
           </div>
         </section>
 
-        {/* --- Sticky mobile buttons --- */}
+        {/* Sticky mobile buttons */}
         <div className="fixed bottom-5 right-4 z-50 flex gap-3 md:hidden">
           <Link href="/contact">
             <Button size="sm" className="bg-primary px-5 py-2 hover:bg-primary/90" data-cta="service-sticky-quote">
