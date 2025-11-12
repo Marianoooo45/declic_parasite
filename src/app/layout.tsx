@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientBody from "./ClientBody";
+import { SiteHeader } from "@/components/site-header";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -23,7 +24,6 @@ export default function RootLayout({ children }:{ children: React.ReactNode }) {
       {/* JSON-LD LocalBusiness */}
       <script
         type="application/ld+json"
-        // @ts-ignore
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -45,7 +45,11 @@ export default function RootLayout({ children }:{ children: React.ReactNode }) {
           }),
         }}
       />
-      <ClientBody>{children}</ClientBody>
+      <ClientBody>
+        <SiteHeader />
+        <div className="h-20" aria-hidden />
+        {children}
+      </ClientBody>
     </html>
   );
 }
