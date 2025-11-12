@@ -1,10 +1,14 @@
 import { site } from "@/config/site";
+import { services } from "@/config/services";
 import { slugify } from "@/lib/slug";
 
 export default async function sitemap() {
   const base = "https://www.declicparasites.fr";
   const staticPages = [
-    "", "/zones-intervention"
+    "",
+    "/services",
+    "/contact",
+    "/zones-intervention",
   ].map((p) => ({
     url: `${base}${p || "/"}`,
     lastModified: new Date(),
@@ -15,5 +19,10 @@ export default async function sitemap() {
     lastModified: new Date(),
   }));
 
-  return [...staticPages, ...cityPages];
+  const servicePages = services.map((service) => ({
+    url: `${base}/services/${service.slug}`,
+    lastModified: new Date(),
+  }));
+
+  return [...staticPages, ...cityPages, ...servicePages];
 }
