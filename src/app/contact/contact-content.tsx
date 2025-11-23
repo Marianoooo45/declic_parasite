@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -16,15 +17,7 @@ import {
 } from "@/components/ui/select";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
-import {
-  CheckCircle2,
-  Clock,
-  Leaf,
-  Mail,
-  MapPin,
-  Phone,
-  Shield,
-} from "lucide-react";
+import { CheckCircle2, Clock, Mail, MapPin, Phone } from "lucide-react";
 
 const initialForm = {
   name: "",
@@ -117,39 +110,89 @@ export default function ContactPageContent() {
   return (
     <div className="relative min-h-screen bg-background">
       <section className="relative overflow-hidden py-20 text-white md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0f2919]/95 via-[#1d4e2b]/85 to-[#154225]/80" aria-hidden />
-        <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
-            Contact & devis express
-          </h1>
-          <p className="mt-4 text-lg text-white/85">
-            Réponse sous 1h ouvrée, diagnostic et intervention 24–48h sur {site.departement}. Un artisan certifié vous rappelle personnellement.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/75">
-            <span className="inline-flex items-center gap-2">
-              <Shield className="h-4 w-4 text-accent" /> Certibiocide & HACCP
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Leaf className="h-4 w-4 text-accent" /> Méthodes raisonnées
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-accent" /> Astreinte urgente
-            </span>
+        <Image
+          src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=80"
+          alt="Technicien désinsectisation inspectant un logement"
+          fill
+          className="absolute inset-0 h-full w-full object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0f2919]/90 via-[#1d4e2b]/85 to-[#0f2718]/88" aria-hidden />
+        <div className="relative mx-auto max-w-5xl px-6 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/90">
+            Réponse en moins d&apos;1h ouvrée
           </div>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <h1 className="mt-5 text-balance text-4xl font-semibold leading-tight md:text-5xl">
+            Contact & devis : choisissez votre canal préféré
+          </h1>
+          <p className="mt-4 text-pretty text-lg text-white/85 md:text-xl">
+            Formulaire en ligne, email direct ou appel téléphonique : nous nous adaptons à votre manière de communiquer pour
+            sécuriser rapidement votre habitat.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <Link href="#contact-form" className="inline-flex">
+              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/20 hover:bg-accent/90">
+                Remplir le formulaire
+              </Button>
+            </Link>
+            <a href={`mailto:${site.email}`} className="inline-flex" data-cta="contact-mail">
+              <Button
+                variant="outline"
+                className="rounded-full border-white/60 bg-white/15 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/25"
+              >
+                <Mail className="mr-2 h-5 w-5" /> Envoyer un mail
+              </Button>
+            </a>
+          </div>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
             <a href={phoneHref} data-cta="contact-call" className="inline-flex">
-              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/30 hover:bg-accent/90">
-                <Phone className="mr-2 h-5 w-5" /> Appeler {site.phone}
+              <Button
+                variant="secondary"
+                className="rounded-full border border-white/50 bg-white/15 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/25"
+              >
+                <Phone className="mr-2 h-5 w-5" /> Parler à un expert
               </Button>
             </a>
             <Link href="/services" className="inline-flex">
               <Button
-                variant="outline"
-                className="rounded-full border-white/60 bg-white/10 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/20"
+                variant="ghost"
+                className="rounded-full px-6 py-3 text-base font-semibold text-white hover:bg-white/15"
               >
                 Voir nos services
               </Button>
             </Link>
+          </div>
+          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Formulaire guidé",
+                description: "Détaillez votre situation en quelques champs, photos et préférences de rappel incluses.",
+                icon: CheckCircle2,
+              },
+              {
+                title: "Email direct",
+                description: `Envoyez-nous un message sur ${site.email} : nous répondons avec un plan d'action personnalisé.`,
+                icon: Mail,
+              },
+              {
+                title: "Appel prioritaire",
+                description: "Besoin d&apos;un diagnostic immédiat ? Un technicien vous rappelle pour caler une intervention.",
+                icon: Phone,
+              },
+            ].map((item) => (
+              <Card key={item.title} className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-semibold">{item.title}</h3>
+                    <p className="mt-1 text-sm text-white/85">{item.description}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -179,7 +222,7 @@ export default function ContactPageContent() {
                 </div>
               ) : null}
 
-              <form className="mt-8 space-y-6" onSubmit={handleSubmit} data-cta="contact-form">
+              <form className="mt-8 space-y-6" onSubmit={handleSubmit} data-cta="contact-form" id="contact-form">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-primary">Nom</label>
@@ -275,23 +318,28 @@ export default function ContactPageContent() {
             <div className="space-y-6">
               <Card className="rounded-3xl border border-primary/10 bg-white/90 p-6 shadow-lg">
                 <h3 className="text-xl font-semibold text-primary">Contact direct</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Choisissez ce qui vous convient le mieux : mail pour détailler, appel pour décider rapidement.
+                </p>
                 <div className="mt-4 space-y-4 text-sm text-muted-foreground">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 rounded-2xl bg-primary/5 p-3">
+                    <Mail className="mt-0.5 h-5 w-5 text-primary" />
+                    <div>
+                      <div className="font-semibold text-foreground">Email</div>
+                      <a href={`mailto:${site.email}`} className="hover:text-primary">
+                        {site.email}
+                      </a>
+                      <p className="text-xs text-muted-foreground">Réponse sous 1h ouvrée avec un plan écrit.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3 rounded-2xl bg-accent/10 p-3">
                     <Phone className="mt-0.5 h-5 w-5 text-accent" />
                     <div>
                       <div className="font-semibold text-foreground">Téléphone</div>
                       <a href={phoneHref} className="hover:text-primary">
                         {site.phone}
                       </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Email</div>
-                      <a href={`mailto:${site.email}`} className="hover:text-primary">
-                        {site.email}
-                      </a>
+                      <p className="text-xs text-muted-foreground">Privilégiez l'appel en cas d'urgence 24/7.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -308,6 +356,25 @@ export default function ContactPageContent() {
                       <p>Lun–Ven : 7h30–19h • Sam : 8h–17h • Urgences 24/7</p>
                     </div>
                   </div>
+                </div>
+              </Card>
+
+              <Card className="overflow-hidden rounded-3xl border border-primary/10 bg-white p-0 shadow-lg">
+                <div className="relative h-52 w-full">
+                  <Image
+                    src="https://images.unsplash.com/photo-1582719478250-cc69c40007a1?auto=format&fit=crop&w=1400&q=80"
+                    alt="Technicien équipé en combinaison lors d'une désinfection"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 360px, 100vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-primary">Un expert se déplace rapidement</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Véhicule banalisé, équipement Certibiocide et protocole adapté à votre logement ou votre commerce. Vous êtes
+                    informé de chaque étape.
+                  </p>
                 </div>
               </Card>
 
