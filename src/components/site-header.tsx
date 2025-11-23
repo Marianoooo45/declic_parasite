@@ -12,7 +12,7 @@ import { services } from "@/config/services";
 
 /* --------- NAV DATA --------- */
 const navigation = [
-  { label: "Nos engagements", href: "/#why" },
+  { label: "Nos engagements", href: "/nos-engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
   { label: "Contact", href: "/contact" },
 ];
@@ -96,7 +96,7 @@ function ServicesDropdown() {
         id="nav-services-menu"
         role="menu"
         className={cn(
-          "invisible absolute right-0 top-full z-50 mt-2 min-w-[18rem] origin-top rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-xl opacity-0 transition-all duration-150",
+          "invisible absolute left-1/2 top-full z-50 mt-2 w-[22rem] max-w-[90vw] -translate-x-1/2 origin-top rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-xl opacity-0 transition-all duration-150",
           open ? "visible translate-y-0 opacity-100" : "-translate-y-2"
         )}
       >
@@ -309,6 +309,11 @@ export function SiteHeader() {
 
         {/* CTA (desktop) */}
         <div className="hidden items-center gap-2 lg:flex">
+          <Link href="/contact" className="inline-flex" data-cta="nav-contact-form">
+            <Button variant="outline" size="sm" className="border-primary/60 text-primary hover:bg-primary/10">
+              Formulaire
+            </Button>
+          </Link>
           <a href={phoneHref} className="inline-flex" data-cta="nav-phone">
             <Button
               size="sm"
@@ -321,6 +326,11 @@ export function SiteHeader() {
 
         {/* Mobile right */}
         <div className="flex items-center gap-2 lg:hidden">
+          <Link href="/contact" className="inline-flex" data-cta="nav-contact-mobile">
+            <Button variant="outline" size="sm" className="border-primary/60 text-primary hover:bg-primary/10">
+              Formulaire
+            </Button>
+          </Link>
           <a
             href={phoneHref}
             className="inline-flex"
