@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter, Playfair_Display } from "next/font/google";
+
 import ClientBody from "./ClientBody";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { FloatingCta } from "@/components/floating-cta";
 import { site } from "@/config/site";
+
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: `${site.brand} | Dératisation & désinsectisation à ${site.city}`,
@@ -45,10 +52,13 @@ export default function RootLayout({ children }:{ children: React.ReactNode }) {
           }),
         }}
       />
-      <ClientBody>
-        <SiteHeader />
-        <div className="h-20" aria-hidden />
-        {children}
+      <ClientBody className={`${inter.variable} ${playfair.variable} flex min-h-screen flex-col text-base leading-relaxed`}>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1 pt-20 md:pt-20 lg:pt-24">{children}</main>
+          <SiteFooter />
+        </div>
+        <FloatingCta />
       </ClientBody>
     </html>
   );

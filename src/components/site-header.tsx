@@ -12,7 +12,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 /* --------- NAV DATA --------- */
 const navigation = [
   { label: "Accueil", href: "/" },
-  { label: "Pourquoi nous choisir", href: "#why" },
+  { label: "Nos engagements", href: "/#engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
   { label: "Contact", href: "/contact" },
 ];
@@ -85,7 +85,7 @@ function ServicesDropdown() {
               key={s.slug}
               href={`/services/${s.slug}`}
               role="menuitem"
-              className="group flex flex-col rounded-md p-3 transition-colors hover:bg-gray-50"
+              className="group flex flex-col rounded-xl border border-transparent p-3 transition-all hover:border-primary/20 hover:bg-primary/5"
               onClick={() => setOpen(false)}
               data-cta="nav-service"
             >
@@ -94,7 +94,7 @@ function ServicesDropdown() {
             </Link>
           ))}
         </div>
-        <div className="mt-2 border-t border-gray-100 pt-2">
+        <div className="mt-2 border-t border-primary/10 pt-3">
           <Link
             href="/services"
             className="flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary hover:bg-primary/5"
@@ -141,13 +141,13 @@ function MobileMenu() {
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-xl"
+            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white/95 backdrop-blur shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
               <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Menu</span>
               <button
                 type="button"
-                className="rounded-md p-2 text-gray-600 transition hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="rounded-full p-2 text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le menu"
               >
