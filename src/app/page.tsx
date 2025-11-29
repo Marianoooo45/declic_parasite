@@ -303,14 +303,20 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              <div className="relative h-64 overflow-hidden rounded-xl md:h-full md:min-h-[320px]">
-                <Image
-                  src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=1200&q=80"
-                  alt="Rue Bannier Orléans - Zone d'intervention Déclic Parasites"
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                />
+              
+              {/* MODIFICATION : REMPLACEMENT PHOTO PAR MAPS */}
+              <div className="relative h-64 overflow-hidden rounded-xl border border-white/20 shadow-2xl md:h-full md:min-h-[320px]">
+                 <iframe 
+                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr" 
+                   width="100%" 
+                   height="100%" 
+                   style={{ border: 0 }} 
+                   allowFullScreen 
+                   loading="lazy" 
+                   referrerPolicy="no-referrer-when-downgrade"
+                   className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
+                   title="Localisation Déclic Parasite Orléans"
+                 ></iframe>
               </div>
             </div>
           </div>
