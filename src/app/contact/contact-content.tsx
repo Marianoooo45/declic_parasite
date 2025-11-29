@@ -288,9 +288,9 @@ export default function ContactPageContent() {
               )}
 
               <form
-                className="mt-8 space-y-6"
-                onSubmit={handleSubmit}
                 id="contact-form"
+                className="mt-8 space-y-6 scroll-mt-72"
+                onSubmit={handleSubmit}
               >
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
