@@ -22,7 +22,8 @@ export function SiteFooter({ className }: { className?: string }) {
   return (
     <footer
       className={cn(
-        "border-t-2 border-primary/10 bg-gradient-to-br from-secondary/30 via-white to-secondary/20 text-foreground",
+        // AJOUT DE "pb-24 md:pb-16" ici
+        "border-t-2 border-primary/10 bg-gradient-to-br from-secondary/30 via-white to-secondary/20 text-foreground pb-24 md:pb-16",
         className,
       )}
     >

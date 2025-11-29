@@ -253,7 +253,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 </div>
               </div>
 
-              <div className="relative h-96 overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl lg:h-full lg:min-h-[500px]">
+              {/* MODIF: h-64 sur mobile */}
+              <div className="relative h-64 overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl md:h-96 lg:h-full lg:min-h-[500px]">
                 <Image
                   src={service.heroImage}
                   alt={service.title}

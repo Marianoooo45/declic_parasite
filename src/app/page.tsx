@@ -49,14 +49,16 @@ export default function Home() {
           </span>
         </div>
 
-        <div className="relative mx-auto flex min-h-[85vh] max-w-7xl flex-col justify-center px-6 py-20 lg:min-h-[90vh]">
+        {/* MODIF: padding x réduit sur mobile (px-4) */}
+        <div className="relative mx-auto flex min-h-[85vh] max-w-7xl flex-col justify-center px-4 py-20 md:px-6 lg:min-h-[90vh]">
           <div className="max-w-3xl space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
               <Award className="h-4 w-4 text-accent" />
               Certifié Certibiocide — Expert local depuis 2018
             </div>
 
-            <h1 className="text-balance text-5xl font-bold leading-[1.1] tracking-tight text-shadow-lg md:text-6xl lg:text-7xl">
+            {/* MODIF: text-4xl sur mobile */}
+            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-shadow-lg md:text-6xl lg:text-7xl">
               Urgence nuisibles à Orléans ?
             </h1>
 
@@ -127,10 +129,12 @@ export default function Home() {
       </div>
 
       {/* PROBLÈMES COURANTS */}
-      <section className="bg-secondary/30 py-20">
-        <div className="container mx-auto max-w-7xl px-6">
+      {/* MODIF: py-12 sur mobile */}
+      <section className="bg-secondary/30 py-12 lg:py-20">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className="mb-12 text-center">
-            <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+            {/* MODIF: text-3xl sur mobile */}
+            <h2 className="text-balance text-3xl font-bold text-primary md:text-5xl">
               Vous avez remarqué...
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -197,11 +201,13 @@ export default function Home() {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="py-20">
-        <div className="container mx-auto max-w-7xl px-6">
+      {/* MODIF: py-12 */}
+      <section className="py-12 lg:py-20">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <span className="text-sm font-bold uppercase tracking-widest text-accent">Nos prestations</span>
-            <h2 className="mt-3 text-balance text-4xl font-bold text-primary md:text-5xl">
+            {/* MODIF: text-3xl */}
+            <h2 className="mt-3 text-balance text-3xl font-bold text-primary md:text-5xl">
               Solutions professionnelles anti-nuisibles
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -254,10 +260,12 @@ export default function Home() {
       </section>
 
       {/* POURQUOI NOUS — CHIFFRES */}
-      <section className="bg-gradient-primary py-20 text-white">
-        <div className="container mx-auto max-w-7xl px-6">
+      {/* MODIF: py-12 */}
+      <section className="bg-gradient-primary py-12 text-white lg:py-20">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className="mb-12 text-center">
-            <h2 className="text-balance text-4xl font-bold md:text-5xl">
+            {/* MODIF: text-3xl */}
+            <h2 className="text-balance text-3xl font-bold md:text-5xl">
               Pourquoi Orléans nous fait confiance
             </h2>
             <p className="mt-4 text-lg text-white/80">
@@ -304,7 +312,6 @@ export default function Home() {
                 </Link>
               </div>
               
-              {/* MODIFICATION : REMPLACEMENT PHOTO PAR MAPS */}
               <div className="relative h-64 overflow-hidden rounded-xl border border-white/20 shadow-2xl md:h-full md:min-h-[320px]">
                  <iframe 
                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr" 
@@ -324,10 +331,12 @@ export default function Home() {
       </section>
 
       {/* PROCESS 3 ÉTAPES */}
-      <section className="py-20">
-        <div className="container mx-auto max-w-6xl px-6">
+      {/* MODIF: py-12 */}
+      <section className="py-12 lg:py-20">
+        <div className="container mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-12 text-center">
-            <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+            {/* MODIF: text-3xl */}
+            <h2 className="text-balance text-3xl font-bold text-primary md:text-5xl">
               Intervention en 3 étapes simples
             </h2>
           </div>
@@ -365,9 +374,11 @@ export default function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-secondary/50 py-20">
-        <div className="container mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+      {/* MODIF: py-12 */}
+      <section className="bg-secondary/50 py-12 lg:py-20">
+        <div className="container mx-auto max-w-4xl px-4 text-center md:px-6">
+          {/* MODIF: text-3xl */}
+          <h2 className="text-balance text-3xl font-bold text-primary md:text-5xl">
             Protégez votre habitat dès aujourd'hui
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">

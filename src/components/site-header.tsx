@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
-// Import du nouveau composant Logo
 import { LogoDeclic } from "@/components/logo-declic";
 
 const navigation = [
@@ -161,7 +160,8 @@ function MobileMenu() {
     <>
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-2.5 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
+        // MODIF: p-3 au lieu de p-2.5 pour agrandir la zone de touche
+        className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-3 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
         onClick={() => setOpen(true)}
         aria-label="Ouvrir le menu"
       >
@@ -267,13 +267,9 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border glass shadow-sm">
       <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
         
-        {/* SECTION LOGO MISE À JOUR */}
         <Link href="/" className="flex items-center" aria-label={site.brand}>
-          {/* Le nouveau logo SVG qui contient tout le texte */}
-          {/* J'ai augmenté un peu la taille (h-14 md:h-16) pour la lisibilité */}
           <LogoDeclic className="h-9 w-auto md:h-14" />
         </Link>
-        {/* FIN SECTION LOGO */}
 
         <nav
           aria-label="Navigation principale"
