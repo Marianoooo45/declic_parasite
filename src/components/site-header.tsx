@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
@@ -9,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
+// Import du nouveau composant Logo
+import { LogoDeclic } from "@/components/logo-declic";
 
 const navigation = [
   { label: "Nos engagements", href: "/nos-engagements" },
@@ -265,20 +266,14 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border glass shadow-sm">
       <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
-        <Link href="/" className="flex flex-col" aria-label={site.brand}>
-          <Image
-            src="/logo-declic.svg"
-            alt={`${site.brand} logo`}
-            width={180}
-            height={48}
-            className="h-10 w-auto md:h-12"
-            priority
-            sizes="(min-width: 768px) 180px, 160px"
-          />
-          <span className="mt-0.5 text-[10px] font-medium tracking-wide text-muted-foreground md:text-xs">
-            Experts nuisibles — Orléans & Loiret
-          </span>
+        
+        {/* SECTION LOGO MISE À JOUR */}
+        <Link href="/" className="flex items-center" aria-label={site.brand}>
+          {/* Le nouveau logo SVG qui contient tout le texte */}
+          {/* J'ai augmenté un peu la taille (h-14 md:h-16) pour la lisibilité */}
+          <LogoDeclic className="h-14 w-auto md:h-16" />
         </Link>
+        {/* FIN SECTION LOGO */}
 
         <nav
           aria-label="Navigation principale"

@@ -143,25 +143,25 @@ export default function Home() {
               {
                 symptom: "Bruits dans les murs",
                 pest: "Rats & Souris",
-                image: "https://images.unsplash.com/photo-1616627547584-bf28cfedf253?auto=format&fit=crop&w=800&q=80",
+                image: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/deratisation"
               },
               {
                 symptom: "Piqûres au réveil",
                 pest: "Punaises de lit",
-                image: "https://images.unsplash.com/photo-1631049552240-59c37f38802b?auto=format&fit=crop&w=800&q=80",
+                image: "https://images.unsplash.com/photo-1680162984776-841184954e9e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/traitement-punaises-de-lit"
               },
               {
                 symptom: "Traces dans la cuisine",
                 pest: "Cafards & Blattes",
-                image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80",
+                image: "https://images.unsplash.com/photo-1727198634627-645ef5356455?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/traitement-cafards-et-blattes"
               },
               {
                 symptom: "Nid visible",
                 pest: "Guêpes & Frelons",
-                image: "https://images.unsplash.com/photo-1594399741693-22d5626d3d3e?auto=format&fit=crop&w=800&q=80",
+                image: "https://images.unsplash.com/photo-1755039022246-d7e7f58b54c7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/guepes-frelons"
               }
             ].map((item, i) => (
