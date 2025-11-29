@@ -3,23 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
 
-/* --------- NAV DATA --------- */
 const navigation = [
-  { label: "Nos engagements", href: "/#why" },
+  { label: "Nos engagements", href: "/nos-engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
   { label: "Contact", href: "/contact" },
 ];
 
 const serviceItems = services.slice(0, 8);
 
-/* --------- SERVICES DROPDOWN --------- */
 function ServicesDropdown() {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -70,7 +68,7 @@ function ServicesDropdown() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href="/services" className="transition-colors hover:text-primary">
+      <Link href="/services" className="font-medium transition-colors hover:text-primary">
         Services
       </Link>
       <button
@@ -96,37 +94,32 @@ function ServicesDropdown() {
         id="nav-services-menu"
         role="menu"
         className={cn(
-          "invisible absolute right-0 top-full z-50 mt-2 min-w-[18rem] origin-top rounded-lg border border-gray-200 bg-white p-2 text-sm shadow-xl opacity-0 transition-all duration-150",
+          "invisible absolute left-1/2 top-full z-50 mt-3 w-[26rem] max-w-[90vw] -translate-x-1/2 origin-top rounded-2xl border border-border bg-white p-3 shadow-realistic opacity-0 transition-all duration-200",
           open ? "visible translate-y-0 opacity-100" : "-translate-y-2"
         )}
       >
-        <div
-          className={cn(
-            "grid gap-2 p-1",
-            serviceItems.length > 6 ? "lg:grid-cols-2" : "grid-cols-1"
-          )}
-        >
+        <div className="grid gap-2 p-1 lg:grid-cols-2">
           {serviceItems.map((s) => (
             <Link
               key={s.slug}
               href={`/services/${s.slug}`}
               role="menuitem"
-              className="group flex flex-col rounded-xl border border-transparent bg-white p-3 hover:border-primary/10 hover:bg-primary/5"
+              className="group flex flex-col gap-1 rounded-xl border border-transparent bg-white p-3 transition-all hover:border-primary/20 hover:bg-primary/5 hover:shadow-sm"
               onClick={() => setOpen(false)}
             >
-              <span className="font-semibold">{s.title}</span>
-              <span className="text-xs text-muted-foreground">{s.short}</span>
+              <span className="text-sm font-semibold text-foreground group-hover:text-primary">{s.title}</span>
+              <span className="text-xs leading-tight text-muted-foreground">{s.short}</span>
             </Link>
           ))}
         </div>
-        <div className="border-t border-primary/10 p-3">
+        <div className="mt-2 border-t border-border pt-2">
           <Link
             href="/services"
-            className="flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wide text-primary hover:bg-primary/5"
+            className="flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
             onClick={() => setOpen(false)}
           >
-            Tous les services
-            <ChevronDown className="h-3 w-3 -rotate-90" />
+            Tous nos services
+            <ChevronDown className="h-3.5 w-3.5 -rotate-90" />
           </Link>
         </div>
       </div>
@@ -134,7 +127,6 @@ function ServicesDropdown() {
   );
 }
 
-/* --------- MOBILE MENU --------- */
 function MobileMenu() {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
@@ -168,7 +160,7 @@ function MobileMenu() {
     <>
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white p-2 text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
+        className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-2.5 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
         onClick={() => setOpen(true)}
         aria-label="Ouvrir le menu"
       >
@@ -177,20 +169,20 @@ function MobileMenu() {
 
       {open && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
-          <div className="absolute inset-0 bg-black/40" aria-hidden />
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
           <div
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white/95 shadow-2xl backdrop-blur"
+            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <div className="flex items-center justify-between border-b border-border bg-secondary/30 px-6 py-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
                 Menu
               </span>
               <button
                 type="button"
-                className="rounded-full p-2 text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="rounded-full p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 onClick={() => setOpen(false)}
                 aria-label="Fermer le menu"
               >
@@ -198,26 +190,26 @@ function MobileMenu() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-5 py-6">
-              <nav className="space-y-5">
+            <div className="flex-1 overflow-y-auto px-6 py-6">
+              <nav className="space-y-6">
                 <Link
                   href="/"
-                  className="block text-base font-semibold"
+                  className="block text-base font-semibold text-foreground hover:text-primary"
                   onClick={() => setOpen(false)}
                 >
                   Accueil
                 </Link>
 
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                     Services
                   </p>
-                  <div className="mt-3 space-y-3">
+                  <div className="space-y-2">
                     {serviceItems.map((s) => (
                       <Link
                         key={s.slug}
                         href={`/services/${s.slug}`}
-                        className="block rounded-md border border-gray-100 p-3 text-sm transition hover:border-primary hover:text-primary"
+                        className="block rounded-xl border border-border bg-secondary/30 p-3 text-sm transition-all hover:border-primary hover:bg-primary/5 hover:text-primary"
                         onClick={() => setOpen(false)}
                       >
                         <span className="block font-semibold">{s.title}</span>
@@ -228,10 +220,10 @@ function MobileMenu() {
                     ))}
                     <Link
                       href="/services"
-                      className="inline-flex items-center text-xs font-semibold uppercase tracking-wide text-primary"
+                      className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:underline"
                       onClick={() => setOpen(false)}
                     >
-                      Tous les services
+                      Tous les services →
                     </Link>
                   </div>
                 </div>
@@ -240,7 +232,7 @@ function MobileMenu() {
                   <Link
                     key={n.href}
                     href={n.href}
-                    className="block text-base font-semibold"
+                    className="block text-base font-semibold text-foreground hover:text-primary"
                     onClick={() => setOpen(false)}
                   >
                     {n.label}
@@ -249,9 +241,10 @@ function MobileMenu() {
               </nav>
             </div>
 
-            <div className="border-t border-gray-200 p-5">
+            <div className="border-t border-border bg-secondary/20 p-6">
               <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="block">
-                <Button size="sm" className="w-full">
+                <Button size="lg" className="w-full bg-gradient-accent shadow-lg">
+                  <Phone className="h-5 w-5" />
                   Appeler {site.phone}
                 </Button>
               </a>
@@ -263,7 +256,6 @@ function MobileMenu() {
   );
 }
 
-/* --------- HEADER --------- */
 export function SiteHeader() {
   const phoneHref = useMemo(
     () => `tel:${site.phone.replace(/\s+/g, "")}`,
@@ -271,26 +263,26 @@ export function SiteHeader() {
   );
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/85 backdrop-blur-md">
-      {/* nav height contrôlée via h-14/md:h-16 */}
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 md:h-16">
-        {/* LOGO */}
-        <Link href="/" className="flex items-center" aria-label={site.brand}>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border glass shadow-sm">
+      <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
+        <Link href="/" className="flex flex-col" aria-label={site.brand}>
           <Image
             src="/logo-declic.svg"
             alt={`${site.brand} logo`}
-            width={140}
-            height={40}
-            className="h-8 w-auto md:h-9"
+            width={180}
+            height={48}
+            className="h-10 w-auto md:h-12"
             priority
-            sizes="(min-width: 1024px) 140px, 120px"
+            sizes="(min-width: 768px) 180px, 160px"
           />
+          <span className="mt-0.5 text-[10px] font-medium tracking-wide text-muted-foreground md:text-xs">
+            Experts nuisibles — Orléans & Loiret
+          </span>
         </Link>
 
-        {/* NAV LINKS (desktop) */}
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-6 text-sm font-medium lg:flex"
+          className="hidden items-center gap-8 text-[15px] font-medium lg:flex"
         >
           <Link href="/" className="transition-colors hover:text-primary">
             Accueil
@@ -307,27 +299,32 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* CTA (desktop) */}
-        <div className="hidden items-center gap-2 lg:flex">
-          <a href={phoneHref} className="inline-flex" data-cta="nav-phone">
+        <div className="flex items-center gap-3">
+          <a href={phoneHref} className="hidden lg:inline-flex" data-cta="nav-phone">
             <Button
-              size="sm"
-              className="bg-primary px-4 hover:bg-primary/90"
+              size="lg"
+              variant="outline"
+              className="border-primary/30 font-semibold text-primary hover:bg-primary/10"
             >
+              <Phone className="h-4 w-4" />
               {site.phone}
             </Button>
           </a>
-        </div>
+          <Link href="/contact" className="hidden lg:inline-flex" data-cta="nav-devis">
+            <Button
+              size="lg"
+              className="bg-gradient-accent font-semibold shadow-lg shadow-accent/20 hover:shadow-xl"
+            >
+              Devis Gratuit
+            </Button>
+          </Link>
 
-        {/* Mobile right */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href={phoneHref}
-            className="inline-flex"
-            data-cta="nav-phone-mobile-short"
-          >
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Appeler
+          <a href={phoneHref} className="inline-flex lg:hidden" data-cta="nav-phone-mobile">
+            <Button
+              size="default"
+              className="bg-gradient-accent font-semibold shadow-md"
+            >
+              <Phone className="h-4 w-4" />
             </Button>
           </a>
           <MobileMenu />

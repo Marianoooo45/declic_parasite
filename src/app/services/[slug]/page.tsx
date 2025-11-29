@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
@@ -15,13 +14,15 @@ import { site } from "@/config/site";
 import { services } from "@/config/services";
 import {
   ArrowRight,
-  Check,
+  Award,
   CheckCircle2,
   Clock,
   Phone,
-  ShieldCheck,
+  Shield,
   Star,
+  Zap,
 } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 
 const baseUrl = "https://www.declicparasites.fr";
 const euroFormatter = new Intl.NumberFormat("fr-FR", {
@@ -89,11 +90,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
 
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
-  const pasIntro = [
-    `Problème — ${service.title} menacent votre confort ou votre activité à ${site.city}. Les signaux d'alerte se multiplient et il devient urgent d'agir avant la prolifération.`,
-    "Agiter — Sans plan d'action, les nuisibles se répandent, endommagent vos biens et transmettent des risques sanitaires pour votre famille ou vos clients.",
-    `Solution — ${site.brand} intervient en 24–48h avec une méthodologie professionnelle Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.`,
-  ];
+  
   const relatedServices = services
     .filter((item) => item.slug !== service.slug)
     .slice(0, 3);
@@ -188,279 +185,397 @@ export default async function ServicePage({ params }: ServicePageProps) {
         />
       ) : null}
 
-      <div className="relative min-h-screen bg-white">
-        <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-white to-secondary" aria-hidden />
-          <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-tr from-primary/10 via-transparent to-transparent lg:block" aria-hidden />
-          <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-16 lg:px-12">
-            <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-                Service {site.brand}
-              </span>
-              <h1 className="text-balance text-4xl font-semibold text-primary md:text-5xl">
-                {service.title}
-              </h1>
-              <p className="text-pretty text-lg text-muted-foreground">
-                {service.description}
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <Link href="/contact" data-cta="service-quote" className="inline-flex">
-                  <Button className="rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90">
-                    Devis gratuit
-                  </Button>
-                </Link>
-                <a href={phoneHref} data-cta="service-call" className="inline-flex">
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-primary/30 bg-white px-8 py-3 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
-                  >
-                    <Phone className="mr-2 h-4 w-4" /> Appeler
-                  </Button>
-                </a>
-              </div>
-              <div className="grid gap-4 text-sm text-muted-foreground md:grid-cols-2">
-                {pasIntro.map((paragraph, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/80 p-4 shadow-sm"
-                  >
-                    <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <CheckCircle2 className="h-4 w-4" />
-                    </div>
-                    <p>{paragraph}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                <span className="inline-flex items-center gap-2">
-                  <Star className="h-4 w-4 text-primary" /> +98% de clients satisfaits
-                </span>
-                <Link
-                  href="/#avis"
-                  className="inline-flex items-center gap-1 text-primary hover:underline"
-                >
-                  Voir les avis Google
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-primary/10 bg-white shadow-2xl lg:justify-self-end">
-              <Image
-                src={service.heroImage}
-                alt={service.title}
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                priority
-              />
+      <div className="relative min-h-screen">
+        {/* HERO IMMERSIF */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 py-24 text-white lg:py-32">
+          <Image
+            src={service.heroImage}
+            alt={service.title}
+            fill
+            className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
+            priority
+            sizes="100vw"
+          />
+
+          <div className="absolute right-6 top-6 z-10">
+            <div className="rounded-full border-2 border-white/30 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-sm">
+              <Zap className="inline h-4 w-4" /> Intervention 24-48h
             </div>
           </div>
-        </section>
 
-        <section className="py-16">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
-            <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
-              Les bénéfices clés
-            </h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              Ce que nous mettons en place pour vous offrir un environnement sain et durablement protégé.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {service.benefits.map((benefit) => (
-                <span
-                  key={benefit}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
-                >
-                  <CheckCircle2 className="h-4 w-4" />
-                  {benefit}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-secondary/60 py-16">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
-            <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
-              Notre intervention détaillée
-            </h2>
-            <p className="mt-3 max-w-3xl text-muted-foreground">
-              Chaque étape est documentée et ajustée selon votre site : nous vous guidons avant, pendant et après la prestation pour sécuriser vos espaces.
-            </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {service.features.map((feature) => (
-                <Card
-                  key={feature}
-                  className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/95 p-5 shadow-md"
-                >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <Check className="h-4 w-4" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">{feature}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {service.priceFrom ? (
-          <section className="py-16">
-            <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
-              <Card className="flex flex-col gap-8 rounded-3xl border border-primary/20 bg-primary/5 p-8 shadow-xl md:flex-row md:items-center md:justify-between">
-                <div>
-                  <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
-                    À partir de {euroFormatter.format(service.priceFrom)}
-                  </h2>
-                  <p className="mt-2 max-w-xl text-muted-foreground">
-                    Tarif indicatif incluant déplacement, diagnostic complet et plan d&apos;action personnalisé.
-                  </p>
-                  <div className="mt-4 space-y-2 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 text-primary" /> Garantie de résultat et suivi 30 jours
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-primary" /> Intervention sous 24–48h partout dans le {site.departement}
-                    </div>
-                  </div>
+          <div className="relative mx-auto max-w-7xl px-6">
+            <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                  <Award className="h-4 w-4 text-accent" />
+                  Service {site.brand}
                 </div>
-                <div className="flex flex-col gap-4 md:items-end">
-                  <Link href="/contact">
+
+                <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+                  {service.title}
+                </h1>
+
+                <p className="text-pretty text-xl leading-relaxed text-white/90">
+                  {service.description}
+                </p>
+
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <a href={phoneHref} data-cta="service-hero-call">
+                    <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
+                      <Phone className="h-5 w-5" />
+                      Appeler maintenant
+                    </Button>
+                  </a>
+                  <Link href="/contact" data-cta="service-hero-form">
                     <Button
                       size="lg"
-                      className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90"
-                      data-cta="service-price-contact"
+                      variant="outline"
+                      className="h-14 border-2 border-white bg-white/10 px-10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
                     >
-                      Obtenir mon devis précis
+                      Devis gratuit
+                      <ArrowRight className="h-5 w-5" />
                     </Button>
                   </Link>
-                  <Link
-                    href="/services"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
-                  >
-                    Découvrir nos autres prestations
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
                 </div>
-              </Card>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { icon: Shield, text: "Certifié Certibiocide" },
+                    { icon: Star, text: "98% satisfaits" },
+                    { icon: Clock, text: "Devis sous 1h" },
+                    { icon: Award, text: "Garantie résultat" }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 rounded-xl bg-white/10 p-3 backdrop-blur-sm">
+                      <item.icon className="h-5 w-5 text-accent" />
+                      <span className="text-sm font-semibold">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative h-96 overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl lg:h-full lg:min-h-[500px]">
+                <Image
+                  src={service.heroImage}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                />
+                {service.priceFrom && (
+                  <div className="absolute right-6 top-6 rounded-full bg-accent px-6 py-3 text-lg font-bold text-white shadow-xl">
+                    dès {euroFormatter.format(service.priceFrom)}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PROBLÈME → SOLUTION */}
+        <section className="bg-secondary/30 py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="grid gap-12 lg:grid-cols-3">
+              <AnimatedSection delay={0}>
+                <div className="h-full rounded-2xl border-2 border-red-500/20 bg-white p-8 shadow-realistic">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-500/10">
+                    <span className="text-3xl">⚠️</span>
+                  </div>
+                  <h3 className="mb-3 text-2xl font-bold text-red-700">Problème</h3>
+                  <p className="leading-relaxed text-muted-foreground">
+                    {service.title} menacent votre confort ou votre activité à {site.city}. 
+                    Les signaux d'alerte se multiplient et il devient urgent d'agir avant la prolifération.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.1}>
+                <div className="h-full rounded-2xl border-2 border-amber-500/20 bg-white p-8 shadow-realistic">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-amber-500/10">
+                    <span className="text-3xl">🚨</span>
+                  </div>
+                  <h3 className="mb-3 text-2xl font-bold text-amber-700">Risques</h3>
+                  <p className="leading-relaxed text-muted-foreground">
+                    Sans plan d'action, les nuisibles se répandent, endommagent vos biens 
+                    et transmettent des risques sanitaires pour votre famille ou vos clients.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.2}>
+                <div className="h-full rounded-2xl border-2 border-primary/20 bg-white p-8 shadow-realistic">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary">
+                    <CheckCircle2 className="h-7 w-7 text-white" />
+                  </div>
+                  <h3 className="mb-3 text-2xl font-bold text-primary">Solution</h3>
+                  <p className="leading-relaxed text-muted-foreground">
+                    {site.brand} intervient en 24–48h avec une méthodologie professionnelle 
+                    Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
+        {/* BÉNÉFICES CLÉS */}
+        <section className="py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="mb-12 text-center">
+              <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+                Les bénéfices clés
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Ce que nous mettons en place pour vous offrir un environnement sain et protégé
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {service.benefits.map((benefit, i) => (
+                <AnimatedSection key={benefit} delay={0.05 * i}>
+                  <div className="flex items-start gap-3 rounded-xl border-2 border-primary/20 bg-white p-4 shadow-lg transition-all hover:-translate-y-1 hover:border-primary hover:shadow-xl">
+                    <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+                    <span className="font-semibold text-foreground">{benefit}</span>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* NOTRE INTERVENTION */}
+        <section className="bg-gradient-primary py-20 text-white">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="mb-12 text-center">
+              <h2 className="text-balance text-4xl font-bold md:text-5xl">
+                Notre intervention détaillée
+              </h2>
+              <p className="mt-4 text-lg text-white/90">
+                Chaque étape documentée et ajustée selon votre site
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {service.features.map((feature, i) => (
+                <AnimatedSection key={feature} delay={0.05 * i}>
+                  <div className="flex items-start gap-4 rounded-2xl border-2 border-white/20 bg-white/10 p-6 backdrop-blur-sm">
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent">
+                      <CheckCircle2 className="h-6 w-6 text-white" />
+                    </div>
+                    <p className="leading-relaxed">{feature}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TARIF */}
+        {service.priceFrom && (
+          <section className="py-20">
+            <div className="mx-auto max-w-6xl px-6">
+              <div className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-realistic">
+                <div className="grid gap-0 md:grid-cols-[1.3fr_0.7fr]">
+                  <div className="p-10 md:p-12">
+                    <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-sm font-bold text-accent">
+                      <Star className="h-4 w-4" />
+                      Tarif indicatif
+                    </div>
+                    
+                    <div className="mb-4 text-5xl font-bold text-primary md:text-6xl">
+                      {euroFormatter.format(service.priceFrom)}
+                    </div>
+                    
+                    <p className="mb-6 text-lg text-muted-foreground">
+                      Tarif de base incluant déplacement, diagnostic complet et plan d'action personnalisé.
+                    </p>
+
+                    <div className="space-y-3">
+                      {[
+                        { icon: Shield, text: "Garantie de résultat et suivi 30 jours" },
+                        { icon: Clock, text: "Intervention sous 24–48h dans le Loiret" },
+                        { icon: Award, text: "Rapport détaillé avec photos" }
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-center gap-3">
+                          <item.icon className="h-5 w-5 text-primary" />
+                          <span className="text-sm font-medium">{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-center gap-4 bg-secondary/30 p-10">
+                    <Link href="/contact" data-cta="service-price-form">
+                      <Button size="lg" className="h-14 w-full text-lg font-bold shadow-lg">
+                        Obtenir mon devis précis
+                        <ArrowRight className="h-5 w-5" />
+                      </Button>
+                    </Link>
+                    <a href={phoneHref} data-cta="service-price-call">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="h-14 w-full border-2 border-primary text-lg font-bold text-primary hover:bg-primary hover:text-white"
+                      >
+                        <Phone className="h-5 w-5" />
+                        {site.phone}
+                      </Button>
+                    </a>
+                    <Link
+                      href="/services"
+                      className="mt-2 text-center text-sm font-semibold text-primary hover:underline"
+                    >
+                      Voir nos autres prestations →
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
-        ) : null}
+        )}
 
-        <section className="bg-primary py-16 text-white">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
-            <div className="grid gap-8 md:grid-cols-2 md:items-center">
-              <div>
-                <h2 className="text-balance text-3xl font-semibold md:text-4xl">
+        {/* FAQ */}
+        {service.faqs.length > 0 && (
+          <section className="bg-secondary/30 py-20">
+            <div className="mx-auto max-w-4xl px-6">
+              <div className="mb-12 text-center">
+                <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
                   Questions fréquentes
                 </h2>
-                <p className="mt-3 text-white/80">
-                  Besoin de précisions avant de programmer l&apos;intervention ? Nos techniciens restent joignables et vous accompagnent jusqu&apos;à la résolution complète.
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Besoin de précisions ? Nos techniciens restent joignables
                 </p>
               </div>
-              <Accordion type="single" collapsible className="w-full rounded-xl border border-white/10 bg-white/5 p-4">
+
+              <Accordion type="single" collapsible className="space-y-4">
                 {service.faqs.map((faq, index) => (
-                  <AccordionItem key={faq.q} value={`faq-${index}`}>
-                    <AccordionTrigger className="text-left text-base font-semibold text-white">
+                  <AccordionItem
+                    key={index}
+                    value={`faq-${index}`}
+                    className="rounded-2xl border-2 border-primary/20 bg-white px-6 shadow-lg"
+                  >
+                    <AccordionTrigger className="text-left text-lg font-bold text-primary hover:text-accent">
                       {faq.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-sm text-white/80">
+                    <AccordionContent className="text-base leading-relaxed text-muted-foreground">
                       {faq.a}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section className="py-16">
-          <div className="mx-auto w-full max-w-7xl px-4 md:px-8 lg:px-12">
-            <div className="grid gap-10 rounded-3xl border border-primary/15 bg-secondary/80 p-8 shadow-xl md:grid-cols-[1.15fr_0.85fr] md:p-12">
-              <div className="space-y-6">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-                  Conseil personnalisé
-                </span>
-                <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
-                  Parlons de votre situation
-                </h2>
-                <p className="max-w-xl text-base text-primary/80">
-                  Un conseiller vous rappelle en moins d&apos;une heure ouvrée pour préparer une intervention discrète, efficace et adaptée à votre lieu.
-                </p>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {["Diagnostic précis sur site", "Plan d&apos;action certifié Certibiocide", "Suivi après intervention", "Déplacement dans tout le département"].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-white/80 p-4 text-sm text-primary/80 shadow-sm"
-                    >
-                      <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
-                        <CheckCircle2 className="h-4 w-4" />
-                      </div>
-                      <p>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col gap-6 rounded-3xl border border-primary/10 bg-white/90 p-6 shadow-lg md:p-8">
-                <div className="space-y-3 text-primary">
-                  <h3 className="text-lg font-semibold">Contact rapide</h3>
-                  <p className="text-sm text-primary/70">
-                    Laissez-nous vos coordonnées ou appelez directement nos experts pour une prise en charge immédiate.
+        {/* CTA FINAL */}
+        <section className="py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="overflow-hidden rounded-3xl bg-gradient-primary text-white shadow-2xl">
+              <div className="grid gap-10 p-10 md:grid-cols-[1.3fr_0.7fr] md:items-center md:p-12">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+                    <Zap className="h-4 w-4 text-accent" />
+                    Conseil personnalisé
+                  </div>
+                  
+                  <h2 className="text-balance text-4xl font-bold md:text-5xl">
+                    Parlons de votre situation
+                  </h2>
+                  
+                  <p className="text-lg text-white/90">
+                    Un conseiller vous rappelle en moins d'une heure ouvrée pour préparer 
+                    une intervention discrète, efficace et adaptée à votre lieu.
                   </p>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {[
+                      "Diagnostic précis sur site",
+                      "Plan d'action certifié",
+                      "Suivi après intervention",
+                      "Déplacement Loiret"
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-3 rounded-xl bg-white/10 p-3 backdrop-blur-sm">
+                        <CheckCircle2 className="h-5 w-5 text-accent" />
+                        <span className="text-sm font-semibold">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <Link href="/contact" className="inline-flex" data-cta="service-final-cta">
-                    <Button className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90">
+
+                <div className="flex flex-col gap-4 rounded-2xl border-2 border-white/20 bg-white/10 p-6 backdrop-blur-sm">
+                  <h3 className="text-xl font-bold">Contact rapide</h3>
+                  <p className="text-sm text-white/90">
+                    Laissez-nous vos coordonnées ou appelez directement
+                  </p>
+                  
+                  <Link href="/contact" data-cta="service-final-form">
+                    <Button size="lg" className="h-14 w-full bg-accent text-lg font-bold hover:bg-accent/90">
                       Demander un devis gratuit
                     </Button>
                   </Link>
-                  <a href={phoneHref} className="inline-flex" data-cta="service-final-call">
+                  
+                  <a href={phoneHref} data-cta="service-final-call">
                     <Button
+                      size="lg"
                       variant="outline"
-                      className="rounded-full border-primary/30 bg-white px-6 py-3 text-base font-semibold text-primary shadow-md hover:bg-primary/10"
+                      className="h-14 w-full border-2 border-white bg-white/10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
                     >
-                      <Phone className="mr-2 h-4 w-4" /> {site.phone}
+                      <Phone className="h-5 w-5" />
+                      {site.phone}
                     </Button>
                   </a>
                 </div>
-                <div className="flex flex-col gap-4 rounded-2xl bg-primary/5 p-5 text-sm text-primary md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-center gap-3">
-                    <Star className="h-5 w-5 text-accent" />
-                    <span>Intervention sous 24–48h et suivi client dédié</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <ShieldCheck className="h-5 w-5 text-accent" />
-                    <span>Garanties claires et traçabilité des traitements</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12">
-              <h2 className="text-balance text-2xl font-semibold text-primary md:text-3xl">
-                Autres services qui pourraient vous intéresser
-              </h2>
-              <div className="mt-6 grid gap-6 md:grid-cols-3">
-                {relatedServices.map((related) => (
-                  <Card
-                    key={related.slug}
-                    className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-primary/10 bg-white/90 p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl"
-                  >
-                    <div className="space-y-3">
-                      <h3 className="text-lg font-semibold text-primary">{related.title}</h3>
-                      <p className="text-sm text-muted-foreground">{related.short}</p>
-                    </div>
-                    <Link href={`/services/${related.slug}`} className="inline-flex" data-cta="service-related">
-                      <Button className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md hover:bg-primary/90">
-                        Découvrir
-                        <ArrowRight className="h-4 w-4" />
-                      </Button>
-                    </Link>
-                  </Card>
-                ))}
               </div>
             </div>
           </div>
         </section>
+
+        {/* SERVICES CONNEXES */}
+        {relatedServices.length > 0 && (
+          <section className="bg-secondary/30 py-20">
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="mb-12">
+                <h2 className="text-balance text-3xl font-bold text-primary md:text-4xl">
+                  Autres services qui pourraient vous intéresser
+                </h2>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-3">
+                {relatedServices.map((related, i) => (
+                  <AnimatedSection key={related.slug} delay={0.1 * i}>
+                    <Link href={`/services/${related.slug}`} className="group block h-full">
+                      <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/20 bg-white shadow-realistic transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-xl">
+                        <div className="relative h-48 overflow-hidden">
+                          <Image
+                            src={related.heroImage}
+                            alt={related.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(min-width: 768px) 33vw, 100vw"
+                          />
+                          {related.priceFrom && (
+                            <div className="absolute right-3 top-3 rounded-full bg-accent px-3 py-1 text-sm font-bold text-white shadow-lg">
+                              dès {euroFormatter.format(related.priceFrom)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-1 flex-col gap-3 p-6">
+                          <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                            {related.title}
+                          </h3>
+                          <p className="flex-1 text-sm text-muted-foreground">{related.short}</p>
+                          <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                            Découvrir
+                            <ArrowRight className="h-4 w-4" />
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

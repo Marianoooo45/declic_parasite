@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { AnimatedSection } from "@/components/animated-section";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { site } from "@/config/site";
 import { slugify } from "@/lib/slug";
+import { Award, Clock, MapPin, Phone, Zap } from "lucide-react";
 
-const title = `Zones d’intervention – ${site.brand}`;
+const title = `Zones d'intervention – ${site.brand}`;
 const description = `Interventions antiparasitaires à ${site.city} et dans le ${site.departement} : ${site.serviceArea.join(", ")}.`;
 
 export const metadata: Metadata = {
@@ -25,71 +25,238 @@ export const metadata: Metadata = {
 };
 
 export default function ZonesPage() {
+  const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
+
   return (
-    <main className="min-h-screen bg-background">
-      <section className="relative overflow-hidden pb-16 pt-28 text-white">
+    <main className="min-h-screen">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
         <Image
-          src="/hero-texture.svg"
-          alt="Carte des zones d'intervention"
+          src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=2000&q=80"
+          alt="Carte des zones d'intervention Orléans"
           fill
-          className="object-cover"
+          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
           priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40" aria-hidden />
+        
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
-            Zones d&apos;intervention {site.brand}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <MapPin className="h-4 w-4 text-accent" />
+            Couverture complète du Loiret
+          </div>
+          
+          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+            Zones d'intervention {site.brand}
           </h1>
-          <p className="mt-4 text-pretty text-lg text-white/85">
-            Intervention rapide à <strong>{site.city}</strong> et dans le <strong>{site.departement}</strong>. Déplacement sous 24–48h avec devis gratuit et suivi personnalisé.
+          
+          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+            Intervention rapide à <strong>{site.city}</strong> et dans le{" "}
+            <strong>{site.departement}</strong>. Déplacement sous 24–48h avec devis gratuit 
+            et suivi personnalisé.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/contact" className="inline-flex">
-              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/30 hover:bg-accent/90">
+          
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Link href="/contact" data-cta="zones-hero-form">
+              <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
                 Demander un devis
               </Button>
             </Link>
-            <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="inline-flex">
+            <a href={phoneHref} data-cta="zones-hero-call">
               <Button
+                size="lg"
                 variant="outline"
-                className="rounded-full border-white/60 bg-white/10 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/20"
+                className="h-14 border-2 border-white bg-white/10 px-10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
               >
+                <Phone className="h-5 w-5" />
                 {site.phone}
               </Button>
             </a>
           </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {[
+              { icon: Zap, text: "Intervention 24-48h" },
+              { icon: Clock, text: "Devis sous 1h" },
+              { icon: Award, text: "Certifié Certibiocide" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 rounded-xl bg-white/10 p-3 backdrop-blur-sm">
+                <item.icon className="h-5 w-5 text-accent" />
+                <span className="text-sm font-semibold">{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-secondary/60 py-20">
+      {/* LISTE COMMUNES */}
+      <section className="py-20">
         <div className="mx-auto w-full max-w-7xl px-6">
-          <AnimatedSection className="mx-auto max-w-3xl text-center">
-            <h2 className="text-balance text-3xl font-semibold text-primary">Communes desservies</h2>
-            <p className="mt-3 text-pretty text-base text-muted-foreground">
-              Nous couvrons toutes les communes autour de {site.city}. Sélectionnez votre ville pour accéder aux informations détaillées et planifier une intervention rapide.
+          <AnimatedSection className="mb-12 text-center">
+            <span className="text-sm font-bold uppercase tracking-widest text-accent">
+              Communes desservies
+            </span>
+            <h2 className="mt-3 text-balance text-4xl font-bold text-primary md:text-5xl">
+              Toutes nos zones d'intervention
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+              Nous couvrons toutes les communes autour de {site.city}. Sélectionnez votre 
+              ville pour accéder aux informations détaillées et planifier une intervention rapide.
             </p>
           </AnimatedSection>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {site.serviceArea.map((v, index) => (
-              <AnimatedSection key={v} delay={0.02 * index}>
-                <Link href={`/zones-intervention/${slugify(v)}`}>
-                  <Card className="h-full rounded-2xl border border-primary/10 bg-white/95 p-5 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-                    <div className="text-lg font-semibold text-primary">{v}</div>
-                    <div className="text-sm text-muted-foreground">Déplacement sous 24h</div>
-                  </Card>
+
+          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {site.serviceArea.map((city, index) => (
+              <AnimatedSection key={city} delay={0.02 * index}>
+                <Link href={`/zones-intervention/${slugify(city)}`}>
+                  <div className="group h-full rounded-2xl border-2 border-primary/20 bg-white p-6 shadow-realistic transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-xl">
+                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-primary">
+                      <MapPin className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                      {city}
+                    </h3>
+                    <p className="mt-2 text-sm font-medium text-muted-foreground">
+                      Déplacement sous 24h
+                    </p>
+                    <div className="mt-4 inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all">
+                      En savoir plus
+                      <span className="ml-1 transition-transform group-hover:translate-x-1">→</span>
+                    </div>
+                  </div>
                 </Link>
               </AnimatedSection>
             ))}
           </div>
 
-          <AnimatedSection className="mt-12 text-center text-sm text-muted-foreground">
-            Vous ne voyez pas votre commune ? Nous intervenons sur l&apos;ensemble du Loiret.
-            {" "}
-            <Link href="/contact" className="font-semibold text-primary underline-offset-4 hover:underline">
-              Contactez-nous
-            </Link>
-            .
+          <AnimatedSection className="mt-12 rounded-2xl border-2 border-primary/20 bg-secondary/30 p-8 text-center">
+            <p className="text-base text-muted-foreground">
+              <strong>Vous ne voyez pas votre commune ?</strong>
+              <br />
+              Nous intervenons sur l'ensemble du Loiret.{" "}
+              <Link
+                href="/contact"
+                className="font-bold text-primary underline underline-offset-4 hover:text-accent"
+              >
+                Contactez-nous
+              </Link>{" "}
+              pour vérifier notre disponibilité.
+            </p>
           </AnimatedSection>
+        </div>
+      </section>
+
+      {/* POURQUOI LOCAL */}
+      <section className="bg-gradient-primary py-20 text-white">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <h2 className="text-balance text-4xl font-bold md:text-5xl">
+                Pourquoi choisir un expert local ?
+              </h2>
+              <div className="mt-8 space-y-6">
+                {[
+                  {
+                    title: "Connaissance du territoire",
+                    desc: "Nous connaissons parfaitement les problématiques locales : bâtiments anciens du centre-ville, proximité de la Loire, zones pavillonnaires..."
+                  },
+                  {
+                    title: "Intervention rapide",
+                    desc: "Basés à Orléans, nous intervenons en 24-48h maximum partout dans le Loiret, avec créneaux d'urgence disponibles 7j/7."
+                  },
+                  {
+                    title: "Suivi personnalisé",
+                    desc: "Un interlocuteur unique vous accompagne du diagnostic au suivi post-traitement, avec disponibilité locale pour tout retour."
+                  },
+                  {
+                    title: "Équipement adapté",
+                    desc: "Matériel professionnel et produits Certibiocide adaptés aux spécificités locales et à chaque type d'habitat."
+                  }
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border-2 border-white/20 bg-white/10 p-6 backdrop-blur-sm"
+                  >
+                    <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                    <p className="text-white/90">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative h-96 overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl lg:h-full lg:min-h-[600px]">
+              <Image
+                src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=1200&q=80"
+                alt="Rue d'Orléans - Zone d'intervention Déclic Parasites"
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 rounded-2xl border-2 border-white/30 bg-black/40 p-6 backdrop-blur-sm">
+                <p className="text-lg font-bold">Technicien local à votre écoute</p>
+                <p className="mt-2 text-sm text-white/90">
+                  Véhicule banalisé, intervention discrète et protocole adapté à votre quartier
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="rounded-3xl border-2 border-primary/20 bg-white p-10 shadow-realistic md:p-12">
+            <h2 className="mb-8 text-center text-3xl font-bold text-primary md:text-4xl">
+              Notre couverture du Loiret en chiffres
+            </h2>
+            
+            <div className="grid gap-8 md:grid-cols-3">
+              {[
+                { number: site.serviceArea.length, label: "Communes couvertes", icon: MapPin },
+                { number: "24-48h", label: "Délai d'intervention", icon: Clock },
+                { number: "850+", label: "Interventions réalisées", icon: Award }
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-primary">
+                    <stat.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="text-5xl font-bold text-primary">{stat.number}</div>
+                  <div className="mt-2 text-sm font-medium text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="bg-secondary/30 py-20">
+        <div className="mx-auto w-full max-w-4xl px-6 text-center">
+          <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+            Prêt à sécuriser votre habitat ?
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Appelez-nous ou remplissez le formulaire pour un devis gratuit et une intervention rapide
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <a href={phoneHref} data-cta="zones-final-call">
+              <Button size="lg" className="h-14 bg-gradient-accent px-10 text-lg font-bold shadow-xl">
+                <Phone className="h-5 w-5" />
+                Appeler {site.phone}
+              </Button>
+            </a>
+            <Link href="/contact" data-cta="zones-final-form">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 border-2 border-primary px-10 text-lg font-bold text-primary hover:bg-primary hover:text-white"
+              >
+                Demander un devis
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </main>

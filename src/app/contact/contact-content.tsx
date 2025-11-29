@@ -1,10 +1,10 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -16,15 +16,7 @@ import {
 } from "@/components/ui/select";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
-import {
-  CheckCircle2,
-  Clock,
-  Leaf,
-  Mail,
-  MapPin,
-  Phone,
-  Shield,
-} from "lucide-react";
+import { Award, CheckCircle2, Clock, Mail, MapPin, Phone, Send, Zap } from "lucide-react";
 
 const initialForm = {
   name: "",
@@ -36,7 +28,6 @@ const initialForm = {
 };
 
 type FormState = typeof initialForm;
-
 type SubmissionStatus = "idle" | "loading" | "success" | "error" | "fallback";
 
 export default function ContactPageContent() {
@@ -115,112 +106,152 @@ export default function ContactPageContent() {
   };
 
   return (
-    <div className="relative min-h-screen bg-background">
-      <section className="relative overflow-hidden py-20 text-white md:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0f2919]/95 via-[#1d4e2b]/85 to-[#154225]/80" aria-hidden />
-        <div className="relative mx-auto max-w-3xl px-6 text-center">
-          <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
-            Contact & devis express
-          </h1>
-          <p className="mt-4 text-lg text-white/85">
-            Réponse sous 1h ouvrée, diagnostic et intervention 24–48h sur {site.departement}. Un artisan certifié vous rappelle personnellement.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/75">
-            <span className="inline-flex items-center gap-2">
-              <Shield className="h-4 w-4 text-accent" /> Certibiocide & HACCP
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Leaf className="h-4 w-4 text-accent" /> Méthodes raisonnées
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Clock className="h-4 w-4 text-accent" /> Astreinte urgente
-            </span>
+    <div className="relative min-h-screen">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-28">
+        <Image
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+          alt="Technicien désinsectisation inspectant un logement"
+          fill
+          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+          sizes="100vw"
+          priority
+        />
+        
+        <div className="relative mx-auto max-w-4xl px-6 text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <Zap className="h-4 w-4 text-accent" />
+            Réponse en moins d'1h ouvrée
           </div>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={phoneHref} data-cta="contact-call" className="inline-flex">
-              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/30 hover:bg-accent/90">
-                <Phone className="mr-2 h-5 w-5" /> Appeler {site.phone}
-              </Button>
-            </a>
-            <Link href="/services" className="inline-flex">
-              <Button
-                variant="outline"
-                className="rounded-full border-white/60 bg-white/10 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-white/20"
-              >
-                Voir nos services
+          
+          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+            Contact & devis gratuit
+          </h1>
+          
+          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+            Formulaire en ligne, email direct ou appel téléphonique : choisissez votre canal 
+            préféré pour sécuriser rapidement votre habitat.
+          </p>
+          
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Link href="#contact-form">
+              <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
+                <Send className="h-5 w-5" />
+                Remplir le formulaire
               </Button>
             </Link>
+            <a href={`mailto:${site.email}`} data-cta="contact-mail">
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 border-2 border-white bg-white/10 px-10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
+              >
+                <Mail className="h-5 w-5" />
+                Envoyer un email
+              </Button>
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {[
+              { icon: Phone, title: "Par téléphone", desc: "Diagnostic immédiat au {site.phone}" },
+              { icon: Mail, title: "Par email", desc: `Réponse sous 1h à ${site.email}` },
+              { icon: Send, title: "Par formulaire", desc: "Détaillez votre situation en 2 min" }
+            ].map((item, i) => (
+              <div key={i} className="rounded-xl border-2 border-white/20 bg-white/10 p-4 text-left backdrop-blur-sm">
+                <item.icon className="mb-2 h-6 w-6 text-accent" />
+                <h3 className="text-sm font-bold">{item.title}</h3>
+                <p className="text-xs text-white/80">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      {/* FORMULAIRE + INFO */}
+      <section className="py-20">
         <div className="mx-auto w-full max-w-7xl px-6">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-            <Card className="rounded-3xl border border-primary/10 bg-white/95 p-8 shadow-xl md:p-10">
-              <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
+          <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
+            {/* FORMULAIRE */}
+            <div className="rounded-3xl border-2 border-primary/20 bg-white p-8 shadow-realistic md:p-10">
+              <h2 className="text-balance text-3xl font-bold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
-              <p className="mt-2 text-pretty text-base text-muted-foreground">
-                Détaillez votre situation, nous revenons vers vous en moins d&apos;une heure ouvrée avec un plan d&apos;action personnalisé.
+              <p className="mt-3 text-base text-muted-foreground">
+                Détaillez votre situation, nous revenons vers vous en moins d'une heure 
+                ouvrée avec un plan d'action personnalisé.
               </p>
 
-              {feedback ? (
+              {feedback && (
                 <div
-                  className={`mt-6 rounded-md border p-4 text-sm ${
+                  className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${
                     status === "success"
-                      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                      ? "border-green-500 bg-green-50 text-green-800"
                       : status === "fallback"
-                      ? "border-amber-200 bg-amber-50 text-amber-800"
-                      : "border-red-200 bg-red-50 text-red-700"
+                      ? "border-amber-500 bg-amber-50 text-amber-800"
+                      : "border-red-500 bg-red-50 text-red-800"
                   }`}
                 >
                   {feedback}
                 </div>
-              ) : null}
+              )}
 
-              <form className="mt-8 space-y-6" onSubmit={handleSubmit} data-cta="contact-form">
+              <form className="mt-8 space-y-6" onSubmit={handleSubmit} id="contact-form">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-primary">Nom</label>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Nom <span className="text-accent">*</span>
+                    </label>
                     <Input
                       name="name"
                       placeholder="Votre nom complet"
                       value={formState.name}
-                      onChange={(event) => setFormState((prev) => ({ ...prev, name: event.target.value }))}
+                      onChange={(e) => setFormState((prev) => ({ ...prev, name: e.target.value }))}
                       required
+                      className="h-12 border-2"
                     />
                   </div>
+                  
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-primary">Email</label>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Email <span className="text-accent">*</span>
+                    </label>
                     <Input
                       name="email"
                       type="email"
                       placeholder="vous@email.fr"
                       value={formState.email}
-                      onChange={(event) => setFormState((prev) => ({ ...prev, email: event.target.value }))}
+                      onChange={(e) => setFormState((prev) => ({ ...prev, email: e.target.value }))}
                       required
+                      className="h-12 border-2"
                     />
                   </div>
+                  
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-primary">Téléphone</label>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Téléphone <span className="text-accent">*</span>
+                    </label>
                     <Input
                       name="phone"
                       type="tel"
                       placeholder="06 12 34 56 78"
                       value={formState.phone}
-                      onChange={(event) => setFormState((prev) => ({ ...prev, phone: event.target.value }))}
+                      onChange={(e) => setFormState((prev) => ({ ...prev, phone: e.target.value }))}
                       required
+                      className="h-12 border-2"
                     />
                   </div>
+                  
                   <div>
-                    <label className="mb-2 block text-sm font-semibold text-primary">Service souhaité</label>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Service souhaité
+                    </label>
                     <Select
                       name="service"
                       value={formState.service}
                       onValueChange={(value) => setFormState((prev) => ({ ...prev, service: value }))}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="h-12 border-2">
                         <SelectValue placeholder="Sélectionnez un service" />
                       </SelectTrigger>
                       <SelectContent>
@@ -236,91 +267,149 @@ export default function ContactPageContent() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-semibold text-primary">Message</label>
+                  <label className="mb-2 block text-sm font-bold text-primary">
+                    Message <span className="text-accent">*</span>
+                  </label>
                   <Textarea
                     name="message"
-                    placeholder="Décrivez votre problématique (lieu, type de nuisible, urgence...)"
+                    placeholder="Décrivez votre problématique : lieu, type de nuisible, niveau d'urgence..."
                     value={formState.message}
-                    onChange={(event) => setFormState((prev) => ({ ...prev, message: event.target.value }))}
-                    rows={5}
+                    onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
+                    rows={6}
                     required
+                    className="border-2"
                   />
                 </div>
 
-                <div className="flex items-start gap-3 rounded-2xl bg-secondary/70 p-4 text-sm text-muted-foreground">
+                <div className="flex items-start gap-3 rounded-xl border-2 border-primary/20 bg-secondary/30 p-4">
                   <input
                     type="checkbox"
                     id="consent"
-                    className="mt-1 h-4 w-4 rounded border-primary/30 text-primary focus:ring-primary"
+                    className="mt-1 h-5 w-5 rounded border-2 border-primary text-primary focus:ring-2 focus:ring-primary"
                     checked={formState.consent}
-                    onChange={(event) => setFormState((prev) => ({ ...prev, consent: event.target.checked }))}
+                    onChange={(e) => setFormState((prev) => ({ ...prev, consent: e.target.checked }))}
                     required
                   />
-                  <label htmlFor="consent">
-                    J'accepte que {site.brand} me contacte au sujet de ma demande. Mes données ne seront jamais revendues.
+                  <label htmlFor="consent" className="text-sm text-muted-foreground">
+                    J'accepte que {site.brand} me contacte au sujet de ma demande. 
+                    Mes données ne seront jamais revendues.
                   </label>
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg hover:bg-primary/90"
+                  size="lg"
+                  className="h-14 w-full text-lg font-bold shadow-lg"
                   disabled={status === "loading"}
                   data-cta="contact-submit"
                 >
-                  {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande"}
+                  {status === "loading" ? (
+                    <>
+                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      Envoyer ma demande
+                    </>
+                  )}
                 </Button>
               </form>
-            </Card>
+            </div>
 
+            {/* COLONNE INFO */}
             <div className="space-y-6">
-              <Card className="rounded-3xl border border-primary/10 bg-white/90 p-6 shadow-lg">
-                <h3 className="text-xl font-semibold text-primary">Contact direct</h3>
-                <div className="mt-4 space-y-4 text-sm text-muted-foreground">
-                  <div className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-5 w-5 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Téléphone</div>
-                      <a href={phoneHref} className="hover:text-primary">
-                        {site.phone}
-                      </a>
+              {/* CONTACT DIRECT */}
+              <div className="rounded-3xl border-2 border-primary/20 bg-white p-6 shadow-lg">
+                <h3 className="text-xl font-bold text-primary">Contact direct</h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Choisissez ce qui vous convient : email pour détailler, appel pour décider rapidement.
+                </p>
+                
+                <div className="mt-6 space-y-4">
+                  <a href={`mailto:${site.email}`} className="block">
+                    <div className="flex items-start gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 transition-all hover:border-primary hover:bg-primary/10">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                        <Mail className="h-6 w-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-bold text-foreground">Email</div>
+                        <div className="text-sm font-semibold text-primary">{site.email}</div>
+                        <p className="text-xs text-muted-foreground">Réponse sous 1h ouvrée</p>
+                      </div>
+                    </div>
+                  </a>
+                  
+                  <a href={phoneHref} className="block">
+                    <div className="flex items-start gap-4 rounded-xl border-2 border-accent/30 bg-accent/5 p-4 transition-all hover:border-accent hover:bg-accent/10">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                        <Phone className="h-6 w-6 text-accent" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-bold text-foreground">Téléphone</div>
+                        <div className="text-sm font-bold text-accent">{site.phone}</div>
+                        <p className="text-xs text-muted-foreground">Urgence 24/7 disponible</p>
+                      </div>
+                    </div>
+                  </a>
+                  
+                  <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
+                    <MapPin className="mt-1 h-5 w-5 text-primary" />
+                    <div className="flex-1">
+                      <div className="font-bold text-foreground">Zone d'intervention</div>
+                      <p className="text-sm text-muted-foreground">{site.serviceArea.slice(0, 5).join(", ")}...</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-5 w-5 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Email</div>
-                      <a href={`mailto:${site.email}`} className="hover:text-primary">
-                        {site.email}
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <MapPin className="mt-0.5 h-5 w-5 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Zone d’intervention</div>
-                      <p>{site.serviceArea.join(", ")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="mt-0.5 h-5 w-5 text-accent" />
-                    <div>
-                      <div className="font-semibold text-foreground">Horaires</div>
-                      <p>Lun–Ven : 7h30–19h • Sam : 8h–17h • Urgences 24/7</p>
+                  
+                  <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
+                    <Clock className="mt-1 h-5 w-5 text-primary" />
+                    <div className="flex-1">
+                      <div className="font-bold text-foreground">Horaires</div>
+                      <p className="text-sm text-muted-foreground">Lun–Ven : 7h30–19h • Sam : 8h–17h</p>
+                      <p className="text-xs font-semibold text-accent">Urgences 24/7</p>
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
 
-              <Card className="rounded-3xl border border-primary/10 bg-secondary/60 p-6 shadow-lg">
-                <h3 className="text-xl font-semibold text-primary">Pourquoi nous choisir ?</h3>
-                <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-                  {["Techniciens certifiés Certibiocide", "Protocoles compatibles HACCP", "Intervention 24–48h", "98% de clients satisfaits"].map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" /> {item}
+              {/* EXPERT */}
+              <div className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-lg">
+                <div className="relative h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+                    alt="Technicien équipé lors d'une intervention"
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 360px, 100vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-primary">Un expert se déplace</h3>
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    Véhicule banalisé, équipement Certibiocide et protocole adapté à votre 
+                    logement ou commerce. Vous êtes informé de chaque étape.
+                  </p>
+                </div>
+              </div>
+
+              {/* GARANTIES */}
+              <div className="rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
+                <h3 className="mb-4 text-xl font-bold text-primary">Nos garanties</h3>
+                <ul className="space-y-3">
+                  {[
+                    "Techniciens certifiés Certibiocide",
+                    "Protocoles compatibles HACCP",
+                    "Intervention 24–48h garantie",
+                    "98% de clients satisfaits"
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-primary" />
+                      <span className="text-sm font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
-              </Card>
+              </div>
             </div>
           </div>
         </div>

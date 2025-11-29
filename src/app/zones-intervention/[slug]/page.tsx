@@ -5,11 +5,10 @@ import { notFound } from "next/navigation";
 
 import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
 import { slugify } from "@/lib/slug";
-import { ArrowRight, Check, Clock, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, Award, CheckCircle2, Clock, MapPin, Phone, Shield, Zap } from "lucide-react";
 
 const baseUrl = "https://www.declicparasites.fr";
 const zoneEntries = site.serviceArea.map((city) => ({ city, slug: slugify(city) }));
@@ -63,159 +62,309 @@ export default async function ZonePage({
   const highlightedServices = services.slice(0, 6);
 
   return (
-    <main className="min-h-screen bg-background">
-      <section className="relative overflow-hidden pb-20 pt-32 text-white">
-        <Image src="/hero-texture.svg" alt="Texture de fond" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-black/45" aria-hidden />
+    <main className="min-h-screen">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
+        <Image
+          src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=2000&q=80"
+          alt={`${zone.city} - Zone d'intervention ${site.brand}`}
+          fill
+          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+          priority
+          sizes="100vw"
+        />
+        
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-white/70">Zone d&apos;intervention</span>
-          <h1 className="text-balance pt-4 text-4xl font-semibold leading-tight md:text-5xl">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <MapPin className="h-4 w-4 text-accent" />
+            Zone d'intervention
+          </div>
+          
+          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
             {site.brand} à {zone.city}
           </h1>
-          <p className="mt-5 text-pretty text-lg text-white/85">
-            Experts Certibiocide pour la dératisation et la désinsectisation à <strong>{zone.city}</strong>. Intervention sous
-            24–48h dans tout le <strong>{site.departement}</strong>, devis gratuit et suivi personnalisé.
+          
+          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+            Experts Certibiocide pour la dératisation et la désinsectisation à{" "}
+            <strong>{zone.city}</strong>. Intervention sous 24–48h dans tout le{" "}
+            <strong>{site.departement}</strong>, devis gratuit et suivi personnalisé.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/contact" className="inline-flex">
-              <Button className="rounded-full bg-accent px-8 py-3 text-base font-semibold text-accent-foreground shadow-lg shadow-black/40 transition hover:bg-accent/90">
+          
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Link href="/contact" data-cta={`zone-${zone.slug}-form`}>
+              <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
                 Demander un devis
               </Button>
             </Link>
-            <a href={phoneHref} className="inline-flex">
-              <Button variant="outline" className="rounded-full border-white/60 bg-white/10 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-black/25 transition hover:bg-white/20">
-                <Phone className="mr-2 h-4 w-4" /> {site.phone}
+            <a href={phoneHref} data-cta={`zone-${zone.slug}-call`}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 border-2 border-white bg-white/10 px-10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
+              >
+                <Phone className="h-5 w-5" />
+                {site.phone}
               </Button>
             </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {[
+              { icon: Zap, text: "Intervention 24-48h" },
+              { icon: Shield, text: "Certibiocide" },
+              { icon: Award, text: "98% satisfaits" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center justify-center gap-3 rounded-xl bg-white/10 p-3 backdrop-blur-sm">
+                <item.icon className="h-5 w-5 text-accent" />
+                <span className="text-sm font-semibold">{item.text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* POURQUOI NOUS À [VILLE] */}
       <section className="py-20">
-        <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <AnimatedSection className="space-y-6">
-            <h2 className="text-balance text-3xl font-semibold text-primary md:text-4xl">
-              Pourquoi nous confier votre intervention à {zone.city} ?
-            </h2>
-            <p className="text-pretty text-base text-muted-foreground">
-              {site.brand} accompagne les particuliers, syndics et professionnels dans le {site.departement}. Notre équipe locale
-              intervient à {zone.city} avec du matériel professionnel, un protocole précis et un suivi après passage jusqu&apos;à la
-              résolution complète.
-            </p>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-3">
-                <span className="mt-1 rounded-full bg-primary/10 p-1 text-primary">
-                  <Clock className="h-4 w-4" />
-                </span>
-                Intervention rapide sous 24–48h, adaptée à l&apos;urgence de la situation.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 rounded-full bg-primary/10 p-1 text-primary">
-                  <ShieldCheck className="h-4 w-4" />
-                </span>
-                Traitements certifiés Certibiocide respectant votre sécurité et l&apos;environnement.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-1 rounded-full bg-primary/10 p-1 text-primary">
-                  <Check className="h-4 w-4" />
-                </span>
-                Diagnostic précis, recommandations et suivi pour éviter toute récidive.
-              </li>
-            </ul>
-            <p className="text-sm text-muted-foreground">
-              Nous couvrons également les communes voisines : {site.serviceArea.filter((city) => city !== zone.city).join(", ")}
-              .
-            </p>
-          </AnimatedSection>
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <AnimatedSection className="space-y-6">
+              <span className="text-sm font-bold uppercase tracking-widest text-accent">
+                Expertise locale
+              </span>
+              <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+                Pourquoi nous confier votre intervention à {zone.city} ?
+              </h2>
+              
+              <p className="text-lg text-muted-foreground">
+                {site.brand} accompagne les particuliers, syndics et professionnels dans le{" "}
+                {site.departement}. Notre équipe locale intervient à {zone.city} avec du matériel 
+                professionnel, un protocole précis et un suivi après passage jusqu'à la résolution complète.
+              </p>
 
-          <AnimatedSection delay={0.1} className="lg:justify-self-end">
-            <Card className="space-y-6 rounded-3xl border border-primary/15 bg-white/90 p-8 shadow-xl backdrop-blur">
-              <div className="flex items-center gap-3">
-                <span className="rounded-full bg-primary/10 p-2 text-primary">
-                  <MapPin className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Zone desservie</p>
-                  <p className="text-lg font-semibold text-primary">{zone.city}, {site.departement}</p>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: Clock,
+                    title: "Intervention rapide sous 24–48h",
+                    desc: "Prise en charge immédiate, créneaux d'urgence selon la gravité de la situation."
+                  },
+                  {
+                    icon: Shield,
+                    title: "Traitements certifiés Certibiocide",
+                    desc: "Protocoles respectant votre sécurité et l'environnement, adaptés à chaque contexte."
+                  },
+                  {
+                    icon: CheckCircle2,
+                    title: "Diagnostic précis et suivi",
+                    desc: "Recommandations personnalisées et contrôles inclus pour éviter toute récidive."
+                  }
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-4 rounded-2xl border-2 border-primary/20 bg-white p-6 shadow-lg transition-all hover:-translate-y-1 hover:border-primary hover:shadow-xl"
+                  >
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-primary">
+                      <item.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-lg font-bold text-primary">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="rounded-xl border-2 border-primary/20 bg-secondary/30 p-4 text-sm text-muted-foreground">
+                <strong>Nous couvrons également les communes voisines :</strong>{" "}
+                {site.serviceArea.filter((city) => city !== zone.city).slice(0, 8).join(", ")}...
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <div className="rounded-3xl border-2 border-primary/20 bg-white p-8 shadow-realistic">
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-primary">
+                    <MapPin className="h-7 w-7 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold uppercase tracking-wide text-muted-foreground">
+                      Zone desservie
+                    </p>
+                    <p className="text-2xl font-bold text-primary">
+                      {zone.city}, {site.departement}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mb-6 space-y-3 text-sm text-muted-foreground">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span>Inspection, diagnostic et plan d'action détaillé avant tout traitement</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span>Intervention discrète, matériel professionnel et produits réglementés</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span>Compte rendu complet et conseils de prévention personnalisés</span>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <a href={phoneHref} className="block">
+                    <Button size="lg" className="h-14 w-full text-lg font-bold shadow-lg">
+                      <Phone className="h-5 w-5" />
+                      Appeler {site.phone}
+                    </Button>
+                  </a>
+                  <Link href="/contact" className="block">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="h-14 w-full border-2 border-primary text-lg font-bold text-primary hover:bg-primary hover:text-white"
+                    >
+                      Écrire un message
+                    </Button>
+                  </Link>
                 </div>
               </div>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Inspection, diagnostic et plan d&apos;action détaillé avant tout traitement.</p>
-                <p>Intervention discrète, matériel professionnel et produits réglementés.</p>
-                <p>Compte rendu complet et conseils de prévention personnalisés.</p>
-              </div>
-              <div className="space-y-3">
-                <a href={phoneHref} className="inline-flex w-full">
-                  <Button className="w-full bg-primary hover:bg-primary/90">
-                    <Phone className="mr-2 h-4 w-4" /> Appeler {site.phone}
-                  </Button>
-                </a>
-                <Link href="/contact" className="inline-flex w-full">
-                  <Button variant="outline" className="w-full border-primary/40 text-primary hover:bg-primary/10">
-                    Écrire un message
-                  </Button>
-                </Link>
-              </div>
-            </Card>
-          </AnimatedSection>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
-      <section className="bg-secondary/60 py-20">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <AnimatedSection className="mx-auto max-w-3xl text-center">
-            <h2 className="text-balance text-3xl font-semibold text-primary">Nos interventions fréquentes</h2>
-            <p className="mt-3 text-pretty text-base text-muted-foreground">
-              Diagnostics complets, traitements adaptés et suivi pour éliminer durablement rats, souris, insectes et nuisibles à {zone.city}.
+      {/* NOS INTERVENTIONS */}
+      <section className="bg-secondary/30 py-20">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <AnimatedSection className="mb-12 text-center">
+            <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+              Nos interventions fréquentes à {zone.city}
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Diagnostics complets, traitements adaptés et suivi pour éliminer durablement 
+              rats, souris, insectes et nuisibles.
             </p>
           </AnimatedSection>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {highlightedServices.map((service) => (
-              <AnimatedSection key={service.slug} className="h-full">
-                <Link href={`/services/${service.slug}`} className="block h-full">
-                  <Card className="flex h-full flex-col justify-between rounded-2xl border border-primary/10 bg-white/95 p-6 shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary">{service.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">{service.short}</p>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {highlightedServices.map((service, i) => (
+              <AnimatedSection key={service.slug} delay={0.05 * i}>
+                <Link href={`/services/${service.slug}`} className="group block h-full">
+                  <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-primary/20 bg-white shadow-realistic transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-xl">
+                    <div className="relative h-52 overflow-hidden">
+                      <Image
+                        src={service.heroImage}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                      </div>
                     </div>
-                    <span className="mt-6 inline-flex items-center text-sm font-semibold text-primary">
-                      Découvrir le service <ArrowRight className="ml-2 h-4 w-4" />
-                    </span>
-                  </Card>
+                    <div className="flex flex-1 flex-col gap-3 p-6">
+                      <p className="flex-1 text-sm text-muted-foreground">{service.short}</p>
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                        Découvrir le service
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </div>
                 </Link>
               </AnimatedSection>
             ))}
           </div>
+
           <AnimatedSection className="mt-12 text-center">
-            <Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary">
-              Tous nos services
-              <ArrowRight className="h-4 w-4" />
+            <Link href="/services">
+              <Button size="lg" variant="outline" className="border-2 border-primary font-bold text-primary hover:bg-primary hover:text-white">
+                Consulter tous nos services
+                <ArrowRight className="h-5 w-5" />
+              </Button>
             </Link>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="py-16">
-        <AnimatedSection className="mx-auto flex max-w-5xl flex-col gap-8 rounded-3xl border border-primary/10 bg-white px-8 py-10 text-center shadow-lg md:flex-row md:items-center md:justify-between md:text-left">
-          <div>
-            <h2 className="text-2xl font-semibold text-primary md:text-3xl">Besoin d&apos;une intervention à {zone.city} ?</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Contactez notre équipe pour un diagnostic gratuit et un devis détaillé. Nous planifions avec vous une intervention rapide et efficace.
+      {/* PROCESSUS */}
+      <section className="py-20">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="mb-12 text-center">
+            <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+              Notre processus d'intervention
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              De la prise de contact à la résolution complète
             </p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a href={phoneHref} className="inline-flex">
-              <Button className="bg-primary hover:bg-primary/90">
-                <Phone className="mr-2 h-4 w-4" /> {site.phone}
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                step: "1",
+                title: "Contact & Diagnostic",
+                desc: `Vous nous contactez. Nous nous déplaçons à ${zone.city} pour un diagnostic gratuit et détaillé de votre situation.`
+              },
+              {
+                step: "2",
+                title: "Traitement professionnel",
+                desc: "Intervention discrète avec produits Certibiocide adaptés. Protocole sur-mesure selon le type de nuisible."
+              },
+              {
+                step: "3",
+                title: "Suivi & Garantie",
+                desc: "Rapport avec photos, conseils prévention et contrôles inclus jusqu'à résolution complète du problème."
+              }
+            ].map((item, i) => (
+              <AnimatedSection key={i} delay={0.1 * i}>
+                <div className="relative h-full rounded-2xl border-2 border-primary/20 bg-white p-8 shadow-realistic">
+                  <div className="absolute -top-6 left-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-accent text-2xl font-bold text-white shadow-xl">
+                    {item.step}
+                  </div>
+                  <h3 className="mb-3 mt-6 text-xl font-bold text-primary">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="bg-gradient-primary py-20 text-white">
+        <div className="mx-auto w-full max-w-4xl px-6 text-center">
+          <Zap className="mx-auto mb-6 h-16 w-16 text-accent" />
+          
+          <h2 className="text-balance text-4xl font-bold md:text-5xl">
+            Besoin d'une intervention à {zone.city} ?
+          </h2>
+          
+          <p className="mt-6 text-xl text-white/90">
+            Contactez notre équipe pour un diagnostic gratuit et un devis détaillé. 
+            Nous planifions avec vous une intervention rapide et efficace.
+          </p>
+          
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <a href={phoneHref} data-cta={`zone-${zone.slug}-final-call`}>
+              <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
+                <Phone className="h-5 w-5" />
+                Appeler {site.phone}
               </Button>
             </a>
-            <Link href="/contact" className="inline-flex">
-              <Button variant="outline" className="border-primary/40 text-primary hover:bg-primary/10">
+            <Link href="/contact" data-cta={`zone-${zone.slug}-final-form`}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 border-2 border-white bg-white/10 px-10 text-lg font-bold text-white backdrop-blur-sm hover:bg-white/20"
+              >
                 Demander un devis
               </Button>
             </Link>
           </div>
-        </AnimatedSection>
+        </div>
       </section>
     </main>
   );
