@@ -271,7 +271,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center" aria-label={site.brand}>
           {/* Le nouveau logo SVG qui contient tout le texte */}
           {/* J'ai augmenté un peu la taille (h-14 md:h-16) pour la lisibilité */}
-          <LogoDeclic className="h-14 w-auto md:h-16" />
+          <LogoDeclic className="h-9 w-auto md:h-14" />
         </Link>
         {/* FIN SECTION LOGO */}
 
