@@ -18,7 +18,6 @@ import { Card } from "@/components/ui/card";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
 import {
-  Award,
   CheckCircle2,
   Clock,
   Mail,
@@ -138,8 +137,8 @@ export default function ContactPageContent() {
 
   return (
     <div className="relative min-h-screen">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-28">
+      {/* HERO - Padding réduit sur mobile (py-12) */}
+      <section className="relative overflow-hidden bg-gradient-primary py-12 text-white lg:py-28">
         <Image
           src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
           alt="Technicien désinsectisation inspectant un logement"
@@ -149,17 +148,19 @@ export default function ContactPageContent() {
           priority
         />
 
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
+        {/* Padding horizontal réduit sur mobile (px-4) */}
+        <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Zap className="h-4 w-4 text-accent" />
             Réponse en moins d&apos;1h ouvrée
           </div>
 
-          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+          {/* Titre réduit sur mobile (text-4xl) */}
+          <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
             Contact &amp; devis gratuit
           </h1>
 
-          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+          <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
             Formulaire en ligne, email direct ou appel téléphonique : choisissez
             votre canal préféré pour sécuriser rapidement votre habitat.
           </p>
@@ -186,7 +187,8 @@ export default function ContactPageContent() {
             </a>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {/* Grille explicite 1 colonne mobile */}
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               {
                 icon: Phone,
@@ -215,7 +217,7 @@ export default function ContactPageContent() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "Formulaire guidé",
@@ -258,16 +260,18 @@ export default function ContactPageContent() {
         </div>
       </section>
 
-      {/* FORMULAIRE + INFO */}
-      <section className="py-20">
-        <div className="mx-auto w-full max-w-7xl px-6">
+      {/* FORMULAIRE + INFO - Padding réduit (py-12) */}
+      <section className="py-12 lg:py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
             {/* FORMULAIRE */}
-            <div className="rounded-3xl border-2 border-primary/20 bg-white p-8 shadow-realistic md:p-10">
-              <h2 className="text-balance text-3xl font-bold text-primary md:text-4xl">
+            {/* Padding réduit p-5 sur mobile */}
+            <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
+              {/* Titre réduit text-2xl sur mobile */}
+              <h2 className="text-balance text-2xl font-bold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
-              <p className="mt-3 text-base text-muted-foreground">
+              <p className="mt-3 text-sm text-muted-foreground md:text-base">
                 Détaillez votre situation, nous revenons vers vous en moins
                 d&apos;une heure ouvrée avec un plan d&apos;action
                 personnalisé.
@@ -454,7 +458,7 @@ export default function ContactPageContent() {
             {/* COLONNE INFO */}
             <div className="space-y-6">
               {/* CONTACT DIRECT */}
-              <div className="rounded-3xl border-2 border-primary/20 bg-white p-6 shadow-lg">
+              <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-lg md:p-6">
                 <h3 className="text-xl font-bold text-primary">
                   Contact direct
                 </h3>
@@ -466,14 +470,14 @@ export default function ContactPageContent() {
                 <div className="mt-6 space-y-4">
                   <a href={`mailto:${site.email}`} className="block">
                     <div className="flex items-start gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 transition-all hover:border-primary hover:bg-primary/10">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Mail className="h-6 w-6 text-primary" />
                       </div>
-                      <div className="flex-1">
+                      <div className="flex-1 overflow-hidden">
                         <div className="font-bold text-foreground">
                           Email
                         </div>
-                        <div className="text-sm font-semibold text-primary">
+                        <div className="truncate text-sm font-semibold text-primary">
                           {site.email}
                         </div>
                         <p className="text-xs text-muted-foreground">
@@ -485,7 +489,7 @@ export default function ContactPageContent() {
 
                   <a href={phoneHref} className="block">
                     <div className="flex items-start gap-4 rounded-xl border-2 border-accent/30 bg-accent/5 p-4 transition-all hover:border-accent hover:bg-accent/10">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10">
                         <Phone className="h-6 w-6 text-accent" />
                       </div>
                       <div className="flex-1">
@@ -503,7 +507,7 @@ export default function ContactPageContent() {
                   </a>
 
                   <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
-                    <MapPin className="mt-1 h-5 w-5 text-primary" />
+                    <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
                     <div className="flex-1">
                       <div className="font-bold text-foreground">
                         Zone d&apos;intervention
@@ -515,7 +519,7 @@ export default function ContactPageContent() {
                   </div>
 
                   <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
-                    <Clock className="mt-1 h-5 w-5 text-primary" />
+                    <Clock className="mt-1 h-5 w-5 shrink-0 text-primary" />
                     <div className="flex-1">
                       <div className="font-bold text-foreground">
                         Horaires
@@ -567,7 +571,7 @@ export default function ContactPageContent() {
                     "98% de clients satisfaits",
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 text-primary" />
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                       <span className="text-sm font-medium">
                         {item}
                       </span>

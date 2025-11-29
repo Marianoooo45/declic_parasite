@@ -131,6 +131,18 @@ function MobileMenu() {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
+  // MODIF: Bloquer le scroll du body quand le menu est ouvert
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
 
@@ -160,7 +172,6 @@ function MobileMenu() {
     <>
       <button
         type="button"
-        // MODIF: p-3 au lieu de p-2.5 pour agrandir la zone de touche
         className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-3 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
         onClick={() => setOpen(true)}
         aria-label="Ouvrir le menu"
@@ -169,7 +180,8 @@ function MobileMenu() {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex lg:hidden">
+        // MODIF: z-[100] pour passer au-dessus du Header (z-50) et du FloatingCTA (z-50)
+        <div className="fixed inset-0 z-[100] flex lg:hidden">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
           <div
             ref={dialogRef}
