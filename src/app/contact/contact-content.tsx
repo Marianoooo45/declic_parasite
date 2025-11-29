@@ -165,6 +165,37 @@ export default function ContactPageContent() {
               </div>
             ))}
           </div>
+          <div className="mt-10 grid gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Formulaire guidé",
+                description: "Détaillez votre situation en quelques champs, photos et préférences de rappel incluses.",
+                icon: CheckCircle2,
+              },
+              {
+                title: "Email direct",
+                description: `Envoyez-nous un message sur ${site.email} : nous répondons avec un plan d'action personnalisé.`,
+                icon: Mail,
+              },
+              {
+                title: "Appel prioritaire",
+                description: "Besoin d&apos;un diagnostic immédiat ? Un technicien vous rappelle pour caler une intervention.",
+                icon: Phone,
+              },
+            ].map((item) => (
+              <Card key={item.title} className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="text-base font-semibold">{item.title}</h3>
+                    <p className="mt-1 text-sm text-white/85">{item.description}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
