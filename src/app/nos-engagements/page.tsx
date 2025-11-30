@@ -111,7 +111,7 @@ export default function NosEngagementsPage() {
           <div className="relative overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl">
             <div className="relative h-96 lg:h-full lg:min-h-[500px]">
               <Image
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80"
+                src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Pulvérisation contrôlée dans une maison"
                 fill
                 className="object-cover"

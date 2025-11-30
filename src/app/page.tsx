@@ -34,7 +34,7 @@ export default function Home() {
       {/* HERO IMMERSIF */}
       <section className="relative min-h-[85vh] overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 text-white lg:min-h-[90vh]">
         <Image
-          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+          src="https://images.contentstack.io/v3/assets/blt4cb7085064c0b32f/blt6614b4a12e79a8a2/668d2eb242bfac020686b5fd/1200X628_conseil_comment_choisir_exterminateur.jpg"
           alt="Technicien professionnel Déclic Parasites en intervention à Orléans"
           fill
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"

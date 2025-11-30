@@ -140,7 +140,7 @@ export default function ContactPageContent() {
       {/* HERO - Padding réduit sur mobile (py-12) */}
       <section className="relative overflow-hidden bg-gradient-primary py-12 text-white lg:py-28">
         <Image
-          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+          src="https://plus.unsplash.com/premium_photo-1682126082802-983618de1dd9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHx8"
           alt="Technicien désinsectisation inspectant un logement"
           fill
           className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"

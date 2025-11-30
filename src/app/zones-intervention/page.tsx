@@ -28,29 +28,30 @@ export default function ZonesPage() {
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 py-12 text-white lg:py-32">
+        {/* MODIF : Retour à l'image haute définition contrastée (Technicien) + mix-blend-overlay comme sur l'Accueil */}
         <Image
-          src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=2000&q=80"
-          alt="Carte des zones d'intervention Orléans"
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+          alt="Technicien expert Déclic Parasites"
           fill
-          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+          className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           priority
           sizes="100vw"
         />
         
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
+        <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <MapPin className="h-4 w-4 text-accent" />
             Couverture complète du Loiret
           </div>
           
-          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+          <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
             Zones d'intervention {site.brand}
           </h1>
           
-          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+          <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
             Intervention rapide à <strong>{site.city}</strong> et dans le{" "}
             <strong>{site.departement}</strong>. Déplacement sous 24–48h avec devis gratuit 
             et suivi personnalisé.
@@ -90,13 +91,13 @@ export default function ZonesPage() {
       </section>
 
       {/* LISTE COMMUNES */}
-      <section className="py-20">
-        <div className="mx-auto w-full max-w-7xl px-6">
+      <section className="py-12 lg:py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <AnimatedSection className="mb-12 text-center">
             <span className="text-sm font-bold uppercase tracking-widest text-accent">
               Communes desservies
             </span>
-            <h2 className="mt-3 text-balance text-4xl font-bold text-primary md:text-5xl">
+            <h2 className="mt-3 text-balance text-3xl font-bold text-primary md:text-5xl">
               Toutes nos zones d'intervention
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -146,12 +147,12 @@ export default function ZonesPage() {
         </div>
       </section>
 
-      {/* POURQUOI LOCAL */}
-      <section className="bg-gradient-primary py-20 text-white">
-        <div className="mx-auto w-full max-w-7xl px-6">
+      {/* POURQUOI LOCAL - Avec MAPS */}
+      <section className="bg-gradient-primary py-12 text-white lg:py-20">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="text-balance text-4xl font-bold md:text-5xl">
+              <h2 className="text-balance text-3xl font-bold md:text-5xl">
                 Pourquoi choisir un expert local ?
               </h2>
               <div className="mt-8 space-y-6">
@@ -184,31 +185,29 @@ export default function ZonesPage() {
               </div>
             </div>
 
-            <div className="relative h-96 overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl lg:h-full lg:min-h-[600px]">
-              <Image
-                src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=1200&q=80"
-                alt="Rue d'Orléans - Zone d'intervention Déclic Parasites"
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 rounded-2xl border-2 border-white/30 bg-black/40 p-6 backdrop-blur-sm">
-                <p className="text-lg font-bold">Technicien local à votre écoute</p>
-                <p className="mt-2 text-sm text-white/90">
-                  Véhicule banalisé, intervention discrète et protocole adapté à votre quartier
-                </p>
-              </div>
+            {/* INTEGRATION MAP GOOGLE */}
+            <div className="relative h-64 w-full overflow-hidden rounded-xl border border-white/20 shadow-2xl md:h-96 lg:h-full lg:min-h-[600px]">
+               <iframe 
+                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr" 
+                 width="100%" 
+                 height="100%" 
+                 style={{ border: 0 }} 
+                 allowFullScreen 
+                 loading="lazy" 
+                 referrerPolicy="no-referrer-when-downgrade"
+                 className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
+                 title="Localisation Déclic Parasite Orléans"
+               ></iframe>
             </div>
           </div>
         </div>
       </section>
 
       {/* STATS */}
-      <section className="py-20">
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <div className="rounded-3xl border-2 border-primary/20 bg-white p-10 shadow-realistic md:p-12">
-            <h2 className="mb-8 text-center text-3xl font-bold text-primary md:text-4xl">
+      <section className="py-12 lg:py-20">
+        <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
+          <div className="rounded-3xl border-2 border-primary/20 bg-white p-8 shadow-realistic md:p-12">
+            <h2 className="mb-8 text-center text-2xl font-bold text-primary md:text-4xl">
               Notre couverture du Loiret en chiffres
             </h2>
             
@@ -222,7 +221,7 @@ export default function ZonesPage() {
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-primary">
                     <stat.icon className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-5xl font-bold text-primary">{stat.number}</div>
+                  <div className="text-4xl font-bold text-primary md:text-5xl">{stat.number}</div>
                   <div className="mt-2 text-sm font-medium text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
@@ -232,9 +231,9 @@ export default function ZonesPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-secondary/30 py-20">
-        <div className="mx-auto w-full max-w-4xl px-6 text-center">
-          <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
+      <section className="bg-secondary/30 py-12 lg:py-20">
+        <div className="mx-auto w-full max-w-4xl px-4 text-center md:px-6">
+          <h2 className="text-balance text-3xl font-bold text-primary md:text-5xl">
             Prêt à sécuriser votre habitat ?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
