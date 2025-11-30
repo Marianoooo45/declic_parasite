@@ -43,7 +43,7 @@ export function LogoDeclic({ className }: { className?: string }) {
       {/* RESTE DU LAYOUT (Validé V1) */}
       <g fontFamily="sans-serif">
         <text x="70" y="32" fill={colors.green} fontWeight="900" fontSize="30" letterSpacing="-1px">DÉCLIC</text>
-        <text x="70" y="56" fill={colors.yellow} fontWeight="800" fontSize="22" letterSpacing="0px">PARASITE</text>
+        <text x="70" y="56" fill={colors.yellow} fontWeight="800" fontSize="22" letterSpacing="0px">PARASITES</text>
       </g>
       <line x1="215" y1="15" x2="215" y2="55" stroke={colors.green} strokeWidth="1" opacity="0.3" />
       <g fontFamily="sans-serif">
