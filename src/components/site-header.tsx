@@ -131,7 +131,6 @@ function MobileMenu() {
   const [open, setOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
-  // MODIF: Bloquer le scroll du body quand le menu est ouvert
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -180,7 +179,6 @@ function MobileMenu() {
       </button>
 
       {open && (
-        // MODIF: z-[100] pour passer au-dessus du Header (z-50) et du FloatingCTA (z-50)
         <div className="fixed inset-0 z-[100] flex lg:hidden">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
           <div
@@ -280,7 +278,9 @@ export function SiteHeader() {
       <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
         
         <Link href="/" className="flex items-center" aria-label={site.brand}>
-          <LogoDeclic className="h-9 w-auto md:h-14" />
+          {/* MODIF : TAILLE DU LOGO NETTEMENT AUGMENTÉE ICI */}
+          {/* Passage de h-9 à h-14 sur mobile, et md:h-14 à md:h-20 sur desktop */}
+          <LogoDeclic className="h-11 w-auto md:h-16" />
         </Link>
 
         <nav
