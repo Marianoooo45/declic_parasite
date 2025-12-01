@@ -100,7 +100,7 @@ export function SiteFooter({ className }: { className?: string }) {
             {/* RÉSEAUX SOCIAUX */}
             <div className="flex gap-4 pt-2">
               <Link
-                href="https://www.facebook.com/profile.php?id=61584584848729"
+                href="https://www.facebook.com/profile.php?id=61584584848729" 
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white transition-transform hover:scale-110 hover:bg-blue-700"
                 aria-label="Facebook"
@@ -216,7 +216,7 @@ export function SiteFooter({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* FOOTER BAS (Mentions légales + RGPD) */}
+        {/* FOOTER BAS (Mentions légales + RGPD uniquement) */}
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t-2 border-primary/10 pt-8 text-sm text-muted-foreground lg:flex-row lg:items-center">
           <div className="flex flex-col gap-2">
             <p className="font-semibold">
@@ -228,9 +228,6 @@ export function SiteFooter({ className }: { className?: string }) {
               </Link>
               <Link href="/politique-de-confidentialite" className="hover:text-primary hover:underline">
                 Politique de confidentialité (RGPD)
-              </Link>
-              <Link href="/sitemap.xml" className="hover:text-primary hover:underline">
-                Plan du site
               </Link>
             </div>
           </div>
