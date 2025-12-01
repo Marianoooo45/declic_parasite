@@ -4,77 +4,54 @@ import nodemailer from "nodemailer";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    // On récupère les infos envoyées par votre formulaire
     const { name, email, phone, serviceLabel, message } = body;
 
-    // Sécurité : Vérifier que tout est là
+    // Vérification des champs
     if (!name || !email || !phone || !message) {
-      return NextResponse.json(
-        { error: "Champs manquants" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
     }
 
-    // Configuration de la connexion à OVH
+    // Configuration OVH pour le port 587 (Plus fiable sur Vercel)
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST, // ssl0.ovh.net
-      port: Number(process.env.EMAIL_PORT), // 465
-      secure: true, // Vrai pour le port 465
+      port: Number(process.env.EMAIL_PORT), // 587
+      secure: false, // Important pour le port 587
       auth: {
-        user: process.env.EMAIL_USER, // votre email contact@...
-        pass: process.env.EMAIL_PASS, // votre mot de passe
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+      tls: {
+        ciphers: "SSLv3", // Aide à la compatibilité OVH
       },
     });
 
-    // Configuration du mail que VOUS allez recevoir
     const mailOptions = {
-      from: `"Site Web" <${process.env.EMAIL_USER}>`, // L'expéditeur doit être votre mail OVH
-      to: process.env.EMAIL_USER, // Vous vous l'envoyez à vous-même
-      replyTo: email, // Pour répondre au client en un clic
-      subject: `Nouveau prospect : ${name} - ${serviceLabel}`,
-      text: `
-        Nouvelle demande de : ${name}
-        Téléphone : ${phone}
-        Email : ${email}
-        Service : ${serviceLabel}
-
-        Message :
-        ${message}
-      `,
+      from: `"Formulaire Site" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      replyTo: email,
+      subject: `Nouveau Prospect : ${name} - ${serviceLabel}`,
+      text: `Nom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`,
       html: `
-        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px;">
-          <div style="background-color: #1d4e2b; color: white; padding: 15px; border-radius: 5px 5px 0 0;">
-            <h2 style="margin: 0;">Nouvelle demande de devis</h2>
-          </div>
-          <div style="border: 1px solid #ddd; padding: 20px; border-radius: 0 0 5px 5px;">
-            <p><strong>Service :</strong> <span style="color: #dbb341; font-weight: bold;">${serviceLabel}</span></p>
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;" />
-            
-            <h3 style="margin-top: 0;">Coordonnées du client :</h3>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 5px;">👤 <strong>Nom :</strong> ${name}</li>
-              <li style="margin-bottom: 5px;">📞 <strong>Tél :</strong> <a href="tel:${phone}" style="color: #1d4e2b; font-weight: bold;">${phone}</a></li>
-              <li style="margin-bottom: 5px;">📧 <strong>Email :</strong> <a href="mailto:${email}" style="color: #1d4e2b;">${email}</a></li>
-            </ul>
-
-            <h3>Message :</h3>
-            <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #1d4e2b; border-radius: 4px;">
-              ${message.replace(/\n/g, "<br>")}
-            </div>
+        <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #eee;">
+          <h2 style="color: #1d4e2b;">Nouvelle demande : ${serviceLabel}</h2>
+          <p><strong>👤 Nom :</strong> ${name}</p>
+          <p><strong>📞 Téléphone :</strong> <a href="tel:${phone}">${phone}</a></p>
+          <p><strong>📧 Email :</strong> <a href="mailto:${email}">${email}</a></p>
+          <br/>
+          <div style="background: #f9f9f9; padding: 15px; border-left: 5px solid #dbb341;">
+            ${message.replace(/\n/g, "<br>")}
           </div>
         </div>
       `,
     };
 
-    // Envoi du mail
     await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true }, { status: 200 });
-
   } catch (error) {
-    console.error("Erreur d'envoi email:", error);
+    console.error("Erreur SMTP:", error); // Ceci apparaîtra dans les logs Vercel si ça plante
     return NextResponse.json(
-      { error: "Erreur serveur lors de l'envoi." },
+      { error: "Erreur lors de l'envoi." },
       { status: 500 }
     );
   }
