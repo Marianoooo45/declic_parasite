@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Award, Mail, MapPin, Phone } from "lucide-react";
+import { Award, Facebook, Mail, MapPin, Phone } from "lucide-react";
 
 import { services } from "@/config/services";
 import { site } from "@/config/site";
@@ -16,13 +16,27 @@ const footerNav = [
   { label: "Contact", href: "/contact" },
 ];
 
+// Icônes personnalisées pour Google et PagesJaunes
+const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .533 5.347.533 12S5.867 24 12.48 24c3.44 0 6.053-1.147 7.92-3.067 1.947-1.947 2.56-4.693 2.56-6.987 0-.693-.053-1.36-.173-2.027H12.48z" />
+  </svg>
+);
+
+const PagesJaunesIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <rect x="2" y="2" width="20" height="20" rx="4" />
+    <path d="M8 17l6-10" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    <path d="M15 12l-3 5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
 export function SiteFooter({ className }: { className?: string }) {
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
 
   return (
     <footer
       className={cn(
-        // AJOUT DE "pb-24 md:pb-16" ici
         "border-t-2 border-primary/10 bg-gradient-to-br from-secondary/30 via-white to-secondary/20 text-foreground pb-24 md:pb-16",
         className,
       )}
@@ -81,6 +95,34 @@ export function SiteFooter({ className }: { className?: string }) {
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* RÉSEAUX SOCIAUX */}
+            <div className="flex gap-4 pt-2">
+              <Link
+                href="https://www.facebook.com/profile.php?id=61584584848729"
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white transition-transform hover:scale-110 hover:bg-blue-700"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.google.com/" 
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-600 shadow-md transition-transform hover:scale-110 hover:bg-gray-50"
+                aria-label="Google Avis"
+              >
+                <GoogleIcon className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.pagesjaunes.fr/" 
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 text-white transition-transform hover:scale-110 hover:bg-yellow-500"
+                aria-label="Pages Jaunes"
+              >
+                <PagesJaunesIcon className="h-5 w-5" />
+              </Link>
             </div>
 
             <div>
@@ -174,19 +216,33 @@ export function SiteFooter({ className }: { className?: string }) {
           </div>
         </div>
 
-        {/* FOOTER BAS */}
-        <div className="mt-12 flex flex-col items-start gap-4 border-t-2 border-primary/10 pt-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>
+        {/* FOOTER BAS (Mentions légales + RGPD) */}
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t-2 border-primary/10 pt-8 text-sm text-muted-foreground lg:flex-row lg:items-center">
+          <div className="flex flex-col gap-2">
             <p className="font-semibold">
               © {new Date().getFullYear()} {site.brand}. Tous droits réservés.
             </p>
-            <p className="mt-1 text-xs">
-              Entreprise certifiée Certibiocide — Méthodes professionnelles garanties
-            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+              <Link href="/mentions-legales" className="hover:text-primary hover:underline">
+                Mentions légales
+              </Link>
+              <Link href="/politique-de-confidentialite" className="hover:text-primary hover:underline">
+                Politique de confidentialité (RGPD)
+              </Link>
+              <Link href="/sitemap.xml" className="hover:text-primary hover:underline">
+                Plan du site
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Award className="h-4 w-4 text-primary" />
-            <span className="text-xs font-medium">Expert local depuis 2018</span>
+          
+          <div className="flex flex-col items-start gap-2 lg:items-end">
+            <div className="flex items-center gap-2">
+              <Award className="h-4 w-4 text-primary" />
+              <span className="text-xs font-medium">Expert local certifié</span>
+            </div>
+            <p className="text-[10px] text-muted-foreground/80">
+              Intervention 7j/7 dans tout le Loiret
+            </p>
           </div>
         </div>
       </div>
