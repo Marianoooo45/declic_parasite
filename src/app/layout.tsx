@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
+// NOUVEL IMPORT
+import { GoogleAnalytics } from '@next/third-parties/google'; 
 
 import ClientBody from "./ClientBody";
 import { SiteHeader } from "@/components/site-header";
@@ -12,12 +14,10 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  // MODIF 1 : Titre optimisé pour Google (contient "Expert Anti-Nuisibles")
   title: `${site.brand} | Expert Anti-Nuisibles à ${site.city} (Dératisation & Désinsectisation)`,
   description: `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   
-  // MODIF 2 : Ajout du petit logo (Favicon)
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
@@ -70,6 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <FloatingCta />
       </ClientBody>
+      
+      {/* NOUVELLE LIGNE : Installation de Google Analytics */}
+      <GoogleAnalytics gaId="G-7H51K6LB86" /> 
     </html>
   );
 }
