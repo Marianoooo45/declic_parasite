@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   title: `${site.brand} | Dératisation & désinsectisation à ${site.city}`,
   description: `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
+  
+  // AJOUT : Configuration des icônes
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+
   openGraph: {
     title: `${site.brand} – ${site.city}`,
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
