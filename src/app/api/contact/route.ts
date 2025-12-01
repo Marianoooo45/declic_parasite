@@ -1,82 +1,95 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { name, email, phone, serviceLabel, message } = body;
+const REQUIRED_FIELDS = ["name", "email", "phone", "message"] as const;
 
-    if (!name || !email || !phone || !message) {
-      return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+
+    // 1) Validation basique côté serveur (toujours utile)
+    for (const field of REQUIRED_FIELDS) {
+      if (!body[field] || typeof body[field] !== "string") {
+        return NextResponse.json(
+          { error: `Champ manquant ou invalide : ${field}` },
+          { status: 400 },
+        );
+      }
     }
 
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)
+    ) {
+      return NextResponse.json(
+        { error: "Adresse email invalide." },
+        { status: 400 },
+      );
+    }
+
+    const {
+      name,
+      email,
+      phone,
+      message,
+      service,
+      serviceLabel,
+    } = body;
+
+    // 2) Config SMTP OVH (variables d'environnement)
     const transporter = nodemailer.createTransport({
-      host: "ssl0.ovh.net",
-      port: 465,
-      secure: true,
+      host: process.env.OVH_SMTP_HOST, // ex: "ssl0.ovh.net"
+      port: Number(process.env.OVH_SMTP_PORT) || 465,
+      secure: true, // true pour 465, false pour 587
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.OVH_SMTP_USER, // ton email complet OVH
+        pass: process.env.OVH_SMTP_PASS, // ton mot de passe
       },
-      tls: {
-        ciphers: "SSLv3",
-        rejectUnauthorized: false,
-      },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
     });
 
-    await new Promise((resolve, reject) => {
-      transporter.verify(function (error, success) {
-        if (error) {
-          console.error("Erreur de connexion SMTP:", error);
-          reject(error);
-        } else {
-          console.log("Serveur SMTP prêt");
-          resolve(success);
-        }
-      });
+    const subject = `Demande de devis - ${
+      serviceLabel || service || "Intervention nuisibles"
+    }`;
+
+    const text = [
+      `Nom : ${name}`,
+      `Email : ${email}`,
+      `Téléphone : ${phone}`,
+      `Service : ${serviceLabel || service || "Non précisé"}`,
+      "",
+      "Message :",
+      message,
+    ].join("\n");
+
+    const html = `
+      <h2>Nouvelle demande de contact - Déclic Parasite</h2>
+      <p><strong>Nom :</strong> ${name}</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <p><strong>Téléphone :</strong> ${phone}</p>
+      <p><strong>Service :</strong> ${serviceLabel || service || "Non précisé"}</p>
+      <hr />
+      <p><strong>Message :</strong></p>
+      <p>${message.replace(/\n/g, "<br />")}</p>
+    `;
+
+    // 3) Envoi du mail
+    await transporter.sendMail({
+      from: `"Déclic Parasite" <${process.env.OVH_SMTP_USER}>`,
+      to: process.env.CONTACT_TO || process.env.OVH_SMTP_USER, // destinataire final
+      replyTo: email, // tu peux répondre directement au client
+      subject,
+      text,
+      html,
     });
-
-    const mailOptions = {
-      from: `"Site Web" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `[SITE] Nouveau client : ${name}`,
-      text: `Nom: ${name}\nTéléphone: ${phone}\nEmail: ${email}\nService: ${serviceLabel}\n\nMessage:\n${message}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
-          <h2 style="color: #1d4e2b; margin-top:0;">Nouvelle demande : ${serviceLabel}</h2>
-          <ul style="padding-left: 20px;">
-            <li><strong>Nom :</strong> ${name}</li>
-            <li><strong>Tél :</strong> <a href="tel:${phone}">${phone}</a></li>
-            <li><strong>Email :</strong> <a href="mailto:${email}">${email}</a></li>
-          </ul>
-          <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 20px;">
-            <strong>Message :</strong><br/><br/>
-            ${message.replace(/\n/g, "<br>")}
-          </div>
-        </div>
-      `,
-    };
-
-    await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true }, { status: 200 });
-
   } catch (error) {
-    // CORRECTION ICI : On gère l'erreur sans utiliser ': any'
-    console.error("Erreur détaillée d'envoi:", error);
-    
-    let errorMessage = "Erreur d'envoi";
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-
+    console.error("contact-api-error", error);
     return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
+      {
+        error:
+          "Impossible d'envoyer le message pour le moment. Essayez l'email direct ou le téléphone.",
+      },
+      { status: 500 },
     );
   }
 }
