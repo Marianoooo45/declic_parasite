@@ -12,11 +12,12 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: `${site.brand} | Dératisation & désinsectisation à ${site.city}`,
+  // MODIF 1 : Titre optimisé pour Google (contient "Expert Anti-Nuisibles")
+  title: `${site.brand} | Expert Anti-Nuisibles à ${site.city} (Dératisation & Désinsectisation)`,
   description: `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   
-  // AJOUT : Configuration des icônes
+  // MODIF 2 : Ajout du petit logo (Favicon)
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
