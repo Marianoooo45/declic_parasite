@@ -99,6 +99,49 @@ export async function POST(req: Request) {
       html,
     });
 
+    // --- 5) Notification Discord (sans bloquer en cas d'erreur) ---
+    if (process.env.DISCORD_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.DISCORD_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: "Déclic Parasites – Formulaire",
+            avatar_url: "https://declicparasites.fr/favicon.ico",
+            content: `📬 Nouvelle demande de contact reçue !`,
+            embeds: [
+              {
+                title: "Demande de devis",
+                color: 0x00ff6a,
+                fields: [
+                  { name: "Nom", value: name, inline: true },
+                  { name: "Téléphone", value: phone, inline: true },
+                  { name: "Email", value: email, inline: false },
+                  {
+                    name: "Service",
+                    value: serviceLabel || service || "Non précisé",
+                    inline: false,
+                  },
+                  {
+                    name: "Message",
+                    value: message.slice(0, 1024), // limite Discord
+                  },
+                ],
+                footer: {
+                  text: `Déclic Parasites – ${new Date().toLocaleString(
+                    "fr-FR",
+                  )}`,
+                },
+              },
+            ],
+          }),
+        });
+      } catch (discordError) {
+        console.error("Erreur envoi Discord", discordError);
+        // on ne renvoie PAS d'erreur au client, l'email est déjà parti
+      }
+    }
+
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
     console.error("contact-api-error", err);
