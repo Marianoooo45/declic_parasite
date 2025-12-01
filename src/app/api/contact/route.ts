@@ -6,32 +6,27 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, phone, serviceLabel, message } = body;
 
-    // Vérification
     if (!name || !email || !phone || !message) {
       return NextResponse.json({ error: "Champs manquants" }, { status: 400 });
     }
 
-    // Configuration "Blindée" pour OVH
     const transporter = nodemailer.createTransport({
-      host: "ssl0.ovh.net", // On l'écrit en dur pour être sûr
-      port: 465, // Port SSL
-      secure: true, // Vrai pour 465
+      host: "ssl0.ovh.net",
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-      // Cette partie résout souvent les blocages Vercel/OVH :
       tls: {
         ciphers: "SSLv3",
-        rejectUnauthorized: false, 
+        rejectUnauthorized: false,
       },
-      // Augmenter le temps avant d'abandonner (timeout)
-      connectionTimeout: 10000, 
-      greetingTimeout: 10000, 
-      socketTimeout: 10000, 
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
 
-    // Test de vérification de la connexion avant d'envoyer
     await new Promise((resolve, reject) => {
       transporter.verify(function (error, success) {
         if (error) {
@@ -70,11 +65,17 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
 
-  } catch (error: any) {
-    // On affiche l'erreur précise dans la console Vercel pour débugger
+  } catch (error) {
+    // CORRECTION ICI : On gère l'erreur sans utiliser ': any'
     console.error("Erreur détaillée d'envoi:", error);
+    
+    let errorMessage = "Erreur d'envoi";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+
     return NextResponse.json(
-      { error: error.message || "Erreur d'envoi" },
+      { error: errorMessage },
       { status: 500 }
     );
   }
