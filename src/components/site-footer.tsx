@@ -108,7 +108,7 @@ export function SiteFooter({ className }: { className?: string }) {
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="https://www.google.com/" 
+                href="https://share.google/mYRTAoO5txaWytDLj" 
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-600 shadow-md transition-transform hover:scale-110 hover:bg-gray-50"
                 aria-label="Google Avis"
