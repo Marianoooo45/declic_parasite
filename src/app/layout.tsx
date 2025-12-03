@@ -14,15 +14,10 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: `${site.brand} | Expert Anti-Nuisibles à ${site.city} (Dératisation & Désinsectisation)`,
-  description: `${site.brand} intervient à ${site.city} et dans le ${site.departement} : rats, souris, punaises de lit, cafards, frelons, guêpes, fourmis. Devis gratuit, intervention rapide 24–48h.`,
+  title: `${site.brand} | Expert Anti-Nuisibles...`,
+  description: `${site.brand} intervient...`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
-
   openGraph: {
     title: `${site.brand} – ${site.city}`,
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
