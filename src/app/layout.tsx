@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
-// NOUVEL IMPORT
 import { GoogleAnalytics } from '@next/third-parties/google'; 
 
 import ClientBody from "./ClientBody";
@@ -55,6 +54,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: ldJson }}
         />
+        {/* CORRECTION PERFORMANCE : Préchargement de l'image LCP */}
+        <link
+          rel="preload"
+          href="https://images.contentstack.io/v3/assets/blt4cb7085064c0b32f/blt6614b4a12e79a8a2/668d2eb242bfac020686b5fd/1200X628_conseil_comment_choisir_exterminateur.jpg"
+          as="image"
+          fetchpriority="high"
+        />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
@@ -66,7 +72,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <FloatingCta />
       </ClientBody>
       
-      {/* NOUVELLE LIGNE : Installation de Google Analytics */}
       <GoogleAnalytics gaId="G-7H51K6LB86" /> 
     </html>
   );

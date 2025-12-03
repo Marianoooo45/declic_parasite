@@ -278,8 +278,6 @@ export function SiteHeader() {
       <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
         
         <Link href="/" className="flex items-center" aria-label={site.brand}>
-          {/* MODIF : TAILLE DU LOGO NETTEMENT AUGMENTÉE ICI */}
-          {/* Passage de h-9 à h-14 sur mobile, et md:h-14 à md:h-20 sur desktop */}
           <LogoDeclic className="h-11 w-auto md:h-16" />
         </Link>
 
@@ -322,7 +320,13 @@ export function SiteHeader() {
             </Button>
           </Link>
 
-          <a href={phoneHref} className="inline-flex lg:hidden" data-cta="nav-phone-mobile">
+          {/* CORRECTION ACCESSIBILITÉ : aria-label ajouté */}
+          <a 
+            href={phoneHref} 
+            className="inline-flex lg:hidden" 
+            data-cta="nav-phone-mobile"
+            aria-label={`Appeler Déclic Parasites au ${site.phone}`}
+          >
             <Button
               size="default"
               className="bg-gradient-accent font-semibold shadow-md"

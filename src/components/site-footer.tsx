@@ -16,7 +16,6 @@ const footerNav = [
   { label: "Contact", href: "/contact" },
 ];
 
-// Icônes personnalisées pour Google et PagesJaunes
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
     <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .533 5.347.533 12S5.867 24 12.48 24c3.44 0 6.053-1.147 7.92-3.067 1.947-1.947 2.56-4.693 2.56-6.987 0-.693-.053-1.36-.173-2.027H12.48z" />
@@ -207,7 +206,8 @@ export function SiteFooter({ className }: { className?: string }) {
                   Disponibilité 7j/7 pour urgences
                 </p>
                 <Link href="/contact" className="inline-flex w-full" data-cta="footer-cta">
-                  <Button size="sm" className="w-full bg-gradient-accent font-bold shadow-lg">
+                  {/* CORRECTION ACCESSIBILITÉ : size="default" (au lieu de sm) */}
+                  <Button size="default" className="w-full bg-gradient-accent font-bold shadow-lg">
                     Demander un devis
                   </Button>
                 </Link>
