@@ -71,7 +71,7 @@ const genericNearbyCommunes: string[] = [
 
 // 🔥 MASTER LIST : toutes les villes pour lesquelles on veut une vraie page
 // => union de site.serviceArea + genericNearbyCommunes
-export const zoneEntries = Array.from(
+const zoneEntries = Array.from(
   new Set<string>([...site.serviceArea, ...genericNearbyCommunes]),
 ).map((city) => ({
   city,
