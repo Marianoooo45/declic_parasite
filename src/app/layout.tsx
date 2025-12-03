@@ -54,18 +54,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: ldJson }}
         />
-        {/* CORRECTION PERFORMANCE : Préchargement de l'image LCP */}
+        {/* CORRECTION : Utilisation de fetchPriority (camelCase) pour satisfaire TypeScript */}
         <link
           rel="preload"
           href="https://images.contentstack.io/v3/assets/blt4cb7085064c0b32f/blt6614b4a12e79a8a2/668d2eb242bfac020686b5fd/1200X628_conseil_comment_choisir_exterminateur.jpg"
           as="image"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
-          {/* Compense le header fixe (h-16 md:h-20) */}
           <main className="flex-1 pt-16 md:pt-20">{children}</main>
           <SiteFooter />
         </div>
