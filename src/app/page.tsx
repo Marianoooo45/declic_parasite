@@ -58,7 +58,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-shadow-lg md:text-6xl lg:text-7xl">
-              Urgence nuisibles à Orléans ?
+              Dératisation, Désinsectisation : Urgence à Orléans ?
             </h1>
 
             <p className="text-pretty text-xl leading-relaxed text-white/90 md:text-2xl">
@@ -143,25 +143,25 @@ export default function Home() {
             {[
               {
                 symptom: "Bruits dans les murs",
-                pest: "Rats & Souris",
+                pest: "Rats & Souris Loiret",
                 image: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/deratisation"
               },
               {
                 symptom: "Piqûres au réveil",
-                pest: "Punaises de lit",
+                pest: "Punaises de Loiret",
                 image: "https://images.unsplash.com/photo-1680162984776-841184954e9e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/traitement-punaises-de-lit"
               },
               {
                 symptom: "Traces dans la cuisine",
-                pest: "Cafards & Blattes",
+                pest: "Cafards & Blattes Loiret",
                 image: "https://images.unsplash.com/photo-1727198634627-645ef5356455?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/traitement-cafards-et-blattes"
               },
               {
                 symptom: "Nid visible",
-                pest: "Guêpes & Frelons",
+                pest: "Guêpes & Frelons Loiret",
                 image: "https://images.unsplash.com/photo-1755039022246-d7e7f58b54c7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 link: "/services/guepes-frelons"
               }

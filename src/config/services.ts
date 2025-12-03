@@ -15,10 +15,10 @@ export type Service = {
 
 const baseServices: Service[] = [
   {
-    title: "Dératisation",
-    short: "Élimination durable des rats et souris",
+    title: "Dératisation (Rats & Souris)", // Titre plus explicite
+    short: "Intervention rapide pour rats et souris à Orléans", // Ajout de "Orléans"
     description:
-      "Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs avec un plan d'action complet et durable.",
+      "Experts en dératisation à Orléans et dans le Loiret. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable, certifié Certibiocide.",
     heroImage: "/services/deratisation.svg",
     priceFrom: 99,
     benefits: [
@@ -26,7 +26,7 @@ const baseServices: Service[] = [
       "Traitements sécurisés pour l'intérieur et l'extérieur",
       "Suivi et prévention anti-réinfestation",
       "Rapport détaillé pour assurances et bailleurs",
-      "Disponibilité 24–48h sur tout le Loiret",
+      "Disponibilité 24–48h sur tout le Loiret (Urgence dératisation)", // Ajout d'une mention d'urgence dans les bénéfices
     ],
     features: [
       "Inspection complète et identification des espèces",

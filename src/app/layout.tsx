@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: `${site.brand} | Expert Anti-Nuisibles...`,
   description: `${site.brand} intervient...`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
-  
+  keywords: site.keywords.split(", "),
   openGraph: {
     title: `${site.brand} – ${site.city}`,
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
