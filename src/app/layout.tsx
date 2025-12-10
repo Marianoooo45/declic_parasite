@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: `${site.brand} | Expert Anti-Nuisibles...`,
-  description: `${site.brand} intervient...`,
+  title: `${site.brand} | Expert Anti-Nuisibles ${site.city}`,
+  description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   keywords: site.keywords.split(", "),
   openGraph: {
@@ -22,27 +22,57 @@ export const metadata: Metadata = {
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
     type: "website",
     locale: "fr_FR",
+    url: "https://www.declicparasites.fr",
+    siteName: site.brand,
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Configuration optimisée pour le "Knowledge Panel" de Google
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
-    "@type": "PestControl",
-    name: site.brand,
-    address: {
+    "@type": "PestControl", // Type spécifique reconnu par Google
+    "name": site.brand,
+    "image": "https://www.declicparasites.fr/icon.png", // Utilise votre favicon comme logo
+    "@id": "https://www.declicparasites.fr/#organization",
+    "url": "https://www.declicparasites.fr",
+    "email": site.email,
+    "telephone": site.phone.replace(/\s+/g, ""),
+    "priceRange": "€€",
+    "address": {
       "@type": "PostalAddress",
-      streetAddress: site.address.split(",")[0],
-      addressLocality: site.city,
-      postalCode: "45000",
-      addressCountry: "FR",
+      "streetAddress": "10 Rue Bannier",
+      "addressLocality": "Orléans",
+      "postalCode": "45000",
+      "addressCountry": "FR",
     },
-    url: "https://www.declicparasites.fr",
-    email: site.email,
-    telephone: site.phone.replace(/\s+/g, ""),
-    areaServed: site.serviceArea,
-    priceRange: "€€",
-    sameAs: [],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.90289, // Coordonnées centre Orléans
+      "longitude": 1.90389
+    },
+    "areaServed": site.serviceArea.map(city => ({
+      "@type": "City",
+      "name": city
+    })),
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61584584848729",
+      "https://share.google/mYRTAoO5txaWytDLj" // Lien vers votre fiche Google Maps
+    ]
   };
 
   const ldJson: string = JSON.stringify(localBusinessJsonLd);
@@ -54,13 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: ldJson }}
         />
-        {/* CORRECTION : Utilisation de fetchPriority (camelCase) pour satisfaire TypeScript */}
-        <link
-          rel="preload"
-          href="https://images.contentstack.io/v3/assets/blt4cb7085064c0b32f/blt6614b4a12e79a8a2/668d2eb242bfac020686b5fd/1200X628_conseil_comment_choisir_exterminateur.jpg"
-          as="image"
-          fetchPriority="high"
-        />
+        {/* Suppression du link preload inutile qui causait des conflits */}
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
