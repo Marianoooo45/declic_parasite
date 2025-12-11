@@ -27,8 +27,12 @@ import {
   Zap,
 } from "lucide-react";
 
+// MODIFICATION : Ajout des champs civilité, prénom, nom et adresse
 const initialForm = {
-  name: "",
+  civility: "M.",
+  firstName: "",
+  lastName: "",
+  address: "",
   email: "",
   phone: "",
   service: services[0]?.slug ?? "",
@@ -60,8 +64,11 @@ export default function ContactPageContent() {
     event.preventDefault();
     setFeedback(null);
 
+    // MODIFICATION : Validation des nouveaux champs
     if (
-      !formState.name ||
+      !formState.firstName ||
+      !formState.lastName ||
+      !formState.address ||
       !formState.email ||
       !formState.phone ||
       !formState.message
@@ -87,6 +94,8 @@ export default function ContactPageContent() {
 
     const payload = {
       ...formState,
+      // On reconstruit un nom complet pour l'API si besoin
+      fullName: `${formState.civility} ${formState.firstName} ${formState.lastName}`,
       serviceLabel,
     };
 
@@ -118,16 +127,17 @@ export default function ContactPageContent() {
   const fallbackToMailto = () => {
     setStatus("fallback");
     const subject = encodeURIComponent(
-      `Demande de devis - ${
-        serviceLabel || "Intervention nuisibles"
-      }`,
+      `Demande de devis - ${serviceLabel || "Intervention nuisibles"}`,
     );
+    
+    // MODIFICATION : Corps du mail mis à jour avec les nouvelles infos
     const body = encodeURIComponent(
-      `Nom: ${formState.name}\nEmail: ${
-        formState.email
-      }\nTéléphone: ${
-        formState.phone
-      }\nService: ${serviceLabel}\n\nMessage:\n${formState.message}`,
+      `Client: ${formState.civility} ${formState.firstName} ${formState.lastName}\n` +
+      `Adresse: ${formState.address}\n` +
+      `Email: ${formState.email}\n` +
+      `Téléphone: ${formState.phone}\n` +
+      `Service: ${serviceLabel}\n\n` +
+      `Message:\n${formState.message}`
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setFeedback(
@@ -137,7 +147,7 @@ export default function ContactPageContent() {
 
   return (
     <div className="relative min-h-screen">
-      {/* HERO - Padding réduit sur mobile (py-12) */}
+      {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-primary py-12 text-white lg:py-28">
         <Image
           src="https://plus.unsplash.com/premium_photo-1682126082802-983618de1dd9?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHx8"
@@ -148,14 +158,12 @@ export default function ContactPageContent() {
           priority
         />
 
-        {/* Padding horizontal réduit sur mobile (px-4) */}
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Zap className="h-4 w-4 text-accent" />
             Réponse en moins d&apos;1h ouvrée
           </div>
 
-          {/* Titre réduit sur mobile (text-4xl) */}
           <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
             Contact &amp; devis gratuit
           </h1>
@@ -187,7 +195,6 @@ export default function ContactPageContent() {
             </a>
           </div>
 
-          {/* Grille explicite 1 colonne mobile */}
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               {
@@ -260,14 +267,12 @@ export default function ContactPageContent() {
         </div>
       </section>
 
-      {/* FORMULAIRE + INFO - Padding réduit (py-12) */}
+      {/* FORMULAIRE + INFO */}
       <section className="py-12 lg:py-20">
         <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
             {/* FORMULAIRE */}
-            {/* Padding réduit p-5 sur mobile */}
             <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
-              {/* Titre réduit text-2xl sur mobile */}
               <h2 className="text-balance text-2xl font-bold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
@@ -296,19 +301,46 @@ export default function ContactPageContent() {
                 className="mt-8 space-y-6 scroll-mt-72"
                 onSubmit={handleSubmit}
               >
-                <div className="grid gap-6 md:grid-cols-2">
+                {/* 1. CIVILITÉ & IDENTITÉ (Nouvelle structure) */}
+                <div className="grid gap-6 md:grid-cols-[100px_1fr_1fr]">
+                  {/* Civilité */}
                   <div>
                     <label className="mb-2 block text-sm font-bold text-primary">
-                      Nom <span className="text-accent">*</span>
+                      Civilité
+                    </label>
+                    <Select
+                      name="civility"
+                      value={formState.civility}
+                      onValueChange={(value) =>
+                        setFormState((prev) => ({
+                          ...prev,
+                          civility: value,
+                        }))
+                      }
+                    >
+                      <SelectTrigger className="h-12 border-2">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="M.">M.</SelectItem>
+                        <SelectItem value="Mme.">Mme.</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Prénom */}
+                  <div>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Prénom <span className="text-accent">*</span>
                     </label>
                     <Input
-                      name="name"
-                      placeholder="Votre nom complet"
-                      value={formState.name}
+                      name="firstName"
+                      placeholder="Jean"
+                      value={formState.firstName}
                       onChange={(e) =>
                         setFormState((prev) => ({
                           ...prev,
-                          name: e.target.value,
+                          firstName: e.target.value,
                         }))
                       }
                       required
@@ -316,6 +348,49 @@ export default function ContactPageContent() {
                     />
                   </div>
 
+                  {/* Nom */}
+                  <div>
+                    <label className="mb-2 block text-sm font-bold text-primary">
+                      Nom <span className="text-accent">*</span>
+                    </label>
+                    <Input
+                      name="lastName"
+                      placeholder="Dupont"
+                      value={formState.lastName}
+                      onChange={(e) =>
+                        setFormState((prev) => ({
+                          ...prev,
+                          lastName: e.target.value,
+                        }))
+                      }
+                      required
+                      className="h-12 border-2"
+                    />
+                  </div>
+                </div>
+
+                {/* 2. ADRESSE (Nouveau champ) */}
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-primary">
+                    Adresse postale <span className="text-accent">*</span>
+                  </label>
+                  <Input
+                    name="address"
+                    placeholder="Numéro, Rue, Code Postal, Ville"
+                    value={formState.address}
+                    onChange={(e) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
+                    }
+                    required
+                    className="h-12 border-2"
+                  />
+                </div>
+
+                {/* 3. CONTACT */}
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-bold text-primary">
                       Email <span className="text-accent">*</span>
@@ -355,41 +430,43 @@ export default function ContactPageContent() {
                       className="h-12 border-2"
                     />
                   </div>
-
-                  <div>
-                    <label className="mb-2 block text-sm font-bold text-primary">
-                      Service souhaité
-                    </label>
-                    <Select
-                      name="service"
-                      value={formState.service}
-                      onValueChange={(value) =>
-                        setFormState((prev) => ({
-                          ...prev,
-                          service: value,
-                        }))
-                      }
-                    >
-                      <SelectTrigger className="h-12 border-2">
-                        <SelectValue placeholder="Sélectionnez un service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {services.map((service) => (
-                          <SelectItem
-                            key={service.slug}
-                            value={service.slug}
-                          >
-                            {service.title}
-                          </SelectItem>
-                        ))}
-                        <SelectItem value="autre">
-                          Autre demande
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
                 </div>
 
+                {/* 4. SERVICE */}
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-primary">
+                    Service souhaité
+                  </label>
+                  <Select
+                    name="service"
+                    value={formState.service}
+                    onValueChange={(value) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        service: value,
+                      }))
+                    }
+                  >
+                    <SelectTrigger className="h-12 border-2">
+                      <SelectValue placeholder="Sélectionnez un service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {services.map((service) => (
+                        <SelectItem
+                          key={service.slug}
+                          value={service.slug}
+                        >
+                          {service.title}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="autre">
+                        Autre demande
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* 5. MESSAGE */}
                 <div>
                   <label className="mb-2 block text-sm font-bold text-primary">
                     Message <span className="text-accent">*</span>
