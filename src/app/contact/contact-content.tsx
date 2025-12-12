@@ -35,6 +35,7 @@ const initialForm = {
   address: "",
   email: "",
   phone: "",
+  contactPreference: "telephone",
   service: services[0]?.slug ?? "",
   message: "",
   consent: false,
@@ -92,11 +93,23 @@ export default function ContactPageContent() {
 
     setStatus("loading");
 
+    const contactPreferenceLabel =
+      {
+        telephone: "Téléphone",
+        email: "Email",
+        sms: "SMS",
+        whatsapp: "WhatsApp",
+      }[formState.contactPreference] || formState.contactPreference;
+
+    const messageWithPreference = `${formState.message}\n\nPréférence de rappel : ${contactPreferenceLabel}`;
+
     const payload = {
       ...formState,
       // On reconstruit un nom complet pour l'API si besoin
       fullName: `${formState.civility} ${formState.firstName} ${formState.lastName}`,
+      message: messageWithPreference,
       serviceLabel,
+      contactPreferenceLabel,
     };
 
     try {
@@ -129,14 +142,23 @@ export default function ContactPageContent() {
     const subject = encodeURIComponent(
       `Demande de devis - ${serviceLabel || "Intervention nuisibles"}`,
     );
-    
+
+    const contactPreferenceLabel =
+      {
+        telephone: "Téléphone",
+        email: "Email",
+        sms: "SMS",
+        whatsapp: "WhatsApp",
+      }[formState.contactPreference] || formState.contactPreference;
+
     // MODIFICATION : Corps du mail mis à jour avec les nouvelles infos
     const body = encodeURIComponent(
       `Client: ${formState.civility} ${formState.firstName} ${formState.lastName}\n` +
       `Adresse: ${formState.address}\n` +
       `Email: ${formState.email}\n` +
       `Téléphone: ${formState.phone}\n` +
-      `Service: ${serviceLabel}\n\n` +
+      `Service: ${serviceLabel}\n` +
+      `Préférence de rappel: ${contactPreferenceLabel}\n\n` +
       `Message:\n${formState.message}`
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
@@ -430,6 +452,33 @@ export default function ContactPageContent() {
                       className="h-12 border-2"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-primary">
+                    Comment voulez-vous être recontacté ?
+                    <span className="text-accent"> *</span>
+                  </label>
+                  <Select
+                    name="contactPreference"
+                    value={formState.contactPreference}
+                    onValueChange={(value) =>
+                      setFormState((prev) => ({
+                        ...prev,
+                        contactPreference: value,
+                      }))
+                    }
+                  >
+                    <SelectTrigger className="h-12 border-2">
+                      <SelectValue placeholder="Choisissez votre canal préféré" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="telephone">Appel téléphonique</SelectItem>
+                      <SelectItem value="email">Email</SelectItem>
+                      <SelectItem value="sms">SMS</SelectItem>
+                      <SelectItem value="whatsapp">WhatsApp</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* 4. SERVICE */}

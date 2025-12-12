@@ -62,7 +62,7 @@ export default function Home() {
             </h1>
 
             <p className="text-pretty text-xl leading-relaxed text-white/90 md:text-2xl">
-              <strong>Rats, punaises de lit, cafards, guêpes...</strong>
+              <strong>Rats, punaises de lit, cafards, fourmis...</strong>
               <br />
               Intervention rapide 24-48h • Devis gratuit • Méthodes certifiées
             </p>
@@ -160,10 +160,10 @@ export default function Home() {
                 link: "/services/traitement-cafards-et-blattes"
               },
               {
-                symptom: "Nid visible",
-                pest: "Guêpes & Frelons Loiret",
-                image: "https://images.unsplash.com/photo-1755039022246-d7e7f58b54c7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                link: "/services/guepes-frelons"
+                symptom: "File indienne sur le plan de travail",
+                pest: "Fourmis invasives Loiret",
+                image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                link: "/services/traitement-fourmis-invasives"
               }
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>

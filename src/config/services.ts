@@ -11,6 +11,7 @@ export type Service = {
   features: string[];
   faqs: { q: string; a: string }[];
   schemaKeywords?: string[];
+  disabled?: boolean;
 };
 
 const baseServices: Service[] = [
@@ -206,6 +207,7 @@ const baseServices: Service[] = [
     description:
       "Un nid de guêpes ou de frelons met en danger votre famille ? Nous intervenons en hauteur ou en cave avec équipement complet et garantie de résultat.",
     heroImage: "/services/guepes.svg",
+    disabled: true,
     priceFrom: 139,
     benefits: [
       "Intervention en urgence",
@@ -342,7 +344,9 @@ const baseServices: Service[] = [
 
 export type ServiceWithSlug = Service & { slug: string };
 
-export const services: ServiceWithSlug[] = baseServices.map((service) => ({
-  ...service,
-  slug: service.slug ?? slugify(service.title),
-}));
+export const services: ServiceWithSlug[] = baseServices
+  .filter((service) => !service.disabled)
+  .map((service) => ({
+    ...service,
+    slug: service.slug ?? slugify(service.title),
+  }));
