@@ -20,6 +20,7 @@ export type BlogPost = {
   tags: string[]; // Tags pour le SEO et la catégorisation
   intro: string; // Premier paragraphe enrichi
   sections: BlogPostSection[]; // Corps de l'article
+  sources?: string[]; // Sources et références
   author?: string; // Optionnel : nom de l'auteur
   featured?: boolean; // Pour mettre en avant certains articles
 };
@@ -59,13 +60,13 @@ export const blogPosts: BlogPost[] = [
     tags: ["Désinsectisation", "Orléans", "Loiret", "Guide pratique"],
     featured: true,
     intro:
-      "Avec la douceur des saisons et les spécificités climatiques du Loiret, les nuisibles trouvent rapidement refuge dans nos habitations. Cafards dans les cuisines orléanaises, rats dans les caves du centre historique, fourmis envahissant les terrasses... Voici notre méthode Déclic Parasites, rodée sur le terrain à Orléans, pour reprendre la main efficacement et durablement.",
+      "Avec la douceur des saisons et les spécificités climatiques du Loiret, les nuisibles trouvent rapidement refuge dans nos habitations. Cafards dans les cuisines orléanaises, rats dans les caves du centre historique, fourmis envahissant les terrasses... Voici notre méthode Déclic Parasites, rodée sur le terrain à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, pour reprendre la main efficacement et durablement.",
     sections: [
       {
         heading: "1. Inspecter méthodiquement chaque zone avant d'agir",
         body: [
           "La première étape cruciale consiste à identifier précisément les points d'entrée et les zones d'activité des nuisibles. Munissez-vous d'une lampe torche et de votre smartphone pour documenter ce que vous observez : traces de déjections, chemins de passage, zones de grignotage, fissures dans les murs.",
-          "À Orléans et dans son agglomération, nos diagnostics révèlent que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage, joints de fenêtre dégradés. Dans les bâtiments anciens du centre-ville, les caves voûtées et les vides sanitaires sont particulièrement vulnérables.",
+          "À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> et dans son agglomération, nos diagnostics révèlent que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage, joints de fenêtre dégradés. Dans les bâtiments anciens du centre-ville, les caves voûtées et les vides sanitaires sont particulièrement vulnérables.",
           "Photographiez systématiquement ces indices. Ces images serviront de base au technicien pour élaborer un plan d'action ciblé et vous permettront de suivre l'évolution de la situation dans le temps. Un bon diagnostic fait gagner jusqu'à 50% de temps sur le traitement.",
         ],
         image: {
@@ -77,8 +78,8 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "2. Choisir le protocole de traitement adapté à chaque nuisible",
         body: [
-          "Chaque espèce de nuisible nécessite une approche spécifique et des produits dédiés. Les blattes germaniques qui prolifèrent dans les cuisines d'Orléans répondent mieux aux gels alimentaires appliqués au plus près de leurs refuges. Les rats noirs, fréquents dans les combles des maisons orléanaises, nécessitent des appâts sécurisés placés sur leurs trajets habituels. Les fourmis pharaons requièrent un traitement en barrage avec des insecticides rémanents.",
-          "Nos équipes du Loiret ont développé un schéma d'intervention en deux passages systématiques : un traitement choc initial pour réduire drastiquement la population, suivi d'un contrôle et ajustement 15 jours plus tard. Cette méthode, certifiée Certibiocide, garantit un résultat durable tout en limitant l'exposition aux produits biocides.",
+          "Chaque espèce de nuisible nécessite une approche spécifique et des produits dédiés. Les <a href='https://fr.wikipedia.org/wiki/Blattella_germanica' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>blattes germaniques</a> qui prolifèrent dans les cuisines d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> répondent mieux aux gels alimentaires appliqués au plus près de leurs refuges. Les <a href='https://fr.wikipedia.org/wiki/Rattus_rattus' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>rats noirs</a>, fréquents dans les combles des maisons orléanaises, nécessitent des appâts sécurisés placés sur leurs trajets habituels. Les <a href='https://fr.wikipedia.org/wiki/Monomorium_pharaonis' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>fourmis pharaons</a> requièrent un traitement en barrage avec des insecticides rémanents.",
+          "Nos équipes du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> ont développé un schéma d'intervention en deux passages systématiques : un traitement choc initial pour réduire drastiquement la population, suivi d'un contrôle et ajustement 15 jours plus tard. Cette méthode, certifiée <a href='https://www.ecologie.gouv.fr/biocides' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Certibiocide</a>, garantit un résultat durable tout en limitant l'exposition aux produits biocides.",
           "Chaque intervention est tracée avec photos avant/après, fiches techniques des produits utilisés et plan de localisation des points de traitement. Cette documentation complète rassure les assurances habitation et permet un suivi rigoureux de l'efficacité du protocole.",
         ],
         image: {
@@ -91,16 +92,16 @@ export const blogPosts: BlogPost[] = [
         heading: "3. Mettre en place une stratégie de prévention dès la première visite",
         body: [
           "Le traitement seul ne suffit pas : la prévention est la clé d'un résultat durable. Dès la première intervention, nos techniciens identifient les facteurs favorisant l'infestation et proposent des solutions concrètes : pose de grillages anti-rongeurs sur les bouches d'aération, application de joints silicone en cuisine et salle de bain, installation de seuils de porte adaptés.",
-          "Dans le centre d'Orléans comme en zone rurale du Loiret, nous constatons que ces mesures préventives réduisent les risques de réinfestation de plus de 60% sur 12 mois. Pour les commerces de bouche et restaurants, nous recommandons également un nettoyage renforcé des zones de stockage, l'utilisation de conteneurs hermétiques pour les denrées, et la formation du personnel aux bonnes pratiques d'hygiène.",
+          "Dans le centre d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> comme en zone rurale du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, nous constatons que ces mesures préventives réduisent les risques de réinfestation de plus de 60% sur 12 mois. Pour les commerces de bouche et restaurants, nous recommandons également un nettoyage renforcé des zones de stockage, l'utilisation de conteneurs hermétiques pour les denrées, et la formation du personnel aux bonnes pratiques d'hygiène.",
           "Un suivi téléphonique ou par SMS est systématiquement proposé une semaine après l'intervention. Cette vigilance continue permet d'ajuster rapidement les dispositifs si nécessaire, de renforcer une zone sensible détectée tardivement, ou simplement de rassurer nos clients sur l'absence de signes de retour. Cette approche proactive fait toute la différence sur la durée.",
         ],
       },
       {
         heading: "4. Adapter le traitement aux spécificités locales du Loiret",
         body: [
-          "Le Loiret présente des particularités qui influencent directement notre façon d'intervenir. La proximité de la Loire crée des zones humides favorables aux rongeurs et aux insectes rampants. Les variations de température entre les bords du fleuve et les plateaux de Beauce obligent à ajuster les protocoles selon la saison.",
+          "Le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> présente des particularités qui influencent directement notre façon d'intervenir. La proximité de <a href='https://fr.wikipedia.org/wiki/Loire_(fleuve)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>la Loire</a> crée des zones humides favorables aux rongeurs et aux insectes rampants. Les variations de température entre les bords du fleuve et les plateaux de <a href='https://fr.wikipedia.org/wiki/Beauce' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Beauce</a> obligent à ajuster les protocoles selon la saison.",
           "En hiver, les nuisibles cherchent refuge dans les habitations chauffées, multipliant les infestations de caves et de greniers. Au printemps et en été, les zones extérieures (jardins, terrasses, abris) deviennent des points d'entrée privilégiés. Nos interventions tiennent compte de ces cycles naturels pour maximiser l'efficacité des traitements.",
-          "À Orléans, la densité du bâti ancien avec ses caves en pierre, ses cours intérieures et ses immeubles mitoyens nécessite souvent une approche coordonnée avec les voisins ou les syndics de copropriété. Nous facilitons cette coordination en proposant des diagnostics groupés et des traitements simultanés pour éviter les migrations de nuisibles d'un logement à l'autre.",
+          "À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, la densité du bâti ancien avec ses caves en pierre, ses cours intérieures et ses immeubles mitoyens nécessite souvent une approche coordonnée avec les voisins ou les syndics de copropriété. Nous facilitons cette coordination en proposant des diagnostics groupés et des traitements simultanés pour éviter les migrations de nuisibles d'un logement à l'autre.",
         ],
         image: {
           src: "https://img.freepik.com/photos-premium/vue-panoramique-aerienne-orleans-france_78361-12672.jpg",
@@ -112,10 +113,21 @@ export const blogPosts: BlogPost[] = [
         heading: "5. Assurer un suivi post-intervention rigoureux",
         body: [
           "Le succès d'une intervention anti-nuisibles se mesure dans la durée. C'est pourquoi nous incluons systématiquement un suivi sur 30 jours minimum, avec des points de contrôle réguliers et des ajustements si nécessaire. Nos clients reçoivent un rapport détaillé après chaque passage, avec recommandations personnalisées et photos des zones traitées.",
-          "Pour les professionnels (restaurants, hôtels, commerces alimentaires), nous proposons des contrats de maintenance préventive avec visites programmées et interventions curatives illimitées. Ces contrats incluent la traçabilité HACCP, indispensable lors des contrôles sanitaires, ainsi que l'accès à une ligne d'urgence 24/7.",
-          "Notre objectif est de construire une relation de confiance sur le long terme. Beaucoup de nos clients particuliers nous sollicitent ensuite pour des diagnostics préventifs annuels ou nous recommandent à leurs proches. Cette satisfaction client, mesurée à 98% dans le Loiret, est le résultat d'une approche professionnelle, transparente et humaine.",
+          "Pour les professionnels (restaurants, hôtels, commerces alimentaires), nous proposons des contrats de maintenance préventive avec visites programmées et interventions curatives illimitées. Ces contrats incluent la traçabilité <a href='https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/HACCP' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>HACCP</a>, indispensable lors des contrôles sanitaires, ainsi que l'accès à une ligne d'urgence 24/7.",
+          "Notre objectif est de construire une relation de confiance sur le long terme. Beaucoup de nos clients particuliers nous sollicitent ensuite pour des diagnostics préventifs annuels ou nous recommandent à leurs proches. Cette satisfaction client, mesurée à 98% dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, est le résultat d'une approche professionnelle, transparente et humaine.",
         ],
       },
+    ],
+    sources: [
+      "Orléans Métropole - Site officiel de la métropole orléanaise : https://www.orleans-metropole.fr/",
+      "Département du Loiret - Site officiel du conseil départemental : https://www.loiret.fr/",
+      "Blattella germanica (Blatte germanique) - Wikipedia : https://fr.wikipedia.org/wiki/Blattella_germanica",
+      "Rattus rattus (Rat noir) - Wikipedia : https://fr.wikipedia.org/wiki/Rattus_rattus",
+      "Monomorium pharaonis (Fourmi pharaon) - Wikipedia : https://fr.wikipedia.org/wiki/Monomorium_pharaonis",
+      "La Loire (fleuve) - Wikipedia : https://fr.wikipedia.org/wiki/Loire_(fleuve)",
+      "Beauce (région naturelle) - Wikipedia : https://fr.wikipedia.org/wiki/Beauce",
+      "Certification Certibiocide - Ministère de la Transition écologique : https://www.ecologie.gouv.fr/biocides",
+      "HACCP (Hazard Analysis Critical Control Point) - DGCCRF : https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/HACCP",
     ],
   },
 
@@ -160,6 +172,10 @@ export const blogPosts: BlogPost[] = [
         // Pas d'image dans cette section
       },
       // Ajoutez autant de sections que nécessaire
+    ],
+    sources: [
+      "Titre de la source 1 : URL complète",
+      "Titre de la source 2 : URL complète",
     ],
   },
   */
