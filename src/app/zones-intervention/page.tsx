@@ -33,8 +33,8 @@ export default function ZonesPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 py-12 text-white lg:py-32">
         {/* MODIF : Retour à l'image haute définition contrastée (Technicien) + mix-blend-overlay comme sur l'Accueil */}
         <Image
-          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
-          alt="Technicien expert Déclic Parasites"
+          src="https://img.centrefrance.com/KgNw5x6F5gNRVs1PdaU8oAwE9bozoYPM_Wflhceb2QI/rs:fit:657:438:1/g:sm/bG9jYWw6Ly8vMDAvMDAvMDQvNTIvOTMvMjAwMDAwNDUyOTMzNQ.jpg"
+          alt="Plan aérien de la ville d'Orléans, zone principale d'intervention de Déclic Parasites"
           fill
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           priority
