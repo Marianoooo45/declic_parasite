@@ -61,22 +61,26 @@ export default function NosEngagementsPage() {
         
         <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <AnimatedSection className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
               <Award className="h-4 w-4 text-accent" />
               Nos engagements professionnels
-            </div>
-            
-            <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
-              Notre promesse : protéger votre habitat comme si c'était le nôtre
-            </h1>
-            
-            <p className="text-pretty text-xl text-white/90">
-              Chaque intervention {site.brand} repose sur un diagnostic précis, des produits 
-              maîtrisés et un accompagnement humain. Nous intervenons à {site.city} et dans 
-              tout le {site.departement} avec le même niveau d'exigence.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.05}>
+              <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+                Notre promesse : protéger votre habitat comme si c'était le nôtre
+              </h1>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <p className="text-pretty text-xl text-white/90">
+                Chaque intervention {site.brand} repose sur un diagnostic précis, des produits
+                maîtrisés et un accompagnement humain. Nous intervenons à {site.city} et dans
+                tout le {site.departement} avec le même niveau d'exigence.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15} className="flex flex-wrap gap-4">
               <Link href="/contact" data-cta="engagements-contact">
                 <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
                   Programmer un échange
@@ -91,9 +95,9 @@ export default function NosEngagementsPage() {
                   Découvrir nos services
                 </Button>
               </Link>
-            </div>
+            </AnimatedSection>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <AnimatedSection delay={0.2} className="grid gap-4 sm:grid-cols-2">
               {[
                 "Techniciens certifiés Certibiocide",
                 "Rapports et photos après chaque passage",
@@ -105,10 +109,10 @@ export default function NosEngagementsPage() {
                   <span className="text-sm font-semibold">{item}</span>
                 </div>
               ))}
-            </div>
+            </AnimatedSection>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl">
+          <AnimatedSection delay={0.1} className="relative overflow-hidden rounded-3xl border-2 border-white/20 shadow-2xl">
             <div className="relative h-96 lg:h-full lg:min-h-[500px]">
               <Image
                 src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -121,12 +125,12 @@ export default function NosEngagementsPage() {
               <div className="absolute bottom-6 left-6 right-6 rounded-2xl border-2 border-white/30 bg-black/40 p-6 backdrop-blur-sm">
                 <p className="text-lg font-bold text-white">Procédures sécurisées</p>
                 <p className="mt-2 text-sm text-white/90">
-                  Plan d'intervention, vérification des zones sensibles et consignes claires 
+                  Plan d'intervention, vérification des zones sensibles et consignes claires
                   avant chaque traitement.
                 </p>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 

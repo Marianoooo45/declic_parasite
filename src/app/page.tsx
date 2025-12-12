@@ -52,22 +52,26 @@ export default function Home() {
 
         <div className="relative mx-auto flex min-h-[85vh] max-w-7xl flex-col justify-center px-4 py-20 md:px-6 lg:min-h-[90vh]">
           <div className="max-w-3xl space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <AnimatedSection className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
               <Award className="h-4 w-4 text-accent" />
               Certifié Certibiocide — Expert local
-            </div>
+            </AnimatedSection>
 
-            <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-shadow-lg md:text-6xl lg:text-7xl">
-              Dératisation, Désinsectisation : Urgence à Orléans ?
-            </h1>
+            <AnimatedSection delay={0.05}>
+              <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-shadow-lg md:text-6xl lg:text-7xl">
+                Dératisation, Désinsectisation : Urgence à Orléans ?
+              </h1>
+            </AnimatedSection>
 
-            <p className="text-pretty text-xl leading-relaxed text-white/90 md:text-2xl">
-              <strong>Rats, punaises de lit, cafards, fourmis...</strong>
-              <br />
-              Intervention rapide 24-48h • Devis gratuit • Méthodes certifiées
-            </p>
+            <AnimatedSection delay={0.1}>
+              <p className="text-pretty text-xl leading-relaxed text-white/90 md:text-2xl">
+                <strong>Rats, punaises de lit, cafards, fourmis...</strong>
+                <br />
+                Intervention rapide 24-48h • Devis gratuit • Méthodes certifiées
+              </p>
+            </AnimatedSection>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <AnimatedSection delay={0.15} className="flex flex-col gap-4 sm:flex-row">
               <a href={phoneHref} data-cta="hero-call">
                 <Button size="lg" className="h-14 w-full bg-accent px-8 text-lg font-bold shadow-2xl hover:bg-accent/90 hover:shadow-accent/30 sm:w-auto">
                   <Phone className="h-5 w-5" />
@@ -80,9 +84,9 @@ export default function Home() {
                   <ArrowRight className="h-5 w-5" />
                 </Button>
               </Link>
-            </div>
+            </AnimatedSection>
 
-            <div className="grid gap-4 pt-4 sm:grid-cols-3">
+            <AnimatedSection delay={0.2} className="grid gap-4 pt-4 sm:grid-cols-3">
               {[
                 { icon: Shield, text: "Certibiocide" },
                 { icon: Star, text: "98% satisfaits" },
@@ -93,9 +97,9 @@ export default function Home() {
                   <span className="text-sm font-semibold">{item.text}</span>
                 </div>
               ))}
-            </div>
+            </AnimatedSection>
 
-            <div className="flex flex-wrap gap-2 text-sm">
+            <AnimatedSection delay={0.25} className="flex flex-wrap gap-2 text-sm">
               <span className="text-white/70">Zones :</span>
               {site.serviceArea.slice(0, 6).map((zone) => (
                 <span key={zone} className="rounded-full border border-white/30 px-3 py-1 font-medium">
@@ -105,7 +109,7 @@ export default function Home() {
               <Link href="/zones-intervention" className="rounded-full border border-white/30 px-3 py-1 font-medium hover:bg-white/10">
                 + {site.serviceArea.length - 6} communes
               </Link>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
