@@ -13,6 +13,7 @@ const footerNav = [
   { label: "Services", href: "/services" },
   { label: "Nos engagements", href: "/nos-engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 

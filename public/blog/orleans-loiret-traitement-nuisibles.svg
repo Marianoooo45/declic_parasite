@@ -1,0 +1,23 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Inspection anti nuisibles à Orléans">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#f5f7fb"/>
+  <rect x="120" y="140" width="1360" height="620" rx="48" fill="url(#g1)" opacity="0.12"/>
+  <path d="M260 630 C420 500 540 470 720 520 C900 570 1100 500 1300 340" stroke="#0ea5e9" stroke-width="18" fill="none" opacity="0.35"/>
+  <circle cx="380" cy="390" r="110" fill="#0ea5e9" opacity="0.18"/>
+  <circle cx="1180" cy="520" r="140" fill="#14b8a6" opacity="0.18"/>
+  <text x="180" y="250" font-size="64" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="800">Déclic Parasites</text>
+  <text x="180" y="330" font-size="40" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="700">Interventions Orléans &amp; Loiret</text>
+  <text x="180" y="400" font-size="28" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">Traitement des nuisibles - inspection, désinsectisation, suivi</text>
+  <rect x="1040" y="240" width="340" height="420" rx="32" fill="#0f172a" opacity="0.08" stroke="#0ea5e9" stroke-width="6"/>
+  <text x="1080" y="320" font-size="30" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="700">Check-list terrain</text>
+  <text x="1080" y="370" font-size="22" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">• Diagnostic rapide</text>
+  <text x="1080" y="410" font-size="22" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">• Orléans, Loiret</text>
+  <text x="1080" y="450" font-size="22" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">• Rapport photo</text>
+  <text x="1080" y="490" font-size="22" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">• Prévention durable</text>
+  <text x="1080" y="530" font-size="22" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.8">• Intervention 24–48h</text>
+</svg>

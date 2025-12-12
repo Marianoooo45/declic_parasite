@@ -1,0 +1,29 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Équipe Déclic Parasites dans le Loiret">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="#f8fafc"/>
+  <rect x="120" y="120" width="1160" height="660" rx="44" fill="url(#bg)"/>
+  <path d="M240 620 Q 520 540 760 620 T 1220 560" fill="none" stroke="#0f172a" stroke-width="14" opacity="0.12"/>
+  <g transform="translate(260 260)">
+    <circle cx="180" cy="160" r="150" fill="#0ea5e9" opacity="0.12"/>
+    <rect x="80" y="120" width="200" height="240" rx="40" fill="#0f172a" opacity="0.85"/>
+    <rect x="120" y="90" width="120" height="70" rx="20" fill="#0ea5e9" opacity="0.9"/>
+    <circle cx="140" cy="220" r="12" fill="#14b8a6"/>
+    <circle cx="220" cy="220" r="12" fill="#14b8a6"/>
+    <rect x="150" y="280" width="60" height="30" rx="10" fill="#f8fafc" opacity="0.85"/>
+  </g>
+  <g transform="translate(760 240)">
+    <circle cx="200" cy="170" r="160" fill="#14b8a6" opacity="0.12"/>
+    <rect x="120" y="130" width="200" height="260" rx="50" fill="#0f172a" opacity="0.9"/>
+    <rect x="150" y="100" width="140" height="70" rx="20" fill="#14b8a6" opacity="0.95"/>
+    <circle cx="170" cy="240" r="12" fill="#0ea5e9"/>
+    <circle cx="250" cy="240" r="12" fill="#0ea5e9"/>
+    <rect x="185" y="300" width="70" height="32" rx="10" fill="#f8fafc" opacity="0.85"/>
+  </g>
+  <text x="200" y="740" font-size="34" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-weight="800">Équipe Déclic Parasites</text>
+  <text x="200" y="780" font-size="26" fill="#0f172a" font-family="'Inter', 'Segoe UI', Arial, sans-serif" opacity="0.85">Interventions coordonnées sur Orléans, Saran, Olivet et tout le Loiret</text>
+</svg>

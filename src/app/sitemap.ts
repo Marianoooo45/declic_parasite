@@ -1,5 +1,6 @@
 import { site } from "@/config/site";
 import { services } from "@/config/services";
+import { blogPosts } from "@/config/blog";
 import { slugify } from "@/lib/slug";
 import { MetadataRoute } from "next";
 
@@ -54,6 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/nos-engagements",
     "/contact",
     "/zones-intervention",
+    "/blog",
   ].map((p) => ({
     url: `${base}${p || "/"}`,
     lastModified: new Date(),
@@ -77,6 +79,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
+  const blogPages = blogPosts.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   // Retourne le tableau complet concaténé
-  return [...staticPages, ...cityPages, ...servicePages];
+  return [...staticPages, ...cityPages, ...servicePages, ...blogPages];
 }
