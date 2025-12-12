@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 
+import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -180,7 +181,7 @@ export default function ContactPageContent() {
           priority
         />
 
-        <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
+        <AnimatedSection className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Zap className="h-4 w-4 text-accent" />
             Réponse en moins d&apos;1h ouvrée
@@ -235,14 +236,15 @@ export default function ContactPageContent() {
                 desc: "Détaillez votre situation en 2 min",
               },
             ].map((item, i) => (
-              <div
+              <AnimatedSection
                 key={i}
+                delay={i * 0.05}
                 className="rounded-xl border-2 border-white/20 bg-white/10 p-4 text-left backdrop-blur-sm"
               >
                 <item.icon className="mb-2 h-6 w-6 text-accent" />
                 <h3 className="text-sm font-bold">{item.title}</h3>
                 <p className="text-xs text-white/80">{item.desc}</p>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
 
@@ -265,36 +267,37 @@ export default function ContactPageContent() {
                   "Besoin d'un diagnostic immédiat ? Un technicien vous rappelle pour caler une intervention.",
                 icon: Phone,
               },
-            ].map((item) => (
-              <Card
-                key={item.title}
-                className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur"
-              >
-                <div className="flex items-start gap-3 p-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-white/85">
-                      {item.description}
-                    </p>
+            ].map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 0.05}>
+                <Card
+                  className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur"
+                >
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                      <item.icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-white/85">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </AnimatedSection>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* FORMULAIRE + INFO */}
       <section className="py-12 lg:py-20">
-        <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+        <AnimatedSection className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
             {/* FORMULAIRE */}
-            <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
+            <AnimatedSection className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
               <h2 className="text-balance text-2xl font-bold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
@@ -579,12 +582,12 @@ export default function ContactPageContent() {
                   )}
                 </Button>
               </form>
-            </div>
+            </AnimatedSection>
 
             {/* COLONNE INFO */}
-            <div className="space-y-6">
+            <AnimatedSection className="space-y-6" delay={0.05}>
               {/* CONTACT DIRECT */}
-              <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-lg md:p-6">
+              <AnimatedSection className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-lg md:p-6">
                 <h3 className="text-xl font-bold text-primary">
                   Contact direct
                 </h3>
@@ -659,10 +662,10 @@ export default function ContactPageContent() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
 
               {/* EXPERT */}
-              <div className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-lg">
+              <AnimatedSection delay={0.1} className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-lg">
                 <div className="relative h-48">
                   <Image
                     src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
@@ -682,10 +685,10 @@ export default function ContactPageContent() {
                     chaque étape.
                   </p>
                 </div>
-              </div>
+              </AnimatedSection>
 
               {/* GARANTIES */}
-              <div className="rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
+              <AnimatedSection delay={0.15} className="rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
                 <h3 className="mb-4 text-xl font-bold text-primary">
                   Nos garanties
                 </h3>
@@ -704,10 +707,10 @@ export default function ContactPageContent() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
+              </AnimatedSection>
+            </AnimatedSection>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
     </div>
   );
