@@ -93,7 +93,10 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               />
             </div>
             <div className="space-y-6 p-6 text-base leading-relaxed text-muted-foreground md:p-10">
-              <p className="text-lg font-semibold text-primary">{post.intro}</p>
+              <p 
+                className="text-lg font-semibold text-primary"
+                dangerouslySetInnerHTML={{ __html: post.intro }}
+              />
 
               <div className="grid gap-8">
                 {post.sections.map((section, index) => (
@@ -102,9 +105,11 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                       <div className="space-y-3">
                         <h2 className="text-2xl font-bold text-primary">{section.heading}</h2>
                         {section.body.map((paragraph, idx) => (
-                          <p key={idx} className="text-muted-foreground">
-                            {paragraph}
-                          </p>
+                          <p 
+                            key={idx} 
+                            className="text-muted-foreground"
+                            dangerouslySetInnerHTML={{ __html: paragraph }}
+                          />
                         ))}
                       </div>
 
