@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 
+import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -181,21 +182,25 @@ export default function ContactPageContent() {
         />
 
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+          <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Zap className="h-4 w-4 text-accent" />
             Réponse en moins d&apos;1h ouvrée
-          </div>
+          </AnimatedSection>
 
-          <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
-            Contact &amp; devis gratuit
-          </h1>
+          <AnimatedSection delay={0.05}>
+            <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
+              Contact &amp; devis gratuit
+            </h1>
+          </AnimatedSection>
 
-          <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
-            Formulaire en ligne, email direct ou appel téléphonique : choisissez
-            votre canal préféré pour sécuriser rapidement votre habitat.
-          </p>
+          <AnimatedSection delay={0.1}>
+            <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
+              Formulaire en ligne, email direct ou appel téléphonique : choisissez
+              votre canal préféré pour sécuriser rapidement votre habitat.
+            </p>
+          </AnimatedSection>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <AnimatedSection delay={0.15} className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="#contact-form">
               <Button
                 size="lg"
@@ -215,9 +220,9 @@ export default function ContactPageContent() {
                 Envoyer un email
               </Button>
             </a>
-          </div>
+          </AnimatedSection>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <AnimatedSection delay={0.2} className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
               {
                 icon: Phone,
@@ -235,18 +240,22 @@ export default function ContactPageContent() {
                 desc: "Détaillez votre situation en 2 min",
               },
             ].map((item, i) => (
-              <div
+              <AnimatedSection
                 key={i}
+                delay={0.05 * i}
                 className="rounded-xl border-2 border-white/20 bg-white/10 p-4 text-left backdrop-blur-sm"
               >
                 <item.icon className="mb-2 h-6 w-6 text-accent" />
                 <h3 className="text-sm font-bold">{item.title}</h3>
                 <p className="text-xs text-white/80">{item.desc}</p>
-              </div>
+              </AnimatedSection>
             ))}
-          </div>
+          </AnimatedSection>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection
+            delay={0.3}
+            className="mt-10 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3"
+          >
             {[
               {
                 title: "Formulaire guidé",
@@ -265,27 +274,32 @@ export default function ContactPageContent() {
                   "Besoin d'un diagnostic immédiat ? Un technicien vous rappelle pour caler une intervention.",
                 icon: Phone,
               },
-            ].map((item) => (
-              <Card
+            ].map((item, i) => (
+              <AnimatedSection
                 key={item.title}
-                className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur"
+                delay={0.05 * i}
+                className="h-full"
               >
-                <div className="flex items-start gap-3 p-4">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold">
-                      {item.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-white/85">
-                      {item.description}
-                    </p>
+                <Card
+                  className="border-white/20 bg-white/10 text-white shadow-lg shadow-black/20 backdrop-blur"
+                >
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+                      <item.icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-white/85">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </AnimatedSection>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -294,7 +308,7 @@ export default function ContactPageContent() {
         <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.3fr_0.7fr]">
             {/* FORMULAIRE */}
-            <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
+            <AnimatedSection className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-realistic md:p-10">
               <h2 className="text-balance text-2xl font-bold text-primary md:text-4xl">
                 Formulaire de contact
               </h2>
@@ -579,12 +593,12 @@ export default function ContactPageContent() {
                   )}
                 </Button>
               </form>
-            </div>
+            </AnimatedSection>
 
             {/* COLONNE INFO */}
-            <div className="space-y-6">
+            <AnimatedSection delay={0.1} className="space-y-6">
               {/* CONTACT DIRECT */}
-              <div className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-lg md:p-6">
+              <AnimatedSection className="rounded-3xl border-2 border-primary/20 bg-white p-5 shadow-lg md:p-6">
                 <h3 className="text-xl font-bold text-primary">
                   Contact direct
                 </h3>
@@ -594,75 +608,77 @@ export default function ContactPageContent() {
                 </p>
 
                 <div className="mt-6 space-y-4">
-                  <a href={`mailto:${site.email}`} className="block">
-                    <div className="flex items-start gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 transition-all hover:border-primary hover:bg-primary/10">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                        <Mail className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1 overflow-hidden">
-                        <div className="font-bold text-foreground">
-                          Email
+                  <AnimatedSection className="space-y-4">
+                    <a href={`mailto:${site.email}`} className="block">
+                      <AnimatedSection className="flex items-start gap-4 rounded-xl border-2 border-primary/20 bg-primary/5 p-4 transition-all hover:border-primary hover:bg-primary/10">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Mail className="h-6 w-6 text-primary" />
                         </div>
-                        <div className="truncate text-sm font-semibold text-primary">
-                          {site.email}
+                        <div className="flex-1 overflow-hidden">
+                          <div className="font-bold text-foreground">
+                            Email
+                          </div>
+                          <div className="truncate text-sm font-semibold text-primary">
+                            {site.email}
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            Réponse sous 1h ouvrée
+                          </p>
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                          Réponse sous 1h ouvrée
-                        </p>
-                      </div>
-                    </div>
-                  </a>
+                      </AnimatedSection>
+                    </a>
 
-                  <a href={phoneHref} className="block">
-                    <div className="flex items-start gap-4 rounded-xl border-2 border-accent/30 bg-accent/5 p-4 transition-all hover:border-accent hover:bg-accent/10">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                        <Phone className="h-6 w-6 text-accent" />
-                      </div>
+                    <a href={phoneHref} className="block">
+                      <AnimatedSection delay={0.05} className="flex items-start gap-4 rounded-xl border-2 border-accent/30 bg-accent/5 p-4 transition-all hover:border-accent hover:bg-accent/10">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                          <Phone className="h-6 w-6 text-accent" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-bold text-foreground">
+                            Téléphone
+                          </div>
+                          <div className="text-sm font-bold text-accent">
+                            {site.phone}
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            Urgence 24/7 disponible
+                          </p>
+                        </div>
+                      </AnimatedSection>
+                    </a>
+
+                    <AnimatedSection delay={0.1} className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
+                      <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
                       <div className="flex-1">
                         <div className="font-bold text-foreground">
-                          Téléphone
+                          Zone d&apos;intervention
                         </div>
-                        <div className="text-sm font-bold text-accent">
-                          {site.phone}
-                        </div>
-                        <p className="text-xs text-muted-foreground">
-                          Urgence 24/7 disponible
+                        <p className="text-sm text-muted-foreground">
+                          {site.serviceArea.slice(0, 5).join(", ")}...
                         </p>
                       </div>
-                    </div>
-                  </a>
+                    </AnimatedSection>
 
-                  <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
-                    <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                    <div className="flex-1">
-                      <div className="font-bold text-foreground">
-                        Zone d&apos;intervention
+                    <AnimatedSection delay={0.15} className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
+                      <Clock className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                      <div className="flex-1">
+                        <div className="font-bold text-foreground">
+                          Horaires
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Lun–Ven : 7h30–19h • Sam : 8h–17h
+                        </p>
+                        <p className="text-xs font-semibold text-accent">
+                          Urgences 24/7
+                        </p>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        {site.serviceArea.slice(0, 5).join(", ")}...
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4 rounded-xl border-2 border-border bg-secondary/30 p-4">
-                    <Clock className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                    <div className="flex-1">
-                      <div className="font-bold text-foreground">
-                        Horaires
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        Lun–Ven : 7h30–19h • Sam : 8h–17h
-                      </p>
-                      <p className="text-xs font-semibold text-accent">
-                        Urgences 24/7
-                      </p>
-                    </div>
-                  </div>
+                    </AnimatedSection>
+                  </AnimatedSection>
                 </div>
-              </div>
+              </AnimatedSection>
 
               {/* EXPERT */}
-              <div className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-lg">
+              <AnimatedSection delay={0.2} className="overflow-hidden rounded-3xl border-2 border-primary/20 bg-white shadow-lg">
                 <div className="relative h-48">
                   <Image
                     src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
@@ -682,10 +698,10 @@ export default function ContactPageContent() {
                     chaque étape.
                   </p>
                 </div>
-              </div>
+              </AnimatedSection>
 
               {/* GARANTIES */}
-              <div className="rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
+              <AnimatedSection delay={0.25} className="rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
                 <h3 className="mb-4 text-xl font-bold text-primary">
                   Nos garanties
                 </h3>
@@ -704,8 +720,8 @@ export default function ContactPageContent() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
+              </AnimatedSection>
+            </AnimatedSection>
           </div>
         </div>
       </section>
