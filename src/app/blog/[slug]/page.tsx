@@ -15,9 +15,7 @@ export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: BlogArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: BlogArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -47,9 +45,7 @@ const formatDate = (date: string) =>
     year: "numeric",
   }).format(new Date(date));
 
-export default async function BlogArticlePage({
-  params,
-}: BlogArticlePageProps) {
+export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -59,7 +55,6 @@ export default async function BlogArticlePage({
 
   return (
     <main className="bg-white">
-      {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-primary py-14 text-white md:py-20">
         <div className="absolute inset-0 bg-grid-white/5" aria-hidden />
         <div className="relative mx-auto flex max-w-4xl flex-col gap-6 px-4 text-center md:px-6">
@@ -69,16 +64,13 @@ export default async function BlogArticlePage({
           <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-5xl">
             {post.title}
           </h1>
-          <p className="text-pretty text-lg text-white/90 md:text-xl">
-            {post.excerpt}
-          </p>
+          <p className="text-pretty text-lg text-white/90 md:text-xl">{post.excerpt}</p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-sm font-semibold text-white/80">
             <span className="inline-flex items-center gap-2">
               <MapPin className="h-4 w-4" /> Orléans & Loiret
             </span>
             <span className="inline-flex items-center gap-2">
-              <Calendar className="h-4 w-4" />{" "}
-              {formatDate(post.publishedAt)}
+              <Calendar className="h-4 w-4" /> {formatDate(post.publishedAt)}
             </span>
             <span className="inline-flex items-center gap-2">
               <Clock3 className="h-4 w-4" /> {post.readingTime}
@@ -87,11 +79,9 @@ export default async function BlogArticlePage({
         </div>
       </section>
 
-      {/* CONTENU */}
       <section className="-mt-12 pb-12 md:pb-20">
         <div className="mx-auto max-w-5xl space-y-10 px-4 md:px-6">
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-realistic">
-            {/* Image de couverture */}
             <div className="relative h-72 w-full overflow-hidden md:h-[420px]">
               <Image
                 src={post.cover}
@@ -102,46 +92,19 @@ export default async function BlogArticlePage({
                 priority
               />
             </div>
+            <div className="space-y-6 p-6 text-base leading-relaxed text-muted-foreground md:p-10">
+              <p className="text-lg font-semibold text-primary">{post.intro}</p>
 
-            <div className="space-y-8 p-6 text-base leading-relaxed text-muted-foreground md:p-10">
-              {/* Intro */}
-              <p className="text-lg font-semibold text-primary">
-                {post.intro}
-              </p>
-
-              {/* IMAGE ÉDITORIALE AJOUTÉE */}
-              <AnimatedSection>
-                <figure className="relative overflow-hidden rounded-2xl border border-border shadow-lg">
-                  <div className="relative h-64 w-full md:h-[360px]">
-                    <Image
-                      src="https://www.monequerre.fr/wp-content/uploads/2023/10/details-plafond-bacula.jpg"
-                      alt="Détails de plafond montrant des signes de présence de nuisibles"
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 900px, 100vw"
-                    />
-                  </div>
-                  <figcaption className="bg-secondary/40 px-4 py-3 text-sm font-medium text-muted-foreground">
-                    Traces visibles sur les plafonds : un indice fréquent lors
-                    des diagnostics de nuisibles dans les habitations.
-                  </figcaption>
-                </figure>
-              </AnimatedSection>
-
-              {/* SECTIONS */}
               <div className="grid gap-8">
                 {post.sections.map((section, index) => (
-                  <AnimatedSection
-                    key={section.heading}
-                    delay={index * 0.05}
-                  >
+                  <AnimatedSection key={section.heading} delay={index * 0.05}>
                     <article className="grid gap-6 md:grid-cols-[1.2fr_0.8fr] md:items-start">
                       <div className="space-y-3">
-                        <h2 className="text-2xl font-bold text-primary">
-                          {section.heading}
-                        </h2>
+                        <h2 className="text-2xl font-bold text-primary">{section.heading}</h2>
                         {section.body.map((paragraph, idx) => (
-                          <p key={idx}>{paragraph}</p>
+                          <p key={idx} className="text-muted-foreground">
+                            {paragraph}
+                          </p>
                         ))}
                       </div>
 
@@ -168,7 +131,6 @@ export default async function BlogArticlePage({
             </div>
           </div>
 
-          {/* CTA */}
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border bg-secondary/40 p-6 shadow-realistic">
             <div className="space-y-1">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
@@ -178,8 +140,7 @@ export default async function BlogArticlePage({
                 Besoin d'un devis ou d'un diagnostic rapide ?
               </h3>
               <p className="text-sm text-muted-foreground">
-                Notre équipe intervient sous 24–48h à Orléans et dans tout le
-                Loiret.
+                Notre équipe intervient sous 24–48h à Orléans et dans tout le Loiret.
               </p>
             </div>
             <a

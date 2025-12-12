@@ -1,3 +1,5 @@
+// config/blog.ts - Structure améliorée pour faciliter les ajouts futurs
+
 export type BlogPostSection = {
   heading: string;
   body: string[];
@@ -13,12 +15,37 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   cover: string;
-  publishedAt: string;
-  readingTime: string;
-  tags: string[];
-  intro: string;
-  sections: BlogPostSection[];
+  publishedAt: string; // Format YYYY-MM-DD
+  readingTime: string; // Ex: "5 min"
+  tags: string[]; // Tags pour le SEO et la catégorisation
+  intro: string; // Premier paragraphe enrichi
+  sections: BlogPostSection[]; // Corps de l'article
+  author?: string; // Optionnel : nom de l'auteur
+  featured?: boolean; // Pour mettre en avant certains articles
 };
+
+/**
+ * GUIDE POUR AJOUTER UN NOUVEL ARTICLE :
+ * 
+ * 1. Créez un nouvel objet BlogPost dans le tableau blogPosts ci-dessous
+ * 2. Choisissez un slug unique (ex: "comment-prevenir-rats-orleans")
+ * 3. Ajoutez une image de couverture (idéalement 1200x630px)
+ * 4. Structurez votre contenu en sections avec heading + body
+ * 5. Ajoutez des images aux sections pour illustrer vos propos
+ * 6. Utilisez des tags pertinents pour le SEO
+ * 
+ * BONNES PRATIQUES IMAGES :
+ * - Image de couverture : format paysage 16:9, haute qualité
+ * - Images de sections : format portrait ou carré, illustrent le propos
+ * - Alt text descriptif et SEO-friendly
+ * - Légendes courtes et informatives
+ * 
+ * STRUCTURE RECOMMANDÉE :
+ * - Introduction (intro) : 2-3 phrases qui résument l'article
+ * - 3 à 5 sections pour un article standard
+ * - Alternez sections avec et sans images pour la fluidité
+ * - Paragraphes courts et scannables (3-4 lignes max)
+ */
 
 export const blogPosts: BlogPost[] = [
   {
@@ -26,39 +53,147 @@ export const blogPosts: BlogPost[] = [
     title: "Plan d'action anti-nuisibles à Orléans et dans le Loiret",
     excerpt:
       "Comment sécuriser votre logement ou commerce lorsque des nuisibles apparaissent ? Notre check-list locale vous accompagne étape par étape.",
-    cover: "/blog/orleans-loiret-traitement-nuisibles.svg",
-    publishedAt: "2024-05-15",
-    readingTime: "5 min",
-    tags: ["Désinsectisation", "Orléans", "Loiret", "Conseils"],
+    cover: "https://www.cergy.fr/wp-content/uploads/2025/07/david-farkas-zFOVEGC0UCE-unsplash.jpg",
+    publishedAt: "2025-11-15",
+    readingTime: "6 min",
+    tags: ["Désinsectisation", "Orléans", "Loiret", "Guide pratique"],
+    featured: true,
     intro:
-      "Avec la douceur des saisons, les cafards, fourmis ou rongeurs se faufilent rapidement dans les habitations du Loiret. Voici notre méthode Déclic Parasites, conçue sur le terrain à Orléans, pour reprendre la main sans stress.",
+      "Avec la douceur des saisons et les spécificités climatiques du Loiret, les nuisibles trouvent rapidement refuge dans nos habitations. Cafards dans les cuisines orléanaises, rats dans les caves du centre historique, fourmis envahissant les terrasses... Voici notre méthode Déclic Parasites, rodée sur le terrain à Orléans, pour reprendre la main efficacement et durablement.",
     sections: [
       {
-        heading: "1. Inspecter chaque zone avant d'agir",
+        heading: "1. Inspecter méthodiquement chaque zone avant d'agir",
         body: [
-          "Repérez précisément les points d'entrée : bas de porte, passages de gaines, combles, arrière-cuisine. Une lampe frontale et un smartphone suffisent pour documenter ce que vous voyez.",
-          "Sur Orléans et son agglomération, nous constatons que 70% des infestations commencent par un défaut d'étanchéité. Photographiez les traces, elles serviront au technicien pour cibler le traitement et vous faire gagner du temps.",
+          "La première étape cruciale consiste à identifier précisément les points d'entrée et les zones d'activité des nuisibles. Munissez-vous d'une lampe torche et de votre smartphone pour documenter ce que vous observez : traces de déjections, chemins de passage, zones de grignotage, fissures dans les murs.",
+          "À Orléans et dans son agglomération, nos diagnostics révèlent que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage, joints de fenêtre dégradés. Dans les bâtiments anciens du centre-ville, les caves voûtées et les vides sanitaires sont particulièrement vulnérables.",
+          "Photographiez systématiquement ces indices. Ces images serviront de base au technicien pour élaborer un plan d'action ciblé et vous permettront de suivre l'évolution de la situation dans le temps. Un bon diagnostic fait gagner jusqu'à 50% de temps sur le traitement.",
         ],
         image: {
-          src: "/blog/orleans-loiret-equipe-traitement.svg",
-          alt: "Technicien Déclic Parasites inspectant un logement à Orléans dans le Loiret",
-          caption: "Inspection d'un faux-plafond avant pulvérisation rémanente.",
+          src: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80",
+          alt: "Technicien professionnel inspectant les recoins d'un logement avec une lampe torche",
+          caption: "L'inspection minutieuse permet d'identifier tous les points d'entrée et zones à risque.",
         },
       },
       {
-        heading: "2. Choisir le bon protocole de traitement",
+        heading: "2. Choisir le protocole de traitement adapté à chaque nuisible",
         body: [
-          "Chaque espèce nécessite une stratégie dédiée : gel alimentaire pour les blattes, appâts sécurisés pour les rats, barrages insecticides pour les fourmis. Un protocole clair évite les surdosages et protège les occupants.",
-          "Nos équipes du Loiret privilégient un schéma en deux passages : choc puis contrôle, avec traçabilité photo. Cette méthode certifiée Certibiocide limite les relâches de produit et rassure les assurances habitation.",
+          "Chaque espèce de nuisible nécessite une approche spécifique et des produits dédiés. Les blattes germaniques qui prolifèrent dans les cuisines d'Orléans répondent mieux aux gels alimentaires appliqués au plus près de leurs refuges. Les rats noirs, fréquents dans les combles des maisons orléanaises, nécessitent des appâts sécurisés placés sur leurs trajets habituels. Les fourmis pharaons requièrent un traitement en barrage avec des insecticides rémanents.",
+          "Nos équipes du Loiret ont développé un schéma d'intervention en deux passages systématiques : un traitement choc initial pour réduire drastiquement la population, suivi d'un contrôle et ajustement 15 jours plus tard. Cette méthode, certifiée Certibiocide, garantit un résultat durable tout en limitant l'exposition aux produits biocides.",
+          "Chaque intervention est tracée avec photos avant/après, fiches techniques des produits utilisés et plan de localisation des points de traitement. Cette documentation complète rassure les assurances habitation et permet un suivi rigoureux de l'efficacité du protocole.",
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80",
+          alt: "Application professionnelle de gel insecticide dans une cuisine",
+          caption: "Application ciblée de gel biocide dans les zones à risque d'une cuisine professionnelle.",
+        },
+      },
+      {
+        heading: "3. Mettre en place une stratégie de prévention dès la première visite",
+        body: [
+          "Le traitement seul ne suffit pas : la prévention est la clé d'un résultat durable. Dès la première intervention, nos techniciens identifient les facteurs favorisant l'infestation et proposent des solutions concrètes : pose de grillages anti-rongeurs sur les bouches d'aération, application de joints silicone en cuisine et salle de bain, installation de seuils de porte adaptés.",
+          "Dans le centre d'Orléans comme en zone rurale du Loiret, nous constatons que ces mesures préventives réduisent les risques de réinfestation de plus de 60% sur 12 mois. Pour les commerces de bouche et restaurants, nous recommandons également un nettoyage renforcé des zones de stockage, l'utilisation de conteneurs hermétiques pour les denrées, et la formation du personnel aux bonnes pratiques d'hygiène.",
+          "Un suivi téléphonique ou par SMS est systématiquement proposé une semaine après l'intervention. Cette vigilance continue permet d'ajuster rapidement les dispositifs si nécessaire, de renforcer une zone sensible détectée tardivement, ou simplement de rassurer nos clients sur l'absence de signes de retour. Cette approche proactive fait toute la différence sur la durée.",
         ],
       },
       {
-        heading: "3. Préparer la prévention dès la première visite",
+        heading: "4. Adapter le traitement aux spécificités locales du Loiret",
         body: [
-          "Le suivi est la clé : pose de grillages anti-rongeurs, joints silicone en cuisine, nettoyage renforcé des réserves. Dans le centre d'Orléans comme en zone rurale, ces gestes réduisent les risques de réinfestation de plus de 50%.",
-          "Nous conseillons également un rappel client par téléphone ou SMS une semaine après intervention pour ajuster les pièges ou renforcer une zone sensible. Cette vigilance continue fait la différence sur la durée.",
+          "Le Loiret présente des particularités qui influencent directement notre façon d'intervenir. La proximité de la Loire crée des zones humides favorables aux rongeurs et aux insectes rampants. Les variations de température entre les bords du fleuve et les plateaux de Beauce obligent à ajuster les protocoles selon la saison.",
+          "En hiver, les nuisibles cherchent refuge dans les habitations chauffées, multipliant les infestations de caves et de greniers. Au printemps et en été, les zones extérieures (jardins, terrasses, abris) deviennent des points d'entrée privilégiés. Nos interventions tiennent compte de ces cycles naturels pour maximiser l'efficacité des traitements.",
+          "À Orléans, la densité du bâti ancien avec ses caves en pierre, ses cours intérieures et ses immeubles mitoyens nécessite souvent une approche coordonnée avec les voisins ou les syndics de copropriété. Nous facilitons cette coordination en proposant des diagnostics groupés et des traitements simultanés pour éviter les migrations de nuisibles d'un logement à l'autre.",
+        ],
+        image: {
+          src: "https://img.freepik.com/photos-premium/vue-panoramique-aerienne-orleans-france_78361-12672.jpg",
+          alt: "Vue aérienne d'Orléans avec la Loire",
+          caption: "La proximité de la Loire influence les stratégies de traitement anti-nuisibles dans le Loiret.",
+        },
+      },
+      {
+        heading: "5. Assurer un suivi post-intervention rigoureux",
+        body: [
+          "Le succès d'une intervention anti-nuisibles se mesure dans la durée. C'est pourquoi nous incluons systématiquement un suivi sur 30 jours minimum, avec des points de contrôle réguliers et des ajustements si nécessaire. Nos clients reçoivent un rapport détaillé après chaque passage, avec recommandations personnalisées et photos des zones traitées.",
+          "Pour les professionnels (restaurants, hôtels, commerces alimentaires), nous proposons des contrats de maintenance préventive avec visites programmées et interventions curatives illimitées. Ces contrats incluent la traçabilité HACCP, indispensable lors des contrôles sanitaires, ainsi que l'accès à une ligne d'urgence 24/7.",
+          "Notre objectif est de construire une relation de confiance sur le long terme. Beaucoup de nos clients particuliers nous sollicitent ensuite pour des diagnostics préventifs annuels ou nous recommandent à leurs proches. Cette satisfaction client, mesurée à 98% dans le Loiret, est le résultat d'une approche professionnelle, transparente et humaine.",
         ],
       },
     ],
   },
+
+  /**
+   * TEMPLATE POUR UN NOUVEL ARTICLE :
+   * 
+   * Décommentez et complétez le template ci-dessous pour ajouter facilement un nouvel article.
+   * Pensez à respecter la structure et les bonnes pratiques mentionnées en haut de ce fichier.
+   */
+  
+  /*
+  {
+    slug: "votre-slug-unique",
+    title: "Titre accrocheur de votre article",
+    excerpt: "Description courte qui donne envie de cliquer (150-160 caractères idéalement).",
+    cover: "https://images.unsplash.com/photo-XXXXX?auto=format&fit=crop&w=1200&q=80",
+    publishedAt: "2024-12-20",
+    readingTime: "5 min",
+    tags: ["Tag1", "Tag2", "Tag3"],
+    featured: false, // true pour mettre en avant sur la page d'accueil
+    author: "Expert Déclic Parasites", // Optionnel
+    intro: "Premier paragraphe qui résume l'article et capte l'attention du lecteur...",
+    sections: [
+      {
+        heading: "Première section : titre H2 descriptif",
+        body: [
+          "Premier paragraphe de la section...",
+          "Deuxième paragraphe de la section...",
+          "Troisième paragraphe si nécessaire...",
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-XXXXX?auto=format&fit=crop&w=800&q=80",
+          alt: "Description accessible de l'image pour le SEO",
+          caption: "Légende courte et informative de l'image.",
+        },
+      },
+      {
+        heading: "Deuxième section sans image",
+        body: [
+          "Contenu de la section...",
+        ],
+        // Pas d'image dans cette section
+      },
+      // Ajoutez autant de sections que nécessaire
+    ],
+  },
+  */
 ];
+
+/**
+ * FONCTIONS UTILITAIRES POUR LA GESTION DU BLOG
+ */
+
+// Récupérer les articles mis en avant
+export const getFeaturedPosts = () => 
+  blogPosts.filter(post => post.featured);
+
+// Récupérer les articles par tag
+export const getPostsByTag = (tag: string) => 
+  blogPosts.filter(post => post.tags.includes(tag));
+
+// Récupérer les articles récents (N derniers)
+export const getRecentPosts = (count: number = 3) => 
+  blogPosts
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, count);
+
+// Récupérer tous les tags uniques
+export const getAllTags = () => 
+  Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
+
+// Statistiques du blog
+export const getBlogStats = () => ({
+  totalPosts: blogPosts.length,
+  totalTags: getAllTags().length,
+  averageReadingTime: Math.round(
+    blogPosts.reduce((sum, post) => 
+      sum + parseInt(post.readingTime.replace(' min', '')), 0
+    ) / blogPosts.length
+  ),
+});
