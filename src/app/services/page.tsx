@@ -44,21 +44,25 @@ export default function ServicesPage() {
         />
         
         <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+          <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Award className="h-4 w-4 text-accent" />
             Prestations professionnelles certifiées
-          </div>
-          
-          <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
-            Nos services anti-nuisibles
-          </h1>
-          
-          <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
-            Diagnostics précis, interventions rapides et protocoles sur mesure pour protéger 
-            vos logements, commerces et collectivités dans tout le {site.departement}.
-          </p>
-          
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.05}>
+            <h1 className="text-balance text-5xl font-bold leading-tight text-shadow-lg md:text-6xl">
+              Nos services anti-nuisibles
+            </h1>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <p className="mt-6 text-pretty text-xl text-white/90 md:text-2xl">
+              Diagnostics précis, interventions rapides et protocoles sur mesure pour protéger
+              vos logements, commerces et collectivités dans tout le {site.departement}.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15} className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a href={phoneHref} data-cta="services-hero-call">
               <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
                 <Phone className="h-5 w-5" />
@@ -74,9 +78,9 @@ export default function ServicesPage() {
                 Demander un devis gratuit
               </Button>
             </Link>
-          </div>
+          </AnimatedSection>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <AnimatedSection delay={0.2} className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
               { icon: Zap, text: "Intervention 24-48h" },
               { icon: Shield, text: "Certibiocide" },
@@ -87,23 +91,23 @@ export default function ServicesPage() {
                 <span className="text-sm font-semibold">{item.text}</span>
               </div>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* GRID SERVICES */}
       <section className="py-20">
         <div className="mx-auto w-full max-w-7xl px-6">
-          <div className="mb-12 text-center">
+          <AnimatedSection className="mb-12 text-center">
             <span className="text-sm font-bold uppercase tracking-widest text-accent">Nos interventions</span>
             <h2 className="mt-3 text-balance text-4xl font-bold text-primary md:text-5xl">
               Expertise complète anti-nuisibles
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-              Chaque prestation inclut diagnostic gratuit, traitement professionnel, 
+              Chaque prestation inclut diagnostic gratuit, traitement professionnel,
               rapport détaillé et suivi personnalisé jusqu'à résolution complète.
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -207,23 +211,23 @@ export default function ServicesPage() {
       {/* CTA FINAL */}
       <section className="py-20">
         <div className="mx-auto w-full max-w-5xl px-6">
-          <div className="overflow-hidden rounded-3xl bg-gradient-primary text-white shadow-2xl">
+          <AnimatedSection className="overflow-hidden rounded-3xl bg-gradient-primary text-white shadow-2xl">
             <div className="grid gap-8 p-10 md:grid-cols-[1.3fr_0.7fr] md:items-center md:p-12">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
                   <Zap className="h-4 w-4 text-accent" />
                   Accompagnement premium
                 </div>
-                
+
                 <h2 className="text-balance text-4xl font-bold md:text-5xl">
                   Besoin d'un plan d'action immédiat ?
                 </h2>
-                
+
                 <p className="text-pretty text-lg text-white/90">
-                  Expliquez-nous votre situation, un technicien vous rappelle sous une heure 
+                  Expliquez-nous votre situation, un technicien vous rappelle sous une heure
                   ouvrée avec les premières recommandations et un devis gratuit adapté.
                 </p>
-                
+
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Link href="/contact" data-cta="services-final-form">
                     <Button size="lg" className="h-14 bg-white px-8 font-bold text-primary shadow-xl hover:bg-accent hover:text-white">
@@ -243,7 +247,7 @@ export default function ServicesPage() {
                   </a>
                 </div>
               </div>
-              
+
               <div className="rounded-2xl border-2 border-white/20 bg-white/10 p-6 backdrop-blur-sm">
                 <p className="mb-4 text-sm font-bold uppercase tracking-widest text-white/80">
                   Processus en 3 étapes
@@ -264,7 +268,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </div>

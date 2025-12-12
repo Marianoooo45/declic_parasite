@@ -42,22 +42,26 @@ export default function ZonesPage() {
         />
         
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+          <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <MapPin className="h-4 w-4 text-accent" />
             Couverture complète du Loiret
-          </div>
-          
-          <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
-            Zones d'intervention {site.brand}
-          </h1>
-          
-          <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
-            Intervention rapide à <strong>{site.city}</strong> et dans le{" "}
-            <strong>{site.departement}</strong>. Déplacement sous 24–48h avec devis gratuit 
-            et suivi personnalisé.
-          </p>
-          
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.05}>
+            <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-6xl">
+              Zones d'intervention {site.brand}
+            </h1>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <p className="mt-6 text-pretty text-lg text-white/90 md:text-2xl">
+              Intervention rapide à <strong>{site.city}</strong> et dans le{" "}
+              <strong>{site.departement}</strong>. Déplacement sous 24–48h avec devis gratuit
+              et suivi personnalisé.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15} className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="/contact" data-cta="zones-hero-form">
               <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">
                 Demander un devis
@@ -73,9 +77,9 @@ export default function ZonesPage() {
                 {site.phone}
               </Button>
             </a>
-          </div>
+          </AnimatedSection>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <AnimatedSection delay={0.2} className="mt-10 grid gap-4 sm:grid-cols-3">
             {[
               { icon: Zap, text: "Intervention 24-48h" },
               { icon: Clock, text: "Devis sous 1h" },
@@ -86,7 +90,7 @@ export default function ZonesPage() {
                 <span className="text-sm font-semibold">{item.text}</span>
               </div>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
