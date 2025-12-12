@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Blog & Conseils | ${site.brand}`,
     description:
-      "Articles SEO pour préparer vos interventions anti-nuisibles à Orléans et dans le Loiret.",
+      "Articles pour préparer vos interventions anti-nuisibles à Orléans et dans le Loiret.",
     type: "website",
     url: "https://www.declicparasites.fr/blog",
   },
@@ -34,7 +34,7 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-grid-white/5" aria-hidden />
         <div className="relative mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center md:px-6">
           <span className="mx-auto rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
-            Blog & SEO local
+            Blog
           </span>
           <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-5xl">
             Conseils anti-nuisibles à Orléans & dans le Loiret
