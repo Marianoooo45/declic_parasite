@@ -69,7 +69,7 @@ export const blogPosts: BlogPost[] = [
           "Photographiez systématiquement ces indices. Ces images serviront de base au technicien pour élaborer un plan d'action ciblé et vous permettront de suivre l'évolution de la situation dans le temps. Un bon diagnostic fait gagner jusqu'à 50% de temps sur le traitement.",
         ],
         image: {
-          src: "https://www.onisep.fr/var/onisep/storage/images/_aliases/dso_grid_8_columns/3/6/8/3/9563863-8-fre-FR/dd538a860984-depanneur-electromenager.jpg.webp",
+          src: "https://www.docteur-nuisibles.com/assets/img/blog/conseilsimple-blog3.jpg",
           alt: "Technicien professionnel inspectant les recoins d'un logement avec une lampe torche",
           caption: "L'inspection minutieuse permet d'identifier tous les points d'entrée et zones à risque.",
         },
