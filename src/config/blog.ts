@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
           "Chaque intervention est tracée avec photos avant/après, fiches techniques des produits utilisés et plan de localisation des points de traitement. Cette documentation complète rassure les assurances habitation et permet un suivi rigoureux de l'efficacité du protocole.",
         ],
         image: {
-          src: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80",
+          src: "https://www.lexpert-des-nuisibles.fr/pub/20230314_164149.jpg",
           alt: "Application professionnelle de gel insecticide dans une cuisine",
           caption: "Application ciblée de gel biocide dans les zones à risque d'une cuisine professionnelle.",
         },
