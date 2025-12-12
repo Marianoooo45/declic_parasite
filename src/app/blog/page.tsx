@@ -30,15 +30,30 @@ const formatDate = (date: string) =>
 export default function BlogPage() {
   return (
     <main className="bg-white">
+      {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-primary py-16 text-white md:py-24">
+        {/* Image de fond */}
+        <Image
+          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+          alt="Technicien en combinaison inspectant une maison"
+          fill
+          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+          sizes="100vw"
+          priority
+        />
+
+        {/* Motif léger */}
         <div className="absolute inset-0 bg-grid-white/5" aria-hidden />
+
         <div className="relative mx-auto flex max-w-5xl flex-col gap-6 px-4 text-center md:px-6">
-          <span className="mx-auto rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em]">
+          <span className="mx-auto rounded-full bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] backdrop-blur-sm">
             Blog
           </span>
+
           <h1 className="text-balance text-4xl font-bold leading-tight text-shadow-lg md:text-5xl">
             Conseils anti-nuisibles à Orléans & dans le Loiret
           </h1>
+
           <p className="text-lg text-white/90 md:text-xl">
             Retours de terrain, protocoles et bonnes pratiques partagés par nos techniciens
             pour sécuriser votre logement ou votre commerce.
@@ -46,12 +61,14 @@ export default function BlogPage() {
         </div>
       </section>
 
+      {/* LISTE DES ARTICLES */}
       <section className="py-12 md:py-18 lg:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, i) => (
               <AnimatedSection key={post.slug} delay={i * 0.08}>
                 <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-realistic">
+                  {/* Cover article */}
                   <div className="relative h-56 overflow-hidden">
                     <Image
                       src={post.cover}
@@ -62,26 +79,34 @@ export default function BlogPage() {
                       priority={i === 0}
                     />
                     <div className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase text-white shadow-lg">
-                      Déclic Parasites
+                      {site.brand}
                     </div>
                   </div>
 
+                  {/* Contenu */}
                   <div className="flex flex-1 flex-col gap-4 p-5">
                     <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-primary">
                       <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-primary">
-                        <MapPin className="h-3.5 w-3.5" /> Orléans & Loiret
+                        <MapPin className="h-3.5 w-3.5" />
+                        Orléans & Loiret
                       </span>
                       <span className="inline-flex items-center gap-1 text-muted-foreground">
-                        <Calendar className="h-3.5 w-3.5" /> {formatDate(post.publishedAt)}
+                        <Calendar className="h-3.5 w-3.5" />
+                        {formatDate(post.publishedAt)}
                       </span>
                       <span className="inline-flex items-center gap-1 text-muted-foreground">
-                        <Clock3 className="h-3.5 w-3.5" /> {post.readingTime}
+                        <Clock3 className="h-3.5 w-3.5" />
+                        {post.readingTime}
                       </span>
                     </div>
 
                     <div className="space-y-2">
-                      <h2 className="text-xl font-bold text-primary">{post.title}</h2>
-                      <p className="text-sm text-muted-foreground">{post.excerpt}</p>
+                      <h2 className="text-xl font-bold text-primary">
+                        {post.title}
+                      </h2>
+                      <p className="text-sm text-muted-foreground">
+                        {post.excerpt}
+                      </p>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -101,7 +126,7 @@ export default function BlogPage() {
                         href={`/blog/${post.slug}`}
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent"
                       >
-                        Lire l'article
+                        Lire l&apos;article
                         <ArrowRight className="h-4 w-4" />
                       </Link>
                     </div>
