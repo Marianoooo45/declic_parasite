@@ -134,7 +134,6 @@ function ServicesDropdown() {
 function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const dialogRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -152,32 +151,26 @@ function MobileMenu() {
       if (e.key === "Escape") setOpen(false);
     }
 
-    // IMPORTANT: on écoute "pointerdown" (plus fiable mobile) et en capture
-    function onDoc(e: Event) {
-      const t = e.target as Node | null;
-      if (!t) return;
-      if (!dialogRef.current?.contains(t)) {
-        setOpen(false);
-      }
-    }
-
     document.addEventListener("keydown", onKey);
-    document.addEventListener("pointerdown", onDoc, true);
-
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("pointerdown", onDoc, true);
-    };
+    return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
   const overlay = open ? (
     <div className="fixed inset-0 z-[9999] flex lg:hidden">
-      <div className=" absolute inset-0 bg-black/60 lg:bg-black/50 lg:backdrop-blur-sm " aria-hidden />
+      {/* Backdrop EN DESSOUS du panneau */}
+      <button
+        type="button"
+        className="absolute inset-0 z-0 bg-black/55 lg:bg-black/50 lg:backdrop-blur-sm"
+        aria-label="Fermer le menu"
+        onClick={() => setOpen(false)}
+      />
+
+      {/* Panneau AU DESSUS du backdrop */}
       <div
-        ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
+        className="relative z-10 ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between border-b border-border bg-secondary/30 px-6 py-4">
           <span className="text-xs font-bold uppercase tracking-widest text-primary">
@@ -216,12 +209,9 @@ function MobileMenu() {
                     onClick={() => setOpen(false)}
                   >
                     <span className="block font-semibold">{s.title}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {s.short}
-                    </span>
+                    <span className="text-xs text-muted-foreground">{s.short}</span>
                   </Link>
                 ))}
-
                 <Link
                   href="/services"
                   className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:underline"
@@ -268,11 +258,11 @@ function MobileMenu() {
         <Menu className="h-5 w-5" />
       </button>
 
-      {/* Portal => le menu sort des stacking contexts chelous du header */}
       {mounted && overlay ? createPortal(overlay, document.body) : null}
     </>
   );
 }
+
 
 export function SiteHeader() {
   const phoneHref = useMemo(() => `tel:${site.phone.replace(/\s+/g, "")}`, []);
