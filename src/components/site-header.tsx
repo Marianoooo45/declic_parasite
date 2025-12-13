@@ -172,7 +172,7 @@ function MobileMenu() {
 
   const overlay = open ? (
     <div className="fixed inset-0 z-[9999] flex lg:hidden">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
+      <div className=" absolute inset-0 bg-black/60 lg:bg-black/50 lg:backdrop-blur-sm " aria-hidden />
       <div
         ref={dialogRef}
         role="dialog"
