@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -52,15 +53,11 @@ function ServicesDropdown() {
   }, [open, closeMenu]);
 
   const handleMouseEnter = () => {
-    if (window.matchMedia("(min-width:1024px)").matches) {
-      setOpen(true);
-    }
+    if (window.matchMedia("(min-width:1024px)").matches) setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    if (window.matchMedia("(min-width:1024px)").matches) {
-      setOpen(false);
-    }
+    if (window.matchMedia("(min-width:1024px)").matches) setOpen(false);
   };
 
   return (
@@ -69,9 +66,13 @@ function ServicesDropdown() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href="/services" className="font-medium transition-colors hover:text-primary">
+      <Link
+        href="/services"
+        className="font-medium transition-colors hover:text-primary"
+      >
         Services
       </Link>
+
       <button
         ref={triggerRef}
         type="button"
@@ -83,10 +84,7 @@ function ServicesDropdown() {
         className="ml-1 rounded-md p-1 text-muted-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         <ChevronDown
-          className={cn(
-            "h-4 w-4 transition-transform",
-            open && "rotate-180"
-          )}
+          className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
         />
       </button>
 
@@ -108,11 +106,16 @@ function ServicesDropdown() {
               className="group flex flex-col gap-1 rounded-xl border border-transparent bg-white p-3 transition-all hover:border-primary/20 hover:bg-primary/5 hover:shadow-sm"
               onClick={() => setOpen(false)}
             >
-              <span className="text-sm font-semibold text-foreground group-hover:text-primary">{s.title}</span>
-              <span className="text-xs leading-tight text-muted-foreground">{s.short}</span>
+              <span className="text-sm font-semibold text-foreground group-hover:text-primary">
+                {s.title}
+              </span>
+              <span className="text-xs leading-tight text-muted-foreground">
+                {s.short}
+              </span>
             </Link>
           ))}
         </div>
+
         <div className="mt-2 border-t border-border pt-2">
           <Link
             href="/services"
@@ -130,14 +133,13 @@ function ServicesDropdown() {
 
 function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => setMounted(true), []);
+
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -150,23 +152,110 @@ function MobileMenu() {
       if (e.key === "Escape") setOpen(false);
     }
 
-    function onDoc(e: MouseEvent | TouchEvent) {
-      const t = e.target as Node;
+    // IMPORTANT: on écoute "pointerdown" (plus fiable mobile) et en capture
+    function onDoc(e: Event) {
+      const t = e.target as Node | null;
+      if (!t) return;
       if (!dialogRef.current?.contains(t)) {
         setOpen(false);
       }
     }
 
     document.addEventListener("keydown", onKey);
-    document.addEventListener("mousedown", onDoc);
-    document.addEventListener("touchstart", onDoc);
+    document.addEventListener("pointerdown", onDoc, true);
 
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onDoc);
-      document.removeEventListener("touchstart", onDoc);
+      document.removeEventListener("pointerdown", onDoc, true);
     };
   }, [open]);
+
+  const overlay = open ? (
+    <div className="fixed inset-0 z-[9999] flex lg:hidden">
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
+      >
+        <div className="flex items-center justify-between border-b border-border bg-secondary/30 px-6 py-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">
+            Menu
+          </span>
+          <button
+            type="button"
+            className="rounded-full p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            onClick={() => setOpen(false)}
+            aria-label="Fermer le menu"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto px-6 py-6">
+          <nav className="space-y-6">
+            <Link
+              href="/"
+              className="block text-base font-semibold text-foreground hover:text-primary"
+              onClick={() => setOpen(false)}
+            >
+              Accueil
+            </Link>
+
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                Services
+              </p>
+              <div className="space-y-2">
+                {serviceItems.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/services/${s.slug}`}
+                    className="block rounded-xl border border-border bg-secondary/30 p-3 text-sm transition-all hover:border-primary hover:bg-primary/5 hover:text-primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="block font-semibold">{s.title}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {s.short}
+                    </span>
+                  </Link>
+                ))}
+
+                <Link
+                  href="/services"
+                  className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:underline"
+                  onClick={() => setOpen(false)}
+                >
+                  Tous les services →
+                </Link>
+              </div>
+            </div>
+
+            {navigation.map((n) => (
+              <Link
+                key={n.href}
+                href={n.href}
+                className="block text-base font-semibold text-foreground hover:text-primary"
+                onClick={() => setOpen(false)}
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <div className="border-t border-border bg-secondary/20 p-6">
+          <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="block">
+            <Button size="lg" className="w-full bg-gradient-accent shadow-lg">
+              <Phone className="h-5 w-5" />
+              Appeler {site.phone}
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  ) : null;
 
   return (
     <>
@@ -179,105 +268,18 @@ function MobileMenu() {
         <Menu className="h-5 w-5" />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-[100] flex lg:hidden">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-hidden />
-          <div
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            className="ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
-          >
-            <div className="flex items-center justify-between border-b border-border bg-secondary/30 px-6 py-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Menu
-              </span>
-              <button
-                type="button"
-                className="rounded-full p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                onClick={() => setOpen(false)}
-                aria-label="Fermer le menu"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="flex-1 overflow-y-auto px-6 py-6">
-              <nav className="space-y-6">
-                <Link
-                  href="/"
-                  className="block text-base font-semibold text-foreground hover:text-primary"
-                  onClick={() => setOpen(false)}
-                >
-                  Accueil
-                </Link>
-
-                <div>
-                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                    Services
-                  </p>
-                  <div className="space-y-2">
-                    {serviceItems.map((s) => (
-                      <Link
-                        key={s.slug}
-                        href={`/services/${s.slug}`}
-                        className="block rounded-xl border border-border bg-secondary/30 p-3 text-sm transition-all hover:border-primary hover:bg-primary/5 hover:text-primary"
-                        onClick={() => setOpen(false)}
-                      >
-                        <span className="block font-semibold">{s.title}</span>
-                        <span className="text-xs text-muted-foreground">
-                          {s.short}
-                        </span>
-                      </Link>
-                    ))}
-                    <Link
-                      href="/services"
-                      className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:underline"
-                      onClick={() => setOpen(false)}
-                    >
-                      Tous les services →
-                    </Link>
-                  </div>
-                </div>
-
-                {navigation.map((n) => (
-                  <Link
-                    key={n.href}
-                    href={n.href}
-                    className="block text-base font-semibold text-foreground hover:text-primary"
-                    onClick={() => setOpen(false)}
-                  >
-                    {n.label}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            <div className="border-t border-border bg-secondary/20 p-6">
-              <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="block">
-                <Button size="lg" className="w-full bg-gradient-accent shadow-lg">
-                  <Phone className="h-5 w-5" />
-                  Appeler {site.phone}
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Portal => le menu sort des stacking contexts chelous du header */}
+      {mounted && overlay ? createPortal(overlay, document.body) : null}
     </>
   );
 }
 
 export function SiteHeader() {
-  const phoneHref = useMemo(
-    () => `tel:${site.phone.replace(/\s+/g, "")}`,
-    []
-  );
+  const phoneHref = useMemo(() => `tel:${site.phone.replace(/\s+/g, "")}`, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border glass shadow-sm">
       <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4 md:h-24">
-        
         <Link href="/" className="flex items-center" aria-label={site.brand}>
           <LogoDeclic className="h-11 w-auto md:h-16" />
         </Link>
@@ -312,6 +314,7 @@ export function SiteHeader() {
               {site.phone}
             </Button>
           </a>
+
           <Link href="/contact" className="hidden lg:inline-flex" data-cta="nav-devis">
             <Button
               size="lg"
@@ -321,20 +324,17 @@ export function SiteHeader() {
             </Button>
           </Link>
 
-          {/* CORRECTION ACCESSIBILITÉ : aria-label ajouté */}
-          <a 
-            href={phoneHref} 
-            className="inline-flex lg:hidden" 
+          <a
+            href={phoneHref}
+            className="inline-flex lg:hidden"
             data-cta="nav-phone-mobile"
             aria-label={`Appeler Déclic Parasites au ${site.phone}`}
           >
-            <Button
-              size="default"
-              className="bg-gradient-accent font-semibold shadow-md"
-            >
+            <Button size="default" className="bg-gradient-accent font-semibold shadow-md">
               <Phone className="h-4 w-4" />
             </Button>
           </a>
+
           <MobileMenu />
         </div>
       </div>
