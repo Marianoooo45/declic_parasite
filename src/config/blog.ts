@@ -126,7 +126,7 @@ export const blogPosts: BlogPost[] = [
       "Monomorium pharaonis (Fourmi pharaon) - Wikipedia : https://fr.wikipedia.org/wiki/Monomorium_pharaonis",
       "La Loire (fleuve) - Wikipedia : https://fr.wikipedia.org/wiki/Loire_(fleuve)",
       "Beauce (région naturelle) - Wikipedia : https://fr.wikipedia.org/wiki/Beauce",
-      "Certification Certibiocide - Ministère de la Transition écologique : https://www.ecologie.gouv.fr/biocides",
+      "Certification Certibiocide - Ministère de la Transition écologique : https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides",
       "HACCP (Hazard Analysis Critical Control Point) - DGCCRF : https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/HACCP",
     ],
   },
