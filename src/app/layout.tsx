@@ -75,7 +75,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ]
   };
 
-  const ldJson: string = JSON.stringify(localBusinessJsonLd);
+  // NOUVEAU : Configuration spécifique pour le Nom du Site dans les résultats Google
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.brand,
+    "url": "https://www.declicparasites.fr",
+    "alternateName": "Declic Parasites"
+  };
+
+  // On combine les deux schémas dans une liste pour Google
+  const ldJson: string = JSON.stringify([localBusinessJsonLd, websiteJsonLd]);
 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
