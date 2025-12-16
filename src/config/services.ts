@@ -16,8 +16,8 @@ export type Service = {
 
 const baseServices: Service[] = [
   {
-    title: "Dératisation (Rats & Souris)", // Titre plus explicite
-    short: "Intervention rapide pour rats et souris à Orléans", // Ajout de "Orléans"
+    title: "Dératisation (Rats & Souris) à Orléans et dans le Loiret", // Titre plus explicite
+    short: "Intervention rapide pour rats et souris à Orléans et Loiret", // Ajout de "Orléans"
     description:
       "Experts en dératisation à Orléans et dans le Loiret. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable, certifié Certibiocide.",
     heroImage: "/services/deratisation.svg",
@@ -63,7 +63,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement punaises de lit",
+    title: "Traitement punaises de lit à Orléans et dans le Loiret", // Titre plus explicite
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
@@ -110,7 +110,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement cafards et blattes",
+    title: "Traitement cafards et blattes à Orléans et dans le Loiret", // Titre plus explicite
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
@@ -157,7 +157,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement fourmis invasives",
+    title: "Traitement fourmis invasives à Orléans et dans le Loiret", // Titre plus explicite
     short: "Suppression ciblée des colonies de fourmis",
     description:
       "Des fourmis envahissent vos pièces ou terrasses ? Nous neutralisons la colonie à la source pour empêcher tout retour durablement.",
@@ -202,7 +202,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Guêpes & frelons",
+    title: "Guêpes & frelons à Orléans et dans le Loiret", // Titre plus explicite
     short: "Destruction sécurisée des nids aériens et terrestres",
     description:
       "Un nid de guêpes ou de frelons met en danger votre famille ? Nous intervenons en hauteur ou en cave avec équipement complet et garantie de résultat.",
@@ -249,7 +249,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Contrats professionnels HACCP",
+    title: "Contrats professionnels HACCP à  Orléans et dans le Loiret", // Titre plus explicite
     short: "Plan de prévention nuisibles pour pros & collectivités",
     description:
       "Restaurants, hôtels, industries : nous mettons en place un plan HACCP complet avec visites régulières, traçabilité et reporting digital.",
@@ -296,7 +296,7 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement puces & parasites d'intérieur",
+    title: "Traitement puces & parasites d'intérieur à Orléans et dans le Loiret", // Titre plus explicite
     short: "Assainissement des logements contre puces et acariens",
     description:
       "Morsures au niveau des chevilles ou animaux infestés ? Nous assainissons sols, textiles et recoins pour éliminer puces et parasites intérieurs.",

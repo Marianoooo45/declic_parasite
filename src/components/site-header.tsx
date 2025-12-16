@@ -14,7 +14,7 @@ import { LogoDeclic } from "@/components/logo-declic";
 const navigation = [
   { label: "Nos engagements", href: "/nos-engagements" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
-  { label: "Blog", href: "/blog" },
+  { label: "Conseils", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
