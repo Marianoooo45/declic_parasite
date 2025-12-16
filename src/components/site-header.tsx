@@ -276,9 +276,9 @@ export function SiteHeader() {
 
         <nav
           aria-label="Navigation principale"
-          className="hidden items-center gap-8 text-[15px] font-medium lg:flex"
+          className="hidden items-center gap-6 text-[15px] font-medium lg:flex"
         >
-          <Link href="/" className="transition-colors hover:text-primary">
+          <Link href="/" className="whitespace-nowrap transition-colors hover:text-primary">
             Accueil
           </Link>
           <ServicesDropdown />
@@ -286,7 +286,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-primary"
+              className="whitespace-nowrap transition-colors hover:text-primary"
             >
               {item.label}
             </Link>
