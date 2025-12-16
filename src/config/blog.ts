@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
       "Bruits dans les combles, crottes dans la cuisine... Vous avez un doute ? Apprenez à différencier le rat de la souris pour choisir le bon traitement dans le Loiret.",
     // J'utilise ton image de comparaison en couverture car elle est parlante
     cover: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=1200&q=80",
-    publishedAt: "2025-12-16",
+    publishedAt: "2025-12-15",
     readingTime: "5 min",
     tags: ["Dératisation", "Rongeurs", "Orléans", "Conseils"],
     featured: true, // Je l'ai passé en TRUE pour le mettre en avant
