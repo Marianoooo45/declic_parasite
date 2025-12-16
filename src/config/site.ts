@@ -2,7 +2,7 @@ export const site = {
   brand: "Déclic Parasites",
   city: "Orléans",
   departement: "Loiret",
-  phone: "07 83 94 41 94",
+  phone: "02 46 91 55 02",
   email: "contact@declicparasites.fr",
   address: "10 Rue Bannier, 45000 Orléans",
   siret: "SIRET : XXXX XXX XXX XXXXX",
