@@ -55,6 +55,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
   return (
     <main className="bg-white">
+      {/* HEADER DE L'ARTICLE */}
       <section className="relative overflow-hidden bg-gradient-primary py-14 text-white md:py-20">
         <div className="absolute inset-0 bg-grid-white/5" aria-hidden />
         <div className="relative mx-auto flex max-w-4xl flex-col gap-6 px-4 text-center md:px-6">
@@ -79,10 +80,14 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
         </div>
       </section>
 
+      {/* CONTENU DE L'ARTICLE */}
       <section className="-mt-12 pb-12 md:pb-20">
         <div className="mx-auto max-w-5xl space-y-10 px-4 md:px-6">
+          
+          {/* IMAGE DE COUVERTURE PRINCIPALE */}
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-realistic">
-            <div className="relative h-72 w-full overflow-hidden md:h-[420px]">
+            {/* CORRECTION ICI : aspect-video au lieu de h-72 pour éviter le crop sur mobile */}
+            <div className="relative aspect-video w-full overflow-hidden md:h-[420px] md:aspect-auto">
               <Image
                 src={post.cover}
                 alt={post.title}
@@ -92,6 +97,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                 priority
               />
             </div>
+            
             <div className="space-y-6 p-6 text-base leading-relaxed text-muted-foreground md:p-10">
               <p 
                 className="text-lg font-semibold text-primary"
@@ -114,11 +120,14 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                       </div>
 
                       {section.image && (
-                        <div className="relative h-56 overflow-hidden rounded-2xl border border-border bg-secondary/40 md:h-full">
+                        /* CORRECTION ICI : Suppression de h-56 fixe. Utilisation de aspect-[4/3] pour plus de hauteur sur mobile */
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-secondary/40 md:aspect-auto md:h-full">
                           <Image
                             src={section.image.src}
                             alt={section.image.alt}
                             fill
+                            /* Si c'est un schéma technique, object-cover peut couper les bords. 
+                               Mais avec aspect-[4/3], ça devrait passer. */
                             className="object-cover"
                             sizes="(min-width: 1024px) 380px, 100vw"
                           />
@@ -136,6 +145,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             </div>
           </div>
 
+          {/* BLOC CTA BAS DE PAGE */}
           <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-border bg-secondary/40 p-6 shadow-realistic">
             <div className="space-y-1">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
