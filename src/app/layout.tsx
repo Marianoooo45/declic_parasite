@@ -17,6 +17,21 @@ export const metadata: Metadata = {
   description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   keywords: site.keywords.split(", "),
+  
+  // --- LE BLOC MANQUANT POUR TON FAVICON ---
+  icons: {
+    icon: [
+      { url: '/favicon.ico' }, // Fallback pour vieux navigateurs
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' }, // Standard
+      // C'est CELUI-CI que Google cherche pour les résultats mobiles (192x192) :
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' }, 
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }, // Pour iPhone
+    ],
+  },
+  // -----------------------------------------
+
   openGraph: {
     title: `${site.brand} – ${site.city}`,
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
@@ -33,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "PestControl", // Type spécifique reconnu par Google
     "name": site.brand,
-    "image": "https://www.declicparasites.fr/icon.png", // Utilise votre favicon comme logo
+    "image": "https://www.declicparasites.fr/icon-192.png", // J'ai aussi mis l'image HD ici
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
@@ -94,7 +109,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: ldJson }}
         />
-        {/* Suppression du link preload inutile qui causait des conflits */}
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
         <div className="flex min-h-screen flex-col">
