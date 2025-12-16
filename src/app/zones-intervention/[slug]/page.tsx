@@ -463,14 +463,89 @@ export default async function ZonePage({
     zoneConfig.typicalContexts && zoneConfig.typicalContexts.length > 0
       ? zoneConfig.typicalContexts
       : [
-          "Maisons individuelles avec jardins et dépendances",
-          "Immeubles avec caves, locaux techniques et parkings",
-          "Commerces de proximité et restaurants",
-          "Locaux professionnels et bureaux",
-        ];
+        "Maisons individuelles avec jardins et dépendances",
+        "Immeubles avec caves, locaux techniques et parkings",
+        "Commerces de proximité et restaurants",
+        "Locaux professionnels et bureaux",
+      ];
+
+  // --- CONSTRUCTION DU SCHEMA JSON-LD (LocalBusiness) ---
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `${site.brand} ${zone.city}`,
+    "image": "https://www.declicparasites.fr/icon-192.png",
+    "@id": `https://www.declicparasites.fr/zones-intervention/${zone.slug}`,
+    "url": `https://www.declicparasites.fr/zones-intervention/${zone.slug}`,
+    "telephone": site.phone.replace(/\s+/g, ""),
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": zone.city,
+      "addressRegion": site.departement,
+      "addressCountry": "FR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": zone.city
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.90289,
+      "longitude": 1.90389
+      // Note: Idéalement, il faudrait les coordonnées réelles de chaque ville. 
+      // Pour l'instant on garde le centre, ou on pourrait ne pas mettre "geo" 
+      // si on n'a pas d'adresse physique spécifique DANS la ville (service area business).
+      // Google préfère "areaServed" pour les SAB (Service Area Business).
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://www.declicparasites.fr"
+    ]
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Zones d'intervention",
+        "item": `${baseUrl}/zones-intervention`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": zone.city,
+        "item": `${baseUrl}/zones-intervention/${zone.slug}`
+      }
+    ]
+  };
 
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
         <Image

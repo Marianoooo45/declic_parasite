@@ -5,13 +5,13 @@ import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
 import { services } from "@/config/services";
 import { site } from "@/config/site";
-import { 
-  ArrowRight, 
-  Award, 
-  Clock, 
-  MapPin, 
-  Phone, 
-  Shield, 
+import {
+  ArrowRight,
+  Award,
+  Clock,
+  MapPin,
+  Phone,
+  Shield,
   Star,
   Users,
   Zap
@@ -24,6 +24,11 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
   currency: "EUR",
   maximumFractionDigits: 0,
 });
+
+export const metadata = {
+  title: "Dératisation & Désinsectisation Orléans (45) | Déclic Parasites",
+  description: "Entreprise experte 3D à Orléans et dans le Loiret. Intervention rapide 7j/7 pour rats, souris, punaises de lit, cafards. Devis gratuit et agrément Certibiocide.",
+};
 
 export default function Home() {
   const featuredServices = services.slice(0, 6);
@@ -41,7 +46,7 @@ export default function Home() {
           priority
           sizes="100vw"
         />
-        
+
         <div className="absolute right-4 top-7 z-10 animate-pulse">
           {/* CORRECTION ACCESSIBILITÉ : Ajout de text-foreground pour le contraste */}
           <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-bold shadow-lg text-foreground">
@@ -294,11 +299,11 @@ export default function Home() {
               <div>
                 <h3 className="text-2xl font-bold sm:text-3xl">Basés à Orléans</h3>
                 <p className="mt-4 text-white/90">
-                  Nous connaissons parfaitement les problématiques locales de nuisibles : 
+                  Nous connaissons parfaitement les problématiques locales de nuisibles :
                   bâtiments anciens du centre-ville, proximité de la Loire, zones pavillonnaires...
                 </p>
                 <p className="mt-4 text-white/90">
-                  Notre équipe locale intervient rapidement dans tout le Loiret avec matériel 
+                  Notre équipe locale intervient rapidement dans tout le Loiret avec matériel
                   professionnel et protocoles adaptés à chaque situation.
                 </p>
                 <Link href="/zones-intervention" className="mt-6 block w-full sm:inline-flex sm:w-auto">
@@ -308,19 +313,19 @@ export default function Home() {
                   </Button>
                 </Link>
               </div>
-              
+
               <div className="relative h-64 w-full overflow-hidden rounded-xl border border-white/20 shadow-2xl md:h-full md:min-h-[320px]">
-                 <iframe 
-                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr" 
-                   width="100%" 
-                   height="100%" 
-                   style={{ border: 0 }} 
-                   allowFullScreen 
-                   loading="lazy" 
-                   referrerPolicy="no-referrer-when-downgrade"
-                   className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
-                   title="Localisation Déclic Parasite Orléans"
-                 ></iframe>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
+                  title="Localisation Déclic Parasite Orléans"
+                ></iframe>
               </div>
             </div>
           </div>

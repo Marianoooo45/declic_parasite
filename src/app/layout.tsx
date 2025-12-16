@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
-import { GoogleAnalytics } from '@next/third-parties/google'; 
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import ClientBody from "./ClientBody";
 import { SiteHeader } from "@/components/site-header";
@@ -13,18 +13,21 @@ const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-int
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap", variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: `${site.brand} | Expert Anti-Nuisibles ${site.city}`,
+  title: {
+    default: `${site.brand} | Expert Anti-Nuisibles ${site.city}`,
+    template: `%s | ${site.brand}`,
+  },
   description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
   alternates: { canonical: "https://www.declicparasites.fr/" },
   keywords: site.keywords.split(", "),
-  
+
   // --- LE BLOC MANQUANT POUR TON FAVICON ---
   icons: {
     icon: [
       { url: '/favicon.ico' }, // Fallback pour vieux navigateurs
       { url: '/icon.png', type: 'image/png', sizes: '32x32' }, // Standard
       // C'est CELUI-CI que Google cherche pour les résultats mobiles (192x192) :
-      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' }, 
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
     apple: [
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }, // Pour iPhone
@@ -118,8 +121,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <FloatingCta />
       </ClientBody>
-      
-      <GoogleAnalytics gaId="G-7H51K6LB86" /> 
+
+      <GoogleAnalytics gaId="G-7H51K6LB86" />
     </html>
   );
 }

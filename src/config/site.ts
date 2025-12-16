@@ -49,5 +49,5 @@ export const site = {
   ],
 
   keywords:
-    "dératisation Orléans, dératisation Loiret, désinsectisation Orléans, punaises de lit Orléans, cafards Orléans, frelons asiatiques Loiret, entreprise dératisation Orléans, traitement nuisibles Orléans",
+    "dératisation Orléans, dératisation Loiret, désinsectisation Orléans, punaises de lit Orléans, cafards Orléans, frelons asiatiques Loiret, entreprise dératisation Orléans, traitement nuisibles Orléans, exterminateur nuisibles 45, société anti-rats Orléans, destruction nid de guêpes Loiret, entreprise agréée Certibiocide Orléans, dératiseur 45, traitement puces Orléans, désourisation Loiret, hygiène 3D Orléans",
 } as const;
