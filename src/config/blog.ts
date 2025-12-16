@@ -1,4 +1,4 @@
-// config/blog.ts - Structure améliorée pour faciliter les ajouts futurs
+// config/blog.ts
 
 export type BlogPostSection = {
   heading: string;
@@ -18,37 +18,89 @@ export type BlogPost = {
   publishedAt: string; // Format YYYY-MM-DD
   readingTime: string; // Ex: "5 min"
   tags: string[]; // Tags pour le SEO et la catégorisation
-  intro: string; // Premier paragraphe enrichi
+  intro: string; // Premier paragraphe enrichi (HTML autorisé)
   sections: BlogPostSection[]; // Corps de l'article
   sources?: string[]; // Sources et références
   author?: string; // Optionnel : nom de l'auteur
   featured?: boolean; // Pour mettre en avant certains articles
 };
 
-/**
- * GUIDE POUR AJOUTER UN NOUVEL ARTICLE :
- * 
- * 1. Créez un nouvel objet BlogPost dans le tableau blogPosts ci-dessous
- * 2. Choisissez un slug unique (ex: "comment-prevenir-rats-orleans")
- * 3. Ajoutez une image de couverture (idéalement 1200x630px)
- * 4. Structurez votre contenu en sections avec heading + body
- * 5. Ajoutez des images aux sections pour illustrer vos propos
- * 6. Utilisez des tags pertinents pour le SEO
- * 
- * BONNES PRATIQUES IMAGES :
- * - Image de couverture : format paysage 16:9, haute qualité
- * - Images de sections : format portrait ou carré, illustrent le propos
- * - Alt text descriptif et SEO-friendly
- * - Légendes courtes et informatives
- * 
- * STRUCTURE RECOMMANDÉE :
- * - Introduction (intro) : 2-3 phrases qui résument l'article
- * - 3 à 5 sections pour un article standard
- * - Alternez sections avec et sans images pour la fluidité
- * - Paragraphes courts et scannables (3-4 lignes max)
- */
-
 export const blogPosts: BlogPost[] = [
+  // ARTICLE 1 : Rat vs Souris (Mis à jour avec tes images locales)
+  {
+    slug: "comment-identifier-rat-souris-orleans",
+    title: "Rat ou Souris ? Le guide complet pour les identifier à Orléans",
+    excerpt:
+      "Bruits dans les combles, crottes dans la cuisine... Vous avez un doute ? Apprenez à différencier le rat de la souris pour choisir le bon traitement dans le Loiret.",
+    // J'utilise ton image de comparaison en couverture car elle est parlante
+    cover: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=1200&q=80",
+    publishedAt: "2025-12-16",
+    readingTime: "5 min",
+    tags: ["Dératisation", "Rongeurs", "Orléans", "Conseils"],
+    featured: true, // Je l'ai passé en TRUE pour le mettre en avant
+    intro:
+      "C'est la question que nos techniciens entendent le plus souvent lors de leurs interventions à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> et dans son agglomération. Identifier correctement le rongeur qui s'invite chez vous n'est pas qu'une question de curiosité : c'est la base d'une dératisation réussie. Entre le <a href='https://fr.wikipedia.org/wiki/Rattus_norvegicus' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>rat brun (surmulot)</a> qui préfère les zones humides des bords de Loire et la <a href='https://fr.wikipedia.org/wiki/Souris_grise' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>souris domestique</a> capable de grimper au 4ème étage d'un immeuble haussmannien, les méthodes de lutte sont radicalement différentes.",
+    sections: [
+      {
+        heading: "1. Morphologie : Les différences physiques visibles",
+        body: [
+          "Si vous avez la 'chance' d'apercevoir l'intrus, son apparence est le premier indice. La <strong>souris domestique</strong> (<a href='https://fr.wikipedia.org/wiki/Mus_(genre)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Mus musculus</a>) est petite (3 à 10 cm sans la queue) avec de grandes oreilles proportionnellement à sa tête. Elle est curieuse et très agile.",
+          "Le <strong>rat</strong>, qu'il soit noir (des greniers) ou brun (des égouts), est beaucoup plus massif (jusqu'à 25-30 cm). Sa queue est plus épaisse et ses oreilles semblent plus petites par rapport à son corps. Dans le centre ancien d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, nous croisons souvent le <strong>rat brun</strong> qui remonte des sous-sols, tandis que la souris se faufile aisément derrière les plinthes des appartements modernes.",
+          "Attention aux bébés rats : ils peuvent ressembler à des souris adultes, mais leurs pattes et leur tête sont disproportionnées (comme un chiot).",
+        ],
+        image: {
+          // Utilisation de ton image locale (pense à bien la renommer !)
+          src: "/comparaison-rat-souris.png",
+          alt: "Schéma comparatif visuel entre un rat brun d'Orléans et une souris",
+          caption: "La souris (plus petite, grandes oreilles) vs le rat (corps massif, queue épaisse).",
+        },
+      },
+      {
+        heading: "2. Les indices qui ne trompent pas : Crottes et Bruits",
+        body: [
+          "Souvent, vous ne verrez pas l'animal, mais ses traces. C'est là que l'expertise d'un professionnel fait la différence. La forme et la taille des déjections sont des signatures uniques.",
+          "<strong>La Souris :</strong> Ses crottes ressemblent à des grains de riz noirs (3 à 6 mm), pointus aux extrémités. On en trouve beaucoup (50 à 80 par jour !), éparpillées partout. Côté bruit, vous entendrez des grattements légers ('trottinements') dans les cloisons ou les faux plafonds.",
+          "<strong>Le Rat :</strong> Ses excréments sont bien plus gros (1 à 2 cm), en forme de noyau d'olive ou de banane, souvent regroupés en latrines. Les bruits sont plus lourds : on a l'impression que quelqu'un marche ou court dans les combles. À proximité des bords de <a href='https://fr.wikipedia.org/wiki/Loire_(fleuve)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loire</a>, la présence de rats est aussi souvent signalée par des terriers creusés dans le jardin.",
+        ],
+        image: {
+          // Utilisation de ton image locale des crottes
+          src: "/crotte-rat-souris.jpg",
+          alt: "Photo comparative : crotte de rat orléanais vs crotte de souris",
+          caption: "La taille des déjections est l'indicateur le plus fiable pour différencier rat et souris.",
+        },
+      },
+      {
+        heading: "3. Où chercher ? Les spécificités du bâti Orléanais",
+        body: [
+          "Le lieu de découverte est un indice majeur. Dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, l'humidité joue un rôle clé.",
+          "Les <strong>souris</strong> recherchent la chaleur et la nourriture. On les trouve principalement dans les cuisines (derrière le frigo, sous l'évier), les garde-manger et les placards. Dans les immeubles du centre-ville d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, elles utilisent les colonnes techniques pour passer d'un étage à l'autre.",
+          "Les <strong>rats</strong> ont besoin de boire quotidiennement. Ils privilégient les zones humides : caves en tuffeau, garages, vides sanitaires, ou les jardins proches des points d'eau. Le rat noir, plus agile, peut toutefois se nicher dans les greniers isolés avec de la laine de verre.",
+        ],
+      },
+      {
+        heading: "4. Pourquoi le traitement doit être différent ?",
+        body: [
+          "Confondre les deux espèces mène souvent à l'échec du traitement. Une tapette à souris ne tuera pas un rat (elle risque juste de le blesser et de le rendre méfiant). À l'inverse, un piège à rat est souvent trop peu sensible pour se déclencher au passage d'une souris légère.",
+          "Le comportement alimentaire diffère aussi : le rat est néophobe (il a peur du nouveau) et mettra plusieurs jours avant de toucher à un appât. La souris est curieuse et grignote tout. C'est pourquoi chez <strong>Déclic Parasites</strong>, nous adaptons nos postes d'appâtage sécurisés et nos formulations (pâtes ou blocs) spécifiquement selon l'espèce identifiée lors de notre diagnostic gratuit.",
+          "En cas de doute, ou si vous craignez pour la salubrité de votre logement (risques de <a href='https://www.pasteur.fr/fr/centre-medical/fiches-maladies/leptospirose' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>leptospirose</a> via l'urine de rat), n'hésitez pas à faire appel à un expert certifié.",
+        ],
+        image: {
+          // Utilisation de ton image locale des postes d'appâtage
+          src: "/poste-rat-souris.jpg",
+          alt: "Différence entre un poste sécurisé rat et un poste souris",
+          caption: "Le choix du matériel (poste rat plus grand vs poste souris compact) est crucial pour l'efficacité.",
+        },
+      },
+    ],
+    sources: [
+      "Institut Pasteur - La Leptospirose : https://www.pasteur.fr/fr/centre-medical/fiches-maladies/leptospirose",
+      "Orléans Métropole - Gestion des déchets et nuisibles : https://www.orleans-metropole.fr/",
+      "Mus Musculus (Souris grise) - Wikipedia : https://fr.wikipedia.org/wiki/Souris_grise",
+      "Rattus Norvegicus (Rat brun) - Wikipedia : https://fr.wikipedia.org/wiki/Rattus_norvegicus",
+    ],
+  },
+
+  // ARTICLE 2 : Plan d'action (Le plus ancien - 15 Nov 2025)
   {
     slug: "plan-action-anti-nuisibles-orleans-loiret",
     title: "Plan d'action anti-nuisibles à Orléans et dans le Loiret",
@@ -130,55 +182,6 @@ export const blogPosts: BlogPost[] = [
       "HACCP (Hazard Analysis Critical Control Point) - DGCCRF : https://agriculture.gouv.fr/guides-de-bonnes-pratiques-dhygiene-gbph",
     ],
   },
-
-  /**
-   * TEMPLATE POUR UN NOUVEL ARTICLE :
-   * 
-   * Décommentez et complétez le template ci-dessous pour ajouter facilement un nouvel article.
-   * Pensez à respecter la structure et les bonnes pratiques mentionnées en haut de ce fichier.
-   */
-  
-  /*
-  {
-    slug: "votre-slug-unique",
-    title: "Titre accrocheur de votre article",
-    excerpt: "Description courte qui donne envie de cliquer (150-160 caractères idéalement).",
-    cover: "https://images.unsplash.com/photo-XXXXX?auto=format&fit=crop&w=1200&q=80",
-    publishedAt: "2024-12-20",
-    readingTime: "5 min",
-    tags: ["Tag1", "Tag2", "Tag3"],
-    featured: false, // true pour mettre en avant sur la page d'accueil
-    author: "Expert Déclic Parasites", // Optionnel
-    intro: "Premier paragraphe qui résume l'article et capte l'attention du lecteur...",
-    sections: [
-      {
-        heading: "Première section : titre H2 descriptif",
-        body: [
-          "Premier paragraphe de la section...",
-          "Deuxième paragraphe de la section...",
-          "Troisième paragraphe si nécessaire...",
-        ],
-        image: {
-          src: "https://images.unsplash.com/photo-XXXXX?auto=format&fit=crop&w=800&q=80",
-          alt: "Description accessible de l'image pour le SEO",
-          caption: "Légende courte et informative de l'image.",
-        },
-      },
-      {
-        heading: "Deuxième section sans image",
-        body: [
-          "Contenu de la section...",
-        ],
-        // Pas d'image dans cette section
-      },
-      // Ajoutez autant de sections que nécessaire
-    ],
-    sources: [
-      "Titre de la source 1 : URL complète",
-      "Titre de la source 2 : URL complète",
-    ],
-  },
-  */
 ];
 
 /**
