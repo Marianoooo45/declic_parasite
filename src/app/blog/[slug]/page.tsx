@@ -86,8 +86,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           
           {/* IMAGE DE COUVERTURE PRINCIPALE */}
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-realistic">
-            {/* CORRECTION ICI : aspect-video au lieu de h-72 pour éviter le crop sur mobile */}
-            <div className="relative aspect-video w-full overflow-hidden md:h-[420px] md:aspect-auto">
+            <div className="relative h-72 w-full overflow-hidden md:h-[420px]">
               <Image
                 src={post.cover}
                 alt={post.title}
@@ -120,14 +119,12 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                       </div>
 
                       {section.image && (
-                        /* CORRECTION ICI : Suppression de h-56 fixe. Utilisation de aspect-[4/3] pour plus de hauteur sur mobile */
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-secondary/40 md:aspect-auto md:h-full">
+                        /* CORRECTION ICI POUR LE MOBILE */
+                        <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl border border-border bg-secondary/40 md:aspect-auto md:h-full">
                           <Image
                             src={section.image.src}
                             alt={section.image.alt}
                             fill
-                            /* Si c'est un schéma technique, object-cover peut couper les bords. 
-                               Mais avec aspect-[4/3], ça devrait passer. */
                             className="object-cover"
                             sizes="(min-width: 1024px) 380px, 100vw"
                           />
