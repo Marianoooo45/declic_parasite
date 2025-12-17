@@ -100,7 +100,74 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 
-  // ARTICLE 2 : Plan d'action (Le plus ancien - 15 Nov 2025)
+  // ARTICLE 2 : Le guide des Prix 2025 (SEO Transactionnel)
+  {
+    slug: "prix-tarif-deratisation-desinsectisation-orleans-2025",
+    title: "Combien coûte une intervention anti-nuisibles à Orléans en 2025 ?",
+    excerpt:
+      "Dératisation, punaises de lit, nids de guêpes... Découvrez les tarifs moyens pratiqués dans le Loiret et comprenez pourquoi un devis sur-mesure est votre seule garantie d'efficacité.",
+    cover: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    publishedAt: "2025-12-01",
+    readingTime: "4 min",
+    tags: ["Tarifs", "Devis", "Dératisation", "Orléans"],
+    featured: true,
+    intro:
+      "C'est la première question qu'on nous pose au téléphone : <em>« C'est combien pour enlever des rats ? »</em>. À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, comme ailleurs, méfiez-vous des prix d'appel trop alléchants (type « forfait à 49€ ») qui cachent souvent des frais de déplacement exorbitants ou un travail bâclé. Chez <strong>Déclic Parasites</strong>, nous prônons la transparence totale. Voici un guide clair pour comprendre le budget d'une intervention professionnelle dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>.",
+    sections: [
+      {
+        heading: "1. Pourquoi est-il impossible de donner un prix fixe par téléphone ?",
+        body: [
+          "Imaginez appeler un garagiste et dire « Ma voiture fait un drôle de bruit, combien ça coûte ? ». Sans voir le véhicule, impossible de répondre honnêtement. C'est pareil pour les nuisibles.",
+          "Le tarif d'une intervention dépend de trois facteurs que nous devons vérifier sur place ou par photos détaillées :",
+          "• <strong>La surface à traiter :</strong> Dératiser un studio de 20m² rue de Bourgogne n'implique pas la même quantité de produits qu'une maison de 150m² à <a href='https://www.ville-olivet.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Olivet</a> avec jardin et dépendances.",
+          "• <strong>Le niveau d'infestation :</strong> Une colonie de rats installée depuis 6 mois nécessitera plusieurs passages et une sécurisation complexe (rebouchage), là où une souris isolée peut être traitée plus vite.",
+          "• <strong>L'accessibilité :</strong> Un nid de frelons à hauteur d'homme se traite en 30 minutes. S'il est sous une toiture à 8 mètres de haut nécessitant une échelle spécifique, le coût technique évolue.",
+        ],
+        image: {
+          src: "/devis-transparent-orleans.jpg", // Ajoute une photo de toi faisant un devis ou au téléphone
+          alt: "Technicien Déclic Parasites établissant un diagnostic gratuit à Orléans",
+          caption: "Chaque situation est unique : c'est pourquoi notre diagnostic initial est gratuit.",
+        },
+      },
+      {
+        heading: "2. Les fourchettes de prix moyennes constatées à Orléans (2025)",
+        body: [
+          "Bien que chaque devis soit unique, voici les ordres de grandeur pour une prestation de qualité professionnelle dans l'agglomération orléanaise (incluant déplacement, produits certifiés et main d'œuvre) :",
+          "🐀 <strong>Dératisation (Rats/Souris) :</strong> Comptez généralement entre <strong>120€ et 250€</strong> pour un traitement complet (comprenant souvent 2 passages). Ce prix inclut la mise en place de postes sécurisés et les conseils d'herméticité.",
+          "🛏️ <strong>Punaises de lit :</strong> C'est le traitement le plus technique. Pour un appartement type T2/T3, les tarifs débutent souvent autour de <strong>350€ - 450€</strong> pour un protocole chimique complet (2 passages obligatoires). Nous suivons les recommandations du site gouvernemental <a href='https://www.ecologie.gouv.fr/punaises-lit-letat-vous-accompagne' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Stop Punaises</a> pour garantir l'éradication.",
+          "🐝 <strong>Nids de guêpes et frelons :</strong> Selon la hauteur et la difficulté, l'intervention se situe souvent entre <strong>90€ et 180€</strong>. L'intervention est garantie : si le nid n'est pas détruit, nous revenons gratuitement. Attention, le <a href='https://agriculture.gouv.fr/le-frelon-asiatique' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>frelon asiatique</a> est classé danger sanitaire et nécessite un équipement spécial.",
+          "🐜 <strong>Insectes rampants (Cafards/Fourmis) :</strong> À partir de <strong>110€</strong> pour un traitement par gel professionnel (très efficace et discret).",
+        ],
+      },
+      {
+        heading: "3. Le piège des prix « trop bas » et des plateformes nationales",
+        body: [
+          "En tapant « Dératiseur Orléans » sur Google, vous tomberez sur des plateformes nationales qui sous-traitent à des techniciens qu'ils ne connaissent parfois même pas. Le risque ? Un prix d'appel bas, mais une facture qui gonfle une fois le technicien sur place (« ah mais là c'est un cas spécial... »).",
+          "En tant qu'artisan local basé rue Bannier, <strong>Déclic Parasites</strong> n'a pas d'intermédiaire. Le prix annoncé sur le devis est le prix que vous payez. Nous respectons scrupuleusement les règles de la <a href='https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Depannage-a-domicile' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>DGCCRF sur le dépannage à domicile</a>.",
+          "De plus, utiliser des produits grand public (vendus en jardinerie) revient souvent plus cher sur le long terme car ils sont moins dosés que nos produits professionnels sous certificat <strong><a href='https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Certibiocide</a></strong> (délivré par le Ministère de la Transition Écologique). Vous en achetez des kilos sans résultat définitif.",
+        ],
+        image: {
+          src: "/produits-pro-vs-commerce.jpg", // Photo de ton matériel pro ou camion
+          alt: "Matériel professionnel de désinsectisation utilisé dans le Loiret",
+          caption: "L'efficacité professionnelle : un investissement pour votre tranquillité.",
+        },
+      },
+      {
+        heading: "4. Votre meilleur atout : Le Diagnostic Gratuit",
+        body: [
+          "Pourquoi payer pour savoir combien ça va coûter ? Chez nous, l'estimation est offerte.",
+          "Nous vous posons les bonnes questions par téléphone (02 46 91 55 02) et si besoin, nous nous déplaçons pour évaluer la situation. Vous recevez un devis clair, net et précis avant le moindre début d'intervention.",
+          "N'attendez pas que les dégâts matériels (câbles rongés, isolation souillée) fassent grimper la facture globale. Une intervention précoce est toujours plus économique !",
+        ],
+      },
+    ],
+    sources: [
+      "Ministère de la Transition Écologique - Certibiocide : https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides",
+      "DGCCRF - Fiche pratique Dépannage à domicile : https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Depannage-a-domicile",
+      "Stop Punaises (Gouvernement) : https://www.ecologie.gouv.fr/punaises-lit-letat-vous-accompagne",
+    ],
+  },
+  // ARTICLE 3 : Plan d'action (Le plus ancien - 15 Nov 2025)
   {
     slug: "plan-action-anti-nuisibles-orleans-loiret",
     title: "Plan d'action anti-nuisibles à Orléans et dans le Loiret",
