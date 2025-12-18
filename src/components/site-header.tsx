@@ -18,8 +18,8 @@ import { services } from "@/config/services";
 import { LogoDeclic } from "@/components/logo-declic";
 
 const navigation = [
-  { label: "Nos engagements", href: "/nos-engagements" },
-  { label: "Zones d'intervention", href: "/zones-intervention" },
+  { label: "Engagements", href: "/nos-engagements" },
+  { label: "Zones", href: "/zones-intervention" },
   { label: "Conseils", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -244,26 +244,22 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <a href={phoneHref} className="hidden lg:inline-flex" data-cta="nav-phone">
+        <div className="flex items-center gap-2">
+          {/* Icônes Desktop : Téléphone + Calendrier */}
+          <a
+            href={phoneHref}
+            className="hidden lg:inline-flex"
+            data-cta="nav-phone"
+            aria-label={`Appeler ${site.phone}`}
+          >
             <Button
-              size="lg"
-              variant="outline"
-              className="border-primary/30 font-semibold text-primary hover:bg-primary/10"
+              size="icon"
+              variant="ghost"
+              className="text-primary hover:bg-primary/10"
             >
-              <Phone className="h-4 w-4" />
-              {site.phone}
+              <Phone className="h-5 w-5" />
             </Button>
           </a>
-
-          <Link href="/contact" className="hidden lg:inline-flex" data-cta="nav-devis">
-            <Button
-              size="lg"
-              className="bg-gradient-accent font-semibold shadow-lg shadow-accent/20 hover:shadow-xl"
-            >
-              Devis Gratuit
-            </Button>
-          </Link>
 
           <Link
             href="/contact#calendly"
@@ -280,13 +276,24 @@ export function SiteHeader() {
             </Button>
           </Link>
 
+          {/* CTA Principal Desktop */}
+          <Link href="/contact" className="hidden lg:inline-flex" data-cta="nav-devis">
+            <Button
+              size="default"
+              className="bg-gradient-accent font-semibold shadow-lg shadow-accent/20 hover:shadow-xl"
+            >
+              Devis gratuit
+            </Button>
+          </Link>
+
+          {/* Mobile : Téléphone + Menu */}
           <a
             href={phoneHref}
             className="inline-flex lg:hidden"
             data-cta="nav-phone-mobile"
-            aria-label={`Appeler Déclic Parasites au ${site.phone}`}
+            aria-label={`Appeler ${site.phone}`}
           >
-            <Button size="default" className="bg-gradient-accent font-semibold shadow-md">
+            <Button size="icon" className="bg-gradient-accent shadow-md">
               <Phone className="h-4 w-4" />
             </Button>
           </a>
