@@ -53,7 +53,7 @@ export function SiteFooter({ className }: { className?: string }) {
                 Experts anti-nuisibles à Orléans
               </h3>
               <p className="mt-3 text-base text-muted-foreground">
-                Intervention rapide pour dératisation, désinsectisation et traitement des nuisibles 
+                Intervention rapide pour dératisation, désinsectisation et traitement des nuisibles
                 dans tout le Loiret. Certifié Certibiocide, méthodes professionnelles garanties.
               </p>
             </div>
@@ -66,7 +66,7 @@ export function SiteFooter({ className }: { className?: string }) {
                   <p className="text-sm text-muted-foreground">{site.address}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <Phone className="mt-1 h-5 w-5 text-accent" />
                 <div>
@@ -100,7 +100,7 @@ export function SiteFooter({ className }: { className?: string }) {
             {/* RÉSEAUX SOCIAUX */}
             <div className="flex gap-4 pt-2">
               <Link
-                href="https://www.facebook.com/profile.php?id=61584584848729" 
+                href="https://www.facebook.com/profile.php?id=61584584848729"
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white transition-transform hover:scale-110 hover:bg-blue-700"
                 aria-label="Facebook"
@@ -108,7 +108,7 @@ export function SiteFooter({ className }: { className?: string }) {
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="https://share.google/mYRTAoO5txaWytDLj" 
+                href="https://share.google/mYRTAoO5txaWytDLj"
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-600 shadow-md transition-transform hover:scale-110 hover:bg-gray-50"
                 aria-label="Google Avis"
@@ -116,7 +116,7 @@ export function SiteFooter({ className }: { className?: string }) {
                 <GoogleIcon className="h-5 w-5" />
               </Link>
               <Link
-                href="https://www.pagesjaunes.fr/" 
+                href="https://www.pagesjaunes.fr/"
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 text-white transition-transform hover:scale-110 hover:bg-yellow-500"
                 aria-label="Pages Jaunes"
@@ -137,8 +137,8 @@ export function SiteFooter({ className }: { className?: string }) {
                 ))}
               </div>
               {site.serviceArea.length > 8 && (
-                <Link 
-                  href="/zones-intervention" 
+                <Link
+                  href="/zones-intervention"
                   className="mt-3 inline-flex text-sm font-semibold text-primary hover:underline"
                 >
                   + {site.serviceArea.length - 8} autres communes →
@@ -227,12 +227,12 @@ export function SiteFooter({ className }: { className?: string }) {
               <Link href="/mentions-legales" className="hover:text-primary hover:underline">
                 Mentions légales
               </Link>
-              <Link href="/politique-de-confidentialite" className="hover:text-primary hover:underline">
+              <Link href="/politique-confidentialite" className="hover:text-primary hover:underline">
                 Politique de confidentialité (RGPD)
               </Link>
             </div>
           </div>
-          
+
           <div className="flex flex-col items-start gap-2 lg:items-end">
             <div className="flex items-center gap-2">
               <Award className="h-4 w-4 text-primary" />
