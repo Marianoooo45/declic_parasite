@@ -149,8 +149,8 @@ function MobileMenu() {
           <Menu className="h-5 w-5" />
         </button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-80 max-w-[85%] p-0">
-        <SheetHeader className="border-b border-border bg-secondary/30 px-6 py-4">
+      <SheetContent side="right" className="flex h-full w-80 max-w-[85%] flex-col p-0">
+        <SheetHeader className="shrink-0 border-b border-border bg-secondary/30 px-6 py-4">
           <SheetTitle className="text-xs font-bold uppercase tracking-widest text-primary">
             Menu
           </SheetTitle>
@@ -201,7 +201,7 @@ function MobileMenu() {
           </nav>
         </div>
 
-        <div className="border-t border-border bg-secondary/20 p-6">
+        <div className="shrink-0 border-t border-border bg-secondary/20 p-6">
           <a href={`tel:${site.phone.replace(/\s+/g, "")}`} className="block">
             <Button size="lg" className="w-full bg-gradient-accent shadow-lg">
               <Phone className="h-5 w-5" />
