@@ -23,12 +23,14 @@ import { services } from "@/config/services";
 import {
   CheckCircle2,
   Clock,
+  Calendar,
   Mail,
   MapPin,
   Phone,
   Send,
   Zap,
 } from "lucide-react";
+import { CalendlyWidget } from "@/components/calendly-widget";
 
 // MODIFICATION : Ajout des champs civilité, prénom, nom et adresse
 const initialForm = {
@@ -723,6 +725,28 @@ export default function ContactPageContent() {
               </AnimatedSection>
             </AnimatedSection>
           </div>
+        </div>
+      </section>
+
+      {/* SECTION CALENDLY */}
+      <section id="calendly" className="scroll-mt-24 bg-secondary/30 py-12 lg:py-20">
+        <div className="mx-auto w-full max-w-4xl px-4 md:px-6">
+          <AnimatedSection className="mb-8 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
+              <Calendar className="h-4 w-4" />
+              Réservation en ligne
+            </span>
+            <h2 className="mt-4 text-balance text-2xl font-bold text-primary md:text-4xl">
+              Prendre rendez-vous
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Choisissez un créneau qui vous convient pour un diagnostic gratuit
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1} className="rounded-3xl border-2 border-primary/20 bg-white p-4 shadow-realistic md:p-8">
+            <CalendlyWidget />
+          </AnimatedSection>
         </div>
       </section>
     </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Menu, Phone } from "lucide-react";
+import { Calendar, ChevronDown, Menu, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -262,6 +262,21 @@ export function SiteHeader() {
               className="bg-gradient-accent font-semibold shadow-lg shadow-accent/20 hover:shadow-xl"
             >
               Devis Gratuit
+            </Button>
+          </Link>
+
+          <Link
+            href="/contact#calendly"
+            className="hidden lg:inline-flex"
+            data-cta="nav-calendly"
+            aria-label="Prendre rendez-vous"
+          >
+            <Button
+              size="icon"
+              variant="ghost"
+              className="text-primary hover:bg-primary/10"
+            >
+              <Calendar className="h-5 w-5" />
             </Button>
           </Link>
 
