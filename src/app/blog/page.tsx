@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: `Blog & Conseils | ${site.brand}`,
   description:
     "Actualités et conseils anti-nuisibles à Orléans et dans le Loiret : protocoles, prévention et retours de terrain Déclic Parasites.",
+  alternates: {
+    canonical: "https://www.declicparasites.fr/blog",
+  },
   openGraph: {
     title: `Blog & Conseils | ${site.brand}`,
     description:
@@ -62,41 +65,41 @@ export default function BlogPage() {
 
           <AnimatedSection delay={0.2}>
             <p className="mx-auto max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl">
-              Retours de terrain, protocoles éprouvés et bonnes pratiques partagés par nos 
+              Retours de terrain, protocoles éprouvés et bonnes pratiques partagés par nos
               techniciens pour sécuriser votre logement ou votre commerce à Orléans et dans le Loiret.
             </p>
           </AnimatedSection>
 
           {/* Stats en bas du hero */}
           {/* Stats en bas du hero */}
-<AnimatedSection delay={0.3}>
-  <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-6 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
-    {[
-      { value: blogPosts.length, label: "Articles" },
-      { value: "850+", label: "Interventions" },
-      { value: "98%", label: "Satisfaction" },
-    ].map((stat, i) => (
-      <div key={i} className="text-center">
-        <div className="text-3xl font-extrabold text-accent drop-shadow md:text-4xl">
-          {stat.value}
-        </div>
+          <AnimatedSection delay={0.3}>
+            <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-6 rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm">
+              {[
+                { value: blogPosts.length, label: "Articles" },
+                { value: "850+", label: "Interventions" },
+                { value: "98%", label: "Satisfaction" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-3xl font-extrabold text-accent drop-shadow md:text-4xl">
+                    {stat.value}
+                  </div>
 
-        <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-accent/90" />
+                  <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-accent/90" />
 
-        <div className="mt-2 text-sm font-semibold text-white/80">
-          {stat.label}
-        </div>
-      </div>
-    ))}
-  </div>
-</AnimatedSection>
+                  <div className="mt-2 text-sm font-semibold text-white/80">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* LISTE DES ARTICLES - DESIGN MODERNE */}
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          
+
           {/* En-tête de section */}
           <AnimatedSection className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-primary md:text-4xl">
@@ -112,7 +115,7 @@ export default function BlogPage() {
             {blogPosts.map((post, i) => (
               <AnimatedSection key={post.slug} delay={i * 0.08}>
                 <article className="group flex h-full flex-col overflow-hidden rounded-3xl border-2 border-border bg-white shadow-realistic transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl">
-                  
+
                   {/* Image de couverture */}
                   <Link href={`/blog/${post.slug}`} className="relative block">
                     <div className="relative h-64 overflow-hidden">
@@ -126,7 +129,7 @@ export default function BlogPage() {
                       />
                       {/* Overlay gradient */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                      
+
                       {/* Badge flottant */}
                       <div className="absolute right-4 top-4 rounded-full bg-accent px-4 py-1.5 text-xs font-bold uppercase text-white shadow-lg">
                         {site.brand}
@@ -142,7 +145,7 @@ export default function BlogPage() {
 
                   {/* Contenu de la carte */}
                   <div className="flex flex-1 flex-col gap-4 p-6">
-                    
+
                     {/* Métadonnées */}
                     <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-primary">
@@ -187,7 +190,7 @@ export default function BlogPage() {
                         </div>
                         <span className="font-medium">Expert {site.brand}</span>
                       </div>
-                      
+
                       <Link
                         href={`/blog/${post.slug}`}
                         className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all group-hover:gap-3 group-hover:text-accent"
@@ -210,7 +213,7 @@ export default function BlogPage() {
                   📝 Nouveaux articles en préparation
                 </p>
                 <p className="mt-3 text-muted-foreground">
-                  Notre équipe rédige régulièrement de nouveaux guides et retours d'expérience. 
+                  Notre équipe rédige régulièrement de nouveaux guides et retours d'expérience.
                   Revenez bientôt pour découvrir plus de conseils d'experts !
                 </p>
               </div>
@@ -226,16 +229,16 @@ export default function BlogPage() {
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-sm">
               ⚡ Besoin d'aide ?
             </div>
-            
+
             <h2 className="text-balance text-3xl font-bold md:text-5xl">
               Une question sur votre situation ?
             </h2>
-            
+
             <p className="mt-6 text-lg text-white/90 md:text-xl">
-              Nos techniciens sont disponibles pour analyser votre cas et vous proposer 
+              Nos techniciens sont disponibles pour analyser votre cas et vous proposer
               un plan d'action adapté. Devis gratuit sous 1h ouvrée.
             </p>
-            
+
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link href="/contact" data-cta="blog-cta-form">
                 <button className="h-14 rounded-full bg-accent px-10 text-lg font-bold text-white shadow-2xl transition-transform hover:scale-105 hover:bg-accent/90">

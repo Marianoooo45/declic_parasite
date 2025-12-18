@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: `Services | ${site.brand}`,
   description:
     "Catalogue des prestations de dératisation, désinsectisation et prévention de Déclic Parasites à Orléans. Interventions rapides sous 24–48h, devis gratuit.",
+  alternates: {
+    canonical: "https://www.declicparasites.fr/services",
+  },
   openGraph: {
     title: `Services | ${site.brand}`,
     description:
@@ -42,7 +45,7 @@ export default function ServicesPage() {
           priority
           sizes="100vw"
         />
-        
+
         <div className="relative mx-auto max-w-4xl px-6 text-center">
           <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Award className="h-4 w-4 text-accent" />
@@ -126,7 +129,7 @@ export default function ServicesPage() {
                         sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                      
+
                       {service.priceFrom && (
                         <div className="absolute right-4 top-4 rounded-full bg-accent px-4 py-2 text-sm font-bold text-white shadow-lg">
                           dès {euroFormatter.format(service.priceFrom)}
@@ -137,12 +140,12 @@ export default function ServicesPage() {
                         <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-1 flex-col gap-4 p-6">
                       <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
                         {service.short}
                       </p>
-                      
+
                       <div className="flex items-center justify-between border-t border-border pt-4">
                         <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
                           Découvrir

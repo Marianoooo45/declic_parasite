@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: `Nos engagements | ${site.brand}`,
   description:
     "Découvrez les engagements Déclic Parasites : réactivité 24–48h, discrétion, protocoles certifiés et suivi personnalisé à Orléans et dans le Loiret.",
+  alternates: {
+    canonical: "https://www.declicparasites.fr/nos-engagements",
+  },
   openGraph: {
     title: `Nos engagements | ${site.brand}`,
     description:
@@ -58,7 +61,7 @@ export default function NosEngagementsPage() {
           sizes="100vw"
           priority
         />
-        
+
         <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div className="space-y-8">
             <AnimatedSection className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
@@ -143,7 +146,7 @@ export default function NosEngagementsPage() {
               Une méthodologie rassurante
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-              De la première prise de contact jusqu'au suivi après traitement, nous partageons 
+              De la première prise de contact jusqu'au suivi après traitement, nous partageons
               chaque étape et validons les décisions importantes avec vous.
             </p>
           </div>
@@ -176,7 +179,7 @@ export default function NosEngagementsPage() {
               <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
                 Un protocole clair avant, pendant et après
               </h2>
-              
+
               <div className="space-y-4">
                 {[
                   "Diagnostic sur site et devis clair avant toute action",
@@ -219,7 +222,7 @@ export default function NosEngagementsPage() {
                 <div className="absolute bottom-6 left-6 right-6 rounded-2xl border-2 border-primary/30 bg-white/90 p-6 backdrop-blur-sm">
                   <p className="text-lg font-bold text-primary">Visite de contrôle</p>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Photos, points d'accès vérifiés et plan d'action partagé pour limiter 
+                    Photos, points d'accès vérifiés et plan d'action partagé pour limiter
                     le retour des nuisibles.
                   </p>
                 </div>
@@ -280,16 +283,16 @@ export default function NosEngagementsPage() {
       <AnimatedSection className="bg-gradient-primary py-20 text-white">
         <div className="mx-auto w-full max-w-5xl px-6 text-center">
           <Zap className="mx-auto mb-6 h-16 w-16 text-accent" />
-          
+
           <h2 className="text-balance text-4xl font-bold md:text-5xl">
             Envie d'en savoir plus ou besoin d'un avis ?
           </h2>
-          
+
           <p className="mt-6 text-pretty text-xl text-white/90">
-            Expliquez-nous votre situation : nous vous répondons par mail ou par téléphone 
+            Expliquez-nous votre situation : nous vous répondons par mail ou par téléphone
             selon votre préférence, avec un devis clair et un plan d'intervention.
           </p>
-          
+
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link href="/contact" data-cta="engagements-final-form">
               <Button size="lg" className="h-14 bg-accent px-10 text-lg font-bold shadow-2xl hover:bg-accent/90">

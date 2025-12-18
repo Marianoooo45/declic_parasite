@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
   return {
     title: `${post.title} | ${site.brand}`,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://www.declicparasites.fr/blog/${post.slug}`,
+    },
     openGraph: {
       title: `${post.title} | ${site.brand}`,
       description: post.excerpt,
@@ -83,7 +86,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
       {/* CONTENU DE L'ARTICLE */}
       <section className="-mt-12 pb-12 md:pb-20">
         <div className="mx-auto max-w-5xl space-y-10 px-4 md:px-6">
-          
+
           {/* IMAGE DE COUVERTURE PRINCIPALE */}
           <div className="overflow-hidden rounded-3xl border border-border bg-white shadow-realistic">
             <div className="relative h-72 w-full overflow-hidden md:h-[420px]">
@@ -96,9 +99,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                 priority
               />
             </div>
-            
+
             <div className="space-y-6 p-6 text-base leading-relaxed text-muted-foreground md:p-10">
-              <p 
+              <p
                 className="text-lg font-semibold text-primary"
                 dangerouslySetInnerHTML={{ __html: post.intro }}
               />
@@ -110,8 +113,8 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                       <div className="space-y-3">
                         <h2 className="text-2xl font-bold text-primary">{section.heading}</h2>
                         {section.body.map((paragraph, idx) => (
-                          <p 
-                            key={idx} 
+                          <p
+                            key={idx}
                             className="text-muted-foreground"
                             dangerouslySetInnerHTML={{ __html: paragraph }}
                           />

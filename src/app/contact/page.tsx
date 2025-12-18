@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: `Contact & Devis | ${site.brand}`,
   description:
     "Contactez Déclic Parasites pour une intervention anti-nuisibles à Orléans et dans le Loiret. Réponse rapide sous 1h ouvrée, devis gratuit.",
+  alternates: {
+    canonical: "https://www.declicparasites.fr/contact",
+  },
   openGraph: {
     title: `Contact & Devis | ${site.brand}`,
     description:
