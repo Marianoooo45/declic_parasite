@@ -18,7 +18,8 @@ export const metadata: Metadata = {
     template: `%s | ${site.brand}`,
   },
   description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
-  alternates: { canonical: "https://www.declicparasites.fr/" },
+  metadataBase: new URL("https://www.declicparasites.fr"),
+  alternates: { canonical: "./" },
   keywords: site.keywords.split(", "),
 
   // --- LE BLOC MANQUANT POUR TON FAVICON ---
