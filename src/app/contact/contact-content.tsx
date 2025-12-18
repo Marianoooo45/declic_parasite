@@ -16,6 +16,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
 import {
@@ -320,13 +322,12 @@ export default function ContactPageContent() {
 
               {feedback && (
                 <div
-                  className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${
-                    status === "success"
-                      ? "border-green-500 bg-green-50 text-green-800"
-                      : status === "fallback"
+                  className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${status === "success"
+                    ? "border-green-500 bg-green-50 text-green-800"
+                    : status === "fallback"
                       ? "border-amber-500 bg-amber-50 text-amber-800"
                       : "border-red-500 bg-red-50 text-red-800"
-                  }`}
+                    }`}
                 >
                   {feedback}
                 </div>
@@ -551,26 +552,25 @@ export default function ContactPageContent() {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl border-2 border-primary/20 bg-secondary/30 p-4">
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     id="consent"
-                    className="mt-1 h-5 w-5 rounded border-2 border-primary text-primary focus:ring-2 focus:ring-primary"
                     checked={formState.consent}
-                    onChange={(e) =>
+                    onCheckedChange={(checked) =>
                       setFormState((prev) => ({
                         ...prev,
-                        consent: e.target.checked,
+                        consent: checked === true,
                       }))
                     }
+                    className="mt-0.5"
                     required
                   />
-                  <label
+                  <Label
                     htmlFor="consent"
-                    className="text-sm text-muted-foreground"
+                    className="text-sm font-normal text-muted-foreground cursor-pointer"
                   >
                     J&apos;accepte que {site.brand} me contacte au sujet de ma
                     demande. Mes données ne seront jamais revendues.
-                  </label>
+                  </Label>
                 </div>
 
                 <Button

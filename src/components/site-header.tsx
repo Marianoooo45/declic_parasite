@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { site } from "@/config/site";
 import { services } from "@/config/services";
@@ -132,66 +138,29 @@ function ServicesDropdown() {
 }
 
 function MobileMenu() {
-  const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
-
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [open]);
-
-  const overlay = open ? (
-    <div className="fixed inset-0 z-[9999] flex lg:hidden">
-      {/* Backdrop EN DESSOUS du panneau */}
-      <button
-        type="button"
-        className="absolute inset-0 z-0 bg-black/55 lg:bg-black/50 lg:backdrop-blur-sm"
-        aria-label="Fermer le menu"
-        onClick={() => setOpen(false)}
-      />
-
-      {/* Panneau AU DESSUS du backdrop */}
-      <div
-        role="dialog"
-        aria-modal="true"
-        className="relative z-10 ml-auto flex h-full w-80 max-w-[85%] flex-col bg-white shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between border-b border-border bg-secondary/30 px-6 py-4">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-3 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
+          aria-label="Ouvrir le menu"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      </SheetTrigger>
+      <SheetContent side="right" className="w-80 max-w-[85%] p-0">
+        <SheetHeader className="border-b border-border bg-secondary/30 px-6 py-4">
+          <SheetTitle className="text-xs font-bold uppercase tracking-widest text-primary">
             Menu
-          </span>
-          <button
-            type="button"
-            className="rounded-full p-2 text-foreground transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            onClick={() => setOpen(false)}
-            aria-label="Fermer le menu"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
+          </SheetTitle>
+        </SheetHeader>
 
         <div className="flex-1 overflow-y-auto px-6 py-6">
           <nav className="space-y-6">
             <Link
               href="/"
               className="block text-base font-semibold text-foreground hover:text-primary"
-              onClick={() => setOpen(false)}
             >
               Accueil
             </Link>
@@ -206,7 +175,6 @@ function MobileMenu() {
                     key={s.slug}
                     href={`/services/${s.slug}`}
                     className="block rounded-xl border border-border bg-secondary/30 p-3 text-sm transition-all hover:border-primary hover:bg-primary/5 hover:text-primary"
-                    onClick={() => setOpen(false)}
                   >
                     <span className="block font-semibold">{s.title}</span>
                     <span className="text-xs text-muted-foreground">{s.short}</span>
@@ -215,7 +183,6 @@ function MobileMenu() {
                 <Link
                   href="/services"
                   className="mt-3 inline-flex items-center text-sm font-semibold text-primary hover:underline"
-                  onClick={() => setOpen(false)}
                 >
                   Tous les services →
                 </Link>
@@ -227,7 +194,6 @@ function MobileMenu() {
                 key={n.href}
                 href={n.href}
                 className="block text-base font-semibold text-foreground hover:text-primary"
-                onClick={() => setOpen(false)}
               >
                 {n.label}
               </Link>
@@ -243,23 +209,8 @@ function MobileMenu() {
             </Button>
           </a>
         </div>
-      </div>
-    </div>
-  ) : null;
-
-  return (
-    <>
-      <button
-        type="button"
-        className="inline-flex items-center justify-center rounded-xl border border-border bg-white p-3 text-foreground shadow-sm transition-all hover:bg-secondary hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:hidden"
-        onClick={() => setOpen(true)}
-        aria-label="Ouvrir le menu"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
-
-      {mounted && overlay ? createPortal(overlay, document.body) : null}
-    </>
+      </SheetContent>
+    </Sheet>
   );
 }
 

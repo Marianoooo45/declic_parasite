@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { AnimatedSection } from "@/components/animated-section";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { services } from "@/config/services";
 import { site } from "@/config/site";
 import {
@@ -110,12 +111,14 @@ export default function Home() {
             <AnimatedSection delay={0.25} className="flex flex-wrap gap-2 text-sm">
               <span className="text-white/70">Zones :</span>
               {site.serviceArea.slice(0, 6).map((zone) => (
-                <span key={zone} className="rounded-full border border-white/30 px-3 py-1 font-medium">
+                <Badge key={zone} variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/10">
                   {zone}
-                </span>
+                </Badge>
               ))}
-              <Link href="/zones-intervention" className="rounded-full border border-white/30 px-3 py-1 font-medium hover:bg-white/10">
-                + {site.serviceArea.length - 6} communes
+              <Link href="/zones-intervention">
+                <Badge variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/10 cursor-pointer">
+                  + {site.serviceArea.length - 6} communes
+                </Badge>
               </Link>
             </AnimatedSection>
           </div>
