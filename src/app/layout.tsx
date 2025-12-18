@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
   metadataBase: new URL("https://www.declicparasites.fr"),
+  alternates: { canonical: "./" },
   keywords: site.keywords.split(", "),
 
   // --- LE BLOC MANQUANT POUR TON FAVICON ---
@@ -29,9 +30,7 @@ export const metadata: Metadata = {
       // C'est CELUI-CI que Google cherche pour les résultats mobiles (192x192) :
       { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
-    apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }, // Pour iPhone
-    ],
+
   },
   // -----------------------------------------
 
