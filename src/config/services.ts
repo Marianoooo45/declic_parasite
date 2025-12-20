@@ -255,7 +255,7 @@ const baseServices: Service[] = [
   },
   {
     title: "Contrats professionnels HACCP à  Orléans et dans le Loiret", // Titre plus explicite
-    slug: "contrats-haccp", // Slug SEO-friendly pour les URLs indexées
+    slug: "contrats-professionnels-haccp", // Slug SEO-friendly pour les URLs indexées
     short: "Plan de prévention nuisibles pour pros & collectivités",
     description:
       "Restaurants, hôtels, industries : nous mettons en place un plan HACCP complet avec visites régulières, traçabilité et reporting digital.",
