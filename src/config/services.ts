@@ -65,7 +65,7 @@ const baseServices: Service[] = [
   },
   {
     title: "Traitement punaises de lit à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "punaises-de-lit", // Slug SEO-friendly pour les URLs indexées
+    slug: "traitement-punaises-de-lit", // Slug SEO-friendly pour les URLs indexées
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
@@ -113,7 +113,7 @@ const baseServices: Service[] = [
   },
   {
     title: "Traitement cafards et blattes à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "cafards", // Slug SEO-friendly pour les URLs indexées
+    slug: "traitement-cafards-et-blattes", // Slug SEO-friendly pour les URLs indexées
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
