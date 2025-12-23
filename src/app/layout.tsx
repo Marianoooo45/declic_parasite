@@ -21,19 +21,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.declicparasites.fr"),
   alternates: { canonical: "./" },
   keywords: site.keywords.split(", "),
-
-  // --- LE BLOC MANQUANT POUR TON FAVICON ---
   icons: {
     icon: [
-      { url: '/favicon.ico' }, // Fallback pour vieux navigateurs
-      { url: '/icon.png', type: 'image/png', sizes: '32x32' }, // Standard
-      // C'est CELUI-CI que Google cherche pour les résultats mobiles (192x192) :
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
       { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
-
   },
-  // -----------------------------------------
-
   openGraph: {
     title: `${site.brand} – ${site.city}`,
     description: `Experts nuisibles à ${site.city} (${site.departement}). Devis gratuit, intervention rapide.`,
@@ -45,17 +39,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Configuration optimisée pour le "Knowledge Panel" de Google
-  const localBusinessJsonLd = {
+  // SCHEMA JSON-LD SIMPLIFIÉ (Objet unique, pas de tableau)
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "PestControl", // Type spécifique reconnu par Google
+    "@type": "PestControl",
     "name": site.brand,
-    "image": "https://www.declicparasites.fr/icon-192.png", // J'ai aussi mis l'image HD ici
+    "image": "https://www.declicparasites.fr/icon-192.png",
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
-    "telephone": site.phone.replace(/\s+/g, ""),
-    "priceRange": "€€",
+    "telephone": site.phone.replace(/\s+/g, ""), // Enlève les espaces pour le format international
+    "priceRange": "Sur devis",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",
@@ -65,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 47.90289, // Coordonnées centre Orléans
+      "latitude": 47.90289,
       "longitude": 1.90389
     },
     "areaServed": site.serviceArea.map(city => ({
@@ -75,41 +69,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
       ],
       "opens": "00:00",
       "closes": "23:59"
     },
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61584584848729",
-      "https://share.google/mYRTAoO5txaWytDLj" // Lien vers votre fiche Google Maps
+      "https://share.google/mYRTAoO5txaWytDLj"
     ]
   };
-
-  // NOUVEAU : Configuration spécifique pour le Nom du Site dans les résultats Google
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": site.brand,
-    "url": "https://www.declicparasites.fr",
-    "alternateName": "Declic Parasites"
-  };
-
-  // On combine les deux schémas dans une liste pour Google
-  const ldJson: string = JSON.stringify([localBusinessJsonLd, websiteJsonLd]);
 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: ldJson }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
