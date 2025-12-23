@@ -11,7 +11,6 @@ export type Service = {
   features: string[];
   faqs: { q: string; a: string }[];
   schemaKeywords?: string[];
-  disabled?: boolean;
 };
 
 const baseServices: Service[] = [
@@ -206,54 +205,6 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Guêpes & frelons à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "guepes-frelons", // Slug SEO-friendly pour les URLs indexées
-    short: "Destruction sécurisée des nids aériens et terrestres",
-    description:
-      "Un nid de guêpes ou de frelons met en danger votre famille ? Nous intervenons en hauteur ou en cave avec équipement complet et garantie de résultat.",
-    heroImage: "/services/guepes.svg",
-    disabled: true,
-    priceFrom: 139,
-    benefits: [
-      "Intervention en urgence",
-      "Matériel d'accès grande hauteur",
-      "Traitement nocturne possible",
-      "Garantie de résultat 7 jours",
-      "Protection des abeilles respectée",
-    ],
-    features: [
-      "Diagnostic de l'espèce et du niveau de risque",
-      "Neutralisation par poudre ou mousse biocide",
-      "Retrait physique du nid quand possible",
-      "Sécurisation du périmètre et signalisation",
-      "Rapport photo envoyé après traitement",
-      "Conseils prévention et bouchage des accès",
-    ],
-    faqs: [
-      {
-        q: "Intervenez-vous le week-end ?",
-        a: "Oui, une permanence est assurée pour les urgences nids de guêpes ou frelons.",
-      },
-      {
-        q: "Faut-il prévenir les voisins ou la mairie ?",
-        a: "Nous vous guidons sur les démarches, notamment pour les espaces publics ou copropriétés.",
-      },
-      {
-        q: "Que faire si le nid revient ?",
-        a: "Notre garantie couvre un retour sur site sans frais dans les 7 jours suivant l'intervention.",
-      },
-      {
-        q: "Protégez-vous les ruches ?",
-        a: "Nous adaptons nos méthodes pour préserver les pollinisateurs et intervenons en coordination avec les apiculteurs locaux.",
-      },
-    ],
-    schemaKeywords: [
-      "destruction nid de guêpes Orléans",
-      "intervention frelon asiatique",
-      "urgence guêpes Loiret",
-    ],
-  },
-  {
     title: "Contrats professionnels HACCP à  Orléans et dans le Loiret", // Titre plus explicite
     slug: "contrats-professionnels-haccp", // Slug SEO-friendly pour les URLs indexées
     short: "Plan de prévention nuisibles pour pros & collectivités",
@@ -351,9 +302,7 @@ const baseServices: Service[] = [
 
 export type ServiceWithSlug = Service & { slug: string };
 
-export const services: ServiceWithSlug[] = baseServices
-  .filter((service) => !service.disabled)
-  .map((service) => ({
-    ...service,
-    slug: service.slug ?? slugify(service.title),
-  }));
+export const services: ServiceWithSlug[] = baseServices.map((service) => ({
+  ...service,
+  slug: service.slug ?? slugify(service.title),
+}));

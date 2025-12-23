@@ -32,6 +32,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/services/guepes-frelons",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
