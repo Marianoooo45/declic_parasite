@@ -220,9 +220,9 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border glass shadow-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-6 md:h-24">
+      <div className="container mx-auto flex h-16 items-center justify-between gap-4 px-6 md:h-20">
         <Link href="/" className="flex items-center" aria-label={site.brand}>
-          <LogoDeclic className="h-9 w-auto md:h-16" />
+          <LogoDeclic className="h-9 w-auto md:h-12" />
         </Link>
 
         <nav
