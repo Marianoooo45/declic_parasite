@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     default: `${site.brand} | Expert Anti-Nuisibles ${site.city}`,
     template: `%s | ${site.brand}`,
   },
-  description: `${site.brand} intervient en 24h pour dératisation et désinsectisation à ${site.city} et dans le ${site.departement}. Devis gratuit et agrément Certibiocide.`,
+  description: `Dératisation & Désinsectisation à Orléans (45). Intervention 24h/7j. Devis Gratuit. Les experts anti-nuisibles du Loiret certifiés Certibiocide.`,
   metadataBase: new URL("https://www.declicparasites.fr"),
   alternates: { canonical: "./" },
   keywords: site.keywords.split(", "),
@@ -55,7 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "url": "https://www.declicparasites.fr",
     "email": site.email,
     "telephone": site.phone.replace(/\s+/g, ""),
-    "priceRange": "€€",
+    "priceRange": "Sur devis",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "18"
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",

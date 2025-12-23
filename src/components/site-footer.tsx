@@ -129,6 +129,9 @@ export function SiteFooter({ className }: { className?: string }) {
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                 Zones d'intervention principales
               </p>
+              <p className="mb-4 text-xs text-muted-foreground/80 leading-relaxed">
+                <strong>Quartiers Orléans :</strong> Centre-ville, Bourgogne, Saint-Marc, La Source, Dunois, Châteaudun, Gare, Argonne, Saint-Marceau, Madeleine...
+              </p>
               <div className="flex flex-wrap gap-2">
                 {site.serviceArea.slice(0, 8).map((city) => (
                   <span key={city} className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">

@@ -147,7 +147,7 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className="mb-12 text-center">
             <h2 className="text-balance text-3xl font-bold text-primary md:text-5xl">
-              Vous avez remarqué...
+              Nuisibles fréquents à Orléans et dans le Loiret
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Signes d'infestation ? Agissez avant la prolifération
@@ -218,7 +218,7 @@ export default function Home() {
           <div className="mb-12 text-center">
             <span className="text-sm font-bold uppercase tracking-widest text-accent">Nos prestations</span>
             <h2 className="mt-3 text-balance text-3xl font-bold text-primary md:text-5xl">
-              Solutions professionnelles anti-nuisibles
+              Nos services de dératisation et désinsectisation dans le 45
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Interventions certifiées Certibiocide • Devis gratuit • Suivi personnalisé
