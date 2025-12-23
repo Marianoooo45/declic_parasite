@@ -47,9 +47,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // Configuration optimisée pour le "Knowledge Panel" de Google
   const localBusinessJsonLd = {
-    "@type": "PestControl",
+    "@context": "https://schema.org",
+    "@type": "PestControl", // Type spécifique reconnu par Google
     "name": site.brand,
-    "image": "https://www.declicparasites.fr/icon-192.png",
+    "image": "https://www.declicparasites.fr/icon-192.png", // J'ai aussi mis l'image HD ici
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
@@ -64,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 47.90289,
+      "latitude": 47.90289, // Coordonnées centre Orléans
       "longitude": 1.90389
     },
     "areaServed": site.serviceArea.map(city => ({
@@ -87,23 +88,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61584584848729",
-      "https://share.google/mYRTAoO5txaWytDLj"
+      "https://share.google/mYRTAoO5txaWytDLj" // Lien vers votre fiche Google Maps
     ]
   };
 
+  // NOUVEAU : Configuration spécifique pour le Nom du Site dans les résultats Google
   const websiteJsonLd = {
+    "@context": "https://schema.org",
     "@type": "WebSite",
     "name": site.brand,
     "url": "https://www.declicparasites.fr",
     "alternateName": "Declic Parasites"
   };
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [localBusinessJsonLd, websiteJsonLd]
-  };
-
-  const ldJson: string = JSON.stringify(jsonLd);
+  // On combine les deux schémas dans une liste pour Google
+  const ldJson: string = JSON.stringify([localBusinessJsonLd, websiteJsonLd]);
 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
