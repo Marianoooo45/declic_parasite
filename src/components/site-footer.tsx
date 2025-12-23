@@ -31,6 +31,7 @@ const PagesJaunesIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+
 export function SiteFooter({ className }: { className?: string }) {
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
 
@@ -97,8 +98,8 @@ export function SiteFooter({ className }: { className?: string }) {
               </div>
             </div>
 
-            {/* RÉSEAUX SOCIAUX */}
-            <div className="flex gap-4 pt-2">
+            {/* RÉSEAUX SOCIAUX & PARTENAIRES */}
+            <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 href="https://www.linkedin.com/company/declicparasites/"
                 target="_blank"
@@ -130,6 +131,18 @@ export function SiteFooter({ className }: { className?: string }) {
                 aria-label="Pages Jaunes"
               >
                 <PagesJaunesIcon className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.travaux.com/professionnel/declic-parasites"
+                target="_blank"
+                className="group flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md transition-transform hover:scale-110"
+                aria-label="Travaux.com"
+              >
+                <img
+                  src="https://s3-eu-west-1.amazonaws.com/tpd/logos/55faceb60000ff00058369f7/0x0.png"
+                  alt="Logo Travaux.com"
+                  className="h-full w-full object-contain scale-125"
+                />
               </Link>
             </div>
 
