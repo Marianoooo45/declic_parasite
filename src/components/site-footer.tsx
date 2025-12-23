@@ -23,6 +23,13 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const PagesJaunesIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <rect x="2" y="2" width="20" height="20" rx="4" />
+    <path d="M8 17l6-10" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    <path d="M15 12l-3 5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
 
 
 export function SiteFooter({ className }: { className?: string }) {
@@ -120,14 +127,10 @@ export function SiteFooter({ className }: { className?: string }) {
               <Link
                 href="https://www.pagesjaunes.fr/"
                 target="_blank"
-                className="group flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md transition-transform hover:scale-110"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 text-white transition-transform hover:scale-110 hover:bg-yellow-500"
                 aria-label="Pages Jaunes"
               >
-                <img
-                  src="https://play-lh.googleusercontent.com/j481QsgCeDX3a0zACZ84XnypFH9dCUN_k0eT-GYqlbBERHE57E-kWOoksE3vKQQ_E9Ndzn8WH-LtjddYH7_6jCU"
-                  alt="Logo Pages Jaunes"
-                  className="h-full w-full object-cover scale-110"
-                />
+                <PagesJaunesIcon className="h-5 w-5" />
               </Link>
               <Link
                 href="https://www.travaux.com/professionnel/declic-parasites"

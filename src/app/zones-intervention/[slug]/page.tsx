@@ -219,7 +219,7 @@ export default async function ZonePage({
           src="https://www.globeguide.ca/wp-content/uploads/2017/10/France-Loire-Orleans.jpg"
           alt={`${cityConfig.name} - Zone d'intervention ${site.brand}`}
           fill
-          className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+          className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           priority
           sizes="100vw"
         />

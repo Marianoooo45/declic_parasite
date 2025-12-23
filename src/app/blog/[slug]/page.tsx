@@ -168,6 +168,6 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
           </div>
         </div>
       </section>
-    </main>
+    </main >
   );
 }

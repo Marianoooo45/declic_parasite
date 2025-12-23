@@ -36,7 +36,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
+      <section className="relative min-h-[85vh] overflow-hidden bg-gradient-primary text-white lg:min-h-[90vh]">
         <Image
           src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
           alt="Technicien professionnel en intervention"
@@ -46,7 +46,7 @@ export default function ServicesPage() {
           sizes="100vw"
         />
 
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
+        <div className="relative mx-auto flex min-h-[85vh] max-w-4xl flex-col justify-center items-center px-6 py-20 text-center lg:min-h-[90vh]">
           <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <Award className="h-4 w-4 text-accent" />
             Prestations professionnelles certifiées

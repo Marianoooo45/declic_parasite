@@ -30,18 +30,18 @@ export default function ZonesPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 py-12 text-white lg:py-32">
+      <section className="relative min-h-[85vh] overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 text-white lg:min-h-[90vh]">
         {/* MODIF : Retour à l'image haute définition contrastée (Technicien) + mix-blend-overlay comme sur l'Accueil */}
         <Image
           src="https://www.globeguide.ca/wp-content/uploads/2017/10/France-Loire-Orleans.jpg"
-          alt="Vue d'Orléans et de la Loire - Zone d'intervention principale de Déclic Parasites"
+          alt="Plan aérien de la ville d'Orléans, zone principale d'intervention de Déclic Parasites"
           fill
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           priority
           sizes="100vw"
         />
 
-        <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
+        <div className="relative mx-auto flex min-h-[85vh] max-w-4xl flex-col justify-center items-center px-4 py-20 text-center md:px-6 lg:min-h-[90vh]">
           <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <MapPin className="h-4 w-4 text-accent" />
             Couverture complète du Loiret

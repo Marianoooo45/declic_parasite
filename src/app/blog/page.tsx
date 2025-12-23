@@ -34,7 +34,7 @@ export default function BlogPage() {
   return (
     <main className="bg-white">
       {/* HERO MODERNE */}
-      <section className="relative overflow-hidden bg-gradient-primary py-20 text-white md:py-28">
+      <section className="relative min-h-[85vh] overflow-hidden bg-gradient-primary text-white lg:min-h-[90vh]">
         {/* Image de fond subtile */}
         <div className="absolute inset-0 opacity-10">
           <Image
@@ -50,7 +50,7 @@ export default function BlogPage() {
         {/* Motif géométrique */}
         <div className="absolute inset-0 bg-grid-white/5" aria-hidden />
 
-        <div className="relative mx-auto flex max-w-5xl flex-col gap-8 px-4 text-center md:px-6">
+        <div className="relative mx-auto flex min-h-[85vh] max-w-5xl flex-col justify-center items-center gap-8 px-4 py-20 text-center md:px-6 lg:min-h-[90vh]">
           <AnimatedSection>
             <span className="mx-auto rounded-full bg-white/10 px-5 py-2 text-sm font-bold uppercase tracking-wider backdrop-blur-sm">
               📚 Blog & Conseils

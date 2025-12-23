@@ -274,10 +274,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
             </div>
           </div>
-        </section>
+        </secti on>
 
-        {/* PROBLÈME → SOLUTION */}
-        <section className="bg-secondary/30 py-20">
+        {/* PROBLÈME → SOLUTION  */}
+        <section classNa m e="bg-secondary/30 py-2 0">
           <div className="mx-auto max-w-7xl px-6">
             <div className="grid gap-12 lg:grid-cols-3">
               <AnimatedSection delay={0}>
