@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // JSON-LD VALIDÉ
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness", // ✅ CORRECTION : Type valide pour les artisans/services à domicile
+    "@type": "LocalBusiness",
     "name": site.brand,
     "image": "https://www.declicparasites.fr/icon-192.png",
     "@id": "https://www.declicparasites.fr/#organization",
