@@ -47,15 +47,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // Configuration optimisée pour le "Knowledge Panel" de Google
   const localBusinessJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "PestControl", // Type spécifique reconnu par Google
+    "@type": "PestControl",
     "name": site.brand,
-    "image": "https://www.declicparasites.fr/icon-192.png", // J'ai aussi mis l'image HD ici
+    "image": "https://www.declicparasites.fr/icon-192.png",
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
     "telephone": site.phone.replace(/\s+/g, ""),
-    "priceRange": "Sur devis",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",
@@ -65,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 47.90289, // Coordonnées centre Orléans
+      "latitude": 47.90289,
       "longitude": 1.90389
     },
     "areaServed": site.serviceArea.map(city => ({
@@ -88,21 +87,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61584584848729",
-      "https://share.google/mYRTAoO5txaWytDLj" // Lien vers votre fiche Google Maps
+      "https://share.google/mYRTAoO5txaWytDLj"
     ]
   };
 
-  // NOUVEAU : Configuration spécifique pour le Nom du Site dans les résultats Google
   const websiteJsonLd = {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     "name": site.brand,
     "url": "https://www.declicparasites.fr",
     "alternateName": "Declic Parasites"
   };
 
-  // On combine les deux schémas dans une liste pour Google
-  const ldJson: string = JSON.stringify([localBusinessJsonLd, websiteJsonLd]);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [localBusinessJsonLd, websiteJsonLd]
+  };
+
+  const ldJson: string = JSON.stringify(jsonLd);
 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
