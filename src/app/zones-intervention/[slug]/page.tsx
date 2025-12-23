@@ -273,7 +273,6 @@ export default async function ZonePage({
                 key={i}
                 className="flex items-center justify-center gap-3 rounded-xl bg-white/10 p-3 backdrop-blur-sm"
               >
-                {/* @ts-ignore dynamic icon */}
                 <item.icon className="h-5 w-5 text-accent" />
                 <span className="text-sm font-semibold">{item.text}</span>
               </div>
