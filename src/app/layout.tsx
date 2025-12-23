@@ -56,11 +56,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "email": site.email,
     "telephone": site.phone.replace(/\s+/g, ""),
     "priceRange": "Sur devis",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "18"
-    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",
