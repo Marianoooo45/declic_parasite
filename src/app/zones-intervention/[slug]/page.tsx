@@ -216,7 +216,7 @@ export default async function ZonePage({
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
         <Image
-          src="https://images.unsplash.com/photo-1549744318-615e94c2ec5d?auto=format&fit=crop&w=2000&q=80"
+          src="https://www.globeguide.ca/wp-content/uploads/2017/10/France-Loire-Orleans.jpg"
           alt={`${cityConfig.name} - Zone d'intervention ${site.brand}`}
           fill
           className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"

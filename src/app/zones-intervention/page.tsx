@@ -33,14 +33,14 @@ export default function ZonesPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 py-12 text-white lg:py-32">
         {/* MODIF : Retour à l'image haute définition contrastée (Technicien) + mix-blend-overlay comme sur l'Accueil */}
         <Image
-          src="https://img.centrefrance.com/KgNw5x6F5gNRVs1PdaU8oAwE9bozoYPM_Wflhceb2QI/rs:fit:657:438:1/g:sm/bG9jYWw6Ly8vMDAvMDAvMDQvNTIvOTMvMjAwMDAwNDUyOTMzNQ.jpg"
-          alt="Plan aérien de la ville d'Orléans, zone principale d'intervention de Déclic Parasites"
+          src="https://www.globeguide.ca/wp-content/uploads/2017/10/France-Loire-Orleans.jpg"
+          alt="Vue d'Orléans et de la Loire - Zone d'intervention principale de Déclic Parasites"
           fill
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           priority
           sizes="100vw"
         />
-        
+
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-6">
           <AnimatedSection className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
             <MapPin className="h-4 w-4 text-accent" />
@@ -105,7 +105,7 @@ export default function ZonesPage() {
               Toutes nos zones d'intervention
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-              Nous couvrons toutes les communes autour de {site.city}. Sélectionnez votre 
+              Nous couvrons toutes les communes autour de {site.city}. Sélectionnez votre
               ville pour accéder aux informations détaillées et planifier une intervention rapide.
             </p>
           </AnimatedSection>
@@ -191,17 +191,17 @@ export default function ZonesPage() {
 
             {/* INTEGRATION MAP GOOGLE */}
             <div className="relative h-64 w-full overflow-hidden rounded-xl border border-white/20 shadow-2xl md:h-96 lg:h-full lg:min-h-[600px]">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr" 
-                 width="100%" 
-                 height="100%" 
-                 style={{ border: 0 }} 
-                 allowFullScreen 
-                 loading="lazy" 
-                 referrerPolicy="no-referrer-when-downgrade"
-                 className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
-                 title="Localisation Déclic Parasite Orléans"
-               ></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.053912188613!2d1.9016143768356877!3d47.90257397920531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e4d68e52579b%3A0x40bc2bda27f4d360!2sRue%20Bannier%2C%2045000%20Orl%C3%A9ans!5e0!3m2!1sfr!2sfr!4v1709907481234!5m2!1sfr!2sfr"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full grayscale-[25%] hover:grayscale-0 transition-all duration-500"
+                title="Localisation Déclic Parasite Orléans"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function ZonesPage() {
             <h2 className="mb-8 text-center text-2xl font-bold text-primary md:text-4xl">
               Notre couverture du Loiret en chiffres
             </h2>
-            
+
             <div className="grid gap-8 md:grid-cols-3">
               {[
                 { number: site.serviceArea.length, label: "Communes couvertes", icon: MapPin },
