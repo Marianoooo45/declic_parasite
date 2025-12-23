@@ -56,6 +56,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/zones-intervention",
     "/blog",
+    "/urgence-deratisation-orleans",
+    "/traitement-punaises-de-lit-orleans-checklist",
   ].map((p) => ({
     url: `${base}${p || "/"}`,
     lastModified: new Date(),

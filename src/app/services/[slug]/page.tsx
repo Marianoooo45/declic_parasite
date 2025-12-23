@@ -90,7 +90,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
 
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
-  
+
   const relatedServices = services
     .filter((item) => item.slug !== service.slug)
     .slice(0, 3);
@@ -117,12 +117,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
     },
     offers: service.priceFrom
       ? {
-          "@type": "Offer",
-          priceCurrency: "EUR",
-          price: service.priceFrom,
-          url: `${baseUrl}/services/${service.slug}`,
-          availability: "https://schema.org/InStock",
-        }
+        "@type": "Offer",
+        priceCurrency: "EUR",
+        price: service.priceFrom,
+        url: `${baseUrl}/services/${service.slug}`,
+        availability: "https://schema.org/InStock",
+      }
       : undefined,
     keywords: service.schemaKeywords,
   };
@@ -155,17 +155,17 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const faqJsonLd =
     service.faqs.length > 0
       ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: service.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.q,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.a,
-            },
-          })),
-        }
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
+      }
       : null;
 
   return (
@@ -283,8 +283,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                   <h3 className="mb-3 text-2xl font-bold text-red-700">Problème</h3>
                   <p className="leading-relaxed text-muted-foreground">
-                    {service.title} menacent votre confort ou votre activité à {site.city}. 
-                    Les signaux d'alerte se multiplient et il devient urgent d'agir avant la prolifération.
+                    {service.problemDescription}
                   </p>
                 </div>
               </AnimatedSection>
@@ -296,8 +295,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                   <h3 className="mb-3 text-2xl font-bold text-amber-700">Risques</h3>
                   <p className="leading-relaxed text-muted-foreground">
-                    Sans plan d'action, les nuisibles se répandent, endommagent vos biens 
-                    et transmettent des risques sanitaires pour votre famille ou vos clients.
+                    {service.riskDescription}
                   </p>
                 </div>
               </AnimatedSection>
@@ -309,7 +307,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                   <h3 className="mb-3 text-2xl font-bold text-primary">Solution</h3>
                   <p className="leading-relaxed text-muted-foreground">
-                    {site.brand} intervient en 24–48h avec une méthodologie professionnelle 
+                    {site.brand} intervient en 24–48h avec une méthodologie professionnelle
                     Certibiocide et un suivi sur-mesure jusqu'à la résolution complète.
                   </p>
                 </div>
@@ -348,11 +346,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <div className="mx-auto max-w-7xl px-6">
             <div className="mb-12 text-center">
               <h2 className="text-balance text-4xl font-bold md:text-5xl">
-                Notre intervention détaillée
+                Intervention à Orléans : comment ça se passe ?
               </h2>
               <p className="mt-4 text-lg text-white/90">
-                Chaque étape documentée et ajustée selon votre site
+                Un processus maîtrisé pour une efficacité garantie en 24–48h
               </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-4 mb-16">
+              {[
+                { step: "1", title: "Diagnostic", desc: "Analyse sur site pour identifier l'espèce et l'ampleur." },
+                { step: "2", title: "Stratégie", desc: "Plan d'action ciblé selon votre environnement." },
+                { step: "3", title: "Traitement", desc: "Mise en place des solutions biocides ou mécaniques." },
+                { step: "4", title: "Suivi", desc: "Contrôle post-intervention et conseils prévention." }
+              ].map((item, i) => (
+                <div key={i} className="relative flex flex-col items-center text-center">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full border-2 border-accent bg-white/10 text-2xl font-bold text-accent">
+                    {item.step}
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+                  <p className="text-sm text-white/80">{item.desc}</p>
+                </div>
+              ))}
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
@@ -370,6 +385,65 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
+        {/* PRÉPARATION (SI EXISTE) */}
+        {service.preparation && (
+          <section className="py-20 bg-amber-50/50">
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="bg-white rounded-3xl border-2 border-amber-200 p-8 md:p-12 shadow-xl">
+                <div className="flex flex-col md:flex-row gap-10 items-center">
+                  <div className="flex-1">
+                    <h2 className="text-3xl font-bold text-amber-800 mb-6 flex items-center gap-3">
+                      <Zap className="h-8 w-8 text-amber-500" />
+                      Ce que vous devez préparer
+                    </h2>
+                    <p className="text-lg text-amber-900/70 mb-8">
+                      Pour garantir l'efficacité maximale du traitement, merci de suivre ces quelques étapes avant l'arrivée de notre technicien :
+                    </p>
+                    <ul className="grid gap-4 md:grid-cols-2">
+                      {service.preparation.map((step, i) => (
+                        <li key={i} className="flex gap-3 items-start bg-amber-50 p-4 rounded-xl border border-amber-100 text-amber-900 font-medium">
+                          <CheckCircle2 className="h-5 w-5 text-amber-500 shrink-0" />
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* PREUVES DE CONFIANCE */}
+        <section className="py-20 border-y border-border">
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-12">Nos engagements qualité & sécurité</h2>
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="p-6">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Shield className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Agrément Certibiocide</h3>
+                <p className="text-sm text-muted-foreground">Expert certifié par le Ministère de la Transition Écologique pour l'usage raisonné des produits biocides.</p>
+              </div>
+              <div className="p-6">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Award className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Rapport détaillé</h3>
+                <p className="text-sm text-muted-foreground">Après chaque intervention, vous recevez un rapport complet avec photos et recommandations pour votre assurance ou syndic.</p>
+              </div>
+              <div className="p-6">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Star className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Garantie Résultat</h3>
+                <p className="text-sm text-muted-foreground">Nous assurons un suivi jusqu'à l'éradication totale des nuisibles. Satisfait ou nouvelle intervention offerte.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* TARIF */}
         {service.priceFrom && (
           <section className="py-20">
@@ -381,11 +455,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
                       <Star className="h-4 w-4" />
                       Tarif indicatif
                     </div>
-                    
+
                     <div className="mb-4 text-5xl font-bold text-primary md:text-6xl">
                       {euroFormatter.format(service.priceFrom)}
                     </div>
-                    
+
                     <p className="mb-6 text-lg text-muted-foreground">
                       Tarif de base incluant déplacement, diagnostic complet et plan d'action personnalisé.
                     </p>
@@ -477,13 +551,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     <Zap className="h-4 w-4 text-accent" />
                     Conseil personnalisé
                   </div>
-                  
+
                   <h2 className="text-balance text-4xl font-bold md:text-5xl">
                     Parlons de votre situation
                   </h2>
-                  
+
                   <p className="text-lg text-white/90">
-                    Un conseiller vous rappelle en moins d'une heure ouvrée pour préparer 
+                    Un conseiller vous rappelle en moins d'une heure ouvrée pour préparer
                     une intervention discrète, efficace et adaptée à votre lieu.
                   </p>
 
@@ -507,13 +581,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   <p className="text-sm text-white/90">
                     Laissez-nous vos coordonnées ou appelez directement
                   </p>
-                  
+
                   <Link href="/contact" data-cta="service-final-form">
                     <Button size="lg" className="h-14 w-full bg-accent text-lg font-bold hover:bg-accent/90">
                       Demander un devis gratuit
                     </Button>
                   </Link>
-                  
+
                   <a href={phoneHref} data-cta="service-final-call">
                     <Button
                       size="lg"
@@ -525,6 +599,34 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     </Button>
                   </a>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* MAILLAGE LOCAL */}
+        <section className="py-20 bg-white">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="rounded-3xl border-2 border-primary/10 p-8 text-center bg-secondary/10">
+              <h2 className="text-2xl font-bold text-primary mb-6">Nos interventions {service.title} dans le Loiret (45)</h2>
+              <div className="flex flex-wrap justify-center gap-3">
+                {[
+                  { name: "Orléans", slug: "orleans" },
+                  { name: "Olivet", slug: "olivet" },
+                  { name: "Fleury-les-Aubrais", slug: "fleury-les-aubrais" },
+                  { name: "Saint-Jean-de-la-Ruelle", slug: "saint-jean-de-la-ruelle" },
+                  { name: "Saran", slug: "saran" },
+                  { name: "Saint-Jean-de-Braye", slug: "saint-jean-de-braye" },
+                  { name: "Ingré", slug: "ingre" }
+                ].map((city) => (
+                  <Link
+                    key={city.slug}
+                    href={`/zones-intervention/${city.slug}`}
+                    className="px-4 py-2 rounded-full bg-white border border-primary/20 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-colors"
+                  >
+                    {service.title} à {city.name}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

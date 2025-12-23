@@ -11,23 +11,34 @@ export type Service = {
   features: string[];
   faqs: { q: string; a: string }[];
   schemaKeywords?: string[];
+  problemDescription: string;
+  riskDescription: string;
+  preparation?: string[];
 };
 
 const baseServices: Service[] = [
   {
-    title: "Dératisation (Rats & Souris) à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "deratisation", // Slug SEO-friendly pour les URLs indexées
-    short: "Intervention rapide pour rats et souris à Orléans et Loiret", // Ajout de "Orléans"
+    title: "Dératisation (Rats & Souris) à Orléans et dans le Loiret",
+    slug: "deratisation",
+    short: "Intervention rapide pour rats et souris à Orléans et Loiret",
     description:
       "Experts en dératisation à Orléans et dans le Loiret. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable, certifié Certibiocide.",
     heroImage: "/services/deratisation.svg",
     priceFrom: 99,
+    problemDescription: "Les rats et les souris s'invitent dans vos cloisons, vos combles ou vos stocks alimentaires. Une fois installés, ces rongeurs se multiplient à une vitesse fulgurante, causant des bruits nocturnes et des dégradations visibles.",
+    riskDescription: "Au-delà des nuisances sonores, les rongeurs rongent les câbles électriques (risque d'incendie), souillent les surfaces et peuvent transmettre des maladies graves comme la leptospirose.",
+    preparation: [
+      "Identifier les zones où les bruits ou traces sont les plus fréquents",
+      "Dégager l'accès aux zones suspectes (placards sous évier, garage, combles)",
+      "Ne pas déplacer les nids ou excréments avant notre arrivée (pour diagnostic)",
+      "Mettre les aliments entamés dans des boîtes hermétiques rigides",
+    ],
     benefits: [
       "Diagnostic précis des points d'entrée",
       "Traitements sécurisés pour l'intérieur et l'extérieur",
       "Suivi et prévention anti-réinfestation",
       "Rapport détaillé pour assurances et bailleurs",
-      "Disponibilité 24–48h sur tout le Loiret (Urgence dératisation)", // Ajout d'une mention d'urgence dans les bénéfices
+      "Disponibilité 24–48h sur tout le Loiret (Urgence dératisation)",
     ],
     features: [
       "Inspection complète et identification des espèces",
@@ -63,13 +74,21 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement punaises de lit à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "traitement-punaises-de-lit", // Slug SEO-friendly pour les URLs indexées
+    title: "Traitement punaises de lit à Orléans et dans le Loiret",
+    slug: "traitement-punaises-de-lit",
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
     heroImage: "/services/punaises.svg",
     priceFrom: 149,
+    problemDescription: "Les punaises de lit transforment vos nuits en cauchemar. Cachées dans les coutures de matelas ou les lattes de sommier, elles sont quasiment impossibles à éliminer avec des produits du commerce.",
+    riskDescription: "En plus des démangeaisons douloureuses, une infestation non traitée entraîne un stress psychologique important, de l'insomnie et un risque élevé de propager les parasites chez vos proches ou vos voisins.",
+    preparation: [
+      "Laver impérativement tout le linge de lit à 60°C minimum",
+      "Passer l'aspirateur minutieusement (et jeter le sac immédiatement)",
+      "Dégager les murs et vider les coffres de lit",
+      "Éviter de jeter vos meubles : nous pouvons les traiter sur place",
+    ],
     benefits: [
       "Méthode combinée vapeur + chimique",
       "Suivi sur 30 jours inclus",
@@ -111,13 +130,21 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement cafards et blattes à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "traitement-cafards-et-blattes", // Slug SEO-friendly pour les URLs indexées
+    title: "Traitement cafards et blattes à Orléans et dans le Loiret",
+    slug: "traitement-cafards-et-blattes",
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
     heroImage: "/services/cafards.svg",
     priceFrom: 119,
+    problemDescription: "Les cafards et les blattes s'insinuent dans les moindres recoins de vos cuisines ou salles de bain. Très résistants, ils se cachent dans l'électroménager et les gaines techniques pour proliférer à l'abri des regards.",
+    riskDescription: "Vecteurs de bactéries et d'allergènes, leur présence pose un risque sanitaire majeur (Salmonelle, gastro-entérite) et dégrade l'image de marque des établissements recevant du public.",
+    preparation: [
+      "Vider les placards de cuisine de leurs denrées alimentaires",
+      "Nettoyer les graisses derrière les appareils de cuisson",
+      "Réparer les éventuelles fuites d'eau (sources d'abreuvement)",
+      "Ne pas utiliser de sprays du commerce 48h avant notre visite",
+    ],
     benefits: [
       "Plan HACCP compatible",
       "Gel professionel sans odeur",
@@ -159,13 +186,20 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement fourmis invasives à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "fourmis", // Slug SEO-friendly pour les URLs indexées
+    title: "Traitement fourmis invasives à Orléans et dans le Loiret",
+    slug: "fourmis",
     short: "Suppression ciblée des colonies de fourmis",
     description:
       "Des fourmis envahissent vos pièces ou terrasses ? Nous neutralisons la colonie à la source pour empêcher tout retour durablement.",
     heroImage: "/services/fourmis.svg",
     priceFrom: 89,
+    problemDescription: "Les colonies de fourmis tracent des colonnes ininterrompues jusque dans vos placards ou sur vos plans de travail. Une fois le nid installé sous vos fondations ou lambourdes, les solutions classiques ne suffisent plus.",
+    riskDescription: "Certaines espèces peuvent s'attaquer aux isolants ou aux structures en bois. Leur présence en grand nombre devient vite insupportable, surtout dans les zones de préparation alimentaire ou les chambres.",
+    preparation: [
+      "Repérer les points d'entrée principaux des fourmis",
+      "Nettoyer les surfaces avec de l'eau savonneuse pour effacer les pistes de phéromones",
+      "Mettre les produits sucrés et protéinés dans des contenants étanches",
+    ],
     benefits: [
       "Gel appétent longue durée",
       "Traitement intérieur/extérieur",
@@ -205,12 +239,19 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Contrats professionnels HACCP à  Orléans et dans le Loiret", // Titre plus explicite
-    slug: "contrats-professionnels-haccp", // Slug SEO-friendly pour les URLs indexées
+    title: "Contrats professionnels HACCP à  Orléans et dans le Loiret",
+    slug: "contrats-professionnels-haccp",
     short: "Plan de prévention nuisibles pour pros & collectivités",
     description:
       "Restaurants, hôtels, industries : nous mettons en place un plan HACCP complet avec visites régulières, traçabilité et reporting digital.",
     heroImage: "/services/haccp.svg",
+    problemDescription: "Les établissements professionnels font face à des exigences sanitaires strictes. La simple vue d'un nuisible peut mettre en péril votre activité, entraîner des sanctions administratives ou ruiner votre réputation.",
+    riskDescription: "Le non-respect des normes HACCP peut mener à une fermeture administrative. Sans un plan de lutte préventif documenté, il est impossible de prouver votre bonne foi aux services de contrôle vétérinaire.",
+    preparation: [
+      "Préparer vos plans de locaux et anciens rapports d'intervention",
+      "Dégager l'accès aux zones de stockage et locaux poubelles",
+      "Nommer un référent interne pour le suivi du registre sanitaire",
+    ],
     benefits: [
       "Plan de maîtrise personnalisé",
       "Traçabilité digitale complète",
@@ -253,13 +294,20 @@ const baseServices: Service[] = [
     ],
   },
   {
-    title: "Traitement puces & parasites d'intérieur à Orléans et dans le Loiret", // Titre plus explicite
-    slug: "puces", // Slug SEO-friendly pour les URLs indexées
+    title: "Traitement puces & parasites d'intérieur à Orléans et dans le Loiret",
+    slug: "puces",
     short: "Assainissement des logements contre puces et acariens",
     description:
       "Morsures au niveau des chevilles ou animaux infestés ? Nous assainissons sols, textiles et recoins pour éliminer puces et parasites intérieurs.",
     heroImage: "/services/puces.svg",
     priceFrom: 109,
+    problemDescription: "Les puces envahissent rapidement vos textiles, canapés et parquets. Leurs piqûres répétitives provoquent des allergies et un inconfort permanent pour les habitants comme pour les animaux de compagnie.",
+    riskDescription: "Un traitement incomplet (seulement sur l'animal) garantit la réinfestation. Les larves et les œufs peuvent rester en dormance dans votre logement pendant des mois avant de causer une nouvelle vague d'infestation.",
+    preparation: [
+      "Passer l'aspirateur sur tous les textiles (tapis, canapés) et parquets",
+      "Laver le panier et les couvertures des animaux à 60°C",
+      "Assurer un traitement vétérinaire pour tous les animaux du foyer",
+    ],
     benefits: [
       "Traitement ciblé des zones de repos",
       "Produits compatibles animaux",
@@ -299,6 +347,7 @@ const baseServices: Service[] = [
     ],
   },
 ];
+
 
 export type ServiceWithSlug = Service & { slug: string };
 
