@@ -40,17 +40,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
-  // CORRECTION CRITIQUE : priceRange doit être un symbole ou une fourchette
+  // JSON-LD VALIDÉ
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "PestControl",
+    "@type": "HomeAndConstructionBusiness", // ✅ CORRECTION : Type valide pour les artisans/services à domicile
     "name": site.brand,
     "image": "https://www.declicparasites.fr/icon-192.png",
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
     "telephone": site.phone.replace(/\s+/g, ""),
-    "priceRange": "89€ - 250€", // ✅ Correction : Google préfère ça ou "€€" à "Sur devis"
+    "priceRange": "89€ - 250€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",
@@ -84,7 +84,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        {/* On ajoute des espaces (null, 2) pour que Google lise mieux le JSON */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd, null, 2) }}
