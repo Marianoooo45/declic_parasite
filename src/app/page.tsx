@@ -39,7 +39,7 @@ export default function Home() {
   const phoneHref = `tel:${site.phone.replace(/\s+/g, "")}`;
 
   return (
-    <div className="space-y-0 overflow-x-hidden">
+    <main className="space-y-0 overflow-x-hidden">
       {/* HERO IMMERSIF */}
       <section className="relative min-h-[85vh] overflow-hidden bg-gradient-to-br from-primary/95 via-primary/90 to-primary/95 text-white lg:min-h-[90vh]">
         <Image
@@ -404,6 +404,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

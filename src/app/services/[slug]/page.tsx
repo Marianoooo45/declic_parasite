@@ -101,19 +101,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
     serviceType: service.title,
     image: service.heroImage,
     description: service.description,
-    areaServed: [site.city, site.departement],
+    areaServed: site.serviceArea.map((city) => ({
+      "@type": "City",
+      name: city,
+    })),
     provider: {
       "@type": "LocalBusiness",
       name: site.brand,
+      image: "https://www.declicparasites.fr/icon-192.png",
       telephone: site.phone.replace(/\s+/g, ""),
-      areaServed: site.serviceArea,
       address: {
         "@type": "PostalAddress",
-        streetAddress: site.address.split(",")[0],
-        addressLocality: site.city,
+        streetAddress: "10 Rue Bannier",
+        addressLocality: "Orléans",
         postalCode: "45000",
         addressCountry: "FR",
       },
+      priceRange: "€€",
     },
     offers: service.priceFrom
       ? {
