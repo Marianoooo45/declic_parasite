@@ -39,7 +39,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // SCHEMA JSON-LD SIMPLIFIÉ (Objet unique, pas de tableau)
+
+  // CORRECTION CRITIQUE : priceRange doit être un symbole ou une fourchette
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "PestControl",
@@ -48,8 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
-    "telephone": site.phone.replace(/\s+/g, ""), // Enlève les espaces pour le format international
-    "priceRange": "Sur devis",
+    "telephone": site.phone.replace(/\s+/g, ""),
+    "priceRange": "89€ - 250€", // ✅ Correction : Google préfère ça ou "€€" à "Sur devis"
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",
@@ -83,9 +84,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
+        {/* On ajoute des espaces (null, 2) pour que Google lise mieux le JSON */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd, null, 2) }}
         />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
