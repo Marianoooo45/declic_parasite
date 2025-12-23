@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Award, Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Award, Facebook, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 import { services } from "@/config/services";
 import { site } from "@/config/site";
@@ -99,6 +99,14 @@ export function SiteFooter({ className }: { className?: string }) {
 
             {/* RÉSEAUX SOCIAUX */}
             <div className="flex gap-4 pt-2">
+              <Link
+                href="https://www.linkedin.com/company/declicparasites/"
+                target="_blank"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0077b5] text-white transition-transform hover:scale-110 hover:bg-[#006097]"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </Link>
               <Link
                 href="https://www.facebook.com/profile.php?id=61584584848729"
                 target="_blank"
