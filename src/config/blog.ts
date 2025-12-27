@@ -249,6 +249,68 @@ export const blogPosts: BlogPost[] = [
       "HACCP (Hazard Analysis Critical Control Point) - DGCCRF : https://agriculture.gouv.fr/guides-de-bonnes-pratiques-dhygiene-gbph",
     ],
   },
+
+  // ARTICLE 4 : Voisinage et Nuisibles (01 Nov 2025)
+  {
+    slug: "rats-voisin-que-faire-orleans-loiret",
+    title: "Les rats viennent de chez mon voisin : Que faire à Orléans ?",
+    excerpt:
+      "Conflits de voisinage et nuisibles : découvrez vos droits et les démarches amiables ou légales pour protéger votre logement si l'hygiène de votre voisin pose problème.",
+    cover: "https://www.sncf-connect.com/assets/styles/ratio_2_1_max_width_961/public/media/2023-08/orleans-nuit.jpg?h=cbd88c82&itok=A4LIXbN2",
+    publishedAt: "2025-11-01",
+    readingTime: "5 min",
+    tags: ["Voisinage", "Réglementation", "Conseils", "Orléans"],
+    featured: false,
+    intro:
+      "C'est une situation délicate que nos techniciens rencontrent très souvent dans les zones résidentielles comme à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, <a href='https://www.ville-saran.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Saran</a> ou <a href='https://www.ville-olivet.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Olivet</a>. Votre maison est impeccable, mais vous apercevez des rats courir le long du mur mitoyen ou traverser votre jardin venant de la propriété d'à côté. Poulailler mal entretenu, accumulation de déchets, compost à ciel ouvert... L'hygiène douteuse de votre voisin menace votre tranquillité. Pas de panique, voici la marche à suivre, de la diplomatie à l'action légale.",
+    sections: [
+      {
+        heading: "1. La démarche amiable : Le dialogue avant tout",
+        body: [
+          "Avant de sortir l'artillerie lourde administrative, commencez par une visite courtoise. Il est fréquent que votre voisin ne soit même pas conscient de l'ampleur du problème, surtout si le nid se trouve au fond de son jardin ou dans une dépendance qu'il fréquente peu.",
+          "Expliquez-lui calmement vos observations (bruits, déjections, passages). Proposez-lui d'agir ensemble. Chez <strong>Déclic Parasites</strong>, nous avons l'habitude d'intervenir sur des propriétés mitoyennes. Un traitement simultané est la seule garantie d'efficacité. Si vous braquez votre voisin d'entrée de jeu, il risque de vous refuser l'accès, ce qui compliquera l'éradication.",
+        ],
+      },
+      {
+        heading: "2. Ce que dit la loi : Règlement Sanitaire Départemental",
+        body: [
+          "Si le dialogue échoue, la loi est de votre côté. Le Règlement Sanitaire Départemental (RSD) du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> impose à tout occupant de maintenir son logement et ses extérieurs dans un état de propreté constant.",
+          "L'article 119 interdit notamment de jeter ou déposer des graines ou nourriture en tout lieu public ou privé pour attirer les animaux errants, si cela risque d'attirer des rongeurs. Si votre voisin nourrit les pigeons de façon excessive ou laisse ses poubelles déborder, il est en infraction. Une mise en demeure par lettre recommandée est alors la première étape officielle.",
+        ],
+      },
+      {
+        heading: "3. Quels recours en cas de blocage ?",
+        body: [
+          "<strong>En copropriété / Appartement :</strong> Contactez votre syndic. Il est responsable de l'hygiène des parties communes et peut intervenir auprès du copropriétaire négligent pour le contraindre à agir, voire faire intervenir une entreprise aux frais de la copropriété avant de se retourner contre lui.",
+          "<strong>En maison individuelle :</strong> Si le voisin refuse d'agir malgré vos relances, signalez la situation à la Mairie. À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, le Service Communal d'Hygiène et de Santé (SCHS) peut venir constater l'insalubrité. Le Maire dispose de pouvoirs de police pour ordonner le nettoyage et la dératisation, parfois même d'office aux frais du propriétaire si l'urgence sanitaire est avérée.",
+        ],
+        image: {
+          src: "https://leptitgavroche.fr/wp-content/uploads/2025/02/rue-de-bourgogne-orleans-france-orleans-france-june-pedestrian-borgogne-street-rue-de-bourgogne-full-restaurants-124049452.webp",
+          alt: "Clôture mitoyenne entre deux jardins de banlieue",
+          caption: "Les murs mitoyens et haies sont des zones de passage privilégiées pour les rongeurs.",
+        },
+      },
+      {
+        heading: "4. Protégez votre terrain (Herméticité)",
+        body: [
+          "En attendant que la situation se débloque chez le voisin, transformez votre maison en forteresse. Ne leur donnez aucune raison de s'installer chez vous : rentrez les gamelles des animaux la nuit, utilisez des composteurs fermés hermétiquement, et taillez la végétation qui touche votre façade.",
+          "Inspectez minutieusement le mur mitoyen : un rat n'a besoin que de 2 cm pour passer, une souris de 6 mm. Rebouchez les moindres trous avec du grillage métallique ou du ciment. Si la source est à côté, ils chercheront à venir manger chez vous. Coupez-leur les vivres !",
+        ],
+      },
+      {
+        heading: "5. Le conseil de l'expert : La coordination est clé",
+        body: [
+          "Traiter son jardin alors que le nid est chez le voisin, c'est comme écopper un bateau sans boucher le trou. Vous capturerez quelques individus, mais la colonie se régénérera en permanence (une rate peut avoir 5 à 6 portées par an !).",
+          "C'est pourquoi nous proposons souvent des devis 'voisinage' avec des tarifs adaptés. Parfois, il est même plus économique pour vous de prendre en charge une partie du traitement du voisin (s'il est de bonne foi mais n'a pas les moyens) plutôt que de subir des dégâts matériels coûteux chez vous (câbles rongés, isolation détruite) pendant des mois. C'est un calcul pragmatique pour retrouver votre sérénité.",
+        ],
+      },
+    ],
+    sources: [
+      "Service Public - Troubles de voisinage : https://www.service-public.fr/particuliers/vosdroits/F612",
+      "Orléans Métropole - SCHS : https://www.orleans-metropole.fr/",
+      "Préfecture du Loiret - Règlements sanitaires : https://www.loiret.gouv.fr/",
+    ],
+  },
 ];
 
 /**
@@ -256,21 +318,21 @@ export const blogPosts: BlogPost[] = [
  */
 
 // Récupérer les articles mis en avant
-export const getFeaturedPosts = () => 
+export const getFeaturedPosts = () =>
   blogPosts.filter(post => post.featured);
 
 // Récupérer les articles par tag
-export const getPostsByTag = (tag: string) => 
+export const getPostsByTag = (tag: string) =>
   blogPosts.filter(post => post.tags.includes(tag));
 
 // Récupérer les articles récents (N derniers)
-export const getRecentPosts = (count: number = 3) => 
+export const getRecentPosts = (count: number = 3) =>
   blogPosts
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, count);
 
 // Récupérer tous les tags uniques
-export const getAllTags = () => 
+export const getAllTags = () =>
   Array.from(new Set(blogPosts.flatMap(post => post.tags))).sort();
 
 // Statistiques du blog
@@ -278,7 +340,7 @@ export const getBlogStats = () => ({
   totalPosts: blogPosts.length,
   totalTags: getAllTags().length,
   averageReadingTime: Math.round(
-    blogPosts.reduce((sum, post) => 
+    blogPosts.reduce((sum, post) =>
       sum + parseInt(post.readingTime.replace(' min', '')), 0
     ) / blogPosts.length
   ),
