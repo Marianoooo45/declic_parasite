@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
   }
 
   return {
-    title: `${post.title} | ${site.brand}`,
+    title: post.title,
     description: post.excerpt,
     alternates: {
       canonical: `https://www.declicparasites.fr/blog/${post.slug}`,

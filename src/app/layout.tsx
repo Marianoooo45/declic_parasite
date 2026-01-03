@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   },
   description: `Dératisation & Désinsectisation à Orléans (45). Intervention 24h/7j. Devis Gratuit. Les experts anti-nuisibles du Loiret certifiés Certibiocide.`,
   metadataBase: new URL("https://www.declicparasites.fr"),
-  alternates: { canonical: "./" },
   keywords: site.keywords.split(", "),
   icons: {
     icon: [

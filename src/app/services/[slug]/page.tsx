@@ -62,7 +62,7 @@ export async function generateMetadata({
   const url = `${baseUrl}/services/${service.slug}`;
 
   return {
-    title,
+    title: service.title,
     description,
     alternates: {
       canonical: url,

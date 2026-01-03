@@ -8,7 +8,7 @@ import { blogPosts } from "@/config/blog";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: `Blog & Conseils | ${site.brand}`,
+  title: "Blog & Conseils",
   description:
     "Actualités et conseils anti-nuisibles à Orléans et dans le Loiret : protocoles, prévention et retours de terrain Déclic Parasites.",
   alternates: {

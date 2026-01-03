@@ -5,7 +5,7 @@ import { site } from "@/config/site";
 import ContactPageContent from "./contact-content";
 
 export const metadata: Metadata = {
-  title: `Contact & Devis | ${site.brand}`,
+  title: "Contact & Devis",
   description:
     "Contactez Déclic Parasites pour une intervention anti-nuisibles à Orléans et dans le Loiret. Réponse rapide sous 1h ouvrée, devis gratuit.",
   alternates: {
