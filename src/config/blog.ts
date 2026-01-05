@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
   // ARTICLE 1 : Rat vs Souris (Mis à jour avec tes images locales)
   {
     slug: "comment-identifier-rat-souris-orleans",
-    title: "Rat ou Souris ? Le guide complet pour les identifier à Orléans",
+    title: "Rat ou Souris ? Les clés pour une identification certaine",
     excerpt:
       "Bruits dans les combles, crottes dans la cuisine... Vous avez un doute ? Apprenez à différencier le rat de la souris pour choisir le bon traitement dans le Loiret.",
     // J'utilise ton image de comparaison en couverture car elle est parlante
@@ -39,13 +39,13 @@ export const blogPosts: BlogPost[] = [
     tags: ["Dératisation", "Rongeurs", "Orléans", "Conseils"],
     featured: true, // Je l'ai passé en TRUE pour le mettre en avant
     intro:
-      "C'est la question que nos techniciens entendent le plus souvent lors de leurs interventions à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> et dans son agglomération. Identifier correctement le rongeur qui s'invite chez vous n'est pas qu'une question de curiosité : c'est la base d'une dératisation réussie. Entre le <a href='https://fr.wikipedia.org/wiki/Rattus_norvegicus' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>rat brun (surmulot)</a> qui préfère les zones humides des bords de Loire et la <a href='https://fr.wikipedia.org/wiki/Souris_grise' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>souris domestique</a> capable de grimper au 4ème étage d'un immeuble haussmannien, les méthodes de lutte sont radicalement différentes.",
+      "C'est la question que nos techniciens entendent le plus souvent lors de leurs interventions. Identifier correctement le rongeur qui s'invite chez vous n'est pas qu'une question de curiosité : c'est la base d'un <a href='/blog/plan-action-anti-nuisibles-orleans-loiret' class='text-primary hover:text-accent underline'>plan d'action efficace</a>. Entre le rat brun (surmulot) qui préfère les zones humides et la souris domestique capable de grimper aux étages, les méthodes de lutte sont radicalement différentes.",
     sections: [
       {
         heading: "1. Morphologie : Les différences physiques visibles",
         body: [
           "Si vous avez la 'chance' d'apercevoir l'intrus, son apparence est le premier indice. La <strong>souris domestique</strong> (<a href='https://fr.wikipedia.org/wiki/Mus_(genre)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Mus musculus</a>) est petite (3 à 10 cm sans la queue) avec de grandes oreilles proportionnellement à sa tête. Elle est curieuse et très agile.",
-          "Le <strong>rat</strong>, qu'il soit noir (des greniers) ou brun (des égouts), est beaucoup plus massif (jusqu'à 25-30 cm). Sa queue est plus épaisse et ses oreilles semblent plus petites par rapport à son corps. Dans le centre ancien d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, nous croisons souvent le <strong>rat brun</strong> qui remonte des sous-sols, tandis que la souris se faufile aisément derrière les plinthes des appartements modernes.",
+          "Le <strong>rat</strong>, qu'il soit noir (des greniers) ou brun (des égouts), est beaucoup plus massif (jusqu'à 25-30 cm). Sa queue est plus épaisse et ses oreilles semblent plus petites par rapport à son corps. Dans le centre ancien, notamment autour de la <strong>Place du Martroi</strong> ou des rues piétonnes, nous croisons souvent le rat brun qui remonte des vieux réseaux d'assainissement.",
           "Attention aux bébés rats : ils peuvent ressembler à des souris adultes, mais leurs pattes et leur tête sont disproportionnées (comme un chiot).",
         ],
         image: {
@@ -73,14 +73,14 @@ export const blogPosts: BlogPost[] = [
         heading: "3. Où chercher ? Les spécificités du bâti Orléanais",
         body: [
           "Le lieu de découverte est un indice majeur. Dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, l'humidité joue un rôle clé.",
-          "Les <strong>souris</strong> recherchent la chaleur et la nourriture. On les trouve principalement dans les cuisines (derrière le frigo, sous l'évier), les garde-manger et les placards. Dans les immeubles du centre-ville d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, elles utilisent les colonnes techniques pour passer d'un étage à l'autre.",
-          "Les <strong>rats</strong> ont besoin de boire quotidiennement. Ils privilégient les zones humides : caves en tuffeau, garages, vides sanitaires, ou les jardins proches des points d'eau. Le rat noir, plus agile, peut toutefois se nicher dans les greniers isolés avec de la laine de verre.",
+          "Les <strong>souris</strong> recherchent la chaleur et la nourriture. On les trouve principalement dans les cuisines (derrière le frigo, sous l'évier), les garde-manger et les placards. Dans les immeubles du quartier <strong>Bourgogne</strong>, elles utilisent souvent les vieilles colonnes techniques mal isolées pour passer d'un étage à l'autre.",
+          "Les <strong>rats</strong> ont besoin de boire quotidiennement. Ils privilégient les zones humides : caves en tuffeau typiques du Val de Loire, garages, vides sanitaires. Récemment, nous sommes intervenus dans plusieurs pavillons près du <strong>Parc Floral à La Source</strong> où les terriers se trouvaient sous les abris de jardin, attirés par les composteurs.",
         ],
       },
       {
         heading: "4. Pourquoi le traitement doit être différent ?",
         body: [
-          "Confondre les deux espèces mène souvent à l'échec du traitement. Une tapette à souris ne tuera pas un rat (elle risque juste de le blesser et de le rendre méfiant). À l'inverse, un piège à rat est souvent trop peu sensible pour se déclencher au passage d'une souris légère.",
+          "Confondre les deux espèces mène souvent à l'échec du traitement, et peut augmenter inutilement <a href='/blog/prix-tarif-deratisation-desinsectisation-orleans-2025' class='text-primary hover:text-accent underline'>le coût final de l'intervention</a>. Une tapette à souris ne tuera pas un rat (elle risque juste de le blesser et de le rendre méfiant). À l'inverse, un piège à rat est souvent trop peu sensible pour se déclencher au passage d'une souris légère.",
           "Le comportement alimentaire diffère aussi : le rat est néophobe (il a peur du nouveau) et mettra plusieurs jours avant de toucher à un appât. La souris est curieuse et grignote tout. C'est pourquoi chez <strong>Déclic Parasites</strong>, nous adaptons nos postes d'appâtage sécurisés et nos formulations (pâtes ou blocs) spécifiquement selon l'espèce identifiée lors de notre diagnostic gratuit.",
           "En cas de doute, ou si vous craignez pour la salubrité de votre logement (risques de <a href='https://www.pasteur.fr/fr/centre-medical/fiches-maladies/leptospirose' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>leptospirose</a> via l'urine de rat), n'hésitez pas à faire appel à un expert certifié.",
         ],
@@ -103,7 +103,7 @@ export const blogPosts: BlogPost[] = [
   // ARTICLE 2 : Le guide des Prix 2025 (SEO Transactionnel)
   {
     slug: "prix-tarif-deratisation-desinsectisation-orleans-2025",
-    title: "Combien coûte une intervention anti-nuisibles à Orléans en 2025 ?",
+    title: "Tarifs Dératisation 2025 : Le vrai coût d'une intervention pro",
     excerpt:
       "Dératisation, punaises de lit, nids de guêpes... Découvrez les tarifs moyens pratiqués dans le Loiret et comprenez pourquoi un devis sur-mesure est votre seule garantie d'efficacité.",
     cover: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
@@ -112,15 +112,15 @@ export const blogPosts: BlogPost[] = [
     tags: ["Tarifs", "Devis", "Dératisation", "Orléans"],
     featured: true,
     intro:
-      "C'est la première question qu'on nous pose au téléphone : <em>« C'est combien pour enlever des rats ? »</em>. À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, comme ailleurs, méfiez-vous des prix d'appel trop alléchants (type « forfait à 49€ ») qui cachent souvent des frais de déplacement exorbitants ou un travail bâclé. Chez <strong>Déclic Parasites</strong>, nous prônons la transparence totale. Voici un guide clair pour comprendre le budget d'une intervention professionnelle dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>.",
+      "C'est la première question qu'on nous pose au téléphone : <em>« C'est combien pour enlever des rats ? »</em>. Méfiez-vous des prix d'appel trop alléchants (type « forfait à 49€ ») qui cachent souvent des frais de déplacement exorbitants ou un travail bâclé. Chez <strong>Déclic Parasites</strong>, nous prônons la transparence totale. Voici un guide clair pour comprendre le budget d'une intervention professionnelle efficace.",
     sections: [
       {
         heading: "1. Pourquoi est-il impossible de donner un prix fixe par téléphone ?",
         body: [
           "Imaginez appeler un garagiste et dire « Ma voiture fait un drôle de bruit, combien ça coûte ? ». Sans voir le véhicule, impossible de répondre honnêtement. C'est pareil pour les nuisibles.",
           "Le tarif d'une intervention dépend de trois facteurs que nous devons vérifier sur place ou par photos détaillées :",
-          "• <strong>La surface à traiter :</strong> Dératiser un studio de 20m² rue de Bourgogne n'implique pas la même quantité de produits qu'une maison de 150m² à <a href='https://www.ville-olivet.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Olivet</a> avec jardin et dépendances.",
-          "• <strong>Le niveau d'infestation :</strong> Une colonie de rats installée depuis 6 mois nécessitera plusieurs passages et une sécurisation complexe (rebouchage), là où une souris isolée peut être traitée plus vite.",
+          "• <strong>La surface à traiter :</strong> Dératiser un studio étudiant de 20m² à <strong>La Source</strong> n'implique pas la même quantité de produits qu'une grande maison familiale au <strong>sud de la Loire (Olivet, Saint-Pryvé)</strong> avec jardin et dépendances.",
+          "• <strong>Le niveau d'infestation :</strong> Une colonie de rats installée depuis 6 mois nécessitera plusieurs passages et une sécurisation complexe (rebouchage), là où une souris isolée peut être traitée plus vite. C'est pourquoi apprendre à <a href='/blog/comment-identifier-rat-souris-orleans' class='text-primary hover:text-accent underline'>différencier rat et souris</a> est la première étape de notre diagnostic.",
           "• <strong>L'accessibilité :</strong> Un nid de frelons à hauteur d'homme se traite en 30 minutes. S'il est sous une toiture à 8 mètres de haut nécessitant une échelle spécifique, le coût technique évolue.",
         ],
         image: {
@@ -143,8 +143,8 @@ export const blogPosts: BlogPost[] = [
         heading: "3. Le piège des prix « trop bas » et des plateformes nationales",
         body: [
           "En tapant « Dératiseur Orléans » sur Google, vous tomberez sur des plateformes nationales qui sous-traitent à des techniciens qu'ils ne connaissent parfois même pas. Le risque ? Un prix d'appel bas, mais une facture qui gonfle une fois le technicien sur place (« ah mais là c'est un cas spécial... »).",
-          "En tant qu'artisan local basé rue Bannier, <strong>Déclic Parasites</strong> n'a pas d'intermédiaire. Le prix annoncé sur le devis est le prix que vous payez. Nous respectons scrupuleusement les règles de la <a href='https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Depannage-a-domicile' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>DGCCRF sur le dépannage à domicile</a>.",
-          "De plus, utiliser des produits grand public (vendus en jardinerie) revient souvent plus cher sur le long terme car ils sont moins dosés que nos produits professionnels sous certificat <strong><a href='https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Certibiocide</a></strong> (délivré par le Ministère de la Transition Écologique). Vous en achetez des kilos sans résultat définitif.",
+          "En tant qu'artisan local basé rue Bannier, <strong>Déclic Parasites</strong> n'a pas d'intermédiaire. Le prix annoncé sur le devis est le prix que vous payez. Nous respectons scrupuleusement les règles de la DGCCRF sur le dépannage à domicile.",
+          "De plus, utiliser des produits grand public (vendus en jardinerie) revient souvent plus cher sur le long terme car ils sont moins dosés que nos produits professionnels sous certificat <strong>Certibiocide</strong>. Une cliente de <strong>Fleury-les-Aubrais</strong> nous confiait avoir dépensé plus de 200€ en pièges et produits divers avant de nous appeler, sans résultat définitif.",
         ],
         image: {
           src: "/produits-pro-vs-commerce.jpg", // Photo de ton matériel pro ou camion
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
   // ARTICLE 3 : Plan d'action (Le plus ancien - 15 Nov 2025)
   {
     slug: "plan-action-anti-nuisibles-orleans-loiret",
-    title: "Plan d'action anti-nuisibles à Orléans et dans le Loiret",
+    title: "Protection Anti-Nuisibles : La Check-list de Sécurité",
     excerpt:
       "Comment sécuriser votre logement ou commerce lorsque des nuisibles apparaissent ? Notre check-list locale vous accompagne étape par étape.",
     cover: "https://www.cergy.fr/wp-content/uploads/2025/07/david-farkas-zFOVEGC0UCE-unsplash.jpg",
@@ -179,13 +179,13 @@ export const blogPosts: BlogPost[] = [
     tags: ["Désinsectisation", "Orléans", "Loiret", "Guide pratique"],
     featured: true,
     intro:
-      "Avec la douceur des saisons et les spécificités climatiques du Loiret, les nuisibles trouvent rapidement refuge dans nos habitations. Cafards dans les cuisines orléanaises, rats dans les caves du centre historique, fourmis envahissant les terrasses... Voici notre méthode Déclic Parasites, rodée sur le terrain à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, pour reprendre la main efficacement et durablement.",
+      "Avec la douceur des saisons et l'humidité de notre région, les nuisibles trouvent rapidement refuge dans nos habitations. Cafards dans les cuisines, rats dans les caves, fourmis envahissant les terrasses... Voici notre méthode Déclic Parasites, rodée sur le terrain, pour reprendre la main efficacement et durablement.",
     sections: [
       {
         heading: "1. Inspecter méthodiquement chaque zone avant d'agir",
         body: [
           "La première étape cruciale consiste à identifier précisément les points d'entrée et les zones d'activité des nuisibles. Munissez-vous d'une lampe torche et de votre smartphone pour documenter ce que vous observez : traces de déjections, chemins de passage, zones de grignotage, fissures dans les murs.",
-          "À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> et dans son agglomération, nos diagnostics révèlent que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage, joints de fenêtre dégradés. Dans les bâtiments anciens du centre-ville, les caves voûtées et les vides sanitaires sont particulièrement vulnérables.",
+          "Lors de nos diagnostics, nous constatons que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage. C'est classique dans les immeubles des années 70 du <strong>quartier Dunois</strong> où les gaines techniques sont de véritables autoroutes à rongeurs.",
           "Photographiez systématiquement ces indices. Ces images serviront de base au technicien pour élaborer un plan d'action ciblé et vous permettront de suivre l'évolution de la situation dans le temps. Un bon diagnostic fait gagner jusqu'à 50% de temps sur le traitement.",
         ],
         image: {
@@ -197,8 +197,8 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "2. Choisir le protocole de traitement adapté à chaque nuisible",
         body: [
-          "Chaque espèce de nuisible nécessite une approche spécifique et des produits dédiés. Les <a href='https://fr.wikipedia.org/wiki/Blattella_germanica' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>blattes germaniques</a> qui prolifèrent dans les cuisines d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> répondent mieux aux gels alimentaires appliqués au plus près de leurs refuges. Les <a href='https://fr.wikipedia.org/wiki/Rattus_rattus' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>rats noirs</a>, fréquents dans les combles des maisons orléanaises, nécessitent des appâts sécurisés placés sur leurs trajets habituels. Les <a href='https://fr.wikipedia.org/wiki/Monomorium_pharaonis' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>fourmis pharaons</a> requièrent un traitement en barrage avec des insecticides rémanents.",
-          "Nos équipes du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> ont développé un schéma d'intervention en deux passages systématiques : un traitement choc initial pour réduire drastiquement la population, suivi d'un contrôle et ajustement 15 jours plus tard. Cette méthode, certifiée <a href='https://www.ecologie.gouv.fr/politiques-publiques/produits-biocides' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Certibiocide</a>, garantit un résultat durable tout en limitant l'exposition aux produits biocides.",
+          "Chaque espèce de nuisible nécessite une approche spécifique et des produits dédiés. (Voir notre guide pour <a href='/blog/comment-identifier-rat-souris-orleans' class='text-primary hover:text-accent underline'>identifier vos rongeurs à Orléans</a>). Les blattes germaniques qui prolifèrent parfois dans les cuisines collectives répondent mieux aux gels alimentaires. Les rats noirs, que nous croisons souvent dans les greniers à <strong>Saint-Jean-de-la-Ruelle</strong>, nécessitent une stratégie d'appâtage différente.",
+          "Nos équipes ont développé un schéma d'intervention en deux passages systématiques : un traitement choc initial pour réduire drastiquement la population, suivi d'un contrôle et ajustement 15 jours plus tard. Cette méthode garantit un résultat durable.",
           "Chaque intervention est tracée avec photos avant/après, fiches techniques des produits utilisés et plan de localisation des points de traitement. Cette documentation complète rassure les assurances habitation et permet un suivi rigoureux de l'efficacité du protocole.",
         ],
         image: {
@@ -211,16 +211,16 @@ export const blogPosts: BlogPost[] = [
         heading: "3. Mettre en place une stratégie de prévention dès la première visite",
         body: [
           "Le traitement seul ne suffit pas : la prévention est la clé d'un résultat durable. Dès la première intervention, nos techniciens identifient les facteurs favorisant l'infestation et proposent des solutions concrètes : pose de grillages anti-rongeurs sur les bouches d'aération, application de joints silicone en cuisine et salle de bain, installation de seuils de porte adaptés.",
-          "Dans le centre d'<a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a> comme en zone rurale du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, nous constatons que ces mesures préventives réduisent les risques de réinfestation de plus de 60% sur 12 mois. Pour les commerces de bouche et restaurants, nous recommandons également un nettoyage renforcé des zones de stockage, l'utilisation de conteneurs hermétiques pour les denrées, et la formation du personnel aux bonnes pratiques d'hygiène.",
+          "Nous constatons que ces mesures préventives réduisent les risques de réinfestation de plus de 60% sur 12 mois. C'est particulièrement vrai pour les commerces de bouche de la <strong>place du Châtelet</strong> où la gestion des déchets est critique.",
           "Un suivi téléphonique ou par SMS est systématiquement proposé une semaine après l'intervention. Cette vigilance continue permet d'ajuster rapidement les dispositifs si nécessaire, de renforcer une zone sensible détectée tardivement, ou simplement de rassurer nos clients sur l'absence de signes de retour. Cette approche proactive fait toute la différence sur la durée.",
         ],
       },
       {
         heading: "4. Adapter le traitement aux spécificités locales du Loiret",
         body: [
-          "Le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> présente des particularités qui influencent directement notre façon d'intervenir. La proximité de <a href='https://fr.wikipedia.org/wiki/Loire_(fleuve)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>la Loire</a> crée des zones humides favorables aux rongeurs et aux insectes rampants. Les variations de température entre les bords du fleuve et les plateaux de <a href='https://fr.wikipedia.org/wiki/Beauce' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Beauce</a> obligent à ajuster les protocoles selon la saison.",
+          "Le Loiret présente des particularités qui influencent directement notre façon d'intervenir. La proximité de la Loire crée des zones humides favorables aux rongeurs, notamment près du <strong>Pont Royal</strong> ou de l'<strong>Île Charlemagne</strong>.",
           "En hiver, les nuisibles cherchent refuge dans les habitations chauffées, multipliant les infestations de caves et de greniers. Au printemps et en été, les zones extérieures (jardins, terrasses, abris) deviennent des points d'entrée privilégiés. Nos interventions tiennent compte de ces cycles naturels pour maximiser l'efficacité des traitements.",
-          "À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, la densité du bâti ancien avec ses caves en pierre, ses cours intérieures et ses immeubles mitoyens nécessite souvent une approche coordonnée avec les voisins ou les syndics de copropriété. Nous facilitons cette coordination en proposant des diagnostics groupés et des traitements simultanés pour éviter les migrations de nuisibles d'un logement à l'autre.",
+          "La densité du bâti ancien avec ses caves en pierre nécessite souvent une approche coordonnée. Nous facilitons cette coordination en proposant des diagnostics groupés (à ce sujet, lisez notre article sur <a href='/blog/rats-voisin-que-faire-orleans-loiret' class='text-primary hover:text-accent underline'>les conflits de voisinage liés aux rats</a>).",
         ],
         image: {
           src: "https://img.freepik.com/photos-premium/vue-panoramique-aerienne-orleans-france_78361-12672.jpg",
@@ -233,7 +233,7 @@ export const blogPosts: BlogPost[] = [
         body: [
           "Le succès d'une intervention anti-nuisibles se mesure dans la durée. C'est pourquoi nous incluons systématiquement un suivi sur 30 jours minimum, avec des points de contrôle réguliers et des ajustements si nécessaire. Nos clients reçoivent un rapport détaillé après chaque passage, avec recommandations personnalisées et photos des zones traitées.",
           "Pour les professionnels (restaurants, hôtels, commerces alimentaires), nous proposons des contrats de maintenance préventive avec visites programmées et interventions curatives illimitées. Ces contrats incluent la traçabilité <a href='https://agriculture.gouv.fr/guides-de-bonnes-pratiques-dhygiene-gbph' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>HACCP</a>, indispensable lors des contrôles sanitaires, ainsi que l'accès à une ligne d'urgence 24/7.",
-          "Notre objectif est de construire une relation de confiance sur le long terme. Beaucoup de nos clients particuliers nous sollicitent ensuite pour des diagnostics préventifs annuels ou nous recommandent à leurs proches. Cette satisfaction client, mesurée à 98% dans le <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a>, est le résultat d'une approche professionnelle, transparente et humaine.",
+          "Notre objectif est de construire une relation de confiance sur le long terme. Beaucoup de nos clients particuliers nous sollicitent ensuite pour des diagnostics préventifs annuels ou nous recommandent à leurs proches. Cette satisfaction client est le résultat d'une approche professionnelle, transparente et humaine.",
         ],
       },
     ],
@@ -253,7 +253,7 @@ export const blogPosts: BlogPost[] = [
   // ARTICLE 4 : Voisinage et Nuisibles (01 Nov 2025)
   {
     slug: "rats-voisin-que-faire-orleans-loiret",
-    title: "Les rats viennent de chez mon voisin : Que faire à Orléans ?",
+    title: "Conflit voisinage : recours légaux contre les rats et nuisibles",
     excerpt:
       "Conflits de voisinage et nuisibles : découvrez vos droits et les démarches amiables ou légales pour protéger votre logement si l'hygiène de votre voisin pose problème.",
     cover: "https://www.sncf-connect.com/assets/styles/ratio_2_1_max_width_961/public/media/2023-08/orleans-nuit.jpg?h=cbd88c82&itok=A4LIXbN2",
@@ -262,7 +262,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Voisinage", "Réglementation", "Conseils", "Orléans"],
     featured: false,
     intro:
-      "C'est une situation délicate que nos techniciens rencontrent très souvent dans les zones résidentielles comme à <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, <a href='https://www.ville-saran.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Saran</a> ou <a href='https://www.ville-olivet.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Olivet</a>. Votre maison est impeccable, mais vous apercevez des rats courir le long du mur mitoyen ou traverser votre jardin venant de la propriété d'à côté. Poulailler mal entretenu, accumulation de déchets, compost à ciel ouvert... L'hygiène douteuse de votre voisin menace votre tranquillité. Pas de panique, voici la marche à suivre, de la diplomatie à l'action légale.",
+      "C'est une situation délicate que nos techniciens rencontrent très souvent dans les zones résidentielles comme à <strong>Saint-Jean-le-Blanc</strong>, <strong>Semoy</strong> ou <strong>Saran</strong>. Votre maison est impeccable, mais vous avez <a href='/blog/comment-identifier-rat-souris-orleans' class='text-primary hover:text-accent underline'>identifié des rats</a> courant le long du mur mitoyen. Poulailler mal entretenu, accumulation de déchets, compost à ciel ouvert... L'hygiène douteuse de votre voisin menace votre tranquillité. Pas de panique, voici la marche à suivre.",
     sections: [
       {
         heading: "1. La démarche amiable : Le dialogue avant tout",
@@ -274,7 +274,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "2. Ce que dit la loi : Règlement Sanitaire Départemental",
         body: [
-          "Si le dialogue échoue, la loi est de votre côté. Le Règlement Sanitaire Départemental (RSD) du <a href='https://www.loiret.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loiret</a> impose à tout occupant de maintenir son logement et ses extérieurs dans un état de propreté constant.",
+          "Si le dialogue échoue, la loi est de votre côté. Le Règlement Sanitaire Départemental (RSD) impose à tout occupant de maintenir son logement et ses extérieurs dans un état de propreté constant.",
           "L'article 119 interdit notamment de jeter ou déposer des graines ou nourriture en tout lieu public ou privé pour attirer les animaux errants, si cela risque d'attirer des rongeurs. Si votre voisin nourrit les pigeons de façon excessive ou laisse ses poubelles déborder, il est en infraction. Une mise en demeure par lettre recommandée est alors la première étape officielle.",
         ],
       },
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
         heading: "3. Quels recours en cas de blocage ?",
         body: [
           "<strong>En copropriété / Appartement :</strong> Contactez votre syndic. Il est responsable de l'hygiène des parties communes et peut intervenir auprès du copropriétaire négligent pour le contraindre à agir, voire faire intervenir une entreprise aux frais de la copropriété avant de se retourner contre lui.",
-          "<strong>En maison individuelle :</strong> Si le voisin refuse d'agir malgré vos relances, signalez la situation à la Mairie. À <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Orléans</a>, le Service Communal d'Hygiène et de Santé (SCHS) peut venir constater l'insalubrité. Le Maire dispose de pouvoirs de police pour ordonner le nettoyage et la dératisation, parfois même d'office aux frais du propriétaire si l'urgence sanitaire est avérée.",
+          "<strong>En maison individuelle :</strong> Si le voisin refuse d'agir malgré vos relances, signalez la situation à la Mairie. À Orléans, le Service Communal d'Hygiène et de Santé (SCHS) peut venir constater l'insalubrité. Le Maire dispose de pouvoirs de police pour ordonner le nettoyage et la dératisation, parfois même d'office aux frais du propriétaire si l'urgence sanitaire est avérée.",
         ],
         image: {
           src: "https://leptitgavroche.fr/wp-content/uploads/2025/02/rue-de-bourgogne-orleans-france-orleans-france-june-pedestrian-borgogne-street-rue-de-bourgogne-full-restaurants-124049452.webp",
@@ -301,7 +301,7 @@ export const blogPosts: BlogPost[] = [
         heading: "5. Le conseil de l'expert : La coordination est clé",
         body: [
           "Traiter son jardin alors que le nid est chez le voisin, c'est comme écopper un bateau sans boucher le trou. Vous capturerez quelques individus, mais la colonie se régénérera en permanence (une rate peut avoir 5 à 6 portées par an !).",
-          "C'est pourquoi nous proposons souvent des devis 'voisinage' avec des tarifs adaptés. Parfois, il est même plus économique pour vous de prendre en charge une partie du traitement du voisin (s'il est de bonne foi mais n'a pas les moyens) plutôt que de subir des dégâts matériels coûteux chez vous (câbles rongés, isolation détruite) pendant des mois. C'est un calcul pragmatique pour retrouver votre sérénité.",
+          "C'est pourquoi nous proposons souvent des devis 'voisinage' avec des <a href='/blog/prix-tarif-deratisation-desinsectisation-orleans-2025' class='text-primary hover:text-accent underline'>tarifs adaptés</a>. Parfois, il est même plus économique pour vous de prendre en charge une partie du traitement du voisin (s'il est de bonne foi mais n'a pas les moyens) plutôt que de subir des dégâts matériels coûteux chez vous (câbles rongés, isolation détruite) pendant des mois. C'est un calcul pragmatique pour retrouver votre sérénité.",
         ],
       },
     ],
