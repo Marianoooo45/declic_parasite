@@ -18,6 +18,10 @@ export type Service = {
     title: string;
     content: string;
   }[];
+  emergencyCTA?: {
+    text: string;
+    href: string;
+  };
 };
 
 const baseServices: Service[] = [
@@ -29,6 +33,10 @@ const baseServices: Service[] = [
       "Nos dératiseurs certifiés à Orléans et dans le Loiret interviennent rapidement. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable.",
     heroImage: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     priceFrom: 160,
+    emergencyCTA: {
+      text: "Urgence Dératisation",
+      href: "/urgence-deratisation-orleans",
+    },
     problemDescription: "Les rats et les souris s'invitent dans vos cloisons, vos combles ou vos stocks alimentaires. Une fois installés, ces rongeurs se multiplient à une vitesse fulgurante. Pour toute urgence (câbles rongés, odeurs), consultez notre page <a href='/urgence-deratisation-orleans' class='text-accent hover:underline font-bold'>Urgence Dératisation Orléans</a>.",
     riskDescription: "Au-delà des nuisances sonores, les rongeurs rongent les câbles électriques (risque d'incendie), souillent les surfaces et peuvent transmettre des maladies graves comme la leptospirose.",
     preparation: [

@@ -286,9 +286,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     <span className="text-3xl">⚠️</span>
                   </div>
                   <h3 className="mb-3 text-2xl font-bold text-red-700">Problème</h3>
-                  <p className="leading-relaxed text-muted-foreground">
-                    {service.problemDescription}
-                  </p>
+                  <p className="leading-relaxed text-muted-foreground" dangerouslySetInnerHTML={{ __html: service.problemDescription }} />
+
+                  {service.emergencyCTA && (
+                    <div className="mt-6">
+                      <Link href={service.emergencyCTA.href}>
+                        <Button variant="destructive" className="w-full font-bold shadow-sm hover:shadow-md">
+                          <Zap className="mr-2 h-4 w-4" />
+                          {service.emergencyCTA.text}
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </AnimatedSection>
 
