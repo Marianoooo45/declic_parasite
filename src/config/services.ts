@@ -28,7 +28,7 @@ const baseServices: Service[] = [
     description:
       "Nos dératiseurs certifiés à Orléans et dans le Loiret interviennent rapidement. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable.",
     heroImage: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    priceFrom: 99,
+    priceFrom: 160,
     problemDescription: "Les rats et les souris s'invitent dans vos cloisons, vos combles ou vos stocks alimentaires. Une fois installés, ces rongeurs se multiplient à une vitesse fulgurante. Pour toute urgence (câbles rongés, odeurs), consultez notre page <a href='/urgence-deratisation-orleans' class='text-accent hover:underline font-bold'>Urgence Dératisation Orléans</a>.",
     riskDescription: "Au-delà des nuisances sonores, les rongeurs rongent les câbles électriques (risque d'incendie), souillent les surfaces et peuvent transmettre des maladies graves comme la leptospirose.",
     preparation: [
@@ -103,7 +103,7 @@ const baseServices: Service[] = [
       {
         title: "Prix dératisation Orléans & Loiret",
         content: `
-          <p>Nos tarifs de dératisation à Orléans débutent à partir de <strong>99€</strong> pour un diagnostic et une mise en place de traitement sur une surface standard (studio/T2). Ce prix inclut le déplacement dans tout le Loiret.</p>
+          <p>Nos tarifs de dératisation à Orléans débutent à partir de <strong>160€</strong> pour un diagnostic et une mise en place de traitement sur une surface standard (studio/T2). Ce prix inclut le déplacement dans tout le Loiret.</p>
           <p class="mt-2">Le coût final varie selon la surface (maison, immeuble, local pro) et le niveau d'infestation (besoin de rebouchage, nettoyage des combles). Nous vous fournissons un devis ferme avant toute intervention.</p>
         `
       },
@@ -192,7 +192,7 @@ const baseServices: Service[] = [
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
     heroImage: "https://images.unsplash.com/photo-1727198634627-645ef5356455?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    priceFrom: 119,
+    priceFrom: 75,
     problemDescription: "Les cafards et les blattes s'insinuent dans les moindres recoins de vos cuisines ou salles de bain. Très résistants, ils se cachent dans l'électroménager et les gaines techniques pour proliférer à l'abri des regards.",
     riskDescription: "Vecteurs de bactéries et d'allergènes, leur présence pose un risque sanitaire majeur (Salmonelle, gastro-entérite) et dégrade l'image de marque des établissements recevant du public.",
     preparation: [
@@ -256,7 +256,7 @@ const baseServices: Service[] = [
       {
         title: "Tarif traitement cafards Orléans",
         content: `
-          <p>Pour une désinsectisation cafards à Orléans (appartement standard), comptez à partir de <strong>119€</strong>. Ce tarif inclut la pose de gel professionnel haute appétence et le déplacement.</p>
+          <p>Pour une désinsectisation cafards à Orléans (appartement standard), comptez à partir de <strong>75€</strong>. Ce tarif inclut la pose de gel professionnel haute appétence et le déplacement.</p>
           <p class="mt-2">Pour les cafards de caves (immeubles, copropriétés), nous établissons un devis sur mesure incluant la pulvérisation des parties communes.</p>
         `
       }
