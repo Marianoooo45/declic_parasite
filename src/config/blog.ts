@@ -29,7 +29,7 @@ export const blogPosts: BlogPost[] = [
   // ARTICLE 5 : Urgence Dératisation (30 Dec 2025) - DÉPLACÉ EN PREMIER
   {
     slug: "urgence-deratisation-orleans-rat-maison",
-    title: "Orléans — Urgence dératisation : “j’ai vu un rat dans la maison”, quoi faire dans les 30 minutes ?",
+    title: "Orléans | Urgence dératisation : “j’ai vu un rat dans la maison”, quoi faire dans les 30 minutes ?",
     excerpt:
       "Panique à bord ! Vous venez de croiser un rat dans votre salon ? Pas de panique, suivez notre protocole d'urgence en 5 étapes avant l'arrivée du technicien.",
     cover: "https://cdn.slate.fr/uploads/store/story_196675/medium_landscape_196675.jpg",
