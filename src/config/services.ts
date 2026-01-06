@@ -223,8 +223,8 @@ const baseServices: Service[] = [
         a: "Oui, nous utilisons des produits professionnels inodores et sans résidus visibles, adaptés aux cuisines et commerces.",
       },
       {
-        q: "Combien de visites prévoir ?",
-        a: "Une infestation légère se traite en 1 passage. Nous incluons un contrôle pour les cas plus avancés.",
+        q: "Pourquoi faut-il obligatoirement 2 passages ?",
+        a: "Les insecticides ne tuent pas les œufs (oothèques). Le second passage, réalisé 3 à 4 semaines plus tard, est indispensable pour éliminer les nymphes qui viennent d'éclore, avant qu'elles ne deviennent adultes et ne pondent à leur tour.",
       },
       {
         q: "Intervenez-vous la nuit ?",
@@ -256,8 +256,8 @@ const baseServices: Service[] = [
       {
         title: "Tarif traitement cafards Orléans",
         content: `
-          <p>Pour une désinsectisation cafards à Orléans (appartement standard), comptez à partir de <strong>75€</strong>. Ce tarif inclut la pose de gel professionnel haute appétence et le déplacement.</p>
-          <p class="mt-2">Pour les cafards de caves (immeubles, copropriétés), nous établissons un devis sur mesure incluant la pulvérisation des parties communes.</p>
+          <p>Pour une désinsectisation cafards à Orléans (appartement standard), comptez <strong>75€ par passage</strong>. Un protocole complet nécessite obligatoirement <strong>2 passages</strong> (soit 150€ au total) pour éliminer les nymphes après l'éclosion des œufs.</p>
+          <p class="mt-2">Ce tarif inclut la pose de gel professionnel haute appétence, le déplacement et la garantie de résultat après le second passage.</p>
         `
       }
     ]
