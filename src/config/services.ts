@@ -14,6 +14,10 @@ export type Service = {
   problemDescription: string;
   riskDescription: string;
   preparation?: string[];
+  customSections?: {
+    title: string;
+    content: string;
+  }[];
 };
 
 const baseServices: Service[] = [
@@ -22,10 +26,10 @@ const baseServices: Service[] = [
     slug: "deratisation",
     short: "Intervention rapide pour rats et souris à Orléans et Loiret",
     description:
-      "Experts en dératisation à Orléans et dans le Loiret. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable, certifié Certibiocide.",
-    heroImage: "/services/deratisation.svg",
+      "Nos dératiseurs certifiés à Orléans et dans le Loiret interviennent rapidement. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable.",
+    heroImage: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     priceFrom: 99,
-    problemDescription: "Les rats et les souris s'invitent dans vos cloisons, vos combles ou vos stocks alimentaires. Une fois installés, ces rongeurs se multiplient à une vitesse fulgurante, causant des bruits nocturnes et des dégradations visibles.",
+    problemDescription: "Les rats et les souris s'invitent dans vos cloisons, vos combles ou vos stocks alimentaires. Une fois installés, ces rongeurs se multiplient à une vitesse fulgurante. Pour toute urgence (câbles rongés, odeurs), consultez notre page <a href='/urgence-deratisation-orleans' class='text-accent hover:underline font-bold'>Urgence Dératisation Orléans</a>.",
     riskDescription: "Au-delà des nuisances sonores, les rongeurs rongent les câbles électriques (risque d'incendie), souillent les surfaces et peuvent transmettre des maladies graves comme la leptospirose.",
     preparation: [
       "Identifier les zones où les bruits ou traces sont les plus fréquents",
@@ -68,10 +72,58 @@ const baseServices: Service[] = [
       },
     ],
     schemaKeywords: [
-      "dératisation Orléans",
-      "traitement rats Loiret",
       "entreprise dératisation professionnelle",
+      "dératiseur Orléans",
+      "dératiseurs 45",
+      "souris cloison que faire"
     ],
+    customSections: [
+      {
+        title: "Votre dératiseur à Orléans (45) : comment on intervient ?",
+        content: `
+          <p>Nos dératiseurs certifiés <strong>Certibiocide</strong> ne se contentent pas de poser des pièges. Notre approche à Orléans et dans le Loiret repose sur une analyse complète de votre bâti.</p>
+          <p class="mt-4">Que vous soyez en centre-ville (habitat ancien, caves voûtées) ou en périphérie pavillonnaire (jardins, garages), nous identifions les failles d'étanchéité qui permettent aux rongeurs d'entrer. Le traitement curatif est toujours accompagné de conseils d'herméticité (rebouchage de trous, grillages) pour éviter toute récidive.</p>
+        `
+      },
+      {
+        title: "Reconnaître les signes : Rats ou Souris ?",
+        content: `
+          <ul class="space-y-3">
+            <li class="flex gap-3">
+              <span class="font-bold text-primary min-w-[120px]">🐀 Le Rat :</span>
+              <span>Déjections de 1 à 2cm (noyau d'olive), bruits lourds de course dans les combles, grignotage de matériaux durs (bois, plastique), terriers dans le jardin.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="font-bold text-primary min-w-[120px]">🐁 La Souris :</span>
+              <span>Petites crottes noires (grain de riz), odeur forte d'urine (ammoniaque), grattements légers la nuit, nids dans les isolants ou derrière les frigos.</span>
+            </li>
+          </ul>
+        `
+      },
+      {
+        title: "Prix dératisation Orléans & Loiret",
+        content: `
+          <p>Nos tarifs de dératisation à Orléans débutent à partir de <strong>99€</strong> pour un diagnostic et une mise en place de traitement sur une surface standard (studio/T2). Ce prix inclut le déplacement dans tout le Loiret.</p>
+          <p class="mt-2">Le coût final varie selon la surface (maison, immeuble, local pro) et le niveau d'infestation (besoin de rebouchage, nettoyage des combles). Nous vous fournissons un devis ferme avant toute intervention.</p>
+        `
+      },
+      {
+        title: "Cas Terrain : Nos dernières interventions",
+        content: `
+          <ul class="space-y-4">
+            <li class="rounded-lg bg-secondary/30 p-4 text-sm">
+              <strong class="text-primary block mb-1">📍 Orléans Centre (Bourgogne) :</strong> Traitement d'un appartement au 2ème étage envahi par des souris passant par les gaines techniques de l'immeuble. Pose de grilles anti-rongeurs et traitement choc.
+            </li>
+            <li class="rounded-lg bg-secondary/30 p-4 text-sm">
+              <strong class="text-primary block mb-1">📍 Olivet (Pavillon) :</strong> Dératisation d'un vide sanitaire humide où des rats bruns avaient élu domicile. Mise en place de postes sécurisés extérieurs pour créer une barrière chimique.
+            </li>
+            <li class="rounded-lg bg-secondary/30 p-4 text-sm">
+              <strong class="text-primary block mb-1">📍 Saran (Local Logistique) :</strong> Contrat de prévention annuel après la découverte de traces sur des palettes alimentaires. Zéro récidive depuis 6 mois.
+            </li>
+          </ul>
+        `
+      }
+    ]
   },
   {
     title: "Traitement punaises de lit à Orléans et dans le Loiret",
@@ -79,10 +131,10 @@ const baseServices: Service[] = [
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
-    heroImage: "/services/punaises.svg",
+    heroImage: "https://images.unsplash.com/photo-1680162984776-841184954e9e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     priceFrom: 149,
     problemDescription: "Les punaises de lit transforment vos nuits en cauchemar. Cachées dans les coutures de matelas ou les lattes de sommier, elles sont quasiment impossibles à éliminer avec des produits du commerce.",
-    riskDescription: "En plus des démangeaisons douloureuses, une infestation non traitée entraîne un stress psychologique important, de l'insomnie et un risque élevé de propager les parasites chez vos proches ou vos voisins.",
+    riskDescription: "En plus des démangeaisons douloureuses, une infestation non traitée entraîne un stress psychologique important. Si vous êtes locataire ou propriétaire dans le Loiret, une action rapide est vitale.",
     preparation: [
       "Laver impérativement tout le linge de lit à 60°C minimum",
       "Passer l'aspirateur minutieusement (et jeter le sac immédiatement)",
@@ -123,11 +175,15 @@ const baseServices: Service[] = [
         a: "Un rapport avec photos et recommandations est délivré après la levée des punaises. Nous restons disponibles en cas de récidive.",
       },
     ],
-    schemaKeywords: [
-      "punaises de lit Orléans",
-      "traitement punaises Loiret",
-      "désinsectisation literie professionnelle",
-    ],
+    customSections: [
+      {
+        title: "Prix punaises de lit Orléans : quels tarifs ?",
+        content: `
+          <p>Le traitement des punaises de lit est technique et nécessite souvent 2 passages. À Orléans, nos forfaits démarrent à <strong>149€</strong> (traitement chimique par pulvérisation sur une chambre).</p>
+          <p class="mt-2">Pour un logement complet (T3/Maison), nous proposons des protocoles combinés (Vapeur + Chimie) plus efficaces. N'hésitez pas à comparer : un prix trop bas cache souvent un traitement incomplet qui ne tuera pas les œufs.</p>
+        `
+      }
+    ]
   },
   {
     title: "Traitement cafards et blattes à Orléans et dans le Loiret",
@@ -135,7 +191,7 @@ const baseServices: Service[] = [
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
-    heroImage: "/services/cafards.svg",
+    heroImage: "https://images.unsplash.com/photo-1727198634627-645ef5356455?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     priceFrom: 119,
     problemDescription: "Les cafards et les blattes s'insinuent dans les moindres recoins de vos cuisines ou salles de bain. Très résistants, ils se cachent dans l'électroménager et les gaines techniques pour proliférer à l'abri des regards.",
     riskDescription: "Vecteurs de bactéries et d'allergènes, leur présence pose un risque sanitaire majeur (Salmonelle, gastro-entérite) et dégrade l'image de marque des établissements recevant du public.",
@@ -180,10 +236,31 @@ const baseServices: Service[] = [
       },
     ],
     schemaKeywords: [
-      "désinsectisation cafards Orléans",
-      "traitement blattes professionnel",
       "plan HACCP nuisibles",
+      "blattes germaniques cuisine",
+      "cafards appartement orléans"
     ],
+    customSections: [
+      {
+        title: "Blattes Germaniques (Cuisine & Chaud)",
+        content: `
+          <p>C'est l'espèce la plus fréquente à Orléans, notamment dans les appartements et cuisines. Petites et brun clair, les <strong>blattes germaniques</strong> recherchent la chaleur des moteurs (frigo, lave-vaisselle, cafetière) et l'humidité. Elles prolifèrent très vite. Notre traitement par gel cible précisément ces zones chaudes sans nécessiter de vider tous vos placards.</p>
+        `
+      },
+      {
+        title: "Blattes Orientales / Cafards (Caves & Humidité)",
+        content: `
+          <p>Plus gros et très foncés (presque noirs), ces cafards, souvent appelés "cafards de maisons" ou "blattes noires", préfèrent les zones fraîches, obscures et humides. On les retrouve souvent dans le vieux bâti orléanais : caves, sous-sols, vides sanitaires ou près des canalisations d'eaux usées. Le traitement nécessite souvent une sécurisation des regards et siphons.</p>
+        `
+      },
+      {
+        title: "Tarif traitement cafards Orléans",
+        content: `
+          <p>Pour une désinsectisation cafards à Orléans (appartement standard), comptez à partir de <strong>119€</strong>. Ce tarif inclut la pose de gel professionnel haute appétence et le déplacement.</p>
+          <p class="mt-2">Pour les cafards de caves (immeubles, copropriétés), nous établissons un devis sur mesure incluant la pulvérisation des parties communes.</p>
+        `
+      }
+    ]
   },
   {
     title: "Traitement fourmis invasives à Orléans et dans le Loiret",
@@ -191,7 +268,7 @@ const baseServices: Service[] = [
     short: "Suppression ciblée des colonies de fourmis",
     description:
       "Des fourmis envahissent vos pièces ou terrasses ? Nous neutralisons la colonie à la source pour empêcher tout retour durablement.",
-    heroImage: "/services/fourmis.svg",
+    heroImage: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     priceFrom: 89,
     problemDescription: "Les colonies de fourmis tracent des colonnes ininterrompues jusque dans vos placards ou sur vos plans de travail. Une fois le nid installé sous vos fondations ou lambourdes, les solutions classiques ne suffisent plus.",
     riskDescription: "Certaines espèces peuvent s'attaquer aux isolants ou aux structures en bois. Leur présence en grand nombre devient vite insupportable, surtout dans les zones de préparation alimentaire ou les chambres.",
@@ -299,7 +376,7 @@ const baseServices: Service[] = [
     short: "Assainissement des logements contre puces et acariens",
     description:
       "Morsures au niveau des chevilles ou animaux infestés ? Nous assainissons sols, textiles et recoins pour éliminer puces et parasites intérieurs.",
-    heroImage: "/services/puces.svg",
+    heroImage: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1200&auto=format&fit=crop",
     priceFrom: 109,
     problemDescription: "Les puces envahissent rapidement vos textiles, canapés et parquets. Leurs piqûres répétitives provoquent des allergies et un inconfort permanent pour les habitants comme pour les animaux de compagnie.",
     riskDescription: "Un traitement incomplet (seulement sur l'animal) garantit la réinfestation. Les larves et les œufs peuvent rester en dormance dans votre logement pendant des mois avant de causer une nouvelle vague d'infestation.",

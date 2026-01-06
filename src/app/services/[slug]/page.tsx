@@ -389,6 +389,29 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </div>
         </section>
 
+        {/* CUSTOM SECTIONS (SEO & DETAILS) */}
+        {service.customSections && service.customSections.length > 0 && (
+          <section className="py-20">
+            <div className="mx-auto max-w-7xl px-6">
+              <div className="grid gap-10 lg:grid-cols-2">
+                {service.customSections.map((section, index) => (
+                  <AnimatedSection key={index} delay={index * 0.1}>
+                    <div className="rounded-3xl border-2 border-primary/10 bg-white p-8 shadow-lg">
+                      <h2 className="mb-4 text-2xl font-bold text-primary">
+                        {section.title}
+                      </h2>
+                      <div
+                        className="prose prose-p:text-muted-foreground prose-strong:text-primary max-w-none text-base leading-relaxed text-muted-foreground"
+                        dangerouslySetInnerHTML={{ __html: section.content }}
+                      />
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* PRÉPARATION (SI EXISTE) */}
         {service.preparation && (
           <section className="py-20 bg-amber-50/50">

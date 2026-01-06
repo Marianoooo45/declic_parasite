@@ -59,8 +59,8 @@ export const blogPosts: BlogPost[] = [
         heading: "2. Les indices qui ne trompent pas : Crottes et Bruits",
         body: [
           "Souvent, vous ne verrez pas l'animal, mais ses traces. C'est là que l'expertise d'un professionnel fait la différence. La forme et la taille des déjections sont des signatures uniques.",
-          "<strong>La Souris :</strong> Ses crottes ressemblent à des grains de riz noirs (3 à 6 mm), pointus aux extrémités. On en trouve beaucoup (50 à 80 par jour !), éparpillées partout. Côté bruit, vous entendrez des grattements légers ('trottinements') dans les cloisons ou les faux plafonds.",
-          "<strong>Le Rat :</strong> Ses excréments sont bien plus gros (1 à 2 cm), en forme de noyau d'olive ou de banane, souvent regroupés en latrines. Les bruits sont plus lourds : on a l'impression que quelqu'un marche ou court dans les combles. À proximité des bords de <a href='https://fr.wikipedia.org/wiki/Loire_(fleuve)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loire</a>, la présence de rats est aussi souvent signalée par des terriers creusés dans le jardin.",
+          "<strong>La Souris :</strong> Ses crottes ressemblent à des grains de riz noirs (3 à 6 mm), pointus aux extrémités. Si vous vous demandez \"<strong>crottes de souris que faire ?</strong>\", la première réponse est de ne pas toucher à mains nues. Côté bruit, vous entendrez des grattements légers la nuit ou des \"bruits dans les cloisons\" caractéristiques.",
+          "<strong>Le Rat :</strong> Ses excréments sont bien plus gros (1 à 2 cm), en forme de noyau d'olive ou de banane. Un autre signe distinctif est l'odeur : une <strong>odeur d'urine de souris</strong> ou de rat persistante (ammoniaque) est souvent le signe d'une infestation installée. À proximité des bords de <a href='https://fr.wikipedia.org/wiki/Loire_(fleuve)' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Loire</a>, attention aux terriers dans le jardin.",
         ],
         image: {
           // Utilisation de ton image locale des crottes
@@ -136,7 +136,7 @@ export const blogPosts: BlogPost[] = [
           "🐀 <strong>Dératisation (Rats/Souris) :</strong> Comptez généralement entre <strong>120€ et 250€</strong> pour un traitement complet (comprenant souvent 2 passages). Ce prix inclut la mise en place de postes sécurisés et les conseils d'herméticité.",
           "🛏️ <strong>Punaises de lit :</strong> C'est le traitement le plus technique. Pour un appartement type T2/T3, les tarifs débutent souvent autour de <strong>350€ - 450€</strong> pour un protocole chimique complet (2 passages obligatoires). Nous suivons les recommandations du site gouvernemental <a href='https://www.ecologie.gouv.fr/punaises-lit-letat-vous-accompagne' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Stop Punaises</a> pour garantir l'éradication.",
           "🐝 <strong>Nids de guêpes et frelons :</strong> Selon la hauteur et la difficulté, l'intervention se situe souvent entre <strong>90€ et 180€</strong>. L'intervention est garantie : si le nid n'est pas détruit, nous revenons gratuitement. Attention, le <a href='https://agriculture.gouv.fr/le-frelon-asiatique' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>frelon asiatique</a> est classé danger sanitaire et nécessite un équipement spécial.",
-          "🐜 <strong>Insectes rampants (Cafards/Fourmis) :</strong> À partir de <strong>110€</strong> pour un traitement par gel professionnel (très efficace et discret).",
+          "🐜 <strong>Insectes rampants (Cafards/Fourmis) :</strong> À partir de <strong>110€</strong>. Vous voyez des <strong>cafards cuisine la nuit</strong> ou des <strong>blattes dans la salle de bain</strong> ? Notre traitement par gel est radical.",
         ],
       },
       {
@@ -184,7 +184,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "1. Inspecter méthodiquement chaque zone avant d'agir",
         body: [
-          "La première étape cruciale consiste à identifier précisément les points d'entrée et les zones d'activité des nuisibles. Munissez-vous d'une lampe torche et de votre smartphone pour documenter ce que vous observez : traces de déjections, chemins de passage, zones de grignotage, fissures dans les murs.",
+          "La première étape cruciale consiste à identifier précisément les points d'entrée et les zones d'activité des nuisibles. Munissez-vous d'une lampe torche et de votre smartphone pour documenter ce que vous observez : <strong>traces de grignotage câbles</strong>, isolants détruits, déjections...",
           "Lors de nos diagnostics, nous constatons que près de 70% des infestations commencent par un simple défaut d'étanchéité : bas de porte mal ajusté, passage de gaines non colmaté, aérations sans grillage. C'est classique dans les immeubles des années 70 du <strong>quartier Dunois</strong> où les gaines techniques sont de véritables autoroutes à rongeurs.",
           "Photographiez systématiquement ces indices. Ces images serviront de base au technicien pour élaborer un plan d'action ciblé et vous permettront de suivre l'évolution de la situation dans le temps. Un bon diagnostic fait gagner jusqu'à 50% de temps sur le traitement.",
         ],

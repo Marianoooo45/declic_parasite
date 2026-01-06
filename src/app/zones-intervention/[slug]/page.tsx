@@ -405,6 +405,19 @@ export default async function ZonePage({
                   </Link>
                 </div>
               </div>
+              {/* MENTIONS LEGALES / CONFIANCE */}
+              <AnimatedSection delay={0.25} className="mt-6 rounded-3xl border-2 border-primary/20 bg-secondary/30 p-6 shadow-lg">
+                <h3 className="mb-4 text-xl font-bold text-primary">
+                  Entreprise Locale
+                </h3>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p><strong>DÉCLIC PARASITES</strong></p>
+                  <p>Siège social : [Adresse à compléter]</p>
+                  <p>SIRET : [NUMÉRO SIRET]</p>
+                  <p>RCS : ORLÉANS</p>
+                  <p>Agrément Certibiocide n° [NUMÉRO]</p>
+                </div>
+              </AnimatedSection>
             </AnimatedSection>
           </div>
         </div>
@@ -517,11 +530,96 @@ export default async function ZonePage({
               </Button>
             </Link>
           </AnimatedSection>
+
+          {/* HUB SEO: PAGE PILIER ORLÉANS */}
+          {cityConfig.slug === "orleans" && (
+            <AnimatedSection className="mt-24 rounded-3xl border border-primary/10 bg-white p-8 shadow-realistic md:p-12">
+              <div className="mb-10 text-center">
+                <span className="mb-2 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
+                  Guide d'urgence 45
+                </span>
+                <h2 className="text-3xl font-bold text-primary md:text-4xl">
+                  Nuisibles à Orléans : Qui appeler et que faire ?
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+                  Retrouvez les espèces les plus fréquentes dans la métropole (rats des bords de Loire, cafards en cuisine, punaises en centre-ville) et les premiers gestes à adopter.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {services.map((service) => (
+                  <div
+                    key={service.slug}
+                    className="flex flex-col rounded-2xl border border-border bg-secondary/10 p-6 transition-colors hover:border-primary/30 hover:bg-white"
+                  >
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm">
+                        {/* Using a generic icon if heroImage is complex, or just text */}
+                        <Zap className="h-5 w-5 text-accent" />
+                      </div>
+                      <h3 className="line-clamp-1 text-lg font-bold text-primary">
+                        {service.title.split(" à ")[0]}
+                      </h3>
+                    </div>
+
+                    {service.preparation && service.preparation.length > 0 && (
+                      <div className="mb-4 flex-1 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs leading-relaxed text-amber-900">
+                        <strong className="block text-amber-700 mb-1">Que faire tout de suite ?</strong>
+                        {service.preparation[0]}
+                      </div>
+                    )}
+
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="mt-auto inline-flex items-center text-sm font-bold text-primary hover:text-accent"
+                    >
+                      Voir le traitement
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+
+              {/* QUARTIERS & MICRO-CONTENUS */}
+              <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="rounded-2xl border border-primary/10 bg-white p-6 shadow-sm">
+                  <h3 className="font-bold text-primary mb-2">📍 Vous êtes à Saint-Marceau ?</h3>
+                  <p className="text-sm text-muted-foreground">Nous intervenons très souvent près des bords de Loire et de l'avenue de la Mouillère pour des problèmes de rongeurs liés à l'humidité.</p>
+                </div>
+                <div className="rounded-2xl border border-primary/10 bg-white p-6 shadow-sm">
+                  <h3 className="font-bold text-primary mb-2">📍 Vous êtes à La Source ?</h3>
+                  <p className="text-sm text-muted-foreground">Étudiants ou résidents du Parc Floral : attention aux punaises de lit dans les résidences et aux blattes dans les colonnes d'immeubles.</p>
+                </div>
+                <div className="rounded-2xl border border-primary/10 bg-white p-6 shadow-sm">
+                  <h3 className="font-bold text-primary mb-2">📍 En Centre-Ville / Dunois ?</h3>
+                  <p className="text-sm text-muted-foreground">Les vieux bâtiments et caves voutées sont le terrain de jeu favori des souris. Nous sommes experts des accès difficiles en hyper-centre.</p>
+                </div>
+              </div>
+
+              {/* GUIDES LOCAUX */}
+              <div className="mt-16 text-center">
+                <h3 className="text-xl font-bold text-primary mb-6">Nos guides locaux pour vous aider</h3>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link href="/blog/comment-identifier-rat-souris-orleans" className="text-sm font-semibold text-accent underline hover:text-primary">
+                    Rat ou Souris : le test
+                  </Link>
+                  <span className="text-muted-foreground">•</span>
+                  <Link href="/blog/prix-deratisation-orleans-2025" className="text-sm font-semibold text-accent underline hover:text-primary">
+                    Tarifs dératisation 2025
+                  </Link>
+                  <span className="text-muted-foreground">•</span>
+                  <Link href="/blog/rats-chez-voisin-recours-orleans" className="text-sm font-semibold text-accent underline hover:text-primary">
+                    Rats chez le voisin : recours
+                  </Link>
+                </div>
+              </div>
+            </AnimatedSection>
+          )}
         </div>
-      </section>
+      </section >
 
       {/* PROCESSUS */}
-      <section className="py-20">
+      < section className="py-20" >
         <div className="mx-auto w-full max-w-6xl px-6">
           <div className="mb-12 text-center">
             <h2 className="text-balance text-4xl font-bold text-primary md:text-5xl">
@@ -564,10 +662,10 @@ export default async function ZonePage({
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA FINAL */}
-      <section className="bg-gradient-primary py-20 text-white">
+      < section className="bg-gradient-primary py-20 text-white" >
         <div className="mx-auto w-full max-w-4xl px-6 text-center">
           <Zap className="mx-auto mb-6 h-16 w-16 text-accent" />
 
@@ -605,8 +703,8 @@ export default async function ZonePage({
             </Link>
           </div>
         </div>
-      </section>
-    </main>
+      </section >
+    </main >
   );
 }
 

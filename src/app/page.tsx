@@ -160,7 +160,7 @@ export default function Home() {
                 symptom: "Bruits dans les murs",
                 pest: "Rats & Souris Loiret",
                 image: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                link: "/services/deratisation-rats-souris"
+                link: "/services/deratisation"
               },
               {
                 symptom: "Piqûres au réveil",
@@ -178,7 +178,7 @@ export default function Home() {
                 symptom: "File indienne sur le plan de travail",
                 pest: "Fourmis invasives Loiret",
                 image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                link: "/services/traitement-fourmis-invasives"
+                link: "/services/fourmis"
               }
             ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
