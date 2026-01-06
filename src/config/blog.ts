@@ -26,6 +26,70 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  // ARTICLE 5 : Urgence Dératisation (30 Dec 2025) - DÉPLACÉ EN PREMIER
+  {
+    slug: "urgence-deratisation-orleans-rat-maison",
+    title: "Orléans — Urgence dératisation : “j’ai vu un rat dans la maison”, quoi faire dans les 30 minutes ?",
+    excerpt:
+      "Panique à bord ! Vous venez de croiser un rat dans votre salon ? Pas de panique, suivez notre protocole d'urgence en 5 étapes avant l'arrivée du technicien.",
+    cover: "https://cdn.slate.fr/uploads/store/story_196675/medium_landscape_196675.jpg",
+    publishedAt: "2025-12-30",
+    readingTime: "3 min",
+    tags: ["Urgence", "Dératisation", "Orléans", "Sécurité"],
+    featured: false,
+    intro:
+      "C’est le cauchemar de tout occupant : vous rentrez du travail, vous allumez la lumière et une ombre file sous le canapé. <a href='/urgence-deratisation-orleans' class='text-accent hover:underline font-bold'>Urgence dératisation Orléans</a> ! Avoir un <strong>rat maison Orléans</strong> n’est pas signe de saleté, mais c’est un risque sanitaire immédiat. Vous avez peut-être déjà lu notre guide pour <a href='/blog/comment-identifier-rat-souris-orleans' class='text-primary hover:text-accent underline'>différencier un rat d'une souris</a>, mais dans l'urgence, chaque seconde compte. Avant d'appeler notre ligne d'urgence (02 46 91 55 02), voici les gestes qui sauvent et ceux à éviter absolument.",
+    sections: [
+      {
+        heading: "1. Ne le coincez surtout pas (Danger Morsure)",
+        body: [
+          "Le premier réflexe est souvent de vouloir le chasser avec un balai. <strong>Mauvaise idée !</strong> Un <a href='https://fr.wikipedia.org/wiki/Rattus_norvegicus' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>rat brun (surmulot)</a> acculé, surtout s'il se sent menacé (cri, gestes brusques), peut devenir agressif et sauter pour mordre. Ses incisives sont capables de traverser une chaussure.",
+          "<strong>Le bon geste :</strong> Ouvrez une porte donnant sur l'extérieur si possible, mais surtout, laissez-lui une voie de sortie. Ne l'enfermez pas dans une petite pièce sans issue avec vous. Si vous l'avez vu filer sous un meuble, n'essayez pas de regarder dessous.",
+        ],
+      },
+      {
+        heading: "2. Isolez la pièce (Confinement)",
+        body: [
+          "Si le rat est entré dans une chambre ou le salon, fermez immédiatement la porte de cette pièce. Colmatez le bas de porte avec une serviette épaisse (qu'il ne pourra pas pousser).",
+          "Cela empêche le rongeur d'explorer le reste de la maison. Les rats sont des explorateurs rapides : en 30 minutes, ils peuvent marquer leur territoire (urine) dans toute la cuisine si on les laisse faire.",
+        ],
+      },
+      {
+        heading: "3. Sécurisez la nourriture immédiatement",
+        body: [
+          "Le rat est probablement entré parce qu'il a senti de la nourriture. Si vous êtes dans la cuisine :",
+          "• Mettez tout ce qui est accessible (pain, fruits, boîtes ouvertes) dans le frigo ou des placards hauts fermés.",
+          "• Jetez immédiatement les poubelles à l'extérieur.",
+          "• Nettoyez les miettes au sol.",
+          "Si le rat ne trouve rien à manger, il sera plus facile à piéger car il aura faim lorsque nous poserons les appâts.",
+        ],
+      },
+      {
+        heading: "4. Pourquoi appeler un dératiseur Orléans urgence ?",
+        body: [
+          "Vous pourriez être tenté d'acheter une tapette demain matin. Mais attention :",
+          "• <strong>Risque Incendie :</strong> En situation de stress, un rat enfermé va ronger tout ce qu'il trouve pour s'échapper, notamment les gaines électriques derrière les plinthes (risque de court-circuit, voir notre article sur la <a href='/blog/plan-action-anti-nuisibles-orleans-loiret' class='text-primary hover:text-accent underline'>sécurité de votre logement</a>).",
+          "• <strong>Reproduction :</strong> S'il y en a un, il y a 80% de chances que d'autres suivent ou soient déjà là. Un <strong>dératiseur Orléans urgence</strong> saura identifier le point d'entrée pour le bloquer immédiatement. Acheter une tapette est souvent inefficace par rapport au <a href='/blog/prix-tarif-deratisation-desinsectisation-orleans-2025' class='text-primary hover:text-accent underline'>coût d'une intervention professionnelle garantie</a>.",
+          "Notre équipe d'astreinte intervient 7j/7 pour ces situations de détresse psychologique et sanitaire.",
+        ],
+        image: {
+          src: "https://images.unsplash.com/photo-1520923642038-b4259acecbd7?auto=format&fit=crop&q=80&w=1200",
+          alt: "Appel urgence dératiseur Orléans",
+          caption: "En cas d'intrusion visible, l'intervention rapide est la seule garantie de sécurité."
+        }
+      },
+      {
+        heading: "5. En attendant le technicien...",
+        body: [
+          "Une fois notre technicien en route :",
+          "• Éloignez les enfants et animaux domestiques de la zone.",
+          "• Ne touchez à rien (surtout pas aux crottes ou traces d'urine) sans gants pour éviter tout risque de <a href='https://www.pasteur.fr/fr/centre-medical/fiches-maladies/leptospirose' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Leptospirose</a>.",
+          "• Préparez-nous l'accès aux combles ou au vide sanitaire si vous en avez un, car c'est souvent là que se cache le nid principal.",
+          "Gardez votre calme, nous sommes en lien avec le Service d'Hygiène de la <a href='https://www.orleans-metropole.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Mairie d'Orléans</a> pour les cas complexes.",
+        ],
+      },
+    ],
+  },
   // ARTICLE 1 : Rat vs Souris (Mis à jour avec tes images locales)
   {
     slug: "comment-identifier-rat-souris-orleans",
