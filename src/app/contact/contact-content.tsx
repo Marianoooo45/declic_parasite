@@ -29,6 +29,7 @@ import {
   Phone,
   Send,
   Zap,
+  X,
 } from "lucide-react";
 import { CalendlyWidget } from "@/components/calendly-widget";
 
@@ -70,7 +71,7 @@ export default function ContactPageContent() {
     event.preventDefault();
     setFeedback(null);
 
-    // MODIFICATION : Validation des nouveaux champs
+    // Validation des champs obligatoires
     if (
       !formState.firstName ||
       !formState.lastName ||
@@ -132,6 +133,7 @@ export default function ContactPageContent() {
           "Merci ! Votre demande a bien été envoyée. Nous revenons vers vous très vite.",
         );
         setFormState({ ...initialForm });
+        // Plus de scroll, on utilise la popup
         return;
       }
 
@@ -322,13 +324,11 @@ export default function ContactPageContent() {
                 personnalisé.
               </p>
 
-              {feedback && (
+              {feedback && status !== "success" && (
                 <div
-                  className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${status === "success"
-                    ? "border-green-500 bg-green-50 text-green-800"
-                    : status === "fallback"
-                      ? "border-amber-500 bg-amber-50 text-amber-800"
-                      : "border-red-500 bg-red-50 text-red-800"
+                  className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${status === "fallback"
+                    ? "border-amber-500 bg-amber-50 text-amber-800"
+                    : "border-red-500 bg-red-50 text-red-800"
                     }`}
                 >
                   {feedback}
@@ -749,6 +749,42 @@ export default function ContactPageContent() {
           </AnimatedSection>
         </div>
       </section>
+      {/* SUCCESS MODAL */}
+      {status === "success" && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-primary/40 backdrop-blur-md transition-opacity animate-in fade-in duration-300"
+            onClick={() => setStatus("idle")}
+          />
+          <AnimatedSection className="relative w-full max-w-sm overflow-hidden rounded-3xl bg-white p-8 text-center shadow-2xl">
+            <button
+              onClick={() => setStatus("idle")}
+              className="absolute right-4 top-4 rounded-full p-2 text-muted-foreground hover:bg-secondary transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+              <CheckCircle2 className="h-10 w-10 text-green-600" />
+            </div>
+
+            <h3 className="text-2xl font-bold text-primary">Merci !</h3>
+            <p className="mt-4 text-balance text-muted-foreground">
+              Votre demande de devis a bien été envoyée.
+            </p>
+            <p className="mt-2 text-sm font-semibold text-primary">
+              Notre équipe vous recontactera en moins d'une heure ouvrée.
+            </p>
+
+            <Button
+              onClick={() => setStatus("idle")}
+              className="mt-8 h-12 w-full rounded-xl bg-primary text-white font-bold"
+            >
+              Fermer
+            </Button>
+          </AnimatedSection>
+        </div>
+      )}
     </div>
   );
 }
