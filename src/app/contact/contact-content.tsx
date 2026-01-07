@@ -129,11 +129,8 @@ export default function ContactPageContent() {
 
       if (response.ok) {
         setStatus("success");
-        setFeedback(
-          "Merci ! Votre demande a bien été envoyée. Nous revenons vers vous très vite.",
-        );
+        setFeedback(null);
         setFormState({ ...initialForm });
-        // Plus de scroll, on utilise la popup
         return;
       }
 
@@ -324,7 +321,7 @@ export default function ContactPageContent() {
                 personnalisé.
               </p>
 
-              {feedback && status !== "success" && (
+              {feedback && (status === "error" || status === "fallback") && (
                 <div
                   className={`mt-6 rounded-xl border-2 p-4 text-sm font-medium ${status === "fallback"
                     ? "border-amber-500 bg-amber-50 text-amber-800"
