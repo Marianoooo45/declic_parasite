@@ -114,8 +114,9 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true }, { status: 200 });
 
-  } catch (err: any) {
-    console.error("[API Contact] Erreur globale :", err);
-    return NextResponse.json({ error: err?.message || "Erreur" }, { status: 500 });
+  } catch (err: unknown) {
+    const error = err as Error;
+    console.error("[API Contact] Erreur globale :", error);
+    return NextResponse.json({ error: error?.message || "Erreur" }, { status: 500 });
   }
 }
