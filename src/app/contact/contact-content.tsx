@@ -63,9 +63,9 @@ export default function ContactPageContent() {
   const selectedService = services.find(
     (service) => service.slug === formState.service,
   );
-  const serviceLabel =
-    selectedService?.title ??
-    (formState.service === "autre" ? "Autre demande" : formState.service);
+  const serviceLabel = selectedService
+    ? selectedService.title.replace(/\s*à\s+Orléans et dans le Loiret/i, "")
+    : (formState.service === "autre" ? "Autre demande" : formState.service);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -519,7 +519,7 @@ export default function ContactPageContent() {
                           key={service.slug}
                           value={service.slug}
                         >
-                          {service.title}
+                          {service.title.replace(/\s*à\s+Orléans et dans le Loiret/i, "")}
                         </SelectItem>
                       ))}
                       <SelectItem value="autre">
