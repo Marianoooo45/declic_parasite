@@ -140,7 +140,7 @@ const baseServices: Service[] = [
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
     heroImage: "https://images.unsplash.com/photo-1680162984776-841184954e9e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    priceFrom: 149,
+    priceFrom: 130,
     problemDescription: "Les punaises de lit transforment vos nuits en cauchemar. Cachées dans les coutures de matelas ou les lattes de sommier, elles sont quasiment impossibles à éliminer avec des produits du commerce.",
     riskDescription: "En plus des démangeaisons douloureuses, une infestation non traitée entraîne un stress psychologique important. Si vous êtes locataire ou propriétaire dans le Loiret, une action rapide est vitale.",
     preparation: [
@@ -187,7 +187,7 @@ const baseServices: Service[] = [
       {
         title: "Prix punaises de lit Orléans : quels tarifs ?",
         content: `
-          <p>Le traitement des punaises de lit est technique et nécessite souvent 2 passages. À Orléans, nos forfaits démarrent à <strong>149€</strong> (traitement chimique par pulvérisation sur une chambre).</p>
+          <p>Le traitement des punaises de lit est technique et nécessite souvent 2 passages. À Orléans, nos forfaits démarrent à <strong>130€</strong> (traitement chimique par pulvérisation sur une chambre).</p>
           <p class="mt-2">Pour un logement complet (T3/Maison), nous proposons des protocoles combinés (Vapeur + Chimie) plus efficaces. N'hésitez pas à comparer : un prix trop bas cache souvent un traitement incomplet qui ne tuera pas les œufs.</p>
         `
       }

@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "url": "https://www.declicparasites.fr",
     "email": site.email,
     "telephone": site.phone.replace(/\s+/g, ""),
-    "priceRange": "89€ - 250€",
+    "priceRange": "75€ - 450€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10 Rue Bannier",

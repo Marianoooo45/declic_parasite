@@ -125,7 +125,7 @@ export function SiteFooter({ className }: { className?: string }) {
                 <GoogleIcon className="h-5 w-5" />
               </Link>
               <Link
-                href="https://www.pagesjaunes.fr/"
+                href="https://www.pagesjaunes.fr/pros/64523744"
                 target="_blank"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 text-white transition-transform hover:scale-110 hover:bg-yellow-500"
                 aria-label="Pages Jaunes"
