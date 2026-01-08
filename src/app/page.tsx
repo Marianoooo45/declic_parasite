@@ -49,6 +49,9 @@ export default function Home() {
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           priority
+          style={{ objectFit: "cover" }} // Just ensuring style doesn't conflict? No.
+        // properties
+
         />
 
         <div className="absolute right-4 top-7 z-10 animate-pulse">

@@ -5,7 +5,7 @@ export const site = {
   phone: "02 46 91 55 02",
   email: "contact@declicparasites.fr",
   address: "10 Rue Bannier, 45000 Orléans",
-  siret: "SIRET : XXXX XXX XXX XXXXX",
+  siret: "SIRET : 99501907200017",
 
   // Toutes les communes desservies (utilisées pour les pages /zones-intervention/[slug])
   serviceArea: [
