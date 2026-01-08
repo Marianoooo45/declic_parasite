@@ -32,7 +32,7 @@ export default function UrgenceDeratisationPage() {
             {/* HERO URGENCE */}
             <section className="relative overflow-hidden bg-gradient-primary py-24 text-white lg:py-32">
                 <Image
-                    src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=2000&q=80"
+                    src="/images/urgence-hero.jpg"
                     alt="Urgence dératisation Orléans"
                     fill
                     className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"

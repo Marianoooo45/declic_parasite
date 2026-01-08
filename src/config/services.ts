@@ -31,7 +31,7 @@ const baseServices: Service[] = [
     short: "Intervention rapide pour rats et souris à Orléans et Loiret",
     description:
       "Nos dératiseurs certifiés à Orléans et dans le Loiret interviennent rapidement. Des bruits dans les cloisons ou des traces de grignotage ? Nous sécurisons votre logement ou votre commerce contre les rongeurs (rats, souris) avec un plan d'action complet et durable.",
-    heroImage: "https://images.unsplash.com/photo-1657656206271-12b0b877a47b?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    heroImage: "/images/service-deratisation.jpg",
     priceFrom: 160,
     emergencyCTA: {
       text: "Urgence Dératisation",
@@ -139,7 +139,7 @@ const baseServices: Service[] = [
     short: "Éradication certifiée des punaises de lit",
     description:
       "Des piqûres au réveil ? Nous combinons vapeur, insecticides ciblés et suivi pour éliminer totalement les punaises de lit et protéger votre sommeil.",
-    heroImage: "https://images.unsplash.com/photo-1680162984776-841184954e9e?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    heroImage: "/images/service-punaises.jpg",
     priceFrom: 130,
     problemDescription: "Les punaises de lit transforment vos nuits en cauchemar. Cachées dans les coutures de matelas ou les lattes de sommier, elles sont quasiment impossibles à éliminer avec des produits du commerce.",
     riskDescription: "En plus des démangeaisons douloureuses, une infestation non traitée entraîne un stress psychologique important. Si vous êtes locataire ou propriétaire dans le Loiret, une action rapide est vitale.",
@@ -199,7 +199,7 @@ const baseServices: Service[] = [
     short: "Élimination rapide des blattes et cafards",
     description:
       "Des traces grasses ou des insectes nocturnes dans votre cuisine ? Nous supprimons les cafards et sécurisons votre hygiène alimentaire durablement.",
-    heroImage: "https://images.unsplash.com/photo-1727198634627-645ef5356455?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    heroImage: "/images/service-cafards.jpg",
     priceFrom: 75,
     problemDescription: "Les cafards et les blattes s'insinuent dans les moindres recoins de vos cuisines ou salles de bain. Très résistants, ils se cachent dans l'électroménager et les gaines techniques pour proliférer à l'abri des regards.",
     riskDescription: "Vecteurs de bactéries et d'allergènes, leur présence pose un risque sanitaire majeur (Salmonelle, gastro-entérite) et dégrade l'image de marque des établissements recevant du public.",
@@ -276,7 +276,7 @@ const baseServices: Service[] = [
     short: "Suppression ciblée des colonies de fourmis",
     description:
       "Des fourmis envahissent vos pièces ou terrasses ? Nous neutralisons la colonie à la source pour empêcher tout retour durablement.",
-    heroImage: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    heroImage: "/images/service-fourmis.jpg",
     priceFrom: 89,
     problemDescription: "Les colonies de fourmis tracent des colonnes ininterrompues jusque dans vos placards ou sur vos plans de travail. Une fois le nid installé sous vos fondations ou lambourdes, les solutions classiques ne suffisent plus.",
     riskDescription: "Certaines espèces peuvent s'attaquer aux isolants ou aux structures en bois. Leur présence en grand nombre devient vite insupportable, surtout dans les zones de préparation alimentaire ou les chambres.",
@@ -384,7 +384,7 @@ const baseServices: Service[] = [
     short: "Assainissement des logements contre puces et acariens",
     description:
       "Morsures au niveau des chevilles ou animaux infestés ? Nous assainissons sols, textiles et recoins pour éliminer puces et parasites intérieurs.",
-    heroImage: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/images/service-puces.jpg",
     priceFrom: 109,
     problemDescription: "Les puces envahissent rapidement vos textiles, canapés et parquets. Leurs piqûres répétitives provoquent des allergies et un inconfort permanent pour les habitants comme pour les animaux de compagnie.",
     riskDescription: "Un traitement incomplet (seulement sur l'animal) garantit la réinfestation. Les larves et les œufs peuvent rester en dormance dans votre logement pendant des mois avant de causer une nouvelle vague d'infestation.",
