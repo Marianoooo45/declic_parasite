@@ -93,12 +93,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ]
   };
 
+  // AJOUT DU SCHEMA WEBSITE POUR LE NOM DU SITE DANS GOOGLE
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.brand,
+    "alternateName": ["Declic Parasites", "DéclicParasites"],
+    "url": "https://www.declicparasites.fr"
+  };
+
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd, null, 2) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, websiteJsonLd], null, 2) }}
         />
       </head>
       <ClientBody className="flex min-h-screen flex-col text-base leading-relaxed">
