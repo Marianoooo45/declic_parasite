@@ -47,8 +47,8 @@ export default function Home() {
           alt="Technicien professionnel Déclic Parasites en intervention à Orléans"
           fill
           className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           priority
-          sizes="100vw"
         />
 
         <div className="absolute right-4 top-7 z-10 animate-pulse">

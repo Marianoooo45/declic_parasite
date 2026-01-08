@@ -36,6 +36,7 @@ export default function UrgenceDeratisationPage() {
                     alt="Urgence dératisation Orléans"
                     fill
                     className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
+                    sizes="(max-width: 768px) 100vw, 100vw"
                     priority
                 />
                 <div className="relative mx-auto max-w-7xl px-6">

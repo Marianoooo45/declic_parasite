@@ -180,7 +180,7 @@ export default function ContactPageContent() {
           alt="Technicien désinsectisation inspectant un logement"
           fill
           className="absolute inset-0 object-cover opacity-20 mix-blend-overlay"
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 100vw"
           priority
         />
 

@@ -198,7 +198,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             fill
             className="absolute inset-0 object-cover opacity-25 mix-blend-overlay"
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 100vw"
           />
 
           <div className="absolute right-6 top-6 z-10">
