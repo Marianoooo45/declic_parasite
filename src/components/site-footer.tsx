@@ -257,14 +257,12 @@ export function SiteFooter({ className }: { className?: string }) {
             </div>
           </div>
 
-          <div className="flex flex-col items-start gap-2 lg:items-end">
-            <div className="flex items-center gap-2">
-              <Award className="h-4 w-4 text-primary" />
-              <span className="text-xs font-medium">Expert local certifié</span>
-            </div>
-            <p className="text-[10px] text-muted-foreground/80">
-              Intervention 7j/7 dans tout le Loiret
-            </p>
+          <div className="flex flex-col items-start gap-1 lg:items-end text-left lg:text-right">
+            <p className="font-bold text-xs uppercase tracking-widest text-primary">Entreprise Locale</p>
+            <p className="font-bold text-sm text-foreground">DÉCLIC PARASITES</p>
+            <p className="text-xs text-muted-foreground">Siège social : 295 rue du Pressoir Aubry, 45160 Olivet</p>
+            <p className="text-xs text-muted-foreground">SIRET : 995 019 072</p>
+            <p className="text-xs text-muted-foreground">RCS : ORLÉANS</p>
           </div>
         </div>
       </div>

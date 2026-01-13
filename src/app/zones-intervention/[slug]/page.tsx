@@ -412,10 +412,9 @@ export default async function ZonePage({
                 </h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <p><strong>DÉCLIC PARASITES</strong></p>
-                  <p>Siège social : [Adresse à compléter]</p>
-                  <p>SIRET : [NUMÉRO SIRET]</p>
+                  <p>Siège social : 295 rue du Pressoir Aubry, 45160 Olivet</p>
+                  <p>SIRET : 995 019 072</p>
                   <p>RCS : ORLÉANS</p>
-                  <p>Agrément Certibiocide n° [NUMÉRO]</p>
                 </div>
               </AnimatedSection>
             </AnimatedSection>
