@@ -28,7 +28,7 @@ const euroFormatter = new Intl.NumberFormat("fr-FR", {
 
 export const metadata = {
   title: "Dératisation & Désinsectisation Orléans (45) | Déclic Parasites",
-  description: "🚨 Expert 3D Orléans & 45. 📞 02 46 91 55 02. Rats, souris, punaises, cafards : intervention 7j/7 ! ⏱️ Devis Gratuit. Certifié Certibiocide. Garanti 100%.",
+  description: "📋 Expert 3D Orléans & 45. ☎️ 02 46 91 55 02. Rats, souris, punaises, cafards, taupes : intervention 7j/7 ! ⏱️ Devis Gratuit. Certifié Certibiocide. Garanti 100%.",
   alternates: {
     canonical: "https://www.declicparasites.fr",
   },
