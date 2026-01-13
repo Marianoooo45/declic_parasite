@@ -26,7 +26,80 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
-  // ARTICLE 5 : Urgence Dératisation (30 Dec 2025) - DÉPLACÉ EN PREMIER
+  // ARTICLE 6 : Punaises de lit (Nouveau)
+  {
+    slug: "punaises-de-lit-orleans-signes-traitement",
+    title: "Punaises de lit à Orléans : Comment s'en débarrasser définitivement ?",
+    excerpt:
+      "Piqûres alignées, taches de sang... Les punaises de lit sont de retour à Orléans. Découvrez pourquoi les produits du commerce échouent et notre protocole vapeur + chimie.",
+    cover: "/images/blog-punaises-lit.png",
+    publishedAt: "2026-01-13",
+    readingTime: "5 min",
+    tags: ["Punaises de lit", "Orléans", "Traitement", "Conseils"],
+    featured: true,
+    intro:
+      "C'est le fléau qui inquiète le plus les Orléanais ces derniers mois. Que vous soyez étudiant à <strong>La Source</strong>, hôtelier en centre-ville ou particulier, personne n'est à l'abri. La <a href='/services/traitement-punaises-de-lit' class='text-primary hover:text-accent underline'>punaise de lit</a> (Cimex lectularius) est un parasite tenace qui provoque stress et insomnies. Oubliez les remèdes de grand-mère : voici ce qui fonctionne vraiment pour sauver vos nuits.",
+    sections: [
+      {
+        heading: "1. Comment être sûr que c'est des punaises ?",
+        body: [
+          "Le diagnostic est souvent tardif car la punaise est championne de cache-cache. Elle ne sort que la nuit, attirée par votre chaleur corporelle et le CO2 que vous rejetez.",
+          "<strong>Les indices qui ne trompent pas :</strong>",
+          "• <strong>Les piqûres :</strong> Souvent alignées (3 ou 4 boutons) ou groupées sur les zones découvertes (bras, jambes, dos).",
+          "• <strong>Les taches :</strong> Petits points noirs (déjections) sur les lattes du sommier ou dans les coutures du matelas. Parfois des traînées de sang sur les draps (punaise écrasée dans votre sommeil).",
+          "Si vous avez un doute, une <a href='/contact' class='text-primary hover:text-accent underline'>inspection professionnelle</a> est recommandée avant de jeter votre literie (ce qui est souvent inutile si traité correctement).",
+        ],
+        image: {
+          src: "/images/blog-punaises-lit.png",
+          alt: "Ccouture de matelas avec traces de déjections de punaises de lit",
+          caption: "Inspectez minutieusement les coutures de votre matelas : c'est la cachette #1.",
+        },
+      },
+      {
+        heading: "2. La pire erreur : Les bombes fumigènes (Fumers)",
+        body: [
+          "C'est le réflexe classique : courir en magasin de bricolage acheter un fumigène. <strong>Arrêtez tout !</strong>",
+          "Les punaises de lit ont développé des résistances aux insecticides grand public. Pire : le gaz irritant du fumigène va les faire fuir... chez vos voisins ou dans les autres pièces de votre logement. Vous transformez une infestation localisée (chambre) en infestation générale.",
+          "De plus, ces produits ne tuent pas les œufs. Une seule femelle pond jusqu'à 5 œufs par jour. Le calcul est vite fait : l'infestation repartira de plus belle dans 3 semaines.",
+        ],
+      },
+      {
+        heading: "3. Notre protocole Orléans : La méthode Hybride",
+        body: [
+          "Pour éradiquer 100% de la colonie (adultes + œufs), nous utilisons chez <strong>Déclic Parasites</strong> une double approche :",
+          "1. <strong>Traitement Thermique (Vapeur sèche) :</strong> La vapeur à 180°C tue instantanément les œufs et les adultes au contact, sans produit chimique. Idéal pour les matelas et textiles fragiles.",
+          "2. <strong>Traitement Chimique (Pulvérisation) :</strong> Application d'un insecticide rémanent professionnel au sol et sur les plinthes pour créer une barrière mortelle pour les survivants qui sortiraient de leur cachette.",
+          "Ce protocole nécessite obligatoirement <strong>2 passages</strong> espacés de 15 jours pour casser le cycle de reproduction.",
+        ],
+        image: {
+          src: "/images/traitement-vapeur-punaises.png",
+          alt: "Traitement thermique vapeur sèche contre les punaises de lit",
+          caption: "La vapeur sèche à 180°C élimine 100% des œufs et adultes instantanément.",
+        },
+      },
+      {
+        heading: "4. Locataire ou Propriétaire : Qui paie ?",
+        body: [
+          "La <a href='https://www.service-public.fr/particuliers/vosdroits/F31301' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>loi ELAN</a> est claire : c'est au bailleur de fournir un logement décent sans nuisibles. En début de bail, c'est au propriétaire de payer (sauf s'il prouve votre négligence).",
+          "Cependant, si vous êtes installé depuis longtemps, la responsabilité peut être partagée. Dans tous les cas, prévenez votre propriétaire ou syndic immédiatement. Une intervention rapide coûte toujours moins cher que de traiter tout un immeuble contaminé.",
+        ],
+      },
+      {
+        heading: "5. La prévention au retour de voyage",
+        body: [
+          "Vous revenez de vacances ou d'un déplacement pro ? Ne posez jamais votre valise sur votre lit. Suivez les <a href='https://www.ecologie.gouv.fr/punaises-lit-letat-vous-accompagne' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>recommandations officielles</a> :",
+          "Lavez vos vêtements à 60°C minimum. Pour les textiles fragiles, un passage au congélateur (-20°C pendant 72h) est radical.",
+          "Soyez vigilants lors d'achats de seconde main (meubles, vêtements) : inspectez tout la loupe avant de faire entrer l'objet chez vous.",
+        ],
+      },
+    ],
+    sources: [
+      "Loi ELAN et nuisibles : https://www.service-public.fr/particuliers/vosdroits/F31301",
+      "Ministère de la Santé - Punaises de lit : https://sante.gouv.fr/",
+      "CS3D - Chambre Syndicale Désinfection : https://cs3d.info/",
+    ],
+  },
+  // ARTICLE 5 : Urgence Dératisation (30 Dec 2025)
   {
     slug: "urgence-deratisation-orleans-rat-maison",
     title: "Orléans | Urgence dératisation : “j’ai vu un rat dans la maison”, quoi faire dans les 30 minutes ?",
