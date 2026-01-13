@@ -324,6 +324,70 @@ const baseServices: Service[] = [
     ],
   },
   {
+    title: "Destruction Taupes et Taupier à Orléans et dans le Loiret",
+    slug: "destruction-taupes",
+    short: "Éradication professionnelle des taupes pour jardins et parcs",
+    description:
+      "Votre jardin ou terrain de sport est envahi par les taupinières ? Nos taupiers professionnels interviennent rapidement à Orléans et dans le Loiret pour capturer les taupes et préserver vos espaces verts.",
+    heroImage: "/images/service-taupes.png",
+    priceFrom: 80,
+    problemDescription: "Les taupes creusent des réseaux complexes sous votre pelouse, créant des monticules de terre inesthétiques (taupinières) qui détériorent vos jardins, potagers ou terrains de sport. Une seule taupe peut retourner plusieurs mètres carrés de terre en une nuit.",
+    riskDescription: "Au-delà de l'aspect visuel désastreux, les galeries fragilisent le sol (risques de chute, affaissement de dalles) et peuvent endommager les racines de vos plantations ou couper les câbles enterrés (arrosage, robot-tondeuse).",
+    preparation: [
+      "Ne surtout pas aplatir les taupinières avant notre passage (c'est un indice précieux)",
+      "Repérer les nouvelles monticules apparues le matin",
+      "Éloigner les animaux domestiques de la zone d'intervention",
+      "Si possible, ne pas tondre sur les monticules pour laisser les galerie visibles",
+    ],
+    benefits: [
+      "Piégeage traditionnel mécanique (Méthode Putange)",
+      "Intervention écologique sans produits chimiques",
+      "Préservation de vos gazons et sols",
+      "Service 'Satisfait ou Repiégé'",
+    ],
+    features: [
+      "Repérage précis des galeries principales",
+      "Pose de pièges mécaniques invisibles en surface",
+      "Relevé des prises sous 48 à 72h",
+      "Nivellement des taupinières après capture",
+      "Conseils pour éviter la recolonisation",
+      "Intervention possible sur grands parcs et collectivités",
+    ],
+    faqs: [
+      {
+        q: "Les taupes sortent-elles la nuit ?",
+        a: "Non, la taupe a un cycle de sommeil polyphasique. Elle alterne 4h de chasse et 4h de repos, jour et nuit. C'est pourquoi de nouvelles taupinières peuvent apparaître à tout moment.",
+      },
+      {
+        q: "Les ultrasons sont-ils efficaces ?",
+        a: "Rarement sur le long terme. Les taupes s'habituent aux vibrations ou contournent la zone. Le piégeage mécanique reste la seule méthode garantie.",
+      },
+      {
+        q: "Tuez-vous les taupes ?",
+        a: "Nous utilisons le piégeage mécanique traditionnel (type Putange), qui est une méthode létale rapide et sélective, reconnue comme la plus efficace pour réguler une infestation.",
+      },
+      {
+        q: "Quel est le tarif d'un taupier ?",
+        a: "Notre forfait démarre à 80€ pour la mise en place des pièges. Le tarif peut varier selon la surface du terrain et le nombre de taupinières.",
+      },
+    ],
+    schemaKeywords: [
+      "taupier professionnel orléans",
+      "entreprise anti taupe 45",
+      "chasseur de taupe loiret",
+      "piégeage taupe jardin",
+    ],
+    customSections: [
+      {
+        title: "Pourquoi faire appel à un Taupier Professionnel ?",
+        content: `
+          <p>Chasser la taupe ne s'improvise pas. Beaucoup de particuliers tentent des solutions "maison" (bouteilles, poils de chien, gaz, pétards) qui s'avèrent inefficaces et parfois dangereuses pour le sol.</p>
+          <p class="mt-4">Notre méthode de <strong>piégeage traditionnel</strong> requiert une connaissance parfaite des mœurs de l'animal. Il faut savoir différencier une galerie de chasse d'une galerie de vie, manipuler les pièges sans laisser d'odeur humaine, et les positionner avec une précision millimétrique. C'est ce savoir-faire qui nous permet de garantir le résultat là où les amateurs échouent.</p>
+        `
+      }
+    ]
+  },
+  {
     title: "Contrats professionnels HACCP à  Orléans et dans le Loiret",
     slug: "contrats-professionnels-haccp",
     short: "Plan de prévention nuisibles pour pros & collectivités",

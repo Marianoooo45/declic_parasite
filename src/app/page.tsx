@@ -77,7 +77,7 @@ export default function Home() {
 
             <AnimatedSection delay={0.1}>
               <p className="text-pretty text-xl leading-relaxed text-white/90 md:text-2xl">
-                <strong>Rats, punaises de lit, cafards, fourmis...</strong>
+                <strong>Rats, punaises de lit, cafards, fourmis, taupes...</strong>
                 <br />
                 Intervention rapide 24-48h • Devis gratuit • Méthodes certifiées
               </p>
