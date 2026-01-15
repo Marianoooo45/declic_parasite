@@ -20,26 +20,7 @@ export const metadata: Metadata = {
   description: `Dératisation & Désinsectisation à Orléans (45). Intervention 24h/7j. Devis Gratuit. Les experts anti-nuisibles du Loiret certifiés Certibiocide.`,
   metadataBase: new URL("https://www.declicparasites.fr"),
   keywords: site.keywords.split(", "),
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/android-icon-192x192.png', sizes: '192x192', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-icon-57x57.png', sizes: '57x57' },
-      { url: '/apple-icon-60x60.png', sizes: '60x60' },
-      { url: '/apple-icon-72x72.png', sizes: '72x72' },
-      { url: '/apple-icon-76x76.png', sizes: '76x76' },
-      { url: '/apple-icon-114x114.png', sizes: '114x114' },
-      { url: '/apple-icon-120x120.png', sizes: '120x120' },
-      { url: '/apple-icon-144x144.png', sizes: '144x144' },
-      { url: '/apple-icon-152x152.png', sizes: '152x152' },
-      { url: '/apple-icon-180x180.png', sizes: '180x180' },
-    ],
-  },
+  // SUPPRIMÉ : icons: { ... } -> NextJS gère ça tout seul grâce au fichier app/icon.png
   manifest: '/manifest.json',
   openGraph: {
     title: `${site.brand} – ${site.city}`,
@@ -52,12 +33,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // JSON-LD MIS À JOUR AVEC LA NOUVELLE ICÔNE
+  // JSON-LD MIS À JOUR
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": site.brand,
-    "image": "https://www.declicparasites.fr/android-icon-192x192.png",
+    // Note: NextJS sert l'image app/icon.png à l'adresse /icon (souvent avec un hash)
+    // Pour le schema.org, on laisse l'url générique, c'est moins grave ici.
+    "image": "https://www.declicparasites.fr/icon",
     "@id": "https://www.declicparasites.fr/#organization",
     "url": "https://www.declicparasites.fr",
     "email": site.email,
@@ -93,7 +76,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ]
   };
 
-  // AJOUT DU SCHEMA WEBSITE POUR LE NOM DU SITE DANS GOOGLE
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
