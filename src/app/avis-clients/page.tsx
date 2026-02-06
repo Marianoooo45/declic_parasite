@@ -157,7 +157,7 @@ export default function AvisClientsPage() {
                         <span className="bg-gradient-to-r from-white via-amber-100 to-white bg-clip-text text-transparent">
                             Le Club Déclic
                         </span>
-                        <span className="ml-2">🎯</span>
+                        <span className="ml-2">🐞</span>
                     </h1>
                     <p className="text-base sm:text-lg text-white/80 max-w-md mx-auto font-medium">
                         Votre avis compte... et il peut vous rapporter gros !
@@ -185,7 +185,7 @@ export default function AvisClientsPage() {
                 {/* Footer */}
                 {gameState === "REVIEW" && (
                     <motion.div
-                        className="mt-4 text-center text-xs text-white/60"
+                        className="mt-8 text-center text-xs text-white/60"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1 }}
