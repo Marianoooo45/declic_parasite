@@ -26,6 +26,84 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  // ARTICLE 7 : Cafards et Blattes (30 Jan 2026)
+  {
+    slug: "cafards-blattes-cuisine-orleans-traitement",
+    title: "Cafards et Blattes à Orléans : Cauchemar en Cuisine ?",
+    excerpt:
+      "Des petites bêtes brunes qui filent dès que vous allumez la lumière ? Les cafards colonisent rapidement les cuisines orléanaises. Voici comment stopper l'invasion.",
+    cover: "/images/cafard-cuisine-pour-article.jpg",
+    publishedAt: "2026-01-30",
+    readingTime: "4 min",
+    tags: ["Cafards", "Blattes", "Cuisine", "Orléans", "Hygiène"],
+    featured: false,
+    intro:
+      "C'est souvent la nuit que le problème se révèle. Une petite soif nocturne, on allume la lumière de la cuisine, et c'est la panique : des dizaines de petits insectes bruns qui courent se cacher sous le frigo et le lave-vaisselle. À <strong>Orléans</strong>, notamment dans les immeubles chauffés collectivement, la <strong>blatte germanique</strong> est un fléau qui ne connaît pas la crise. Contrairement aux idées reçues, leur présence n'est pas toujours liée à un manque d'hygiène, mais une fois installées, elles deviennent un véritable <a href='https://sante.gouv.fr/' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>danger sanitaire</a>.",
+    sections: [
+      {
+        heading: "1. Reconnaître l'ennemi : Blatte Germanique ou Orientale ?",
+        body: [
+          "Toutes les blattes ne se ressemblent pas et ne se traitent pas de la même façon. Dans le Loiret, nous rencontrons deux espèces principales :",
+          "• <strong>La Blatte Germanique (<a href='https://fr.wikipedia.org/wiki/Blattella_germanica' target='_blank' rel='noopener noreferrer' class='text-primary hover:text-accent underline'>Blattella germanica</a>) :</strong> C'est la plus fréquente (90% des interventions). Elle est petite (1 à 1,5 cm), de couleur brun clair avec deux bandes foncées sur le thorax. Elle adore les endroits chauds et humides : moteurs de frigo, cafetières, siphons d'évier.",
+          "• <strong>La Blatte Orientale (Blatta orientalis) :</strong> Plus grosse (2 à 3 cm), noire et luisante. Elle préfère les endroits plus frais comme les caves, les sous-sols et les parties communes des immeubles anciens du centre-ville d'Orléans.",
+          "Si vous en voyez une en plein jour, c'est souvent le signe que l'infestation est déjà massive dans les cachettes. Comparez avec notre guide sur les <a href='/blog/comment-identifier-rat-souris-orleans' class='text-primary hover:text-accent underline'>autres nuisibles locaux</a>.",
+        ],
+        image: {
+          src: "/images/blatte-plan-de-travail.jpg",
+          alt: "Blatte germanique sur un plan de travail",
+          caption: "La blatte germanique se reproduit à une vitesse fulgurante dans nos cuisines.",
+        },
+      },
+      {
+        heading: "2. Pourquoi chez moi ? Les 3 aimants à cafards",
+        body: [
+          "Les cafards ont trois besoins vitaux qu'ils trouvent en abondance dans nos cuisines :",
+          "1. <strong>L'eau :</strong> Un simple égouttoir humide ou une fuite sous l'évier suffit à abreuver une colonie entière.",
+          "2. <strong>La chaleur :</strong> Les moteurs électriques (frigo, micro-ondes, box internet) sont des incubateurs parfaits pour leurs œufs (oothèques).",
+          "3. <strong>La nourriture :** Une miette de pain, une tache de graisse ou des croquettes pour chat sont des festins pour eux.",
+          "Souvent, ils arrivent chez vous via des cartons d'emballage, des appareils électroménagers d'occasion, ou simplement en remontant les colonnes techniques depuis chez un voisin infesté (voir nos conseils sur les <a href='/blog/rats-voisin-que-faire-orleans-loiret' class='text-primary hover:text-accent underline'>problèmes de voisinage</a>).",
+        ],
+      },
+      {
+        heading: "3. Les dangers invisibles pour votre santé",
+        body: [
+          "Au-delà du dégoût qu'elles inspirent, les blattes sont des vecteurs de maladies. En se baladant dans les poubelles, les égouts puis sur votre plan de travail, elles transportent des pathogènes :",
+          "• <strong>Bactéries :</strong> Salmonelle, E. coli, Staphylocoque.",
+          "• <strong>Allergènes :</strong> Leurs déjections et leur salive sont de puissants allergènes respiratoires, provoquant de l'asthme, surtout chez les enfants et les personnes âgées.",
+          "Dans la restauration, leur présence est un motif de fermeture administrative immédiate. N'attendez pas, consultez nos <a href='/blog/prix-tarif-deratisation-desinsectisation-orleans-2025' class='text-primary hover:text-accent underline'>tarifs transparents</a> pour une intervention rapide.",
+        ],
+      },
+      {
+        heading: "4. Le traitement efficace : Pourquoi le gel pro ?",
+        body: [
+          "Oubliez les bombes insecticides du supermarché ! Elles tuent les quelques individus touchés mais font fuir les autres plus loin dans les murs, aggravant le problème.",
+          "Chez <strong>Déclic Parasites</strong>, nous utilisons la technique du <strong>Gouttage (Gel Appât)</strong> :",
+          "Nous déposons des micro-gouttes d'un gel attractif empoisonné aux endroits stratégiques. Les cafards le consomment, retournent au nid et meurent. Leurs congénères les dévorent (cannibalisme) et s'empoisonnent à leur tour. C'est l'effet cascade qui permet de détruire 100% de la colonie, même ceux qui restent cachés.",
+          "Ce traitement est sans odeur, ne nécessite pas de quitter le logement et est sans danger pour vos animaux domestiques (le gel est amer et inaccessible).",
+        ],
+        image: {
+          src: "/images/pose-gel-cafard.jpg",
+          alt: "Application de gel anti-cafards professionnel",
+          caption: "Le gel appât permet une éradication totale par effet domino en quelques jours.",
+        },
+      },
+      {
+        heading: "5. Prévenir le retour",
+        body: [
+          "Une fois traités, quelques gestes simples empêchent le retour :",
+          "• Ne laissez jamais de vaisselle sale ou d'eau stagnante la nuit.",
+          "• Stockez les aliments secs (riz, pâtes, farine) dans des boîtes hermétiques en verre ou plastique dur.",
+          "• Bouchez les fissures autour des tuyaux d'évacuation avec du silicone, comme recommandé dans notre <a href='/blog/plan-action-anti-nuisibles-orleans-loiret' class='text-primary hover:text-accent underline'>plan d'action anti-nuisibles</a>.",
+          "• Inspectez toujours les cartons de livraison avant de les stocker.",
+        ],
+      },
+    ],
+    sources: [
+      "INRS - Risques allergiques : https://www.inrs.fr/",
+      "Blattella germanica - Wikipedia : https://fr.wikipedia.org/wiki/Blattella_germanica",
+      "Agence Régionale de Santé (ARS) Centre-Val de Loire : https://www.centre-val-de-loire.ars.sante.fr/",
+    ],
+  },
   // ARTICLE 6 : Punaises de lit (Nouveau)
   {
     slug: "punaises-de-lit-orleans-signes-traitement",
