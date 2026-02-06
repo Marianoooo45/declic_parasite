@@ -126,7 +126,16 @@ export default function AvisClientsPage() {
     }
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-primary via-primary/95 to-primary/90 relative overflow-hidden">
+        <main className="min-h-screen relative overflow-hidden">
+            {/* Image de fond */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/images/home-hero.jpg')" }}
+            />
+
+            {/* Overlay vert */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/85" />
+
             {/* Fond décoratif */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl" />
