@@ -1,4 +1,4 @@
-"use strict";
+"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -8,7 +8,9 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { ExternalLink, Gift, Star } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { ExternalLink, Gift, Lock, Star } from "lucide-react";
+import { useState } from "react";
 
 interface ReviewPromptProps {
     onReviewConfirmed: () => void;
@@ -16,6 +18,12 @@ interface ReviewPromptProps {
 
 export function ReviewPrompt({ onReviewConfirmed }: ReviewPromptProps) {
     const GOOGLE_REVIEW_URL = "https://g.page/r/CRjgrtuNQnoHEBM/review";
+    const [hasClickedReview, setHasClickedReview] = useState(false);
+
+    const handleReviewClick = () => {
+        window.open(GOOGLE_REVIEW_URL, "_blank");
+        setHasClickedReview(true);
+    };
 
     return (
         <Card className="w-full border-2 border-white/20 shadow-2xl bg-white/95 backdrop-blur-sm">
@@ -42,27 +50,60 @@ export function ReviewPrompt({ onReviewConfirmed }: ReviewPromptProps) {
                 {/* Étape 1 */}
                 <Button
                     variant="outline"
-                    className="w-full h-auto py-4 text-base border-2 border-primary/20 hover:bg-primary/5 hover:border-primary group whitespace-normal text-left justify-start relative px-5 transition-all duration-300 hover:scale-[1.02]"
-                    onClick={() => window.open(GOOGLE_REVIEW_URL, "_blank")}
+                    className={cn(
+                        "w-full h-auto py-4 text-base border-2 group whitespace-normal text-left justify-start relative px-5 transition-all duration-300",
+                        hasClickedReview
+                            ? "border-green-500 bg-green-50 hover:bg-green-50"
+                            : "border-primary/20 hover:bg-primary/5 hover:border-primary hover:scale-[1.02]"
+                    )}
+                    onClick={handleReviewClick}
                 >
-                    <span className="flex-shrink-0 bg-primary text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shadow-md">
-                        1
+                    <span className={cn(
+                        "flex-shrink-0 font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 shadow-md",
+                        hasClickedReview
+                            ? "bg-green-500 text-white"
+                            : "bg-primary text-white"
+                    )}>
+                        {hasClickedReview ? "✓" : "1"}
                     </span>
-                    <span className="flex-1 font-medium text-base">Poster mon avis sur Google</span>
-                    <ExternalLink className="w-5 h-5 ml-2 text-primary group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                    <span className="flex-1 font-medium text-base">
+                        {hasClickedReview ? "Avis posté ✓" : "Poster mon avis sur Google"}
+                    </span>
+                    <ExternalLink className={cn(
+                        "w-5 h-5 ml-2 transition-transform flex-shrink-0",
+                        hasClickedReview ? "text-green-500" : "text-primary group-hover:translate-x-1"
+                    )} />
                 </Button>
 
                 {/* Étape 2 */}
                 <Button
-                    className="w-full h-auto py-5 text-lg font-bold shadow-xl bg-gradient-to-r from-primary to-green-700 hover:from-primary/90 hover:to-green-600 text-white whitespace-normal transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl border-2 border-primary/20"
-                    onClick={onReviewConfirmed}
+                    className={cn(
+                        "w-full h-auto py-5 text-lg font-bold shadow-xl whitespace-normal transition-all duration-300 border-2",
+                        hasClickedReview
+                            ? "bg-gradient-to-r from-primary to-green-700 hover:from-primary/90 hover:to-green-600 text-white hover:scale-[1.02] active:scale-[0.98] hover:shadow-2xl border-primary/20"
+                            : "bg-primary/40 text-white/70 cursor-not-allowed border-primary/30"
+                    )}
+                    onClick={hasClickedReview ? onReviewConfirmed : undefined}
+                    disabled={!hasClickedReview}
                 >
-                    <span className="flex-shrink-0 bg-white/20 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4">
+                    <span className={cn(
+                        "flex-shrink-0 font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4",
+                        hasClickedReview ? "bg-white/20 text-white" : "bg-white/20 text-white/70"
+                    )}>
                         2
                     </span>
                     <span className="flex-1 flex items-center justify-center gap-2">
-                        C'est fait, je veux tourner !
-                        <Gift className="w-5 h-5" />
+                        {hasClickedReview ? (
+                            <>
+                                C'est fait, je veux tourner !
+                                <Gift className="w-5 h-5" />
+                            </>
+                        ) : (
+                            <>
+                                C'est fait, je veux tourner !
+                                <Lock className="w-5 h-5" />
+                            </>
+                        )}
                     </span>
                 </Button>
 
