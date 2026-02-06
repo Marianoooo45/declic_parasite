@@ -44,10 +44,10 @@ export function WheelGame({ onSpinComplete, actionSlot, autoSpin = false }: Whee
         // 1. Déterminer le prix selon les probabilités
         const random = Math.random();
         let targetPrize: string;
-        if (random < 0.50) targetPrize = "Perdu";
-        else if (random < 0.80) targetPrize = "5€";
-        else if (random < 0.95) targetPrize = "10€";
-        else targetPrize = "20€";
+        if (random < 0.05) targetPrize = "Perdu";        // 5%
+        else if (random < 0.80) targetPrize = "5€";      // 75% (0.05 + 0.75 = 0.80)
+        else if (random < 0.98) targetPrize = "10€";     // 18% (0.80 + 0.18 = 0.98)
+        else targetPrize = "20€";                         // 2%
 
         // 2. Trouver les indices de segments qui correspondent à ce prix
         const matchingIndices: number[] = [];
